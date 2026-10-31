@@ -81,7 +81,12 @@ def _default_engine_factory() -> object:
         raise RuntimeError(
             f"rapidocr import failed: {type(exc).__name__}: {exc}"
         ) from exc
-    return RapidOCR()
+    return RapidOCR(
+        params={
+            "EngineConfig.onnxruntime.intra_op_num_threads": 1,
+            "EngineConfig.onnxruntime.inter_op_num_threads": 1,
+        }
+    )
 
 
 class RapidOcrRecognizer:
