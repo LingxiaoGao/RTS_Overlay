@@ -199,9 +199,9 @@ class RTSGameOverlay(QMainWindow):
 
         # build order selection
         layout = self.settings.layout
-        self.build_order_title = QLabel('Build order', self)
+        self.build_order_title = QLabel('建造顺序', self)
         self.build_order_search = QLineEdit(self)
-        self.build_order_search.setPlaceholderText('keywords or space')
+        self.build_order_search.setPlaceholderText('输入关键词，或输入空格显示全部')
         self.build_order_search.textChanged.connect(self.update_build_order_display)
         self.build_order_selection = MultiQLabelDisplay(
             font_police=layout.font_police,
@@ -212,7 +212,7 @@ class RTSGameOverlay(QMainWindow):
         )
 
         # configuration elements initialization
-        self.build_order_step_time = QLabel('Step: 0/0', self)
+        self.build_order_step_time = QLabel('步骤：0/0', self)
         self.configuration_initialization()
 
         self.build_order_resources = MultiQLabelDisplay(
@@ -275,7 +275,7 @@ class RTSGameOverlay(QMainWindow):
             click_connect=self.next_panel,
             icon=QIcon(os.path.join(self.directory_common_pictures, images.next_panel)),
             button_qsize=action_button_qsize,
-            tooltip='next panel',
+            tooltip='下一个面板',
         )
 
         self.hide_panel_button = TwinHoverButton(
@@ -283,7 +283,7 @@ class RTSGameOverlay(QMainWindow):
             click_connect=self.show_hide,
             icon=QIcon(os.path.join(self.directory_common_pictures, images.hide_panel)),
             button_qsize=action_button_qsize,
-            tooltip='hide panel',
+            tooltip='隐藏面板',
         )
 
         # configuration panel buttons
@@ -292,7 +292,7 @@ class RTSGameOverlay(QMainWindow):
             click_connect=self.quit_application,
             icon=QIcon(os.path.join(self.directory_common_pictures, images.quit)),
             button_qsize=action_button_qsize,
-            tooltip='quit application',
+            tooltip='退出程序',
         )
 
         self.config_save_button = TwinHoverButton(
@@ -300,7 +300,7 @@ class RTSGameOverlay(QMainWindow):
             click_connect=self.save_settings,
             icon=QIcon(os.path.join(self.directory_common_pictures, images.save)),
             button_qsize=action_button_qsize,
-            tooltip='save settings',
+            tooltip='保存设置',
         )
 
         self.config_reload_button = TwinHoverButton(
@@ -309,7 +309,7 @@ class RTSGameOverlay(QMainWindow):
             click_connect_args=True,
             icon=QIcon(os.path.join(self.directory_common_pictures, images.load)),
             button_qsize=action_button_qsize,
-            tooltip='reload settings',
+            tooltip='重新加载设置',
         )
 
         self.config_hotkey_button = TwinHoverButton(
@@ -317,7 +317,7 @@ class RTSGameOverlay(QMainWindow):
             click_connect=self.open_panel_configure_hotkeys,
             icon=QIcon(os.path.join(self.directory_common_pictures, images.config_hotkeys)),
             button_qsize=action_button_qsize,
-            tooltip='configure hotkeys',
+            tooltip='配置快捷键',
         )
 
         self.add_edit_build_orders_button = TwinHoverButton(
@@ -325,12 +325,12 @@ class RTSGameOverlay(QMainWindow):
             click_connect=self.add_edit_build_orders,
             icon=QIcon(os.path.join(self.directory_common_pictures, images.add_edit_build_orders)),
             button_qsize=action_button_qsize,
-            tooltip='add/edit build orders in BO folder',
+            tooltip='在建造顺序文件夹中添加/编辑建造顺序',
         )
 
         # build order panel buttons
         bo_previous_tooltip = (
-            'previous build order step / -1 sec' if build_order_timer_available else 'previous build order step'
+            '上一步建造顺序 / -1 秒' if build_order_timer_available else '上一步建造顺序'
         )
         self.build_order_previous_button = TwinHoverButton(
             parent=self,
@@ -340,7 +340,7 @@ class RTSGameOverlay(QMainWindow):
             tooltip=bo_previous_tooltip,
         )
 
-        bo_next_tooltip = 'next build order step / +1 sec' if build_order_timer_available else 'next build order step'
+        bo_next_tooltip = '下一步建造顺序 / +1 秒' if build_order_timer_available else '下一步建造顺序'
         self.build_order_next_button = TwinHoverButton(
             parent=self,
             click_connect=self.build_order_next_step,
@@ -356,7 +356,7 @@ class RTSGameOverlay(QMainWindow):
                 click_connect=self.switch_build_order_timer_manual,
                 icon=QIcon(os.path.join(self.directory_common_pictures, images.switch_timer_manual)),
                 button_qsize=action_button_qsize,
-                tooltip='switch BO mode between timer and manual',
+                tooltip='在计时器和手动模式之间切换建造顺序',
             )
 
             self.build_order_start_stop_timer = TwinHoverButton(
@@ -364,7 +364,7 @@ class RTSGameOverlay(QMainWindow):
                 click_connect=(lambda: self.start_stop_build_order_timer(invert_run=True)),
                 icon=QIcon(os.path.join(self.directory_common_pictures, images.start_stop_timer)),
                 button_qsize=action_button_qsize,
-                tooltip='start/stop the BO timer',
+                tooltip='启动/停止建造顺序计时器',
             )
 
             self.build_order_reset_timer = TwinHoverButton(
@@ -372,7 +372,7 @@ class RTSGameOverlay(QMainWindow):
                 click_connect=self.reset_build_order_timer,
                 icon=QIcon(os.path.join(self.directory_common_pictures, images.reset_timer)),
                 button_qsize=action_button_qsize,
-                tooltip='reset the BO timer',
+                tooltip='重置建造顺序计时器',
             )
         else:
             self.build_order_switch_timer_manual = None
@@ -570,10 +570,10 @@ class RTSGameOverlay(QMainWindow):
         # open popup message
         if update_settings:
             if os.path.exists(self.settings_file):
-                msg_text = f'Settings reloaded using the parameters from {self.settings_file}.'
+                msg_text = f'已使用 {self.settings_file} 中的参数重新加载设置。'
             else:
-                msg_text = f'Settings reloaded with the default values ({self.settings_file} not generated).'
-            popup_message('RTS Overlay - Reload', msg_text)
+                msg_text = f'已使用默认值重新加载设置（未生成 {self.settings_file}）。'
+            popup_message('RTS Overlay - 重新加载', msg_text)
 
         # re-initialization done
         self.init_done = True
@@ -692,7 +692,7 @@ class RTSGameOverlay(QMainWindow):
         self.font_size_input.setStyleSheet(qwidget_color_default_str)
         self.font_size_input.setFont(QFont(layout.font_police, layout.font_size))
         self.font_size_input.setCurrentIndex(self.font_size_input_selected_id)
-        self.font_size_input.setToolTip('font size')
+        self.font_size_input.setToolTip('字体大小')
         self.font_size_input.adjustSize()
 
         # scaling combo
@@ -710,19 +710,19 @@ class RTSGameOverlay(QMainWindow):
         self.scaling_input.setStyleSheet(qwidget_color_default_str)
         self.scaling_input.setFont(QFont(layout.font_police, layout.font_size))
         self.scaling_input.setCurrentIndex(self.scaling_input_selected_id)
-        self.scaling_input.setToolTip('scaling of pictures, spacing...')
+        self.scaling_input.setToolTip('图片、间距等的缩放比例')
         self.scaling_input.adjustSize()
 
     def get_no_build_order_text(self):
         """Get a message when no build order is selected."""
         if len(self.build_orders) == 0:
-            return 'No valid build order in the build order folder.'
+            return '建造顺序文件夹中没有有效的建造顺序。'
         elif self.valid_key_build_orders_count == 0:
-            return 'No valid build order for this faction.'
+            return '该文明没有有效的建造顺序。'
         elif self.build_order_search.text() == '':
-            return 'Select build order with search bar.'
+            return '请使用搜索栏选择建造顺序。'
         else:
-            return 'No valid build order found with these keywords.'
+            return '未找到匹配这些关键词的有效建造顺序。'
 
     def configuration_initialization(self):
         """Configuration elements initialization (common to constructor and reload)."""
@@ -742,7 +742,7 @@ class RTSGameOverlay(QMainWindow):
         )
         self.build_order_search.setStyleSheet(qwidget_color_default_str)
         self.build_order_search.setFont(QFont(layout.font_police, layout.font_size))
-        self.build_order_search.setToolTip('build order keywords, separated by spaces')
+        self.build_order_search.setToolTip('建造顺序关键词，用空格分隔')
 
         # indicating the build orders selection
         self.build_order_selection.clear()
@@ -820,7 +820,7 @@ class RTSGameOverlay(QMainWindow):
                 self.build_order_selection.clear()
                 self.build_order_selection.add_row_from_picture_line(
                     parent=self,
-                    line='Selected: ' + self.selected_build_order_name,
+                    line='已选择：' + self.selected_build_order_name,
                     labels_settings=[
                         QLabelSettings(
                             text_bold=True, text_color=self.settings.layout.configuration.selected_build_order_color
@@ -960,7 +960,7 @@ class RTSGameOverlay(QMainWindow):
 
         # Create a custom dialog for pasting text
         dialog = QDialog(self)
-        dialog.setWindowTitle("Paste Build Order Text")
+        dialog.setWindowTitle("粘贴建造顺序文本")
         dialog.setModal(True)
         dialog.resize(800, 600)
 
@@ -977,9 +977,9 @@ class RTSGameOverlay(QMainWindow):
         # Add a text edit widget for pasting
         text_edit = QTextEdit(dialog)
         text_edit.setPlaceholderText(
-            "Paste your build order text (RTS Overlay format) here.\n\n"
-            "Check rts-overlay.github.io (link below) to design your build order\n"
-            "or to get links to third-party websites providing build orders in RTS Overlay format."
+            "在此粘贴建造顺序文本（RTS Overlay 格式）。\n\n"
+            "访问 rts-overlay.github.io（下方链接）设计建造顺序，\n"
+            "或获取提供 RTS Overlay 格式建造顺序的第三方网站链接。"
         )
         text_edit.setStyleSheet(text_edit_style)
         text_edit.setFont(QFont(self.settings.layout.font_police, self.settings.layout.font_size))
@@ -997,25 +997,32 @@ class RTSGameOverlay(QMainWindow):
         """
 
         # Open rts-overlay.github.io
-        open_website_button = QPushButton("Open rts-overlay.github.io", dialog)
+        open_website_button = QPushButton("打开 rts-overlay.github.io", dialog)
         open_website_button.setStyleSheet(button_style)
         open_website_button.setFont(QFont(self.settings.layout.font_police, self.settings.layout.font_size))
         open_website_button.clicked.connect(lambda: webbrowser.open("https://rts-overlay.github.io"))
 
+        online_button = None
+        if self.get_online_build_order_handler() is not None:
+            online_button = QPushButton("在线获取攻略", dialog)
+            online_button.setStyleSheet(button_style)
+            online_button.setFont(QFont(self.settings.layout.font_police, self.settings.layout.font_size))
+            online_button.clicked.connect(lambda: self.download_online_build_order(dialog))
+
         # Add a button to save the pasted text
-        save_button = QPushButton("Save Build Order", dialog)
+        save_button = QPushButton("保存建造顺序", dialog)
         save_button.setStyleSheet(button_style)
         save_button.setFont(QFont(self.settings.layout.font_police, self.settings.layout.font_size))
         save_button.clicked.connect(lambda: self.save_pasted_build_order(text_edit.toPlainText(), dialog))
 
         # Add a button to open the build order folder in the system file explorer
-        open_bo_folder_button = QPushButton("Open Build Order Folder", dialog)
+        open_bo_folder_button = QPushButton("打开建造顺序文件夹", dialog)
         open_bo_folder_button.setStyleSheet(button_style)
         open_bo_folder_button.setFont(QFont(self.settings.layout.font_police, self.settings.layout.font_size))
         open_bo_folder_button.clicked.connect(lambda: subprocess.run(['explorer', self.directory_build_orders]))
 
         # Add a button to open the settings folder in the system file explorer
-        open_settings_folder_button = QPushButton("Open Settings Folder", dialog)
+        open_settings_folder_button = QPushButton("打开设置文件夹", dialog)
         open_settings_folder_button.setStyleSheet(button_style)
         open_settings_folder_button.setFont(QFont(self.settings.layout.font_police, self.settings.layout.font_size))
         open_settings_folder_button.clicked.connect(lambda: subprocess.run(['explorer', self.directory_settings]))
@@ -1032,6 +1039,8 @@ class RTSGameOverlay(QMainWindow):
         button_layout.addWidget(save_button, 0, 1)
         button_layout.addWidget(open_bo_folder_button, 1, 0)
         button_layout.addWidget(open_settings_folder_button, 1, 1)
+        if online_button is not None:
+            button_layout.addWidget(online_button, 2, 0, 1, 2)
 
         # Add the button layout to the main layout
         main_layout.addLayout(button_layout)
@@ -1039,6 +1048,16 @@ class RTSGameOverlay(QMainWindow):
 
         # Show the dialog
         dialog.exec_()
+
+    def get_online_build_order_handler(self):
+        """Return the game-specific online build-order handler, if available."""
+        return None
+
+    def download_online_build_order(self, dialog):
+        """Run the game-specific online build-order handler."""
+        handler = self.get_online_build_order_handler()
+        if handler is not None:
+            handler(dialog)
 
     def save_pasted_build_order(self, pasted_text: str, dialog):
         """Save the pasted text as a build order JSON file."""
@@ -1072,7 +1091,7 @@ class RTSGameOverlay(QMainWindow):
 
         # Check if any text was pasted
         if not pasted_text.strip():
-            show_message_box(QMessageBox.Warning, "Error", "No text was pasted.")
+            show_message_box(QMessageBox.Warning, "错误", "未粘贴任何文本。")
             return
 
         # Extract the build order name from the JSON (if possible)
@@ -1082,17 +1101,17 @@ class RTSGameOverlay(QMainWindow):
             # Check if the build order is valid
             valid_bo, bo_error_msg = self.check_valid_build_order(json_data)
             if not valid_bo:
-                show_message_box(QMessageBox.Warning, "Error", f"Invalid build order format: {bo_error_msg}")
+                show_message_box(QMessageBox.Warning, "错误", f"建造顺序格式无效：{bo_error_msg}")
                 return
 
             # Get name from the build order
             if 'name' in json_data:
                 build_order_name = json_data['name']
             else:
-                show_message_box(QMessageBox.Warning, "Error", "Build order is missing a name.")
+                show_message_box(QMessageBox.Warning, "错误", "建造顺序缺少名称。")
                 return
         except json.JSONDecodeError:
-            show_message_box(QMessageBox.Warning, "Error", "Could not parse the build order. Invalid JSON format.")
+            show_message_box(QMessageBox.Warning, "错误", "无法解析建造顺序，JSON 格式无效。")
             return
 
         # Sanitize the filename: replace ALL spaces with "_" and remove dangerous characters
@@ -1103,7 +1122,7 @@ class RTSGameOverlay(QMainWindow):
 
         # Check if a file with the same name already exists
         if os.path.exists(filepath):
-            show_message_box(QMessageBox.Warning, "Error", f"A build order with the name '{build_order_name}' already exists.")
+            show_message_box(QMessageBox.Warning, "错误", f"名为“{build_order_name}”的建造顺序已存在。")
             return
 
         # Save the text to a file
@@ -1112,12 +1131,12 @@ class RTSGameOverlay(QMainWindow):
                 f.write(pasted_text)
 
             # Success popup
-            show_message_box(QMessageBox.Information, "Success", f"Build order saved as: {filename}")
+            show_message_box(QMessageBox.Information, "成功", f"建造顺序已保存为：{filename}")
 
             dialog.accept()  # Close the dialog
             self.reload(update_settings=True)  # Reload build orders
         except Exception as e:
-            show_message_box(QMessageBox.Critical, "Error", f"Failed to save build order: {str(e)}")
+            show_message_box(QMessageBox.Critical, "错误", f"保存建造顺序失败：{str(e)}")
 
     def get_hotkey_mouse_flag(self, name: str) -> bool:
         """Get the flag value for a global hotkey and/or mouse input.
@@ -1661,7 +1680,7 @@ class RTSGameOverlay(QMainWindow):
             self.build_order_search.setText('')
             self.build_order_selection.add_row_from_picture_line(
                 parent=self,
-                line='Selected: ' + self.selected_build_order_name,
+                line='已选择：' + self.selected_build_order_name,
                 labels_settings=[
                     QLabelSettings(
                         text_bold=True, text_color=self.settings.layout.configuration.selected_build_order_color
@@ -1686,7 +1705,7 @@ class RTSGameOverlay(QMainWindow):
             self.selected_build_order_step_count = 0
             self.selected_build_order_step_id = -1
             self.build_order_selection.clear()
-            self.build_order_selection.add_row_from_picture_line(parent=self, line='No valid build order found.')
+            self.build_order_selection.add_row_from_picture_line(parent=self, line='未找到有效的建造顺序。')
         self.build_order_search.clearFocus()
 
     def hide_elements(self):
@@ -1818,7 +1837,7 @@ class RTSGameOverlay(QMainWindow):
         self.build_order_notes.clear()
 
         if self.selected_build_order is None:  # no build order selected
-            self.build_order_notes.add_row_from_picture_line(parent=self, line='No build order selected.')
+            self.build_order_notes.add_row_from_picture_line(parent=self, line='未选择建造顺序。')
 
         elif 'build_order' not in self.selected_build_order:  # only display notes
             assert 'notes' in self.selected_build_order
@@ -2094,7 +2113,7 @@ class RTSGameOverlay(QMainWindow):
         """Update the build order step label."""
         if self.selected_panel == PanelID.BUILD_ORDER:
             self.build_order_step_time.setText(
-                f'Step: {self.selected_build_order_step_id + 1}/{self.selected_build_order_step_count}'
+                f'步骤：{self.selected_build_order_step_id + 1}/{self.selected_build_order_step_count}'
             )
 
     def update_build_order_time_label(self):

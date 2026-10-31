@@ -1,9 +1,6 @@
 import json
 import os.path
 
-from common.useful_tools import list_directory_files
-
-
 def check_valid_faction(
     build_order: dict, bo_name_str: str, faction_name: str, factions_list: dict, requested: bool, any_valid: bool = True
 ):
@@ -252,6 +249,11 @@ def get_build_orders(directory: str, check_valid_build_order, category_name: str
     -------
     list of valid build orders.
     """
+    # Directory scanning belongs to the desktop integration path. Import it
+    # only when needed so the pure build-order validators remain usable by
+    # tooling and tests without importing Qt.
+    from common.useful_tools import list_directory_files
+
     build_order_files = list_directory_files(directory, extension='.json')
 
     build_orders = []

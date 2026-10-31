@@ -30,7 +30,7 @@ if __name__ == '__main__':
     config_path = directory_main / "smart_hud_config.json"
 
     if not config_path.exists():
-        status_window.show_disabled(f"Config not found: {config_path}")
+        status_window.show_disabled(f"未找到配置文件：{config_path}")
     else:
         try:
             config = SmartControllerConfig.from_file(config_path)

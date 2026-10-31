@@ -1,9 +1,19 @@
 # AoE4 game overlay
 import os
 
-from PyQt5.QtWidgets import QComboBox, QApplication
+from PyQt5.QtWidgets import (
+    QApplication,
+    QComboBox,
+    QDialog,
+    QHBoxLayout,
+    QListWidget,
+    QListWidgetItem,
+    QMessageBox,
+    QPushButton,
+    QVBoxLayout,
+)
 from PyQt5.QtGui import QIcon, QFont
-from PyQt5.QtCore import QSize
+from PyQt5.QtCore import QSize, Qt
 
 from common.useful_tools import widget_x_end, widget_y_end
 from common.rts_overlay import RTSGameOverlay, scale_list_int, PanelID
@@ -12,6 +22,7 @@ from common.rts_overlay_images import RTSOverlayImages
 from aoe4.aoe4_settings import AoE4OverlaySettings
 from aoe4.aoe4_build_order import check_valid_aoe4_build_order
 from aoe4.aoe4_civ_icon import aoe4_civilization_icon, get_aoe4_faction_selection
+from aoe4.online_build_orders import Aoe4GuidesClient, OnlineBuildOrderError
 
 
 class AoE4Images(RTSOverlayImages):
@@ -76,11 +87,129 @@ class AoE4GameOverlay(RTSGameOverlay):
             self.civilization_combo_ids.append(civ_name)
         self.civilization_select.setIconSize(QSize(flag_select_size[0], flag_select_size[1]))
         self.civilization_select.setStyleSheet(f'QWidget{{ {style_description} }};')
-        self.civilization_select.setToolTip('select civilization')
+        self.civilization_select.setToolTip('选择文明')
         self.civilization_select.setFont(QFont(layout.font_police, layout.font_size))
         self.civilization_select.adjustSize()
 
         self.update_panel_elements()  # update the current panel elements
+
+    def get_online_build_order_handler(self):
+        """Return the AoE4 online build-order handler."""
+        return self.download_online_build_orders
+
+    def _show_online_message(self, dialog, icon, title, text):
+        """Show a message from the online build-order workflow."""
+        msg = QMessageBox(dialog)
+        msg.setIcon(icon)
+        msg.setWindowTitle(title)
+        msg.setText(text)
+        msg.setStyleSheet(
+            """
+            QMessageBox {
+                background-color: black;
+                color: white;
+            }
+            QMessageBox QLabel {
+                background-color: black;
+                color: white;
+            }
+            QMessageBox QPushButton {
+                color: white;
+                border: 1px solid white;
+                padding: 4px;
+                background-color: black;
+            }
+            """
+        )
+        msg.setFont(QFont(self.settings.layout.font_police, self.settings.layout.font_size))
+        msg.exec_()
+
+    def download_online_build_orders(self, dialog):
+        """Fetch, select, and download an AoE4 Guides build order."""
+        client = Aoe4GuidesClient()
+        try:
+            summaries = client.list_latest()
+        except OnlineBuildOrderError as err:
+            self._show_online_message(dialog, QMessageBox.Critical, "错误", f"获取在线建造顺序失败：{err}")
+            return
+
+        if not summaries:
+            self._show_online_message(dialog, QMessageBox.Information, "提示", "没有可用的在线建造顺序。")
+            return
+
+        select_dialog = QDialog(dialog)
+        select_dialog.setWindowTitle("选择在线建造顺序")
+        select_dialog.setModal(True)
+        select_dialog.resize(600, 400)
+
+        font = QFont(self.settings.layout.font_police, self.settings.layout.font_size)
+        button_style = """
+            QPushButton {
+                color: white;
+                border: 1px solid white;
+                padding: 4px;
+            }
+            QPushButton:hover {
+                background-color: rgba(255, 255, 255, 30);
+            }
+        """
+
+        list_widget = QListWidget(select_dialog)
+        list_widget.setFont(font)
+        list_widget.setStyleSheet(
+            """
+            QListWidget {
+                background-color: black;
+                color: white;
+                border: 1px solid white;
+            }
+            """
+        )
+        for index, summary in enumerate(summaries):
+            item = QListWidgetItem(f"{summary.title} | {summary.civilization} | {summary.author}")
+            item.setData(Qt.UserRole, index)
+            list_widget.addItem(item)
+        list_widget.setCurrentRow(0)
+
+        def on_download():
+            item = list_widget.currentItem()
+            if item is None:
+                return
+            summary = summaries[item.data(Qt.UserRole)]
+            try:
+                saved_path = client.save_overlay(summary.build_id, self.directory_build_orders)
+            except OnlineBuildOrderError as err:
+                self._show_online_message(
+                    select_dialog, QMessageBox.Critical, "错误", f"下载建造顺序失败：{err}"
+                )
+                return
+            self._show_online_message(
+                select_dialog,
+                QMessageBox.Information,
+                "成功",
+                f"建造顺序已保存为：{os.path.basename(saved_path)}",
+            )
+            select_dialog.accept()
+            self.reload(update_settings=False)
+
+        download_button = QPushButton("下载", select_dialog)
+        download_button.setStyleSheet(button_style)
+        download_button.setFont(font)
+        download_button.clicked.connect(on_download)
+
+        cancel_button = QPushButton("取消", select_dialog)
+        cancel_button.setStyleSheet(button_style)
+        cancel_button.setFont(font)
+        cancel_button.clicked.connect(select_dialog.reject)
+
+        layout = QVBoxLayout(select_dialog)
+        layout.addWidget(list_widget)
+        button_layout = QHBoxLayout()
+        button_layout.addWidget(download_button)
+        button_layout.addWidget(cancel_button)
+        layout.addLayout(button_layout)
+
+        select_dialog.exec_()
 
     def reload(self, update_settings):
         """Reload the application settings, build orders...

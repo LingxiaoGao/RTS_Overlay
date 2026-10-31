@@ -15,27 +15,47 @@ FIELDS = (
     "population_cap",
 )
 
+FIELD_LABELS = {
+    "game_time": "游戏时间",
+    "age": "时代",
+    "food": "食物",
+    "wood": "木材",
+    "gold": "黄金",
+    "stone": "石料",
+    "population_current": "当前人口",
+    "population_cap": "人口上限",
+}
+
+STATUS_LABELS = {
+    "confirmed": "已确认",
+    "inferred": "推断",
+    "unknown": "未知",
+    "stale": "已过期",
+}
+
 
 class SmartStatusWindow(QWidget):
     def __init__(self) -> None:
         super().__init__(flags=Qt.Tool | Qt.WindowStaysOnTopHint)
+        self.setWindowTitle("智能识别状态")
         self.label = QLabel(self)
 
     def show_disabled(self, message: str) -> None:
-        self.label.setText(f"Smart OCR disabled\n{message}")
+        self.label.setText(f"智能 OCR 已停用\n{message}")
         self._fit()
 
     def show_poll(self, value: SafePollResult) -> None:
         if value.error:
-            self.label.setText(f"Error: {value.error}\nFailures: {value.consecutive_failures}")
+            self.label.setText(f"错误：{value.error}\n连续失败：{value.consecutive_failures}")
         else:
             state = value.result.state
-            sampled = "Sampled" if value.result.sampled else "Cadence-skipped"
+            sampled = "已识别" if value.result.sampled else "等待下一次识别"
             lines = [sampled]
             for name in FIELDS:
                 field = getattr(state, name)
                 text = "?" if field.value is None else str(field.value)
-                lines.append(f"{name}: {text} [{field.status.value}]")
+                status = STATUS_LABELS.get(field.status.value, field.status.value)
+                lines.append(f"{FIELD_LABELS[name]}：{text} [{status}]")
             self.label.setText("\n".join(lines))
         self._fit()
 
