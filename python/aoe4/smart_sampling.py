@@ -31,7 +31,10 @@ class ObservationScheduler:
 
     def due(self, now: float) -> bool:
         self._validate_timestamp(now)
-        return self._last_sample is None or now - self._last_sample >= self._config.interval_seconds
+        return (
+            self._last_sample is None
+            or now - self._last_sample + 1e-6 >= self._config.interval_seconds
+        )
 
     def mark_sample(self, now: float) -> None:
         self._validate_timestamp(now)

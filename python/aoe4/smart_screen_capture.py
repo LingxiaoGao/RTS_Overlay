@@ -34,6 +34,16 @@ class MssScreenCapture:
             self._backend = self._make_backend()
         return self._backend
 
+    def screen_region(self) -> CaptureRegion:
+        """Return the primary monitor bounds used for HUD coordinate scaling."""
+        monitor = self._get_backend().monitors[1]
+        return CaptureRegion(
+            left=int(monitor["left"]),
+            top=int(monitor["top"]),
+            width=int(monitor["width"]),
+            height=int(monitor["height"]),
+        )
+
     def capture(
         self, region: CaptureRegion, frame_id: int, captured_at: Number
     ) -> CapturedFrame:

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections import deque
 from dataclasses import dataclass
 from typing import Mapping
 
@@ -21,6 +22,91 @@ class PipelineResult:
     verified_observations: tuple[Observation, ...]
     state: GameState
     events: tuple[GameEvent, ...]
+
+
+class _AgeSignal:
+    """Confirm visual age advances only after the matching resource spend."""
+
+    _COSTS = {2: (400, 200), 3: (1200, 600), 4: (2400, 1200)}
+    _ROMAN = {1: "I", 2: "II", 3: "III", 4: "IV"}
+
+    def __init__(self) -> None:
+        self.reset()
+
+    def reset(self) -> None:
+        self.current = 1
+        self.candidate: int | None = None
+        self.candidate_at = 0.0
+        self.previous: tuple[int, int] | None = None
+        self.previous_at = 0.0
+        self.visual = deque(maxlen=10)
+
+    @staticmethod
+    def _number(text: object) -> int | None:
+        return int(text) if isinstance(text, str) and text.isdigit() else None
+
+    @staticmethod
+    def _visual_age(text: object) -> int:
+        if not isinstance(text, str):
+            return 0
+        if "V" in text:
+            return 4
+        return min(3, text.count("I"))
+
+    def observe(self, texts: Mapping[str, str], now: float) -> str:
+        food = self._number(texts.get("food"))
+        gold = self._number(texts.get("gold"))
+        if food is not None and gold is not None:
+            if self.previous is not None and now - self.previous_at <= 2.0:
+                next_age = self.current + 1
+                if next_age in self._COSTS:
+                    expected_food, expected_gold = self._COSTS[next_age]
+                    food_drop = self.previous[0] - food
+                    gold_drop = self.previous[1] - gold
+                    if (
+                        0.7 * expected_food <= food_drop <= 1.3 * expected_food
+                        and 0.7 * expected_gold <= gold_drop <= 1.3 * expected_gold
+                    ):
+                        self.candidate = next_age
+                        self.candidate_at = now
+                        self.visual.clear()
+            self.previous = (food, gold)
+            self.previous_at = now
+
+        self.visual.append(self._visual_age(texts.get("age")))
+        if self.candidate is not None:
+            if now - self.candidate_at > 180.0:
+                self.candidate = None
+                self.visual.clear()
+            elif self.visual.count(self.candidate) >= 6:
+                self.current = self.candidate
+                self.candidate = None
+                self.visual.clear()
+        return self._ROMAN[self.current]
+
+
+def _coherent_population(observations: tuple[Observation, ...]) -> tuple[Observation, ...]:
+    population = {
+        item.field: item
+        for item in observations
+        if item.field in ("population_current", "population_cap")
+    }
+    if not population:
+        return observations
+    current = population.get("population_current")
+    cap = population.get("population_cap")
+    coherent = (
+        current is not None
+        and cap is not None
+        and current.value <= cap.value
+    )
+    if coherent:
+        return observations
+    return tuple(
+        item
+        for item in observations
+        if item.field not in ("population_current", "population_cap")
+    )
 
 
 
@@ -74,6 +160,7 @@ class SmartHudPipeline:
         self._age_signal_validated = _require_bool(
             age_signal_validated, "age_signal_validated"
         )
+        self._age_signal = _AgeSignal()
         self._sample_index = 0
 
     @property
@@ -117,7 +204,23 @@ class SmartHudPipeline:
             raise TypeError(
                 f"frame must be a CapturedFrame, got {type(frame).__name__}"
             )
-        now = frame.captured_at
+        return self._process_sample(
+            frame.frame_id, frame.captured_at, lambda: self._reader.read(frame)
+        )
+
+    def process_crops(
+        self, crops: Mapping[str, CapturedFrame]
+    ) -> PipelineResult:
+        if not crops:
+            raise ValueError("crops must be nonempty")
+        first = next(iter(crops.values()))
+        return self._process_sample(
+            first.frame_id,
+            first.captured_at,
+            lambda: self._reader.read_crops(crops),
+        )
+
+    def _process_sample(self, frame_id: int, now: float, read_evidence) -> PipelineResult:
 
         if not self._scheduler.due(now):
             state = self._estimator.mark_stale(now)
@@ -130,15 +233,17 @@ class SmartHudPipeline:
                 events=(),
             )
 
-        raw = self._reader.read(frame)
+        raw = read_evidence()
         if not isinstance(raw, Mapping):
             raise TypeError(
                 f"reader.read must return a Mapping, got {type(raw).__name__}"
             )
         evidence = raw
 
-        texts = text_mapping(evidence)
-        observations = parse_hud_text(texts, frame.frame_id, now)
+        texts = dict(text_mapping(evidence))
+        if "age" in texts and "food" in texts and "gold" in texts:
+            texts["age"] = self._age_signal.observe(texts, now)
+        observations = _coherent_population(parse_hud_text(texts, frame_id, now))
 
         checkpoint = self._confirmer.checkpoint()
         try:
@@ -149,6 +254,7 @@ class SmartHudPipeline:
                 self._profile_validated,
                 self._age_signal_validated,
             )
+            verified = _coherent_population(verified)
             state, events = self._estimator.ingest(verified, now)
             state = self._estimator.mark_stale(now)
             self._scheduler.mark_sample(now)
@@ -169,5 +275,6 @@ class SmartHudPipeline:
     def reset(self) -> GameState:
         self._scheduler.reset()
         self._confirmer.reset()
+        self._age_signal.reset()
         self._sample_index = 0
         return self._estimator.reset()

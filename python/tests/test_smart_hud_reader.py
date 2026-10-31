@@ -127,6 +127,19 @@ class HudOcrReaderConstructorTests(unittest.TestCase):
 
 
 class HudOcrReaderReadTests(unittest.TestCase):
+    def test_shared_population_crop_is_recognized_once_and_split(self):
+        region = CaptureRegion(left=0, top=0, width=4, height=2)
+        regions = HudRegionSet(
+            {"population_current": region, "population_cap": region}
+        )
+        rec = ScriptedRecognizer([[make_line("83/120", 0.9, 0, 0)]])
+
+        evidence = HudOcrReader(regions, rec).read(make_frame())
+
+        self.assertEqual(len(rec.calls), 1)
+        self.assertEqual(evidence["population_current"].text, "83")
+        self.assertEqual(evidence["population_cap"].text, "120")
+
     def test_crop_and_recognize_calls_with_correct_frames(self):
         frame = make_frame()
         rec = ScriptedRecognizer([(), ()])

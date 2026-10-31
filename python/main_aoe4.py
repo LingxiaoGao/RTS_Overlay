@@ -38,23 +38,20 @@ if __name__ == '__main__':
         import keyboard  # noqa: F401
         import mss
         import numpy  # noqa: F401
-        import onnxruntime  # noqa: F401
         import pynput  # noqa: F401
         from omegaconf import OmegaConf  # noqa: F401
-        from PIL import Image
-
-        from aoe4.smart_ocr import _default_engine_factory
+        from aoe4.smart_template_ocr import TemplateHudRecognizer
 
         capture_backend = mss.mss()
         capture_backend.close()
 
-        engine = _default_engine_factory()
-        try:
-            engine(Image.new("RGB", (64, 64), "white"))
-        finally:
-            close_engine = getattr(engine, "close", None)
-            if callable(close_engine):
-                close_engine()
+        smoke_config = SmartControllerConfig.from_file(
+            directory_main / "smart_hud_config.json"
+        )
+        TemplateHudRecognizer(
+            smoke_config.hud_regions,
+            directory_main / "hud_templates_1280x720",
+        ).close()
         logger.info("Packaged runtime smoke test passed")
         sys.exit(0)
 
@@ -83,7 +80,10 @@ if __name__ == '__main__':
     else:
         try:
             config = SmartControllerConfig.from_file(config_path)
-            controller = SmartHudController(config)
+            controller = SmartHudController(
+                config,
+                template_dir=directory_main / "hud_templates_1280x720",
+            )
             last_poll_error = None
 
             def poll_smart():

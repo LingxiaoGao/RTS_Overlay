@@ -134,16 +134,10 @@ jobs:
 
           $OverlayDir = Join-Path $SourceDir 'overlay'
 
-          $RapidocrYaml = @(Get-ChildItem -Path $OverlayDir -Recurse -File -Filter '*.yaml' -ErrorAction SilentlyContinue |
-            Where-Object { $_.FullName -match '[\\/]rapidocr[\\/]' })
-          if ($RapidocrYaml.Count -eq 0) {
-            throw "Missing RapidOCR YAML config data in packaged archive under: $OverlayDir"
-          }
-
-          $RapidocrModels = @(Get-ChildItem -Path $OverlayDir -Recurse -File -Filter '*.onnx' -ErrorAction SilentlyContinue |
-            Where-Object { $_.FullName -match '[\\/]rapidocr[\\/]' })
-          if ($RapidocrModels.Count -eq 0) {
-            throw "Missing RapidOCR ONNX model data in packaged archive under: $OverlayDir"
+          $TemplateDir = Join-Path $OverlayDir 'hud_templates_1280x720'
+          $TemplateFiles = @(Get-ChildItem -Path $TemplateDir -Recurse -File -Filter '*.png' -ErrorAction SilentlyContinue)
+          if ($TemplateFiles.Count -lt 10) {
+            throw "Missing HUD glyph templates under: $TemplateDir"
           }
 
           $SmokeProcess = Start-Process -FilePath $ExePath -ArgumentList '--runtime-smoke-test' -Wait -PassThru
