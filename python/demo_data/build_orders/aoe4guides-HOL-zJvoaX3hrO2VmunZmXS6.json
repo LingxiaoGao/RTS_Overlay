@@ -1,0 +1,365 @@
+{
+  "description": "Based on Beastyqt's Video, with minor adjustments",
+  "civilization": "House of Lancaster",
+  "name": "Lancaster Manor Boom into Fast Castle",
+  "author": "特列-苏菲",
+  "source": "https://aoe4guides.com/builds/zJvoaX3hrO2VmunZmXS6",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6@unit_worker/villager.webp@ to @resource/sheep.png@",
+        "@building_economy/town-center.png@@resource/rally.png@@resource/resource_gold.png@ until 3@unit_worker/villager.png@ on @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@resource/resource_gold.webp@@unit_worker/villager.png@@abilities/repair.png@@building_economy/house.png@ and @building_economy/mining-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@@resource/rally.png@@resource/sheep.png@ until 9@unit_worker/villager.png@ on @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 12,
+      "resources": {
+        "food": 3,
+        "wood": 3,
+        "gold": 0,
+        "stone": 3,
+        "builder": 3
+      },
+      "notes": [
+        "3@resource/resource_gold.webp@@unit_worker/villager.png@@abilities/repair.png@@landmark_lancaster/lancaster_castle.png@ (try to protect multiple resources)",
+        "3@resource/sheep.png@@unit_worker/villager.png@@abilities/repair.png@@building_economy/lumber-camp.png@ at @resource/resource_wood.png@ and to @resource/resource_wood.png@",
+        "3@resource/sheep.png@@unit_worker/villager.png@@abilities/repair.png@@building_economy/mining-camp.png@ at @resource/resource_stone.png@ and to @resource/resource_stone.png@",
+        "@building_economy/town-center.png@@resource/rally.png@@resource/resource_wood.png@ until 8@unit_worker/villager.png@ on @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:40",
+      "villager_count": 17,
+      "resources": {
+        "food": 3,
+        "wood": 8,
+        "gold": 0,
+        "stone": 3,
+        "builder": 3
+      },
+      "notes": [
+        "@building_economy/town-center.webp@@resource/rally.png@@resource/resource_gold.png@ until 10@unit_worker/villager.png@ on @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 18,
+      "resources": {
+        "food": 3,
+        "wood": 8,
+        "gold": 4,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "3@abilities/repair.webp@@landmark_lancaster/lancaster_castle.png@@unit_worker/villager.png@@abilities/repair.png@@building_lancaster/manor.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 19,
+      "resources": {
+        "food": 3,
+        "wood": 8,
+        "gold": 5,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "1@resource/resource_gold.webp@@unit_worker/villager.png@@abilities/repair.png@@building_lancaster/manor.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 21,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 10,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "3@resource/sheep.webp@@unit_worker/villager.png@ to @resource/resource_gold.png@",
+        "@building_economy/town-center.png@@resource/rally.png@@resource/resource_stone.png@ until 8@unit_worker/villager.png@ on @resource/resource_stone.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:20",
+      "villager_count": 22,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 10,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "1@resource/resource_gold.webp@@unit_worker/villager.png@@abilities/repair.png@@building_lancaster/manor.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:40",
+      "villager_count": 23,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 10,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_lancaster/condensed_land_practices.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:10",
+      "villager_count": 24,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 10,
+        "stone": 6,
+        "builder": -1
+      },
+      "notes": [
+        "1@resource/resource_gold.webp@@unit_worker/villager.png@@abilities/repair.png@@building_lancaster/manor.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:30",
+      "villager_count": 25,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 10,
+        "stone": 7,
+        "builder": -1
+      },
+      "notes": [
+        "1@resource/resource_gold.webp@@unit_worker/villager.png@@abilities/repair.png@@building_lancaster/manor.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:40",
+      "villager_count": 26,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 10,
+        "stone": 8,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@@resource/rally.png@@resource/resource_wood.png@ until 12@unit_worker/villager.png@ on @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:10",
+      "villager_count": 27,
+      "resources": {
+        "food": 0,
+        "wood": 9,
+        "gold": 10,
+        "stone": 8,
+        "builder": -1
+      },
+      "notes": [
+        "1@resource/resource_gold.webp@@unit_worker/villager.png@@abilities/repair.png@@building_lancaster/manor.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:20",
+      "villager_count": 28,
+      "resources": {
+        "food": 0,
+        "wood": 10,
+        "gold": 10,
+        "stone": 8,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_lancaster/open_field_system.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:50",
+      "villager_count": 29,
+      "resources": {
+        "food": 8,
+        "wood": 11,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When @resource/resource_stone.webp@ reserve has been mined for 900, 8@resource/resource_stone.png@@unit_worker/villager-abbasid.png@ to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:00",
+      "villager_count": 30,
+      "resources": {
+        "food": 8,
+        "wood": 12,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@@resource/rally.png@@resource/resource_gold.png@ until 16@unit_worker/villager.png@ on @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:10",
+      "villager_count": 30,
+      "resources": {
+        "food": 8,
+        "wood": 12,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@resource/resource_gold.webp@@unit_worker/villager.png@@abilities/repair.png@@building_lancaster/manor.png@",
+        "1@resource/resource_gold.png@@unit_worker/villager.png@@abilities/repair.png@@building_lancaster/manor.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:30",
+      "villager_count": 31,
+      "resources": {
+        "food": 8,
+        "wood": 12,
+        "gold": 11,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2@resource/resource_gold.webp@@unit_worker/villager.png@@abilities/repair.png@@building_lancaster/manor.png@",
+        "Research @ability_lancaster/call_to_arms.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9:30",
+      "villager_count": 34,
+      "resources": {
+        "food": 0,
+        "wood": 12,
+        "gold": 14,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "8@resource/sheep.webp@@unit_worker/villager.png@@abilities/repair.png@@landmark_lancaster/kings_college.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_economy/double-broadaxe.webp@@technology_economy/specialized-pick.png@",
+        "Build @building_technology/blacksmith.png@@building_military/barracks.png@@building_military/archery-range.png@",
+        "Upgrade @unit_infantry/spearman-1.png@",
+        "Produce @unit_infantry/spearman-1.png@@unit_lancaster/yeoman_age2.png@"
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/kR93WB2WkMM",
+  "season": "Season 10",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "zJvoaX3hrO2VmunZmXS6",
+    "civilization_code": "HOL",
+    "updated": "2025-11-08T00:54:09+00:00",
+    "views_at_snapshot": 11796,
+    "snapshot_date": "2026-10-31"
+  }
+}

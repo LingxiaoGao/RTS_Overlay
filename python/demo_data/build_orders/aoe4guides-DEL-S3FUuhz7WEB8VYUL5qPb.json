@@ -1,0 +1,197 @@
+{
+  "description": "See video link for more tips",
+  "civilization": "Delhi Sultanate",
+  "name": "Delhi Fast Ghazi into Age 3 (2026)",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/S3FUuhz7WEB8VYUL5qPb",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 starting @unit_worker/villager-delhi.webp@ to @resource/gaiatreeprototypetree.webp@ to chop 50 @resource/resource_wood.webp@ then build @building_economy/mill.webp@ on @resource/berrybush.webp@",
+        "1 @unit_worker/villager-delhi.webp@ builds @building_religious/mosque.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "new @unit_worker/villager-delhi.webp@ builds @building_economy/house.webp@ then @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:40",
+      "villager_count": 8,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1 new @unit_worker/villager-delhi.webp@ to @resource/resource_food.webp@ (8 total)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 new @unit_worker/villager-delhi.webp@ to @building_economy/mining-camp.webp@@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 new @unit_worker/villager-delhi.webp@ to chopped @resource/gaiatreeprototypetree.webp@, then 1 new @unit_worker/villager-delhi.webp@ to build @building_economy/lumber-camp.webp@ at woodline (pull the 2 @unit_worker/villager-delhi.webp@ from straggler when 50@resource/resource_wood.webp@)",
+        "Keep rallying to @resource/resource_wood.webp@until 5"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@landmark_delhi/dome-of-the-faith.webp@ on @resource/berrybush.webp@ with 4 @resource/berrybush.webp@@unit_worker/villager-delhi.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 10,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "when 5 on @resource/resource_wood.webp@ you @resource/rally.webp@ back to @resource/sheep.webp@ until 12. Then @resource/resource_wood.webp@ again until 12"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 21,
+      "resources": {
+        "food": 11,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Queue all feudal upgrades",
+        "2@unit_worker/villager-delhi.webp@ from @resource/resource_wood.webp@ build @building_military/stable.webp@ ( put @unit_delhi/scholar.webp@ inside @building_military/stable.webp@ and pump @unit_delhi/ghazi-raider-2.webp@ nonstop )"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:25",
+      "villager_count": 24,
+      "resources": {
+        "food": 12,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_technology/blacksmith.webp@  @building_military/archery-range.webp@ @building_military/barracks.webp@ in whatever order makes sense (usually go production buildings first and add 2x blacksmiths later around 8-10 mins)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Only go age 3 when you have secured 2 deer packs with @technology_economy/professional-scouts.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "In age 3 immediately queue @unit_delhi/war-elephant.webp@ and add 2 more @building_military/archery-range.webp@ for @unit_infantry/archer-2.webp@+@unit_infantry/crossbowman-3.webp@",
+        "Also Start @resource/resource_stone.webp@ for @building_defensive/keep.webp@ & @technology_delhi/village-fortresses.webp@"
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/dRvmG-HSfz4",
+  "season": "Season 12",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "S3FUuhz7WEB8VYUL5qPb",
+    "civilization_code": "DEL",
+    "updated": "2026-02-19T15:12:07+00:00",
+    "views_at_snapshot": 7093,
+    "snapshot_date": "2026-10-31"
+  }
+}

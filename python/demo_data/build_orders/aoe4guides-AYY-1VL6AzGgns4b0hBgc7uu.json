@@ -1,0 +1,217 @@
+{
+  "description": "New Ayyubid meta (never go villager wing)",
+  "civilization": "Ayyubids",
+  "name": "Ayyubids MOST BROKEN Meta Conqueror VortiX",
+  "author": "Axl",
+  "source": "https://aoe4guides.com/builds/1VL6AzGgns4b0hBgc7uu",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "4 @unit_worker/villager-abbasid.webp@ to @resource/berrybush.webp@ 2 build a @building_economy/mill.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1st @unit_worker/villager-abbasid.webp@ builds @building_economy/house.webp@ next to @building_economy/mill.webp@ then to @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @resource/resource_gold.webp@ until 3 (1st@unit_worker/villager-abbasid.webp@ builds @building_economy/mining-camp.webp@ )"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Next 2 @unit_worker/villager-abbasid.webp@ build @landmark_abbasid/house-of-wisdom.webp@ then to @resource/gaiatreeprototypetree.webp@ after tree is finished @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@ with @technology_ayyubids/culture-wing-logistics-1.webp@ (1 more @unit_worker/villager-abbasid.webp@ @resource/resource_wood.webp@ then @resource/resource_gold.webp@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "After 100 @resource/resource_wood.webp@ the 3 @unit_worker/villager-abbasid.webp@ go to @resource/sheep.webp@ (One builds @building_economy/house.webp@)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 5 on @resource/resource_gold.webp@ @resource/rally.webp@ @resource/sheep.webp@ (Dervish heals @resource/resource_gold.webp@)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 18,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_3.webp@ MOST OF THE TIME @technology_ayyubids/economic-wing-industry-1.webp@ UNLESS he goes cavalry @technology_ayyubids/military-wing-reinforcement-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 8,
+        "wood": 10,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Going @age/age_3.webp@ get new @unit_worker/villager-abbasid.webp@on @resource/resource_gold.webp@to have 6 then macro to 8 @resource/resource_food.webp@ 10 @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_wood.webp@ If enemy kicks you out of @resource/resource_gold.webp@just go @resource/resource_wood.webp@, build @building_economy/market.webp@when 100 @resource/resource_wood.webp@and sell@resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Army comp based on opponent, usually build @building_military/stable.webp@and @building_military/archery-range.webp@ like crazy"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If we are still on gold make a second @building_economy/town-center.webp@, dont sell if no pressure"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "8:30",
+      "villager_count": 26,
+      "resources": {
+        "food": 13,
+        "wood": 13,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Can sell @resource/resource_wood.webp@also if we are under pressure, should build great army and remacro GLHF!"
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/x3FR24L3I8M",
+  "season": "Season 12",
+  "map": null,
+  "strategy": "Fast Castle",
+  "_aoe4_guides": {
+    "id": "1VL6AzGgns4b0hBgc7uu",
+    "civilization_code": "AYY",
+    "updated": "2025-12-04T19:57:29+00:00",
+    "views_at_snapshot": 4807,
+    "snapshot_date": "2026-10-31"
+  }
+}

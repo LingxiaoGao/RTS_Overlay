@@ -1,0 +1,96 @@
+{
+  "description": "",
+  "civilization": "Order of the Dragon",
+  "name": "OOTD - 2TC BOOM",
+  "author": "Moght",
+  "source": "https://aoe4guides.com/builds/NmYkl3acnNjPdZU4uCzW",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.webp@ then @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 8,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "at 200 -> @resource/resource_gold.webp@ to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 0,
+        "stone": 4,
+        "builder": 2
+      },
+      "notes": [
+        "from @resource/resource_food.webp@",
+        "2 to @age/age_2.webp@@landmark_hre/aachen-chapel.webp@ AACHEN CHAPEL",
+        "4 to @resource/resource_stone.webp@",
+        "@resource/rally.webp@ @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 0,
+        "stone": 4,
+        "builder": 1
+      },
+      "notes": [
+        "WHEN LANDMARK HALF DONE TAKE 1 AGE UP VILL TO @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "video": "https://www.youtube.com/embed/YPRL2C_pSoM",
+  "season": "Season 13",
+  "map": null,
+  "strategy": "Boom",
+  "_aoe4_guides": {
+    "id": "NmYkl3acnNjPdZU4uCzW",
+    "civilization_code": "DRA",
+    "updated": "2026-05-24T13:20:10+00:00",
+    "views_at_snapshot": 3723,
+    "snapshot_date": "2026-10-31"
+  }
+}

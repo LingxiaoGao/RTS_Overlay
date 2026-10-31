@@ -1,0 +1,229 @@
+{
+  "description": "wa",
+  "civilization": "English",
+  "name": "3:58 Feudal Rush English | 40 units at minute 10",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/d51upkMZjiReI6tsATF5",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6@unit_worker/villager.webp@ to&nbsp;@resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:21",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@ to&nbsp;@resource/resource_gold.png@&nbsp;and build&nbsp;@building_economy/house.png@->@building_economy/mining-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:41",
+      "villager_count": 8,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@ to&nbsp;@resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:01",
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2@unit_worker/villager.webp@ to&nbsp;@resource/resource_gold.png@&nbsp;then&nbsp;@resource/rally.png@&nbsp;new&nbsp;@unit_worker/villager.png@&nbsp;to&nbsp;@resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:07",
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 3900 left in @resource/resource_gold.webp@&nbsp;vein pull ALL&nbsp;@unit_worker/villager.png@@resource/resource_gold.png@&nbsp;to&nbsp;@building_economy/lumber-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:11",
+      "villager_count": 12,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@age/age_2.webp@ with&nbsp;@landmark_english/council-hall.png@&nbsp;with 4@unit_worker/villager.png@@resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:21",
+      "villager_count": 13,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "1 new @unit_worker/villager.webp@&nbsp;to&nbsp;@resource/sheep.png@&nbsp;then rally&nbsp;@resource/resource_wood.png@&nbsp;until 11@unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 15,
+      "resources": {
+        "food": 6,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "1 age up-@unit_worker/villager.webp@ builds&nbsp;@building_military/barracks.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:35",
+      "villager_count": 16,
+      "resources": {
+        "food": 6,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "another age up-@unit_worker/villager.webp@ builds&nbsp;@building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "All age up @unit_worker/villager.webp@go back to&nbsp;@resource/sheep.png@&nbsp;when finished constructing&nbsp;@landmark_english/council-hall.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:58",
+      "villager_count": 18,
+      "resources": {
+        "food": 10,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@: Instantly queue @unit_english/longbowman-2.png@@unit_infantry/spearman-1.png@&nbsp;and send them forward. Only build units and focus wood."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:24",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@ to&nbsp;@resource/resource_food.png@&nbsp;then&nbsp;@resource/rally.png@&nbsp;@resource/resource_wood.png@&nbsp;again"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Slowly add in @building_economy/farm.webp@when you have&nbsp;@resource/resource_wood.png@&nbsp;surplus. Later on, add 3&nbsp;@unit_worker/villager.png@to&nbsp;@resource/resource_gold.png@&nbsp;for&nbsp;@building_technology/blacksmith.png@&nbsp;(@technology_military/steeled-arrow.png@+@technology_military/iron-undermesh.png@)",
+        "At minute 10 you should have around 40 units. Balance&nbsp;@unit_english/longbowman-2.png@&nbsp;/&nbsp;@unit_infantry/spearman-1.png@&nbsp;according to opponent composition. Add in&nbsp;@unit_infantry/man-at-arms-1.png@&nbsp;if opponent is Archer Heavy",
+        "When 3 sets of&nbsp;@building_economy/farm.png@&nbsp;(24) go&nbsp;@age/age_3.png@@landmark_english/kings-palace.png@&nbsp;into&nbsp;@unit_infantry/man-at-arms-1.png@@technology_english/armor-clad.png@@technology_military/wedge-rivets.png@&nbsp;( if opponent is feudal) <b>OR</b>&nbsp;@unit_cavalry/knight-2.png@@resource/relics.png@@technology_military/wedge-rivets.png@(If opponent is castle or going castle)&nbsp;&nbsp;",
+        "See video for more tips."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/KnhHP7oJ-ks",
+  "season": "Season 5",
+  "map": "Open",
+  "strategy": "Rush",
+  "_aoe4_guides": {
+    "id": "d51upkMZjiReI6tsATF5",
+    "civilization_code": "ENG",
+    "updated": "2024-03-24T14:12:03+00:00",
+    "views_at_snapshot": 57022,
+    "snapshot_date": "2026-10-31"
+  }
+}

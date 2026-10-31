@@ -1,0 +1,202 @@
+{
+  "description": "The first Scot build from Swaggy Professor",
+  "civilization": "Scots",
+  "name": "Swaggy's Scot Starter - Copy for me to understand series",
+  "author": "murtuk",
+  "source": "https://aoe4guides.com/builds/csMtOxSj34hz7RldJzBs",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 2,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "2 @resource/resource_food.webp@ + 3 @resource/resource_wood.webp@ (1 trip only-30), +1 @unit_scots/highland-cattle.webp@ to @resource/berrybush.webp@",
+        "1@abilities/repair.webp@ to @resource/resource_gold.webp@ with@building_scots/tower-house.webp@+@building_economy/mining-camp.webp@ on gold",
+        "2 more @resource/rally.webp@ to @resource/resource_gold.webp@ to help builders"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:30",
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "After 1 trip, 3 @resource/resource_wood.webp@ to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Now @resource/rally.webp@@resource/resource_food.webp@ until age up"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:05",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_scots/tower-house.webp@  finishes",
+        "Make 5 more @unit_scots/highland-cattle.webp@ from @building_scots/tower-house.webp@to each near @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 16,
+      "resources": {
+        "food": 0,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Start @age/age_2.webp@@landmark_scots/stone-of-destiny.webp@with 5 from@resource/resource_food.webp@ and back to @resource/resource_food.webp@",
+        "Now @resource/rally.webp@to @resource/resource_wood.webp@, Send all other (7)@resource/resource_food.webp@ to@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 19,
+      "resources": {
+        "food": 0,
+        "wood": 11,
+        "gold": 3,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_military/barracks.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:55",
+      "villager_count": 20,
+      "resources": {
+        "food": 5,
+        "wood": 12,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@ finishes at 4:55, Make 2x @unit_scots/kirkman.webp@",
+        "Now @resource/rally.webp@@resource/resource_food.webp@",
+        "@abilities/repair.webp@@building_military/archery-range.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:10",
+      "villager_count": 21,
+      "resources": {
+        "food": 6,
+        "wood": 12,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Make @unit_scots/cateran.webp@ , @abilities/repair.webp@@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:45",
+      "villager_count": 23,
+      "resources": {
+        "food": 7,
+        "wood": 13,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Now @resource/rally.webp@to @resource/resource_wood.webp@",
+        "@abilities/repair.webp@@building_scots/fishpond.webp@ with @unit_scots/kirkman.webp@on @resource/resource_wood.webp@+@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 24,
+      "resources": {
+        "food": 7,
+        "wood": 14,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@building_scots/fishpond.webp@ finishes, @unit_scots/kirkman.webp@  works there as @resource/resource_gold.webp@ collector",
+        "3@resource/resource_gold.webp@vil go @abilities/repair.webp@2nd @building_scots/tower-house.webp@ on @resource/deer.webp@",
+        "@abilities/repair.webp@@building_scots/fishpond.webp@ with @unit_scots/kirkman.webp@on @resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "video": "https://www.youtube.com/embed/H37JNp7pVBU",
+  "season": "Season 13",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "csMtOxSj34hz7RldJzBs",
+    "civilization_code": "SCO",
+    "updated": "2026-10-29T16:21:17+00:00",
+    "views_at_snapshot": 1274,
+    "snapshot_date": "2026-10-31"
+  }
+}

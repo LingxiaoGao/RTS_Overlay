@@ -1,0 +1,389 @@
+{
+  "description": "The wanted build of Valdemar's Valdemar Castle :) - Timings calculated with Valdemar says (not the exact ones on the video)",
+  "civilization": "Vikings",
+  "name": "Valdy's 2TC+Valdemar Castle - Copy for me to understand series",
+  "author": "murtuk",
+  "source": "https://aoe4guides.com/builds/Gvwy3XlSQlpzLgXtDUjM",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 to @resource/resource_food.webp@, with 1 @abilities/repair.webp@@building_vikings/longhouse.webp@  on @resource/berrybush.webp@",
+        "@resource/rally.webp@ 2 to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:40",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 1,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Make 2x @unit_vikings/bondi.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:06",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 2,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Now @resource/rally.webp@@resource/resource_gold.webp@until 4"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:28",
+      "villager_count": 10,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Having 50 @resource/resource_wood.webp@, send them to @resource/resource_gold.webp@ too."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:50",
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Now @resource/rally.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:18",
+      "villager_count": 12,
+      "resources": {
+        "food": 3,
+        "wood": 5,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "At 200 @resource/resource_gold.webp@ (3900 left on deposit), those 4 go to @resource/resource_stone.webp@",
+        "5@resource/resource_food.webp@to@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:33",
+      "villager_count": 12,
+      "resources": {
+        "food": 0,
+        "wood": 6,
+        "gold": 0,
+        "stone": 4,
+        "builder": 2
+      },
+      "notes": [
+        "Start @age/age_2.webp@@landmark_vikings/konungr-hall.webp@ with 2 from@resource/resource_food.webp@and back to@resource/resource_food.webp@",
+        "Send all (2) @resource/resource_food.webp@to@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 12,
+      "resources": {
+        "food": 0,
+        "wood": 9,
+        "gold": 0,
+        "stone": 1,
+        "builder": 2
+      },
+      "notes": [
+        "Having 400@resource/resource_wood.webp@, move 9 vils on @resource/deer.webp@ to be ready building @building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:45",
+      "villager_count": 9,
+      "resources": {
+        "food": 0,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "All (4) @resource/resource_stone.webp@to@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:58",
+      "villager_count": 19,
+      "resources": {
+        "food": 2,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "@landmark_vikings/konungr-hall.webp@ finishes at 4:58",
+        "@abilities/repair.webp@ 2nd @building_economy/town-center.webp@with 9"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:20",
+      "villager_count": 20,
+      "resources": {
+        "food": 2,
+        "wood": 9,
+        "gold": 0,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "@abilities/repair.webp@2nd @building_vikings/longhouse.webp@ with 5"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:50",
+      "villager_count": 22,
+      "resources": {
+        "food": 11,
+        "wood": 11,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd @building_economy/town-center.webp@ finishes, which @resource/rally.webp@@resource/deer.webp@ other @resource/rally.webp@@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 23,
+      "resources": {
+        "food": 9,
+        "wood": 11,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3@resource/resource_wood.webp@to@resource/resource_gold.webp@with @abilities/repair.webp@@building_military/barracks.webp@,  make some @unit_vikings/bondi.webp@ , get uprade for them"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:30",
+      "villager_count": 27,
+      "resources": {
+        "food": 11,
+        "wood": 8,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3@resource/resource_wood.webp@to@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:45",
+      "villager_count": 26,
+      "resources": {
+        "food": 11,
+        "wood": 7,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@3rd @building_vikings/longhouse.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 29,
+      "resources": {
+        "food": 12,
+        "wood": 7,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Make @unit_vikings/shield-maiden.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:40",
+      "villager_count": 32,
+      "resources": {
+        "food": 14,
+        "wood": 7,
+        "gold": 11,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Make @technology_vikings/pasture-and-loom.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:00",
+      "villager_count": 33,
+      "resources": {
+        "food": 20,
+        "wood": 3,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4@resource/resource_wood.webp@to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9:00",
+      "villager_count": 39,
+      "resources": {
+        "food": 24,
+        "wood": 3,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@4th @building_vikings/longhouse.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9:20",
+      "villager_count": 40,
+      "resources": {
+        "food": 10,
+        "wood": 10,
+        "gold": 12,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "Start @age/age_3.webp@@landmark_vikings/valdemar-castle.webp@with 8 from@resource/resource_food.webp@and back to",
+        "7@resource/resource_food.webp@to@resource/resource_wood.webp@, Research @technology_economy/double-broadaxe.webp@ when possible",
+        "Can make @building_military/archery-range.webp@ for @unit_infantry/crossbowman-3.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:30",
+      "villager_count": 47,
+      "resources": {
+        "food": 8,
+        "wood": 26,
+        "gold": 13,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_vikings/valdemar-castle.webp@ finishes at 10:30,",
+        "Make the villager distrubution something like that as the BO get mixed up who get where at this point xd"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "video": "https://www.youtube.com/embed/TtDmif9HJe0",
+  "season": "Season 13",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "Gvwy3XlSQlpzLgXtDUjM",
+    "civilization_code": "VIK",
+    "updated": "2026-10-29T16:20:55+00:00",
+    "views_at_snapshot": 909,
+    "snapshot_date": "2026-10-31"
+  }
+}

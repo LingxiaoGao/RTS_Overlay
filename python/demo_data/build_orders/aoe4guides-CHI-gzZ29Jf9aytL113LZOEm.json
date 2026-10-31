@@ -1,0 +1,194 @@
+{
+  "description": "See video link for guide",
+  "civilization": "Chinese",
+  "name": "Fast Aggro Tax Build (2026)",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/gzZ29Jf9aytL113LZOEm",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @unit_worker/villager-china.webp@ to build a @building_economy/mill.webp@ towards woodline (leave space for lumbercamp and @landmark_chinese/imperial-academy.webp@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send 2 new @unit_worker/villager-china.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ back to @resource/resource_food.webp@ until age-up."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:15",
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up with @landmark_chinese/imperial-academy.webp@ with 5 @unit_worker/villager-china.webp@ and build it facing @resource/resource_wood.webp@ and @building_economy/mill.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "While aging you collect 35 @resource/resource_gold.webp@ for @unit_chinese/imperial-official.webp@ and pull away from @resource/resource_gold.webp@to @resource/gaiatreeprototypetree.webp@. You @resource/rally.webp@ @unit_worker/villager-china.webp@ onto @resource/sheep.webp@ until 7 @unit_worker/villager-china.webp@, then after @resource/rally.webp@ @resource/resource_wood.webp@. Make sure you build a @building_chinese/village.webp@ and then @building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:12",
+      "villager_count": 15,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue up @unit_chinese/imperial-official.webp@ until 4. Supervise @building_economy/mill.webp@ and @building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:45",
+      "villager_count": 16,
+      "resources": {
+        "food": 7,
+        "wood": 9,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_chinese/village.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 17,
+      "resources": {
+        "food": 7,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd official comes out and you build a @building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:20",
+      "villager_count": 19,
+      "resources": {
+        "food": 8,
+        "wood": 11,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue 3rd @unit_chinese/imperial-official.webp@ and spend wood on @building_military/archery-range.webp@ / @building_military/barracks.webp@ / @building_military/stable.webp@ depending on what you need. Start rallying food again."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:50",
+      "villager_count": 26,
+      "resources": {
+        "food": 12,
+        "wood": 14,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue @technology_economy/professional-scouts.webp@ and @building_military/stable.webp@ with 4 @unit_cavalry/scout.webp@ for deer collection. Also get a @building_technology/blacksmith.webp@ for upgrades."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Then macro accordingly and keep collecting taxes until you get enough for pro scouts. Then research it, make scout and take deer while pressuring opponent."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/EKnex4_ESkU",
+  "season": "Season 12",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "gzZ29Jf9aytL113LZOEm",
+    "civilization_code": "CHI",
+    "updated": "2026-01-12T17:54:12+00:00",
+    "views_at_snapshot": 13467,
+    "snapshot_date": "2026-10-31"
+  }
+}

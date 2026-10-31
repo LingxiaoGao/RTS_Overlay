@@ -1,0 +1,132 @@
+{
+  "description": "Valdemars 2026 2TC build, adapted to TC cost update. ",
+  "civilization": "Knights Templar",
+  "name": "2TC after TC cost update (2026)",
+  "author": "RonnieFlex",
+  "source": "https://aoe4guides.com/builds/Dtuin85a3DHgDQSNkFPu",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "start 6 @unit_worker/villager.webp@ on @resource/sheep.webp@ with 1 bulding @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 2 @unit_worker/villager.webp@ to @resource/resource_gold.webp@, 1st building @building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ back to @resource/sheep.webp@ until @age/age_2.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "age up with @civilization_flag/hos.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 1,
+        "wood": 7,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "macro 7 @unit_worker/villager.webp@ on @resource/resource_wood.webp@ and 5 on @resource/resource_stone.webp@ while 1 stays on @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 14,
+      "resources": {
+        "food": 2,
+        "wood": 7,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "pull @resource/resource_stone.webp@@unit_worker/villager.webp@ and maybe some @resource/resource_wood.webp@@unit_worker/villager.webp@ to build 2nd @building_economy/town-center.webp@ in the back on @resource/deer.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 15,
+      "resources": {
+        "food": 3,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 7
+      },
+      "notes": [
+        "@unit_cavalry/scout.webp@ enemy base and build counter @building_military/barracks.webp@@building_military/archery-range.webp@@building_military/stable.webp@ If enemy not building units can go fast @age/age_3.webp@"
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/IFUNfAxEhas",
+  "season": "Season 13",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "Dtuin85a3DHgDQSNkFPu",
+    "civilization_code": "KTE",
+    "updated": "2026-05-26T18:46:14+00:00",
+    "views_at_snapshot": 7804,
+    "snapshot_date": "2026-10-31"
+  }
+}

@@ -1,0 +1,226 @@
+{
+  "description": "See video link for guide",
+  "civilization": "French",
+  "name": "WB Pro Scouts (2026)",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/EHbobnEzHzi828z5fsB0",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "6 @unit_worker/villager.webp@ to @resource/sheep.webp@ & build 1 @building_economy/mill.webp@ &amp; @building_economy/house.webp@ immediately."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:18",
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 more @unit_worker/villager.webp@ to @resource/sheep.webp@ & queue @technology_economy/wheelbarrow.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:36",
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 4 @unit_worker/villager.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:46",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/sheep.webp@ until @age/age_2.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:45",
+      "villager_count": 15,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Age up with @landmark_french/school-of-cavalry.webp@ with 4 @resource/sheep.webp@@unit_worker/villager.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "3 @unit_worker/villager.webp@ to @resource/gaiatreeprototypetree.webp@ & @resource/rally.webp@ @resource/resource_food.webp@ until 12"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 20,
+      "resources": {
+        "food": 12,
+        "wood": 4,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue @technology_economy/professional-scouts.webp@ & @unit_french/royal-knight-2.webp@ then 3 @unit_cavalry/scout.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_wood.webp@ until 5 then @resource/resource_gold.webp@ until 8-10"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:20",
+      "villager_count": 23,
+      "resources": {
+        "food": 12,
+        "wood": 5,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Continue to make units non stop. Mostly @unit_french/royal-knight-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "11:46",
+      "villager_count": 34,
+      "resources": {
+        "food": 23,
+        "wood": 0,
+        "gold": 11,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up to age 3 at min 12 with 10 @unit_worker/villager.webp@ on @landmark_french/guild-hall.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "12:00",
+      "villager_count": 42,
+      "resources": {
+        "food": 12,
+        "wood": 8,
+        "gold": 12,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "Macro @resource/resource_wood.webp@ for @building_religious/monastery.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "12:54",
+      "villager_count": 34,
+      "resources": {
+        "food": 14,
+        "wood": 8,
+        "gold": 12,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get upgrades on units and @unit_religious/monk-3.webp@ for @resource/relics.webp@. Put 3-6 @unit_worker/villager.webp@ on @resource/resource_stone.webp@ for a @building_defensive/keep.webp@ to reduce production costs."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/ZzZICnaDBsQ",
+  "season": "Season 12",
+  "map": "Open",
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "EHbobnEzHzi828z5fsB0",
+    "civilization_code": "FRE",
+    "updated": "2025-12-26T11:57:50+00:00",
+    "views_at_snapshot": 9501,
+    "snapshot_date": "2026-10-31"
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "description": "Transcribed version of Vortix's build order that consists of harassing with a few Warriors Scouts and Sofas, while producing Archers to defend, and build a Cow Boom behind it. That way you delay the opponent while having your Castle composition ready to be upgraded.",
+  "civilization": "Malians",
+  "name": "Vortix's Feudal Aggro with Sofas into Cow Boom",
+  "author": "Eldritch",
+  "source": "https://aoe4guides.com/builds/NMRXBRDXxdlq5lRtI1Nl",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Send 5 @unit_worker/villager-malians.webp@ to collect 1 full @resource/gaiatreeprototypetree.webp@ and then send back to @resource/sheep.webp@ until age-up",
+        "Send 1 @unit_worker/villager-malians.webp@ to build @building_malians/pit-mine-1.webp@ and then 6 @building_economy/house.webp@ around it, then back to @resource/sheep.webp@ until age-up",
+        "@resource/rally.webp@ to @resource/sheep.webp@ until age-up"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Build @landmark_malians/mansa-quarry-2.webp@ with 4 @unit_worker/villager-malians.webp@ in front of your base",
+        "Keep 4 @unit_worker/villager-malians.webp@ on @resource/sheep.webp@",
+        "Send 5 on @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Build @building_economy/lumber-camp.webp@ with the next @unit_worker/villager-malians.webp@ from @building_economy/town-center.webp@ and @resource/rally.webp@ to @resource/resource_wood.webp@ until 8"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:40",
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@resource/rally.webp@ 1 @unit_worker/villager-malians.webp@ to @resource/resource_gold.webp@ and build @building_economy/house.webp@ and @building_economy/mining-camp.webp@ and leave them to mine"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 18,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "@resource/rally.webp@ 1 @unit_worker/villager-malians.webp@ to @resource/berrybush.webp@ and build @building_economy/mill.webp@ and leave them to gather",
+        "Then @resource/rally.webp@ to @resource/resource_wood.webp@ until 10"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Send 3 @unit_worker/villager-malians.webp@ from @landmark_malians/mansa-quarry-2.webp@ to @resource/sheep.webp@ and 1 to @resource/resource_wood.webp@ to have 8 on @resource/resource_food.webp@ in total with the @resource/berrybush.webp@ @unit_worker/villager-malians.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:20",
+      "villager_count": 20,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Build @building_military/stable.webp@ with 2 @resource/resource_wood.webp@ @unit_worker/villager-malians.webp@ then back to @resource/resource_wood.webp@",
+        "@resource/rally.webp@ to @resource/resource_gold.webp@ once you have 10 on @resource/resource_wood.webp@ including the 2 building the @building_military/stable.webp@",
+        "Once @building_economy/mill.webp@ is built, produce 3 @resource/cattle.webp@ and send them where you'll build your first @building_malians/cattle-ranch-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:50",
+      "villager_count": 23,
+      "resources": {
+        "food": 8,
+        "wood": 9,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Build @building_malians/cattle-ranch-2.webp@ with 1 @resource/resource_wood.webp@ @unit_worker/villager-malians.webp@",
+        "When @building_military/stable.webp@ is built, research @unit_malians/warrior-scout-2.webp@ Veteran upgrade and then queue 1 @unit_malians/warrior-scout-2.webp@  and start harassing the opponent"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 22,
+      "resources": {
+        "food": 8,
+        "wood": 9,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "If safe to do so, build a second @building_malians/pit-mine-1.webp@ and @building_economy/house.webp@",
+        "If unsafe, build @building_military/archery-range.webp@ and make @unit_infantry/archer-2.webp@ first to secure the location if possible",
+        "Research @technology_economy/wheelbarrow.webp@ and @technology_economy/double-broadaxe.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 24,
+      "resources": {
+        "food": 8,
+        "wood": 9,
+        "gold": 5,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Build a second @building_economy/mill.webp@ to produce @resource/cattle.webp@ while @technology_economy/wheelbarrow.webp@ researches in the other one",
+        "Produce @unit_malians/sofa-2.webp@ as soon as possible to continue harassing the opponent, and keep producing them",
+        "Build @building_military/archery-range.webp@ whenever possible to defend and start making @unit_infantry/archer-2.webp@",
+        "@resource/rally.webp@ to @resource/resource_gold.webp@ until 8 and research @technology_economy/specialized-pick.webp@, then @resource/rally.webp@ to @resource/resource_wood.webp@"
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/XHyCsrg4Hzk",
+  "season": "Season 12",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "NMRXBRDXxdlq5lRtI1Nl",
+    "civilization_code": "MAL",
+    "updated": "2026-03-12T00:48:34+00:00",
+    "views_at_snapshot": 3823,
+    "snapshot_date": "2026-10-31"
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "description": "",
+  "civilization": "Jeanne d'Arc",
+  "name": "marinelord knights only",
+  "author": "azdipoj",
+  "source": "https://aoe4guides.com/builds/CqfQ6Jyc1a2yp39SEc3o",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 2,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "x3@unit_worker/villager.webp@->@resource/gaiatreeprototypetree.webp@ shift-click @resource/sheep.webp@",
+        "x2@unit_worker/villager.webp@-&gt;@resource/sheep.webp@",
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@-&gt;@building_economy/mill.webp@&@technology_economy/wheelbarrow.webp@asap -&gt;@building_economy/house.webp@",
+        "@resource/rally.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1;10",
+      "villager_count": 9,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@->@building_defensive/outpost.webp@@resource/resource_gold.webp@-&gt;@building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:50",
+      "villager_count": 10,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "as @unit_jeanne/jeanne-darc-peasant-1.webp@starts @building_economy/mining-camp.webp@-> 3x@resource/sheep.webp@@unit_worker/villager.webp@-&gt;@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 16,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@+2x@unit_worker/villager.webp@@resource/sheep.webp@ -> @landmark_french/school-of-cavalry.webp@",
+        "x5@resource/sheep.webp@@unit_worker/villager.webp@-&gt;@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "keep@resource/rally.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "as@unit_jeanne/jeanne-darc-peasant-1.webp@ is about to level up -> @resource/boar.webp@",
+        "send x5@unit_worker/villager.webp@-&gt;@building_defensive/outpost.webp@@building_economy/mill.webp@on@resource/boar.webp@",
+        "x2@resource/resource_food.webp@@unit_worker/villager.webp@-&gt;@resource/resource_gold.webp@",
+        "@technology_economy/survival-techniques.webp@&@technology_economy/specialized-pick.webp@asap"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "spam@unit_french/royal-knight-2.webp@ ONLY",
+        "perma fight (try not to lose knights)",
+        "50/50 @resource/resource_food.webp@@resource/resource_gold.webp@",
+        "make x3@building_military/stable.webp@&@ability_jeanne/ability-consecrate-1.webp@ then @building_technology/blacksmith.webp@@technology_military/iron-undermesh.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "pressure until @age/age_3.webp@with@landmark_french/royal-institute.webp@, get upgrades & all-in"
+      ]
+    }
+  ],
+  "video": "",
+  "season": "Season 12",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "CqfQ6Jyc1a2yp39SEc3o",
+    "civilization_code": "JDA",
+    "updated": "2025-11-17T11:53:20+00:00",
+    "views_at_snapshot": 3814,
+    "snapshot_date": "2026-10-31"
+  }
+}

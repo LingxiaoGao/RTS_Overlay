@@ -1,0 +1,204 @@
+{
+  "description": "Taken from Beastyqt youtube guide\n",
+  "civilization": "Abbasid Dynasty",
+  "name": "THE BEST Abbasid Build",
+  "author": "MakerOfMagic",
+  "source": "https://aoe4guides.com/builds/DhPYrRM8NWmtU70s7SCm",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 to @resource/berrybush.webp@ 2 build @building_economy/mill.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "next @unit_worker/villager-abbasid.webp@ @resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "next 4 @unit_worker/villager-abbasid.webp@ to @resource/resource_gold.png@ build @building_economy/mining-camp.png@@landmark_abbasid/house-of-wisdom.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remacro after clicking age up, at 75 @resource/resource_gold.webp@ move to @resource/resource_stone.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_abbasid/military-wing.webp@ Military wing - Use free units to harass or secure 2nd tc spot if vs aggressive civ",
+        "@landmark_abbasid/culture-wing.png@ Culture wing vs @civilization_flag/eng.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 0,
+        "stone": 7,
+        "builder": -1
+      },
+      "notes": [
+        "Rally to @resource/resource_stone.webp@  research @technology_abbasid/fresh-foodstuffs.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 0,
+        "wood": 9,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally to @resource/resource_wood.webp@ when enough resources build @building_economy/town-center.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 13,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remacro, push for @age/goldenagetier1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 43,
+      "resources": {
+        "food": 18,
+        "wood": 12,
+        "gold": 13,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Go for @age/age_3.webp@ if not under pressure"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If under pressure, mass @unit_infantry/archer-2.webp@ and try to push for @age/age_3.png@ for @technology_abbasid/composite-bows.png@ and veteran archer upgrade"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_abbasid/culture-wing.webp@ Culture wing - if pinned inside your base",
+        "@landmark_abbasid/economic-wing.png@ Eco wing - if safe",
+        "@landmark_abbasid/military-wing.png@ Military wing - if culture in feudal"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 75,
+      "resources": {
+        "food": 33,
+        "wood": 28,
+        "gold": 14,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Ideal army @unit_abbasid/ghulam-3.webp@@unit_infantry/crossbowman-3.png@ but make counter to what is on the field",
+        "Research @technology_economy/wheelbarrow.png@ @technology_economy/double-broadaxe.png@ @technology_economy/horticulture.png@ @technology_economy/specialized-pick.png@"
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/bScKOKhuH50",
+  "season": "Season 7",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "DhPYrRM8NWmtU70s7SCm",
+    "civilization_code": "ABB",
+    "updated": "2024-04-20T15:47:35+00:00",
+    "views_at_snapshot": 17167,
+    "snapshot_date": "2026-10-31"
+  }
+}

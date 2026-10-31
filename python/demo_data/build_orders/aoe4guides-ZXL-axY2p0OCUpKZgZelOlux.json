@@ -1,0 +1,179 @@
+{
+  "description": "See video link for guide",
+  "civilization": "Zhu Xi's Legacy",
+  "name": "Superfast Castle (2026)",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/axY2p0OCUpKZgZelOlux",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 starting @unit_worker/villager-china.webp@ build a @building_economy/mill.webp@ on @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_chinese/village.webp@ between mill and tc"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:40",
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @resource/resource_food.webp@ until 8 @unit_worker/villager-china.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:20",
+      "villager_count": 9,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.webp@ until 4 @unit_worker/villager-china.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Age up with @landmark_zhuxi/meditation-gardens-1.webp@ on a resource cluster with 1 @unit_worker/villager-china.webp@ from @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally @resource/resource_food.webp@ until @age/age_3.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:15",
+      "villager_count": 21,
+      "resources": {
+        "food": 17,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up to castle with @landmark_zhuxi/shaolin-monastery-2.webp@ with 4 @resource/resource_gold.webp@@unit_worker/villager-china.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:20",
+      "villager_count": 21,
+      "resources": {
+        "food": 12,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Macro 5 @resource/resource_food.webp@ @unit_worker/villager-china.webp@ to @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "6:15",
+      "villager_count": 23,
+      "resources": {
+        "food": 14,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Produce 1-3  @unit_zhuxi/shaolin-monk-3.webp@ & Make a @building_military/stable.webp@ for lancer and map control or @building_military/barracks.webp@ if under feudal pressure"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Mass units, take all relics and sacred sites and play aggressively"
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/UnHyHX9YQ9Y",
+  "season": "Season 12",
+  "map": null,
+  "strategy": "Fast Castle",
+  "_aoe4_guides": {
+    "id": "axY2p0OCUpKZgZelOlux",
+    "civilization_code": "ZXL",
+    "updated": "2026-01-07T17:57:22+00:00",
+    "views_at_snapshot": 5775,
+    "snapshot_date": "2026-10-31"
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "description": "NEW Best 2 TC Knights Templar Build Order Guide in AOE4",
+  "civilization": "Knights Templar",
+  "name": "Beasty New 2TC KT",
+  "author": "lxwrncx",
+  "source": "https://aoe4guides.com/builds/57Ka8nOoGXLimRBp61zP",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @resource/resource_gold.webp@ until 2 -  first builds @building_economy/house.webp@ and @building_economy/mining-camp.webp@, then @resource/rally.webp@@resource/resource_wood.webp@ (If straggler, evenly split)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20\n",
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "At 200 @resource/resource_gold.webp@ (usually at timing of 4th wood vills), move gold vills to @resource/resource_wood.webp@ and then @resource/rally.webp@@resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:05",
+      "villager_count": 15,
+      "resources": {
+        "food": 0,
+        "wood": 7,
+        "gold": 0,
+        "stone": 8,
+        "builder": -1
+      },
+      "notes": [
+        "at age up (15 vills), move all food vills to stone"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/sheep.webp@ and force drop off and move all @resource/resource_stone.webp@ vills to build 2nd TC, usually on deer"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "MOVE ALL WOOD VILLS TO @resource/resource_food.webp@WHILE BUILDING SECOND TC. Once you have enough food to produce, back to@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1TC @resource/rally.webp@@resource/resource_food.webp@, 1 TC @resource/rally.webp@@resource/resource_wood.webp@ and scout to make counter units"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When stable with army, aim to age up, go 8-12 on stone for rest of game, make fortresses to secure vulnerable areas and exposed resources"
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/pX9WLcs49SQ",
+  "season": "Season 12",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "57Ka8nOoGXLimRBp61zP",
+    "civilization_code": "KTE",
+    "updated": "2026-01-20T10:53:50+00:00",
+    "views_at_snapshot": 9903,
+    "snapshot_date": "2026-10-31"
+  }
+}

@@ -1,0 +1,210 @@
+{
+  "description": "See linked video for the guided tutorial",
+  "civilization": "English",
+  "name": "Longbow Rush Into Age 3 Timing (2026)",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/3j9fiuhUJIXVPvYmjHnP",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6@unit_worker/villager.webp@ to @resource/sheep.webp@ and build a @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2@unit_worker/villager.webp@ to @resource/resource_gold.webp@ and build @building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ new @unit_worker/villager.webp@ to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": 10,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 3900 left in @resource/resource_gold.webp@ vein pull ALL @unit_worker/villager.webp@@resource/resource_gold.webp@ to @building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:11",
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@age/age_2.webp@ with @landmark_english/council-hall.webp@ with 4@unit_worker/villager.webp@@resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:21",
+      "villager_count": 13,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "rally @resource/resource_wood.webp@ until 11@unit_worker/villager.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 15,
+      "resources": {
+        "food": 6,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "1 age up-@unit_worker/villager.webp@ builds @building_military/barracks.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:35",
+      "villager_count": 16,
+      "resources": {
+        "food": 6,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "another age up-@unit_worker/villager.webp@ builds @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "All age up @unit_worker/villager.webp@go back to @resource/sheep.webp@ when finished constructing @landmark_english/council-hall.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 18,
+      "resources": {
+        "food": 10,
+        "wood": 8,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue @unit_english/longbowman-2.webp@@unit_infantry/spearman-1.webp@ and send them forward when u have 5 @unit_english/longbowman-2.webp@ & 2-3 @unit_infantry/spearman-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:40",
+      "villager_count": 22,
+      "resources": {
+        "food": 11,
+        "wood": 11,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@unit_worker/villager.webp@ to @resource/resource_food.webp@ then @resource/rally.webp@ @resource/resource_gold.webp@ until 5"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Use @resource/deer.webp@ when u have map control over @building_economy/farm.webp@. Then stop producing units at min 10-11 and age up to @age/age_3.webp@ with @landmark_english/the-white-tower.webp@ for @unit_cavalry/knight-2.webp@ production and secure res. Alternatively @landmark_english/kings-palace.webp@ for scaling into the lategame."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/aRkeTDdkd4I",
+  "season": "Season 12",
+  "map": "Open",
+  "strategy": "Rush",
+  "_aoe4_guides": {
+    "id": "3j9fiuhUJIXVPvYmjHnP",
+    "civilization_code": "ENG",
+    "updated": "2025-12-19T00:03:52+00:00",
+    "views_at_snapshot": 10938,
+    "snapshot_date": "2026-10-31"
+  }
+}

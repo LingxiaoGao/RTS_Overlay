@@ -1,0 +1,181 @@
+{
+  "description": "Fast feudal timing with instant rush and transition",
+  "civilization": "Japanese",
+  "name": "Feudal Rush (Onna Bugeisha)",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/GCCKUzy9o8JOXhXiFUKU",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 / 1 @unit_worker/villager-japanese.webp@-Split then +1@unit_worker/villager-japanese.png@ to @resource/resource_gold.png@. Build a @building_japanese/farmhouse-1.png@ + @building_japanese/forge-1.png@ on @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @resource/resource_food.png@ until @age/age_2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:08",
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Drop-off @resource/resource_food.webp@ and build @landmark_japanese/kura-storehouse-1.png@ on edge of @building_economy/town-center.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:08",
+      "villager_count": 9,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remacro. @resource/rally.webp@@resource/resource_wood.png@ until 150"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:10",
+      "villager_count": 11,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_japanese/tatara-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:32",
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_military/barracks.webp@ with 2@resource/resource_gold.png@@unit_worker/villager-japanese.png@ then back"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:50",
+      "villager_count": 14,
+      "resources": {
+        "food": 10,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start producing @unit_japanese/onna-bugeisha-2.webp@. Every time a @building_economy/farm.png@ spawns on the @landmark_japanese/kura-storehouse-1.png@ put a food villager there."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 20,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 3,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "Send 5 vills to stone for @technology_japanese/daimyo-manor-1.webp@ then keep them there until @technology_japanese/daimyo-palace-2.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:40",
+      "villager_count": 21,
+      "resources": {
+        "food": 8,
+        "wood": 6,
+        "gold": 2,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_japanese/hizukuri-2.webp@ and transition either @building_military/archery-range.png@@building_military/stable.png@ depending on defensive units from opponent"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9‑12:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Around 9-12 minutes is a good time to go @age/age_3.webp@ with @unit_japanese/samurai-1.png@ timing. If you do it later than that, your opponent is either full feudal or in castle already and the timing is lost. Always do @landmark_japanese/floating-gate-2.png@ (@landmark_japanese/temple-of-equality-2.png@ if up against @civilization_flag/dra.png@ or other small high quality comps)",
+        "Remember @resource/relics.png@ and upgrades in general."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/tP-tNn1CU1M",
+  "season": "Season 6",
+  "map": null,
+  "strategy": "Rush",
+  "_aoe4_guides": {
+    "id": "GCCKUzy9o8JOXhXiFUKU",
+    "civilization_code": "JAP",
+    "updated": "2024-03-24T14:11:08+00:00",
+    "views_at_snapshot": 37477,
+    "snapshot_date": "2026-10-31"
+  }
+}

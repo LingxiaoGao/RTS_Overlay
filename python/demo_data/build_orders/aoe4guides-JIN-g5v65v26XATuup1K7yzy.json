@@ -1,0 +1,116 @@
+{
+  "description": "",
+  "civilization": "Jin Dynasty",
+  "name": "2TC->Castle",
+  "author": "ElPavelo",
+  "source": "https://aoe4guides.com/builds/g5v65v26XATuup1K7yzy",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 3,
+      "resources": {
+        "food": 1,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2@unit_jin/mounted-villager.webp@to @resource/resource_gold.webp@, 1@unit_jin/mounted-villager.webp@ to @resource/resource_food.webp@, @resource/rally.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 7,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@unit_jin/mounted-villager.webp@@landmark_jin/flower-pagoda.webp@, 2@unit_jin/mounted-villager.webp@ to @resource/resource_wood.webp@(1 from@resource/resource_gold.webp@, 1 from@resource/resource_food.webp@), 2@unit_jin/mounted-villager.webp@ on @resource/resource_stone.webp@, @resource/rally.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 10,
+      "resources": {
+        "food": 2,
+        "wood": 5,
+        "gold": 1,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@@unit_jin/mounted-villager.webp@ to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:55",
+      "villager_count": 8,
+      "resources": {
+        "food": 2,
+        "wood": 5,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@on@resource/resource_gold.webp@, @resource/rally.webp@@resource/resource_food.webp@+@resource/resource_gold.webp@->@age/age_3.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:45",
+      "villager_count": 19,
+      "resources": {
+        "food": 9,
+        "wood": 1,
+        "gold": 9,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4@unit_jin/mounted-villager.webp@->@landmark_jin/dragon-pavilion.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "8:55",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_3.webp@"
+      ]
+    }
+  ],
+  "video": "",
+  "season": "Season 13",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "g5v65v26XATuup1K7yzy",
+    "civilization_code": "JIN",
+    "updated": "2026-05-08T00:44:13+00:00",
+    "views_at_snapshot": 2366,
+    "snapshot_date": "2026-10-31"
+  }
+}

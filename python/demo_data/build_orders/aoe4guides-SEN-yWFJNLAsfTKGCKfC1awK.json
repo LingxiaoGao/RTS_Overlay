@@ -1,0 +1,271 @@
+{
+  "description": "Very solid eco and safe opener to get you started on your games.",
+  "civilization": "Sengoku Daimyo",
+  "name": "The Racecar Build (DLC RELEASE VERSION)",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/yWFJNLAsfTKGCKfC1awK",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 @unit_worker/villager-japanese.webp@ to gather 1 @resource/gaiatreeprototypetree.webp@ -> then go to @resource/berrybush.webp@. 1 @unit_worker/villager-japanese.webp@ to build @building_japanese/farmhouse-1.webp@ on @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "1 new @unit_worker/villager-japanese.webp@ to build @building_sengoku/matsuri.webp@ on @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:30",
+      "villager_count": 7,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 1,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Queue @technology_japanese/towara-1.webp@ from @building_japanese/farmhouse-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:40",
+      "villager_count": 7,
+      "resources": {
+        "food": 1,
+        "wood": 5,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ new @unit_worker/villager-japanese.webp@ to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue @unit_sengoku/yatai.webp@  when @resource/gaiatreeprototypetree.webp@ is finished and send between starting @resource/berrybush.webp@ and @resource/sheep.webp@ in case of rush or out on the map to @resource/deer.webp@ @resource/boar.webp@ @resource/berrybush.webp@ if no rush from opp."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 8,
+      "resources": {
+        "food": 1,
+        "wood": 5,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/gaiatreeprototypetree.webp@ @unit_worker/villager-japanese.webp@ go to @resource/berrybush.webp@ (@technology_japanese/towara-1.webp@ is complete)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 14,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @landmark_sengoku/ryokan.webp@ with 5 @resource/sheep.webp@@unit_worker/villager-japanese.webp@ and macro rest of @resource/sheep.webp@@unit_worker/villager-japanese.webp@ to @resource/gaiatreeprototypetree.webp@ (build the landmark opposite your @building_sengoku/matsuri.webp@ to not take up gather space and try to build it in front of your future @building_military/archery-range.webp@@building_military/stable.webp@@building_military/barracks.webp@ for the Ryokan buff to be applied to these units.)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:45",
+      "villager_count": 9,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/gaiatreeprototypetree.webp@ and then back to @resource/sheep.webp@ when both @resource/gaiatreeprototypetree.webp@ are gathered."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send out @unit_sengoku/yatai.webp@ if better food spot"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 14,
+      "resources": {
+        "food": 5,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:14",
+      "villager_count": 18,
+      "resources": {
+        "food": 5,
+        "wood": 11,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue @technology_japanese/takezaiku-2.webp@ & @resource/rally.webp@ @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:25",
+      "villager_count": 18,
+      "resources": {
+        "food": 5,
+        "wood": 11,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd @building_sengoku/matsuri.webp@ on your @resource/resource_wood.webp@ (acts as a @building_economy/lumber-camp.webp@). Set this building as your main @unit_sengoku/yatai.webp@  drop off (Click the \"Redirect Yatai\" switch in the @building_sengoku/matsuri.webp@)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:50",
+      "villager_count": 19,
+      "resources": {
+        "food": 5,
+        "wood": 12,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/stable.webp@ for @unit_sengoku/yari-2.webp@ (insane unit that we want to upgrade with estates for +4 vs cav)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:20",
+      "villager_count": 22,
+      "resources": {
+        "food": 7,
+        "wood": 13,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Add @unit_sengoku/yatai.webp@ if game state allows a bit of greed"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:45",
+      "villager_count": 22,
+      "resources": {
+        "food": 7,
+        "wood": 13,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/archery-range.webp@ for @unit_japanese/yumi-ashigaru-2.webp@. You need the tier 1 @technology_sengoku/oda_daimyo_1.webp@ for +1 dmg on @unit_japanese/yumi-ashigaru-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Continue to add more production if the game becomes feudal war. Otherwise add units, do damage, max out on yatai and go heavy feudal or Castle."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/_Q4DNUyE_y0",
+  "season": "Season 12",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "yWFJNLAsfTKGCKfC1awK",
+    "civilization_code": "SEN",
+    "updated": "2025-11-05T18:59:18+00:00",
+    "views_at_snapshot": 13711,
+    "snapshot_date": "2026-10-31"
+  }
+}

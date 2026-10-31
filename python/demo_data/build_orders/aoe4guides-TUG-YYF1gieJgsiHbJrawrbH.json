@@ -1,0 +1,226 @@
+{
+  "description": "An aggressive build designed around feudal fighting with healer elephants",
+  "civilization": "Tughlaq Dynasty",
+  "name": "Tughlaq Fast Castle (DLC RELEASE VERSION)",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/YYF1gieJgsiHbJrawrbH",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @unit_worker/villager-delhi.webp@ to @resource/sheep.webp@ and 3 @unit_tughluq/worker_elephant.webp@ to collect sheep around the base and map."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 @unit_worker/villager-delhi.webp@ to @resource/sheep.webp@ & Build a @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_gold.webp@ until 4 @unit_worker/villager-delhi.webp@ and send 1 of your 3 @unit_tughluq/worker_elephant.webp@ there for drop off"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:25",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@ with 2 @unit_worker/villager-delhi.webp@@resource/resource_food.webp@ on@landmark_delhi/dome-of-the-faith.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 6,
+        "wood": 1,
+        "gold": 4,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "During age up, gather 1 full @resource/gaiatreeprototypetree.webp@ (150w) and collect 50 @resource/resource_stone.webp@ for @technology_defensive/arrow-slits.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:40",
+      "villager_count": 15,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Construct a @building_economy/house.webp@ & a @building_defensive/outpost.webp@ on @resource/resource_gold.webp@ and get @technology_defensive/arrow-slits.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Feudal is simple. Just rally food until age 3 ;)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:15",
+      "villager_count": 24,
+      "resources": {
+        "food": 20,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @landmark_delhi/compound-of-the-defender.webp@ with 8 @resource/resource_food.webp@@unit_worker/villager-delhi.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:20",
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 9,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Macro heavily on @resource/resource_wood.webp@ now"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 18,
+      "resources": {
+        "food": 5,
+        "wood": 9,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/house.webp@ & queue Imams out of @landmark_delhi/dome-of-the-faith.webp@ to pickup @resource/relics.webp@ if no pressure"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:15",
+      "villager_count": 19,
+      "resources": {
+        "food": 6,
+        "wood": 9,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/stable.webp@ with 2 @resource/resource_wood.webp@@unit_worker/villager-delhi.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "7:20",
+      "villager_count": 26,
+      "resources": {
+        "food": 13,
+        "wood": 3,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "New macro and now build 2nd @building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Now you spam @unit_cavalry/lancer-3.webp@ & @unit_infantry/archer-2.webp@ in age 3 and take relics. Classic castle age meta play. When the game reaches 15-18 minute mark, you send villagers to stone for the Governor @ability_tughluq/bhakkar.webp@ to start farm transitioning around that fort. Should you get a lot of relics then go @ability_tughluq/sehwan.webp@ for gold income. You can also play @unit_delhi/war-elephant.webp@+@unit_infantry/archer-2.webp@ in castle, if your opponent decided to make feudal units. Simply start with archers instead. Don't forget about upgrades and spam Imams for big heals on your units!"
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/RVN1fTeb-cQ",
+  "season": "Season 11",
+  "map": null,
+  "strategy": "Fast Castle",
+  "_aoe4_guides": {
+    "id": "YYF1gieJgsiHbJrawrbH",
+    "civilization_code": "TUG",
+    "updated": "2025-11-05T18:59:44+00:00",
+    "views_at_snapshot": 3643,
+    "snapshot_date": "2026-10-31"
+  }
+}

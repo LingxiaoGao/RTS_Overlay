@@ -1,0 +1,181 @@
+{
+  "description": "A heavy feudal focused build to gain experience for Jeanne. You want her to hit lvl 3 for Holy Wrath to do effective dmg. ",
+  "civilization": "Jeanne d'Arc",
+  "name": "Simple Jeanne D'arc Feudal Aggression ",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/wT9Oo9t8OGNbkqcgtzru",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "All @unit_worker/villager.webp@ to food, @unit_jeanne/jeanne-darc-peasant-1.png@ builds @building_economy/house.png@ + @building_economy/mining-camp.png@ and gathers @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ new @unit_worker/villager.png@ to @resource/resource_food.png@ until 8"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:20",
+      "villager_count": 10,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@2 new @unit_worker/villager.png@ to @resource/resource_gold.png@ then @resource/rally.png@to food again"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:13",
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "when @resource/resource_gold.webp@-vein is 3900/4000 drop off all @resource/resource_food.png@/@resource/resource_gold.png@ and build @landmark_french/school-of-cavalry.png@ with@unit_jeanne/jeanne-darc-peasant-1.png@+1 @unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 7,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "&lt;- Remacro according to tab. @resource/rally.webp@ to @resource/gaiatreeprototypetree.png@ until 5 then @resource/rally.png@ back to @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 16,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 2,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "1 @resource/resource_gold.webp@@unit_worker/villager.png@ builds a @building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:14",
+      "villager_count": 17,
+      "resources": {
+        "food": 9,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "&lt;- Remacro according to tab. Queue 1 @unit_french/royal-knight-2.webp@. @unit_jeanne/jeanne-darc-peasant-1.png@ builds @building_military/archery-range.png@ then levels up with @ability_jeanne/ability-path-of-the-warrior-1.png@. @resource/rally.png@ @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 20,
+      "resources": {
+        "food": 12,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue 1 @unit_french/royal-knight-2.webp@ and @unit_infantry/archer-2.png@. Keep queueing these until win and get eco upgrades after."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@ability_jeanne/ability-path-of-the-warrior-1.webp@ -> @resource/boar.png@(x2) then fight enemy to gain exp."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:45",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_economy/house.webp@+@building_economy/lumber-camp.png@ and keep making army.",
+        "Tip: When pushing with a timing attack in feudal, make sure Jeanne is lvl 3 for @ability_jeanne/ability-holy-wrath-1.png@to do effective dmg. Jeanne will then have a very high value as a unit, and she can carry against masses of units effectively 3 shotting (with galvanize) enemy units."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/4tPvYbswjlY",
+  "season": "Season 6",
+  "map": null,
+  "strategy": "Rush",
+  "_aoe4_guides": {
+    "id": "wT9Oo9t8OGNbkqcgtzru",
+    "civilization_code": "JDA",
+    "updated": "2024-04-21T09:19:24+00:00",
+    "views_at_snapshot": 23786,
+    "snapshot_date": "2026-10-31"
+  }
+}

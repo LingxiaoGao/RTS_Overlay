@@ -1,0 +1,227 @@
+{
+  "description": "See link for video guide",
+  "civilization": "Malians",
+  "name": "Fast Pit Mine Into Cows (2026)",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/0DSW4iLRlv22BXBjlirM",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 @unit_worker/villager-malians.webp@ to @resource/gaiatreeprototypetree.webp@ and chop 150 @resource/resource_wood.webp@ then to @resource/resource_food.webp@. 1 @unit_worker/villager-malians.webp@ to @building_malians/pit-mine-1.webp@ and build 7 @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 0,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@resource/rally.webp@1 @unit_worker/villager-malians.webp@ to a 2nd @resource/gaiatreeprototypetree.webp@ and chop an additional 25 @resource/resource_wood.webp@. Then @resource/rally.webp@ @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:45",
+      "villager_count": 12,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 @unit_worker/villager-malians.webp@ to build @landmark_malians/mansa-quarry-2.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:50",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Gather 50 @resource/resource_wood.webp@ from @resource/gaiatreeprototypetree.webp@ then switch to @building_economy/lumber-camp.webp@. @resource/rally.webp@ until 10 on @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:11",
+      "villager_count": 19,
+      "resources": {
+        "food": 9,
+        "wood": 9,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Ageup vills to @resource/sheep.webp@. queue @technology_economy/wheelbarrow.webp@ & @technology_economy/double-broadaxe.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:35",
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/barracks.webp@ & produce @unit_malians/donso-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:45",
+      "villager_count": 19,
+      "resources": {
+        "food": 8,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.webp@ when 10 on @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 20,
+      "resources": {
+        "food": 10,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/archery-range.webp@ & produce @unit_malians/javelin-thrower-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:50",
+      "villager_count": 23,
+      "resources": {
+        "food": 13,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When you have 2 donsos and 2 javs then go and build 2nd @building_malians/pit-mine-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:10",
+      "villager_count": 24,
+      "resources": {
+        "food": 14,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "queue @technology_economy/horticulture.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7.00",
+      "villager_count": 20,
+      "resources": {
+        "food": 11,
+        "wood": 9,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Take 5 @resource/sheep.webp@@unit_worker/villager-malians.webp@ and go on @resource/deer.webp@ and build a @building_malians/toll-outpost-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Now you start cow booming and continue to make units. Minimum 12 cows b4 age 3. Don't be afraid to push opponent if they go castle."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "12:15",
+      "villager_count": 41,
+      "resources": {
+        "food": 1,
+        "wood": 30,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Full @unit_infantry/archer-2.webp@ @unit_malians/sofa-2.webp@. Take @resource/relics.webp@ and play the game out with heavy raiding and expansion."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/ApuGahvKpf0",
+  "season": "Season 12",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "0DSW4iLRlv22BXBjlirM",
+    "civilization_code": "MAL",
+    "updated": "2025-12-23T00:40:05+00:00",
+    "views_at_snapshot": 10549,
+    "snapshot_date": "2026-10-31"
+  }
+}

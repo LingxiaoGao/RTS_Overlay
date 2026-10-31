@@ -1,0 +1,243 @@
+{
+  "description": "See video link for guide",
+  "civilization": "Sengoku Daimyo",
+  "name": "Sengoku Fast Daimyo (2026)",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/1RhBij4kaJESj1anpCIC",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start 6 @unit_worker/villager-japanese.webp@ on @resource/resource_wood.webp@ and build a @building_sengoku/matsuri.webp@as a drop off point (similar to a @building_economy/lumber-camp.webp@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 1,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager-japanese.webp@ to build @building_japanese/farmhouse-1.webp@ on @resource/berrybush.webp@ (research @technology_japanese/towara-1.webp@immediately)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:40",
+      "villager_count": 8,
+      "resources": {
+        "food": 2,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 3 more @unit_worker/villager-japanese.webp@ to @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:08",
+      "villager_count": 9,
+      "resources": {
+        "food": 3,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_sengoku/yatai.webp@ (goes to @resource/boar.webp@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:40",
+      "villager_count": 11,
+      "resources": {
+        "food": 5,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:54",
+      "villager_count": 11,
+      "resources": {
+        "food": 5,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd @unit_sengoku/yatai.webp@ (goes to @resource/deer.webp@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:22",
+      "villager_count": 12,
+      "resources": {
+        "food": 6,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3rd @unit_sengoku/yatai.webp@ (goes to base between @resource/sheep.webp@ and @resource/berrybush.webp@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:50",
+      "villager_count": 14,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 100 @resource/resource_wood.webp@ pull whole 6 vills from woodline to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 16,
+      "resources": {
+        "food": 9,
+        "wood": 1,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:50",
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up with 5 @resource/sheep.webp@@unit_worker/villager-japanese.webp@ @landmark_japanese/koka-township-1.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:20",
+      "villager_count": 18,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 6,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Simply @resource/rally.webp@ to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "5:12",
+      "villager_count": 21,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 6,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Purchase 100 @resource/resource_wood.webp@ TWICE with surplus @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:20",
+      "villager_count": 22,
+      "resources": {
+        "food": 7,
+        "wood": 7,
+        "gold": 6,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Build 2x @building_military/stable.webp@ into 1 @technology_sengoku/takeda_daimyo_1.webp@ and get @technology_sengoku/horse_training.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get @unit_sengoku/daimyo.webp@ and @unit_japanese/yumi-ashigaru-2.webp@ if needed. Raid opponent alot and play game out to get castle and lancers. See video for more tips."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/s2LUxq_E7pE",
+  "season": "Season 12",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "1RhBij4kaJESj1anpCIC",
+    "civilization_code": "SEN",
+    "updated": "2026-02-02T18:50:59+00:00",
+    "views_at_snapshot": 6685,
+    "snapshot_date": "2026-10-31"
+  }
+}

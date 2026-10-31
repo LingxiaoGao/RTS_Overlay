@@ -1,0 +1,212 @@
+{
+  "description": "Wanted to play some Zhuge Nu aggression to help out my teammates in teamgames and had to make a new buildorder due to many changes since the old ones.",
+  "civilization": "Zhu Xi's Legacy",
+  "name": "Zhuge Nu-Timing-Attack",
+  "author": "Yufka1954",
+  "source": "https://aoe4guides.com/builds/r6hqDCES2nryqKqyml5z",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "build@building_economy/mill.webp@with all 5@unit_worker/villager-china.webp@and rally all@resource/sheep.webp@onto it, supervise building@building_economy/mill.webp@with@unit_chinese/imperial-official.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:45",
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "7@unit_worker/villager-china.webp@on@resource/sheep.webp@, 7th@unit_worker/villager-china.webp@builds@building_chinese/village.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:45",
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3@unit_worker/villager-china.webp@on@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:05",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@unit_worker/villager-china.webp@on@resource/sheep.webp@ rest@unit_worker/villager-china.webp@on@resource/resource_wood.webp@, collect taxes from@building_economy/mill.webp@at about 130@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "age up with 1 @resource/sheep.webp@@unit_worker/villager-china.webp@with@landmark_zhuxi/jiangnan-tower-2.webp@,rally 3@resource/sheep.webp@@unit_worker/villager-china.webp@onto@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:10",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "train a @unit_chinese/imperial-official.webp@and built@building_economy/lumber-camp.webp@, supervise on building@building_economy/lumber-camp.webp@with @unit_chinese/imperial-official.webp@and rally@unit_worker/villager-china.webp@onto@resource/resource_wood.webp@until 9"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:35",
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "research@technology_economy/wheelbarrow.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:10",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "start building 3@building_military/archery-range.webp@and further@building_military/barracks.webp@when needed at@landmark_zhuxi/jiangnan-tower-2.webp@, set@landmark_zhuxi/jiangnan-tower-2.webp@to City Guard"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:35",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "collect taxes so you can afford @technology_economy/double-broadaxe.webp@, rally until 8@unit_worker/villager-china.webp@on@resource/sheep.webp@and get@technology_economy/horticulture.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:35",
+      "villager_count": 20,
+      "resources": {
+        "food": 8,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "build@building_technology/blacksmith.webp@and start training@unit_chinese/zhuge-nu-2.webp@, rally@unit_worker/villager-china.webp@onto wood until 13"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:45",
+      "villager_count": 23,
+      "resources": {
+        "food": 8,
+        "wood": 12,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "get 1@unit_chinese/imperial-official.webp@and rally@unit_worker/villager-china.webp@onto@resource/resource_gold.webp@until 6, at 7-10 @unit_chinese/zhuge-nu-2.webp@go out to harass enemy@resource/resource_gold.webp@and stop production for@technology_military/steeled-arrow.webp@and@technology_military/iron-undermesh.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:35",
+      "villager_count": 27,
+      "resources": {
+        "food": 8,
+        "wood": 13,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "rally@unit_worker/villager-china.webp@onto@resource/resource_food.webp@now, build@building_chinese/village.webp@at 46 supply, start@unit_chinese/zhuge-nu-2.webp@and@technology_military/siege-engineering.webp@, built new@building_economy/lumber-camp.webp@forward for max income"
+      ]
+    }
+  ],
+  "video": "",
+  "season": "Season 13",
+  "map": null,
+  "strategy": "Timing Attack",
+  "_aoe4_guides": {
+    "id": "r6hqDCES2nryqKqyml5z",
+    "civilization_code": "ZXL",
+    "updated": "2026-05-08T01:31:45+00:00",
+    "views_at_snapshot": 4325,
+    "snapshot_date": "2026-10-31"
+  }
+}
