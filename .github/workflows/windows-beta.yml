@@ -1,0 +1,209 @@
+name: Windows Beta Build
+
+# Builds the aoe4 portable release and a per-user Inno Setup installer on a
+# windows-2022 runner. This workflow verifies build/infra steps only; it does
+# NOT validate gameplay and does NOT claim Windows 11 25H2 runtime support.
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'python/**'
+      - 'docs/**'
+      - 'version.json'
+      - 'packaging/**'
+      - '.github/workflows/windows-beta.yml'
+  pull_request:
+    paths:
+      - 'python/**'
+      - 'docs/**'
+      - 'version.json'
+      - 'packaging/**'
+      - '.github/workflows/windows-beta.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build aoe4 beta
+    runs-on: windows-2022
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.10 x64
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          architecture: 'x64'
+
+      - name: Record runner environment
+        id: env
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $os = [System.Environment]::OSVersion.VersionString
+          $PyVersion = (python -c "import sys; print(sys.version.split()[0])").Trim()
+          $PyArch = (python -c "import platform; print(platform.machine())").Trim()
+          $Runner = "$env:ImageOS / $env:RUNNER_OS / $env:RUNNER_ARCH"
+          Write-Host "Runner: $Runner"
+          Write-Host "OS: $os"
+          Write-Host "Python: $PyVersion ($PyArch)"
+          "os=$os" >> $env:GITHUB_OUTPUT
+          "py_version=$PyVersion" >> $env:GITHUB_OUTPUT
+          "py_arch=$PyArch" >> $env:GITHUB_OUTPUT
+          "runner=$Runner" >> $env:GITHUB_OUTPUT
+
+      - name: Install build dependencies
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          python -m pip install --upgrade pip
+          python -m pip install -r python/utilities/requirements.txt
+          python -m pip install -r python/utilities/requirements-build.txt
+
+      - name: Run unit tests
+        shell: pwsh
+        env:
+          PYTHONPATH: ${{ github.workspace }}/python
+        run: |
+          $ErrorActionPreference = 'Stop'
+          python -m unittest discover -s python/tests -v
+
+      - name: Prepare release (aoe4)
+        shell: pwsh
+        env:
+          PYTHONPATH: ${{ github.workspace }}/python
+        working-directory: python/utilities
+        run: |
+          $ErrorActionPreference = 'Stop'
+          python prepare_release.py aoe4
+
+      - name: Stage portable ZIP
+        id: stage
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $Zip = 'python/utilities/aoe4_overlay.zip'
+          if (-not (Test-Path $Zip)) {
+            throw "Expected portable archive not found: $Zip"
+          }
+          $Stage = Join-Path $env:RUNNER_TEMP 'aoe4_stage'
+          if (Test-Path $Stage) { Remove-Item -Recurse -Force $Stage }
+          New-Item -ItemType Directory -Path $Stage | Out-Null
+          Expand-Archive -Path $Zip -DestinationPath $Stage -Force
+
+          # prepare_release.py archives the top folder (aoe4_overlay/...) into
+          # the zip, so locate the folder that holds overlay/aoe4_overlay.exe.
+          $Exe = Get-ChildItem -Path $Stage -Recurse -Filter 'aoe4_overlay.exe' |
+            Where-Object { $_.DirectoryName -match '[\\/]overlay$' } |
+            Select-Object -First 1
+          if (-not $Exe) {
+            throw "Could not find overlay/aoe4_overlay.exe in extracted archive."
+          }
+          $SourceDir = Split-Path -Parent $Exe.DirectoryName
+          Write-Host "SourceDir: $SourceDir"
+          "source_dir=$SourceDir" >> $env:GITHUB_OUTPUT
+          "stage=$Stage" >> $env:GITHUB_OUTPUT
+
+      - name: Locate Inno Setup compiler (ISCC)
+        id: iscc
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $Candidates = @(
+            'C:\Program Files (x86)\Inno Setup 6\ISCC.exe',
+            'C:\Program Files\Inno Setup 6\ISCC.exe'
+          )
+          $Found = $Candidates | Where-Object { Test-Path $_ } | Select-Object -First 1
+          if (-not $Found) {
+            throw "Inno Setup compiler (ISCC.exe) not found. Installer generation cannot proceed. No arbitrary tool downloads are permitted by this workflow."
+          }
+          Write-Host "ISCC: $Found"
+          "path=$Found" >> $env:GITHUB_OUTPUT
+
+      - name: Build installer
+        shell: pwsh
+        env:
+          SOURCE_DIR: ${{ steps.stage.outputs.source_dir }}
+          ISCC: ${{ steps.iscc.outputs.path }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          if (-not (Test-Path $env:SOURCE_DIR)) {
+            throw "SourceDir does not exist: $env:SOURCE_DIR"
+          }
+          & $env:ISCC "/DSourceDir=$env:SOURCE_DIR" 'packaging/aoe4-smart-overlay.iss'
+          if ($LASTEXITCODE -ne 0) {
+            throw "ISCC failed with exit code $LASTEXITCODE"
+          }
+          $Installer = 'packaging/Output/aoe4-smart-overlay-setup.exe'
+          if (-not (Test-Path $Installer)) {
+            throw "Expected installer not produced: $Installer"
+          }
+
+      - name: Write build manifest and checksums
+        id: manifest
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $ManifestDir = Join-Path $env:RUNNER_TEMP 'build_manifest'
+          New-Item -ItemType Directory -Path $ManifestDir -Force | Out-Null
+
+          $Installer = 'packaging/Output/aoe4-smart-overlay-setup.exe'
+          $Portable  = 'python/utilities/aoe4_overlay.zip'
+
+          $InstallerHash = (Get-FileHash -Algorithm SHA256 $Installer).Hash
+          $PortableHash  = (Get-FileHash -Algorithm SHA256 $Portable).Hash
+
+          $ManifestPath = Join-Path $ManifestDir 'build-manifest.txt'
+          @(
+            "build_id: $env:GITHUB_RUN_ID"
+            "commit: $env:GITHUB_SHA"
+            "ref: $env:GITHUB_REF"
+            "runner_image: ${{ steps.env.outputs.runner }}"
+            "os: ${{ steps.env.outputs.os }}"
+            "python_version: ${{ steps.env.outputs.py_version }}"
+            "python_arch: ${{ steps.env.outputs.py_arch }}"
+            "installer_sha256: $InstallerHash"
+            "portable_sha256: $PortableHash"
+            "notes: build/infra verification only; no gameplay or OS-version runtime validation claimed"
+          ) | Set-Content -Path $ManifestPath -Encoding utf8
+
+          $ChecksumPath = Join-Path $ManifestDir 'checksums.sha256'
+          "$InstallerHash  aoe4-smart-overlay-setup.exe" | Set-Content -Path $ChecksumPath -Encoding utf8
+          "$PortableHash  aoe4_overlay.zip" | Add-Content -Path $ChecksumPath -Encoding utf8
+
+          "manifest_dir=$ManifestDir" >> $env:GITHUB_OUTPUT
+
+      - name: Upload installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: aoe4-smart-overlay-setup
+          path: packaging/Output/aoe4-smart-overlay-setup.exe
+          if-no-files-found: error
+
+      - name: Upload portable ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: aoe4-overlay-portable
+          path: python/utilities/aoe4_overlay.zip
+          if-no-files-found: error
+
+      - name: Upload build manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: aoe4-build-manifest
+          path: ${{ steps.manifest.outputs.manifest_dir }}/build-manifest.txt
+          if-no-files-found: error
+
+      - name: Upload checksum
+        uses: actions/upload-artifact@v4
+        with:
+          name: aoe4-checksums
+          path: ${{ steps.manifest.outputs.manifest_dir }}/checksums.sha256
+          if-no-files-found: error
+

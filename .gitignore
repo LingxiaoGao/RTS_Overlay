@@ -6,3 +6,4 @@ dist
 build
 *.dist
 .vscode/*
+.deepseek-outsourcer/runs/

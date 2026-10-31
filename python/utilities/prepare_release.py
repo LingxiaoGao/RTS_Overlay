@@ -2,6 +2,15 @@
 import os
 import sys
 import shutil
+import pathlib
+import subprocess
+
+
+ROOT = pathlib.Path(__file__).parent.resolve()
+PYTHON_DIR = ROOT.parent
+
+
+SUPPORTED_GAMES = ('aoe2', 'aoe4', 'aom', 'sc2', 'wc3')
 
 
 def compile_clean(name_game: str, disable_console: bool = True, finalize_folder: bool = False):
@@ -13,87 +22,114 @@ def compile_clean(name_game: str, disable_console: bool = True, finalize_folder:
     disable_console    True to disable the console output.
     finalize_folder    True to finalize the folder (copy additional files, zip, clean).
     """
+    if name_game not in SUPPORTED_GAMES:
+        raise ValueError(
+            f'Unsupported game {name_game!r}. Expected one of {SUPPORTED_GAMES}.'
+        )
+
     name_main_file = 'main_' + name_game  # name of the main python file (without path & extension)
     name_out_lib = name_game + '_overlay'  # name of the output library
 
-    # create output folders
-    overlay_folder = os.path.join(name_out_lib, 'overlay')
-    utilities_folder = os.path.join(overlay_folder, 'utilities')
+    # resolve all build artifact/output paths against ROOT (not the caller's cwd)
+    name_out_lib_path = ROOT / name_out_lib
+    overlay_folder = name_out_lib_path / 'overlay'
+    utilities_folder = overlay_folder / 'utilities'
 
-    assert not os.path.isdir(name_out_lib)
-    os.mkdir(name_out_lib)
-    os.mkdir(overlay_folder)
-    os.mkdir(utilities_folder)
+    if name_out_lib_path.is_dir():
+        raise FileExistsError(f'Output folder already exists: {name_out_lib_path}')
+    name_out_lib_path.mkdir()
+    overlay_folder.mkdir()
+    utilities_folder.mkdir()
 
-    icon = '../../docs/assets/common/icon/salamander_sword_shield.ico'  # icon for the library
+    icon = ROOT / '../../docs/assets/common/icon/salamander_sword_shield.ico'  # icon for the library
+    icon = icon.resolve()
+
+    include_common = (PYTHON_DIR / 'common').resolve()
+    include_game = (PYTHON_DIR / name_game).resolve()
+    include_docs_common = (ROOT / '../../docs/assets/common').resolve()
+    include_docs_game = (ROOT / f'../../docs/assets/{name_game}').resolve()
+    main_file = (PYTHON_DIR / f'{name_main_file}.py').resolve()
 
     # nuitka command to run
-    command = (
-        'cmd /c "python -m nuitka'
-        ' --standalone'
-        ' --plugin-enable=pyqt5'
-        f' --windows-icon-from-ico={icon}'
-        f' --include-data-file=../common/*.py=common/'
-        f' --include-data-file=../{name_game}/*.py={name_game}/'
-        f' --include-data-dir=../../docs/assets/common=docs/assets/common'
-        f' --include-data-dir=../../docs/assets/{name_game}=docs/assets/{name_game}'
-    )
+    command = [
+        sys.executable,
+        '-m', 'nuitka',
+        '--standalone',
+        '--plugin-enable=pyqt5',
+        '--assume-yes-for-downloads',
+        f'--windows-icon-from-ico={icon}',
+        f'--include-data-file={include_common}/*.py=common/',
+        f'--include-data-file={include_game}/*.py={name_game}/',
+        f'--include-data-dir={include_docs_common}=docs/assets/common',
+        f'--include-data-dir={include_docs_game}=docs/assets/{name_game}',
+    ]
 
     if disable_console:  # disable the console
-        command += ' --windows-disable-console'
+        command.append('--windows-disable-console')
 
-    command += f' ../{name_main_file}.py'  # main file to compile
+    command.append(str(main_file))  # main file to compile
 
-    os.system(command)  # compilation
+    subprocess.run(command, check=True, cwd=str(PYTHON_DIR))  # compilation
+
+    dist_dir = PYTHON_DIR / f'{name_main_file}.dist'
+    build_dir = PYTHON_DIR / f'{name_main_file}.build'
 
     # rename executable name
-    os.rename(
-        os.path.join(f'{name_main_file}.dist', f'{name_main_file}.exe'),
-        os.path.join(f'{name_main_file}.dist', f'{name_out_lib}.exe'),
-    )
+    (dist_dir / f'{name_main_file}.exe').rename(dist_dir / f'{name_out_lib}.exe')
 
     if not disable_console:  # rename for version with console
-        os.rename(
-            os.path.join(f'{name_main_file}.dist', f'{name_out_lib}.exe'),
-            os.path.join(f'{name_main_file}.dist', f'{name_out_lib}_with_console.exe'),
-        )
+        (dist_dir / f'{name_out_lib}.exe').rename(dist_dir / f'{name_out_lib}_with_console.exe')
 
     # copy files in output directory
-    shutil.copytree(f'{name_main_file}.dist', overlay_folder, dirs_exist_ok=True)
+    shutil.copytree(dist_dir, overlay_folder, dirs_exist_ok=True)
 
     # move pictures in new directory
-    out_docs = os.path.join(name_out_lib, 'docs')
-    os.makedirs(out_docs, exist_ok=True)
-    shutil.move(os.path.join(overlay_folder, 'docs', 'assets'), out_docs)
+    out_docs = name_out_lib_path / 'docs'
+    out_docs.mkdir(parents=True, exist_ok=True)
+    shutil.move(str(overlay_folder / 'docs' / 'assets'), str(out_docs))
 
     # clean building files
-    shutil.rmtree(f'{name_main_file}.build')
-    shutil.rmtree(f'{name_main_file}.dist')
+    shutil.rmtree(build_dir)
+    shutil.rmtree(dist_dir)
 
     # finalize the output folder
     if finalize_folder:
         # copy readme, changelog, license, version and requirements
-        shutil.copy('../../Readme.md', name_out_lib)
-        shutil.copy('../../Changelog.md', name_out_lib)
-        shutil.copy('../../LICENSE', name_out_lib)
-        shutil.copy('../../version.json', name_out_lib)
-        shutil.copy('requirements.txt', utilities_folder)
+        shutil.copy(ROOT / '../../Readme.md', name_out_lib_path)
+        shutil.copy(ROOT / '../../Changelog.md', name_out_lib_path)
+        shutil.copy(ROOT / '../../LICENSE', name_out_lib_path)
+        shutil.copy(ROOT / '../../version.json', name_out_lib_path)
+        shutil.copy(ROOT / 'requirements.txt', utilities_folder)
 
         # copy remaining source files
-        shutil.copy(f'../{name_main_file}.py', overlay_folder)
-        shutil.copy('prepare_release.py', utilities_folder)
+        shutil.copy(main_file, overlay_folder)
+        shutil.copy(ROOT / 'prepare_release.py', utilities_folder)
 
         # zip output folder
-        shutil.make_archive(name_out_lib, 'zip', name_out_lib)
-        shutil.rmtree(name_out_lib)  # clean non-zipped files
+        shutil.make_archive(str(name_out_lib_path), 'zip', str(name_out_lib_path))
+        shutil.rmtree(name_out_lib_path)  # clean non-zipped files
 
 
 if __name__ == '__main__':
     # python prepare_release.py [name_game] (aoe2, aoe4, aom, sc2, wc3)
+    if len(sys.argv) > 2:
+        print(f'Usage: {sys.argv[0]} [{"|".join(SUPPORTED_GAMES)}]', file=sys.stderr)
+        sys.exit(2)
     if len(sys.argv) != 2:  # compile all projects
-        selected_games = ['aoe2', 'aoe4', 'aom', 'sc2', 'wc3']
+        selected_games = list(SUPPORTED_GAMES)
     else:
-        selected_games = [sys.argv[1]]
+        game_arg = sys.argv[1]
+        if game_arg not in SUPPORTED_GAMES:
+            print(
+                f'Unsupported game {game_arg!r}. Expected one of {SUPPORTED_GAMES}.',
+                file=sys.stderr,
+            )
+            sys.exit(2)
+        selected_games = [game_arg]
 
-    for selected_game in selected_games:
-        compile_clean(name_game=selected_game, disable_console=True, finalize_folder=True)
+    try:
+        for selected_game in selected_games:
+            compile_clean(name_game=selected_game, disable_console=True, finalize_folder=True)
+    except Exception as exc:
+        print(f'Release preparation failed: {exc}', file=sys.stderr)
+        sys.exit(1)
