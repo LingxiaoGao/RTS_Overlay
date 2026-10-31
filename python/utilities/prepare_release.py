@@ -62,6 +62,8 @@ def compile_clean(name_game: str, disable_console: bool = True, finalize_folder:
         f'--include-data-file={include_game}/*.py={name_game}/',
         f'--include-data-dir={include_docs_common}=docs/assets/common',
         f'--include-data-dir={include_docs_game}=docs/assets/{name_game}',
+        '--include-package=rapidocr',
+        '--include-package-data=rapidocr',
     ]
 
     if disable_console:  # disable the console
