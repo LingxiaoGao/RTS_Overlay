@@ -1,0 +1,181 @@
+{
+  "description": "Fast feudal age-up with instant 2x Keshik into archers with late trade. ",
+  "civilization": "Mongols",
+  "name": "4:30 Feudal Rush Mongol",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/rFzvQhcpWLGIfxkA740u",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@ goes on&nbsp;@resource/resource_wood.png@, 1@unit_worker/villager-mongols.png@&nbsp;build&nbsp;@building_mongols/ovoo.png@&nbsp;then to&nbsp;@resource/resource_gold.png@. 5 to&nbsp;@resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:42",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager-mongols.webp@&nbsp;to&nbsp;@resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "1:02",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager-mongols.webp@&nbsp;to&nbsp;@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "1:22",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.png@ until&nbsp;@age/age_2.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:35",
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up with 3@resource/resource_food.webp@@unit_worker/villager-mongols.png@ on either&nbsp;@landmark_mongols/the-silver-tree.png@&nbsp;for trade /&nbsp;@landmark_mongols/deer-stones.png@&nbsp;if Trade Posts spawn bad. (add markets later)"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:45",
+      "villager_count": 10,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Keep 4@resource/resource_food.webp@@unit_worker/villager-mongols.png@ & 2@resource/resource_gold.png@@unit_worker/villager-mongols.png@. Rest to&nbsp;@resource/resource_wood.png@until&nbsp;@building_military/stable.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "3:55",
+      "villager_count": 11,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_military/stable.webp@&nbsp;with 2@unit_worker/villager-mongols.png@&nbsp;and&nbsp;@resource/rally.png@@resource/resource_food.png@&nbsp;until 11@resource/resource_food.png@@unit_worker/villager-mongols.png@&nbsp;then add 2@unit_worker/villager-mongols.png@to&nbsp;@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 18,
+      "resources": {
+        "food": 11,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@: Queue 2x@unit_mongols/keshik-2.png@ &@resource/rally.png@@resource/resource_wood.png@&nbsp;until 5"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "5:35",
+      "villager_count": 21,
+      "resources": {
+        "food": 11,
+        "wood": 6,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "add @building_military/archery-range.webp@&nbsp;and constantly produce&nbsp;@unit_mongols/keshik-2.png@+@unit_infantry/archer-2.png@",
+        "@resource/rally.png@&nbsp;@resource/resource_food.png@until 14 then&nbsp;@resource/resource_wood.png@until 11 then@resource/resource_gold.png@until 8&nbsp;&nbsp;and add&nbsp;@unit_worker/trader.png@&nbsp;+ more production"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Keep building army and when you can, start adding traders. Ultimately you want to take full map control, pocket resources, then go castle, get veterancy upgrades and win with a castle timing attack through @landmark_mongols/kurultai.webp@.",
+        "Remember&nbsp;@resource/relics.png@&nbsp;and all the eco upgrades.&nbsp;"
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/vn52vRaBJnU",
+  "season": "Season 5",
+  "map": null,
+  "strategy": "Rush",
+  "_aoe4_guides": {
+    "id": "rFzvQhcpWLGIfxkA740u",
+    "civilization_code": "MON",
+    "updated": "2024-03-24T14:12:23+00:00",
+    "views_at_snapshot": 20489,
+    "snapshot_date": "2026-10-31"
+  }
+}

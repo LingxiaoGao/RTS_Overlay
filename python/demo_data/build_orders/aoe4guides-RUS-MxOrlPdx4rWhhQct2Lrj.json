@@ -1,0 +1,152 @@
+{
+  "description": "An effective way to play 1tc aggression. See notes for more tips and advice on strategy. ",
+  "civilization": "Rus",
+  "name": "New Rus 1TC Aggression Build",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/MxOrlPdx4rWhhQct2Lrj",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "4 @unit_worker/villager.webp@ to @resource/sheep.png@",
+        "1 @unit_worker/villager.png@ to build @building_rus/hunting-cabin.png@ then @resource/sheep.png@",
+        "1 @unit_worker/villager.png@ to build @building_economy/house.png@ then @building_economy/mining-camp.png@",
+        "@resource/rally.png@ @building_economy/town-center.png@ to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 11,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Pull 4 @unit_worker/villager.webp@ to build @landmark_rus/kremlin.png@ ( get wood buff on your woodline )"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 1,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/gaiatreeprototypetree.png@ until 5 on @resource/resource_wood.png@ then back to @resource/resource_food.png@ until 8 @unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:50",
+      "villager_count": 17,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 1,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "4 age up @unit_worker/villager.webp@ build @building_military/stable.png@ then @building_economy/house.png@ then @building_economy/lumber-camp.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 20,
+      "resources": {
+        "food": 8,
+        "wood": 7,
+        "gold": 1,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Queue @unit_cavalry/knight-2.webp@ & start @resource/rally.png@ @resource/resource_gold.png@ until 6 on @resource/resource_gold.png@",
+        "( full produce @unit_cavalry/knight-2.png@ )"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:50",
+      "villager_count": 20,
+      "resources": {
+        "food": 8,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/double-broadaxe.webp@  & Build an @building_military/archery-range.png@ ( full produce @unit_infantry/archer-2.png@ )"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:50",
+      "villager_count": 22,
+      "resources": {
+        "food": 8,
+        "wood": 9,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd @building_military/archery-range.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "07:00",
+      "villager_count": 27,
+      "resources": {
+        "food": 11,
+        "wood": 10,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_technology/blacksmith.webp@ & get @technology_military/steeled-arrow.png@ @technology_military/iron-undermesh.png@  ( @technology_military/siege-engineering.png@ if pushing a 2nd @building_economy/town-center.png@ )"
+      ]
+    }
+  ],
+  "video": "",
+  "season": "Season 8",
+  "map": null,
+  "strategy": "Rush",
+  "_aoe4_guides": {
+    "id": "MxOrlPdx4rWhhQct2Lrj",
+    "civilization_code": "RUS",
+    "updated": "2024-08-24T14:28:02+00:00",
+    "views_at_snapshot": 16859,
+    "snapshot_date": "2026-10-31"
+  }
+}

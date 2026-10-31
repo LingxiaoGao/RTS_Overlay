@@ -1,0 +1,147 @@
+{
+  "description": "See linked video for the guide",
+  "civilization": "Order of the Dragon",
+  "name": "2TC (2026)",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/61TWGO1PYlqrceMopatQ",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 @unit_worker/villager.webp@ to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:23",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 2 @unit_worker/villager.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:09",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@unit_worker/villager.webp@ to @resource/sheep.webp@ until @age/age_2.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:06",
+      "villager_count": 8,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start aging up with 2 @unit_worker/villager.webp@ on @landmark_hre/aachen-chapel.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:12",
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 0,
+        "stone": 4,
+        "builder": 2
+      },
+      "notes": [
+        "Macro 4 @unit_worker/villager.webp@ to @resource/resource_stone.webp@, 4 on @resource/resource_food.webp@ and @resource/rally.webp@ @resource/resource_wood.webp@ until 2nd @building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:08",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 0,
+        "stone": 4,
+        "builder": 1
+      },
+      "notes": [
+        "Take 1 @unit_worker/villager.webp@ from landmark to @resource/resource_wood.webp@ when chapel is 50% done."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 15,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "Drop the 2nd @building_economy/town-center.webp@ immediately with 8+ vills."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "See guide for additional steps for 2tc defense and 2tc fc"
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/YPRL2C_pSoM",
+  "season": "Season 12",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "61TWGO1PYlqrceMopatQ",
+    "civilization_code": "DRA",
+    "updated": "2025-12-21T16:17:15+00:00",
+    "views_at_snapshot": 5363,
+    "snapshot_date": "2026-10-31"
+  }
+}

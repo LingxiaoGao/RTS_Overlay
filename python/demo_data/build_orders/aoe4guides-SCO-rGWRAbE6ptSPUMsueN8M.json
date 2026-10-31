@@ -1,0 +1,149 @@
+{
+  "description": " The Only SCOTS Build You'll Need To Get Conqueror by Swaggy Professor.\n\nNote: I made this version of the build to be as accurate as possible to the original as shown in the video. This may make it a bit harder to fully grasp at first.\nFor a more simpler version, please check out murtuk's version here: https://aoe4guides.com/builds/csMtOxSj34hz7RldJzBs\n\nCheers!",
+  "civilization": "Scots",
+  "name": " The Only SCOTS Build You'll Need To Get Conqueror - Swaggy Professor",
+  "author": "Niki45nk",
+  "source": "https://aoe4guides.com/builds/rGWRAbE6ptSPUMsueN8M",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @unit_worker/villager.webp@ to @resource/sheep.webp@",
+        "Send @unit_scots/highland-cattle.webp@ to @resource/berrybush.webp@",
+        "Scout around base for @resource/sheep.webp@first",
+        "When 100 @resource/resource_food.webp@, send 3  to @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:10",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1st new @unit_worker/villager.webp@ builds @building_scots/tower-house.webp@ on @resource/resource_gold.webp@",
+        "Rally next 2 @unit_worker/villager.webp@ to @building_scots/tower-house.webp@ then to @resource/resource_gold.webp@",
+        "When you have 50 @resource/resource_wood.webp@, send 3 @resource/resource_wood.webp@ back to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally new @unit_worker/villager.webp@ to @resource/sheep.webp@",
+        "Make 5 @unit_scots/highland-cattle.webp@ at @building_scots/tower-house.webp@ and send to @resource/berrybush.webp@",
+        "Remember to Scout Opponent's base to see if they are planning to attack you"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 17,
+      "resources": {
+        "food": 14,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 @resource/resource_food.webp@ @unit_worker/villager.webp@ build @landmark_scots/stone-of-destiny.webp@ at corner of @building_economy/town-center.webp@",
+        "Send all remaining @resource/resource_food.webp@ @unit_worker/villager.webp@ to @resource/gaiatreeprototypetree.webp@",
+        "Rally new @unit_worker/villager.webp@ to @resource/resource_wood.webp@ (also build @building_economy/lumber-camp.webp@)",
+        "When you have 150 @resource/resource_wood.webp@, one @resource/resource_wood.webp@ @unit_worker/villager.webp@ builds @building_military/barracks.webp@ near"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:55",
+      "villager_count": 25,
+      "resources": {
+        "food": 6,
+        "wood": 11,
+        "gold": 3,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "4 @landmark_scots/stone-of-destiny.webp@@unit_worker/villager.webp@ go back to @resource/sheep.webp@",
+        "1 @landmark_scots/stone-of-destiny.webp@@unit_worker/villager.webp@builds @building_military/archery-range.webp@ near landmark",
+        "Make 1 @unit_scots/kirkman.webp@ from @landmark_scots/stone-of-destiny.webp@",
+        "When 11 @resource/resource_wood.webp@@unit_worker/villager.webp@, Rally new @unit_worker/villager.webp@ to @resource/sheep.webp@",
+        "Start making @unit_scots/pikeman.webp@ if against @unit_cavalry/knight-2.webp@, or @unit_scots/cateran.webp@ if you want to raid",
+        "Start making @unit_scots/highland-archer.webp@",
+        "@unit_scots/kirkman.webp@ builds @building_scots/fishpond.webp@ on side of @building_economy/town-center.webp@ nearest to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 30,
+      "resources": {
+        "food": 14,
+        "wood": 13,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send 2 @resource/resource_gold.webp@ and 1@resource/sheep.webp@ @unit_worker/villager.webp@ to build @building_scots/tower-house.webp@ on @resource/deer.webp@",
+        "Keep producing units for defence",
+        "Make 2nd @unit_scots/kirkman.webp@ and build @building_scots/fishpond.webp@ near the second @building_scots/tower-house.webp@",
+        "1 @resource/sheep.webp@@unit_worker/villager.webp@ builds @building_scots/mustering-hall.webp@ near @landmark_scots/stone-of-destiny.webp@",
+        "Build more @building_military/barracks.webp@ and @building_military/archery-range.webp@ when possible"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "video": "https://www.youtube.com/embed/H37JNp7pVBU",
+  "season": "Season 13",
+  "map": null,
+  "strategy": "Boom",
+  "_aoe4_guides": {
+    "id": "rGWRAbE6ptSPUMsueN8M",
+    "civilization_code": "SCO",
+    "updated": "2026-10-31T03:09:17+00:00",
+    "views_at_snapshot": 1201,
+    "snapshot_date": "2026-10-31"
+  }
+}

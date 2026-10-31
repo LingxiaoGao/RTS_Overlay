@@ -1,0 +1,118 @@
+{
+  "description": "Feeling Nostalgic for the RUS Horse Archer Rush? This build is kinda like that! \n\nOttoman Akinji NEW Meta Rush Build by Beasty.",
+  "civilization": "Ottomans",
+  "name": "[New Patch] Akinji Rush - Beasty",
+  "author": "Niki45nk",
+  "source": "https://aoe4guides.com/builds/qNQ0nzxRLZoQC1yMnkBl",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 1,
+        "wood": 0,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager-ottomans.webp@ to @resource/sheep.webp@",
+        "5 @unit_worker/villager-ottomans.webp@ get 50 @resource/resource_stone.webp@, then go to @resource/gaiatreeprototypetree.webp@",
+        "@resource/rally.webp@@unit_worker/villager-ottomans.webp@ to @resource/sheep.webp@",
+        "1 @resource/resource_food.webp@@unit_worker/villager-ottomans.webp@ builds @building_ottomans/military-school-1.webp@ near @building_economy/town-center.webp@",
+        "1 @resource/resource_food.webp@@unit_worker/villager-ottomans.webp@ builds @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:10",
+      "villager_count": 8,
+      "resources": {
+        "food": 2,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "When you have 50 @resource/resource_wood.webp@, 3 @resource/gaiatreeprototypetree.webp@@unit_worker/villager-ottomans.webp@ go to @resource/sheep.webp@",
+        "2 @resource/gaiatreeprototypetree.webp@@unit_worker/villager-ottomans.webp@ go to @building_economy/mining-camp.webp@@resource/resource_gold.webp@",
+        "Keep @resource/rally.webp@@unit_worker/villager-ottomans.webp@ to @resource/sheep.webp@",
+        "Use @unit_cavalry/scout.webp@ to scout opponent's base"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 14,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 @resource/sheep.webp@@unit_worker/villager-ottomans.webp@ build @landmark_ottomans/twin-minaret-medrese-1.webp@ at corner of @building_economy/town-center.webp@",
+        "Send 5 @resource/sheep.webp@@unit_worker/villager-ottomans.webp@ to @resource/gaiatreeprototypetree.webp@",
+        "@resource/rally.webp@@unit_worker/villager-ottomans.webp@ to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 20,
+      "resources": {
+        "food": 4,
+        "wood": 10,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "4 @unit_worker/villager-ottomans.webp@ @landmark_ottomans/twin-minaret-medrese-1.webp@ go on @resource/berrybush.webp@",
+        "Set  @building_ottomans/military-school-1.webp@ to make @unit_ottomans/mehter-2.webp@",
+        "2 @resource/resource_wood.webp@@unit_worker/villager-ottomans.webp@ build 2 @building_military/archery-range.webp@ and @building_technology/blacksmith.webp@",
+        "Get @technology_economy/wheelbarrow.webp@ at @landmark_ottomans/twin-minaret-medrese-1.webp@",
+        "Build @building_economy/house.webp@ if needed to get 1st @age/vizier_point.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:40",
+      "villager_count": 24,
+      "resources": {
+        "food": 10,
+        "wood": 10,
+        "gold": 2,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "Use 1st @age/vizier_point.webp@ to get @technology_ottomans/timariots.webp@",
+        "Spam @technology_ottomans/timariots.webp@ from @building_military/archery-range.webp@",
+        "Rally 2 @unit_worker/villager-ottomans.webp@ to @resource/resource_stone.webp@, then @resource/rally.webp@ to @resource/resource_wood.webp@",
+        "Get @technology_economy/double-broadaxe.webp@ and @technology_military/steeled-arrow.webp@",
+        "Build 1-2 more @building_military/archery-range.webp@ when possible",
+        "Build more  @building_ottomans/military-school-1.webp@ when possible"
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/2dRdEmPL7h4",
+  "season": "Season 13",
+  "map": null,
+  "strategy": "Rush",
+  "_aoe4_guides": {
+    "id": "qNQ0nzxRLZoQC1yMnkBl",
+    "civilization_code": "OTT",
+    "updated": "2026-05-08T03:51:28+00:00",
+    "views_at_snapshot": 5239,
+    "snapshot_date": "2026-10-31"
+  }
+}

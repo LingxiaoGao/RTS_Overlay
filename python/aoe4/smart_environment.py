@@ -10,7 +10,7 @@ from typing import Callable
 from aoe4.smart_controller_config import SmartControllerConfig
 
 
-REQUIRED_MODULES = ("PyQt5", "mss", "rapidocr", "onnxruntime")
+REQUIRED_MODULES = ("PyQt5", "mss", "cv2", "numpy")
 
 
 @dataclass(frozen=True)

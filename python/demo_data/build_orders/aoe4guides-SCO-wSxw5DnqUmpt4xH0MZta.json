@@ -1,0 +1,277 @@
+{
+  "description": "rump type shi",
+  "civilization": "Scots",
+  "name": "Beasty build",
+  "author": "daltor",
+  "source": "https://aoe4guides.com/builds/wSxw5DnqUmpt4xH0MZta",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@unit_scots/highland-cattle.webp@to @resource/berrybush.webp@, 2@unit_worker/villager.webp@to @resource/resource_wood.webp@, then 1 @unit_worker/villager.webp@to build @building_scots/tower-house.webp@on far side of berries (dark age rush defense)",
+        "Rally @resource/resource_food.webp@",
+        "move sheep to woodline side for @building_scots/fishpond.webp@later",
+        "if getting dark age rushed, make ghillie from tower and can rally it into tower"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": ":45",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "after gathering 50 @resource/resource_wood.webp@, send @resource/resource_wood.webp@villagers to @resource/resource_gold.webp@ and build @building_economy/mining-camp.webp@",
+        "after villager finishes building the tower, send him to @resource/resource_gold.webp@as well"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "1:20",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "need 3 on gold to buy cattle, as one cattle = 30 food per min (or .75 of a villager)",
+        "instantly queue up cattle when tower is done, up to 6 @unit_scots/highland-cattle.webp@(however many berry bushes you have, sometimes less)"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 14,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "should have 3 cattle at this point"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 19,
+      "resources": {
+        "food": 16,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "should have 5 cattle at this point"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 23,
+      "resources": {
+        "food": 6,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "4 @unit_worker/villager.webp@to build @landmark_scots/stone-of-destiny.webp@, build in open area as you need to build around it to get the refund in gold",
+        "all @resource/resource_food.webp@@unit_worker/villager.webp@to @resource/resource_wood.webp@, cows are enough for villager production",
+        "Still rallied to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 25,
+      "resources": {
+        "food": 8,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "can send one villager to another berry patch to create a @building_scots/tower-house.webp@, we need pop and gives vision. keep making cows till 9"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 28,
+      "resources": {
+        "food": 15,
+        "wood": 9,
+        "gold": 3,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Once ageup is done, immediately queue a @unit_scots/kirkman.webp@and use a wood @unit_worker/villager.webp@to build @building_military/stable.webp@inside range of Stone of Destiny ageup building"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 30,
+      "resources": {
+        "food": 16,
+        "wood": 8,
+        "gold": 4,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "build @building_military/archery-range.webp@ next to stable",
+        "build @building_scots/fishpond.webp@with @unit_scots/kirkman.webp@inbetween sheep and woodline with room for farm",
+        "queue @unit_cavalry/horseman-1.webp@from stable",
+        "queue another @unit_scots/kirkman.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "6:00",
+      "villager_count": 33,
+      "resources": {
+        "food": 19,
+        "wood": 10,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "rally @resource/resource_wood.webp@after 10 villagers (+9 cows) on food",
+        "should be perma producing horsemen and archers",
+        "@technology_economy/double-broadaxe.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "6:30",
+      "villager_count": 34,
+      "resources": {
+        "food": 18,
+        "wood": 11,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "build @building_economy/mill.webp@ on berries",
+        "build @building_economy/house.webp@next to @landmark_scots/stone-of-destiny.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 36,
+      "resources": {
+        "food": 19,
+        "wood": 13,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/horticulture.webp@",
+        "Build a 2nd @building_military/stable.webp@and @building_military/archery-range.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "7:30",
+      "villager_count": 37,
+      "resources": {
+        "food": 19,
+        "wood": 14,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_scots/fishpond.webp@next to @resource/resource_gold.webp@for buff with 2nd @unit_scots/kirkman.webp@"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "8:00",
+      "villager_count": 39,
+      "resources": {
+        "food": 20,
+        "wood": 14,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/wheelbarrow.webp@@technology_economy/forestry.webp@",
+        "should have 5 horsemen, 7 archers"
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "9:00",
+      "villager_count": 42,
+      "resources": {
+        "food": 20,
+        "wood": 17,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@building_technology/blacksmith.webp@, should have 9 horsemen 12 archers, can raid now",
+        "@building_scots/mustering-hall.webp@built next to stables/archery ranges",
+        "@technology_military/steeled-arrow.webp@"
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/m2rgwmCQRcA",
+  "season": "Season 14",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "wSxw5DnqUmpt4xH0MZta",
+    "civilization_code": "SCO",
+    "updated": "2026-10-29T18:00:21+00:00",
+    "views_at_snapshot": 860,
+    "snapshot_date": "2026-10-31"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "description": "The build is old but still working",
+  "civilization": "Chinese",
+  "name": "How To Do The \"Overpowered\" China Strategy",
+  "author": "Nabs96",
+  "source": "https://aoe4guides.com/builds/cSGpXHncgixld05yoo4L",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00\n\n\n\n\n\n\n\n\n\n\n02:20\n\n02:50\n03:15",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@queu 1@unit_chinese/imperial-official.webp@  send 6 @unit_worker/villager-china.webp@ to closest @resource/gaiatreeprototypetree.webp@, build @building_economy/mill.webp@ close to @building_economy/town-center.webp@ and @unit_chinese/imperial-official.webp@ supervise it, then @unit_worker/villager-china.webp@ drop wood in @building_economy/mill.webp@ send all @resource/sheep.webp@ to @building_economy/mill.webp@. @resource/rally.webp@ 1 @unit_worker/villager-china.webp@ from @building_economy/town-center.webp@Build @building_chinese/village.webp@ close to @resource/berrybush.webp@ . @resource/rally.webp@ 1 @unit_worker/villager-china.webp@ to a@resource/gaiatreeprototypetree.webp@ to collect @resource/resource_wood.webp@ to get 50. Then @resource/rally.webp@ back to @resource/sheep.webp@.",
+        "Take 5 @unit_worker/villager-china.webp@ from @resource/sheep.webp@ to collect @resource/resource_wood.webp@ from @resource/gaiatreeprototypetree.webp@ (dont drop wood to @building_economy/town-center.webp@), send them to build @building_economy/mining-camp.webp@ to collect@resource/resource_gold.webp@.",
+        "Take 1 @unit_worker/villager-china.webp@ from @resource/sheep.webp@ and build @landmark_chinese/imperial-academy.webp@ (Try to find a good spot where he is close to @resource/resource_wood.webp@ and @resource/resource_gold.webp@ or @resource/resource_food.webp@@resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "03:25\n\n\n\n\n04:18",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ back to @resource/sheep.webp@ (You suppose to have 10 @unit_worker/villager-china.webp@ to @resource/sheep.webp@ and 5 to@resource/resource_gold.webp@ at this stage of the game). Then @resource/rally.webp@ 1@unit_worker/villager-china.webp@ to build @building_economy/lumber-camp.webp@ to the wood line.",
+        "Take all 5 @unit_worker/villager-china.webp@ from @resource/resource_gold.webp@ to build @landmark_chinese/barbican-of-the-sun.webp@ close to @resource/resource_gold.webp@ to protect it. Then take all the @unit_worker/villager-china.webp@ from @resource/sheep.webp@ and put them to collect @resource/resource_wood.webp@ and supervise @building_economy/lumber-camp.webp@ with @unit_chinese/imperial-official.webp@ from @building_economy/mill.webp@ then @resource/rally.webp@ to @resource/sheep.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:56\n\n\n\n05:02\n\n06:35\n\n\n\n\n\n\n\n\n\n08:23\n\n09:03\n\n\n\n10:15",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queu 1 @unit_chinese/imperial-official.webp@ from @landmark_chinese/imperial-academy.webp@, send 3 @unit_worker/villager-china.webp@ from @resource/resource_wood.webp@ to @resource/sheep.webp@ then @resource/rally.webp@ to @resource/sheep.webp@",
+        "Song Dynastie, keep 8 @unit_worker/villager-china.webp@ to @resource/resource_wood.webp@.",
+        "send 1 to build @building_military/archery-range.webp@, send back @unit_chinese/imperial-official.webp@ from @building_economy/lumber-camp.webp@ to @building_economy/mill.webp@ again. Send the 2nd @unit_chinese/imperial-official.webp@ to supervise @building_military/archery-range.webp@ and make @unit_chinese/zhuge-nu-2.webp@. Send 1 @unit_worker/villager-china.webp@ to build @building_technology/blacksmith.webp@.",
+        "When you have 12 @unit_worker/villager-china.webp@ to @resource/resource_food.webp@, @resource/rally.webp@ to @resource/resource_wood.webp@. (Keep making @unit_chinese/imperial-official.webp@). Start upgrading @technology_economy/double-broadaxe.webp@@technology_military/balanced-projectiles.webp@@technology_economy/forestry.webp@ @technology_military/iron-undermesh.webp@.",
+        "Send 1 @unit_worker/villager-china.webp@ to build @building_military/barracks.webp@ and make @unit_infantry/spearman-1.webp@. Upgrade @technology_military/siege-engineering.webp@@technology_chinese/imperial-examination.webp@ upgrade spear man,",
+        "Send 1 @unit_worker/villager-china.webp@ to build 2nd @building_military/archery-range.webp@ and then a 3th@building_military/archery-range.webp@. (You suppose to have 12 @unit_worker/villager-china.webp@ on @resource/resource_food.webp@ 22 on @resource/resource_wood.webp@ and 5 on @resource/resource_gold.webp@).",
+        "Upgrade @technology_economy/horticulture.webp@@technology_economy/wheelbarrow.webp@@technology_military/fitted-leatherwork.webp@ keep @resource/rally.webp@ to @resource/resource_wood.webp@ until 25 then to @resource/resource_food.webp@ until 20, then to @resource/resource_gold.webp@."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/O1-mFMYiMWY",
+  "season": "Season 11",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "cSGpXHncgixld05yoo4L",
+    "civilization_code": "CHI",
+    "updated": "2025-11-06T20:57:33+00:00",
+    "views_at_snapshot": 3415,
+    "snapshot_date": "2026-10-31"
+  }
+}

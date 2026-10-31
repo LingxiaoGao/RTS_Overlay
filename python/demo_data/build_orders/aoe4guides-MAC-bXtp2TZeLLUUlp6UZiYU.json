@@ -1,0 +1,181 @@
+{
+  "description": "PLAN IS TO MAKE THIS MY OWN. SO VERY RUSTIC AT THE MOMENT. WILL HAVE EDITS IN THE FUTURE TO MY PLAY STYLE\n",
+  "civilization": "Macedonian Dynasty",
+  "name": "Beasty winery build",
+  "author": "Vakr",
+  "source": "https://aoe4guides.com/builds/bXtp2TZeLLUUlp6UZiYU",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 vills to farms",
+        "3 to tree for 60 total wood then food",
+        "2 to gold"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "rally food"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 sheep vills build winery"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 food vills go to wood"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "rally wood till 16"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 30,
+      "resources": {
+        "food": 12,
+        "wood": 16,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "rally food till 16"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 34,
+      "resources": {
+        "food": 16,
+        "wood": 12,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "take 4 wood vills to gold rally gold till age up build blacksmith thing"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 39,
+      "resources": {
+        "food": 16,
+        "wood": 12,
+        "gold": 11,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "age up"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "video": "",
+  "season": "Season 11",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "bXtp2TZeLLUUlp6UZiYU",
+    "civilization_code": "MAC",
+    "updated": "2025-11-09T16:49:51+00:00",
+    "views_at_snapshot": 9626,
+    "snapshot_date": "2026-10-31"
+  }
+}

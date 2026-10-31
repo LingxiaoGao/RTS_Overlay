@@ -1,0 +1,114 @@
+{
+  "description": " The Only VIKINGS Build You'll Need To Get Conqueror by Swaggy Professor. This is a Boom 2 TC build to take advantage of Viking automatically training Villagers for free.\n\nNote: I made this version of the build to be as accurate as possible to the original as shown in the video. This may make it a bit harder to fully grasp at first.\nFor a more simpler version, please check out murtuk's version here: https://aoe4guides.com/builds/eDD62wG5UJ5InP5OygNR\n\nWill be updated with new icons as soon as they're released.\n\nCheers!",
+  "civilization": "Vikings",
+  "name": " The Only VIKINGS Build You'll Need To Get Conqueror - Swaggy Professor",
+  "author": "Niki45nk",
+  "source": "https://aoe4guides.com/builds/WYm5TLrVWEJsEsi1LImJ",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 Vills to @resource/sheep.webp@",
+        "Rally 3 Vills to @resource/resource_gold.webp@ (also build Mining Camp)",
+        "1 @resource/sheep.webp@ Vill builds [Longhouse] on corner of [Town Center] away from @resource/resource_wood.webp@",
+        "Rally new Vills to @resource/gaiatreeprototypetree.webp@",
+        "When there is 3900 Gold left in @resource/resource_gold.webp@vein, send 3 @resource/resource_gold.webp@ Vills to @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 11,
+      "resources": {
+        "food": 6,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 @resource/sheep.webp@ Vills build [Konungar Hall] (or Baugr Fort if preferred)",
+        "All other @resource/sheep.webp@ Vills go to @resource/gaiatreeprototypetree.webp@",
+        "Rally 2 new Vills to @resource/resource_stone.webp@ (also build Mining Camp)",
+        "Send 3 @resource/gaiatreeprototypetree.webp@ Vills also to @resource/resource_stone.webp@",
+        "Then Rally new Vills back to @resource/gaiatreeprototypetree.webp@",
+        "When 8 @resource/resource_wood.webp@ Vills, Rally new Vills to build Landmark"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 17,
+      "resources": {
+        "food": 0,
+        "wood": 9,
+        "gold": 0,
+        "stone": 5,
+        "builder": 3
+      },
+      "notes": [
+        "When there is 900 @resource/resource_stone.webp@ left in @resource/resource_stone.webp@ vein:",
+        "9 @resource/resource_wood.webp@Vills build 2nd [Town Center] near @resource/resource_wood.webp@",
+        "Send all @resource/resource_stone.webp@ and [Landmark] Vills to @resource/resource_wood.webp@ near 2nd [Town Center]",
+        "When 2nd [Town Center] finishes, 9 builder Vills build [Longhouse]"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:10",
+      "villager_count": 20,
+      "resources": {
+        "food": 0,
+        "wood": 20,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "[If your opponent is planning to attack you]",
+        "Put Vills equally between @resource/resource_food.webp@/@resource/resource_wood.webp@/@resource/resource_gold.webp@ to make Spearmen and Shield Maidens",
+        "[If opponent is not planning to attack you]",
+        "Put all Vills to @resource/resource_wood.webp@",
+        "Upgrade 2 [Longhouses] with Bee Skepps",
+        "Build more [Longhouses] and upgrade with Queue Smithy"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "video": "https://www.youtube.com/embed/3AqIiuRbd_w",
+  "season": "Season 13",
+  "map": null,
+  "strategy": "Boom",
+  "_aoe4_guides": {
+    "id": "WYm5TLrVWEJsEsi1LImJ",
+    "civilization_code": "VIK",
+    "updated": "2026-10-24T23:06:16+00:00",
+    "views_at_snapshot": 1524,
+    "snapshot_date": "2026-10-31"
+  }
+}

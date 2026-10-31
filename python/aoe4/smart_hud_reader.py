@@ -87,11 +87,19 @@ class HudOcrReader:
             raise TypeError(
                 f"frame must be a CapturedFrame, got {type(frame).__name__}"
             )
-        cropped = self._region_set.crop(frame)
+        return self.read_crops(self._region_set.crop(frame))
+
+    def read_crops(
+        self, cropped: Mapping[str, CapturedFrame]
+    ) -> Mapping[str, HudTextEvidence]:
         evidence = {}
+        recognized: dict[object, List[OcrLine]] = {}
         for field, region_frame in cropped.items():
-            result = self._recognizer.recognize(region_frame)
-            lines = _validated_lines(result)
+            lines = recognized.get(region_frame.region)
+            if lines is None:
+                result = self._recognizer.recognize(region_frame)
+                lines = _validated_lines(result)
+                recognized[region_frame.region] = lines
             indexed: List[Tuple[float, float, int, OcrLine]] = []
             for index, line in enumerate(lines):
                 if line.confidence < self._min_confidence:
@@ -102,13 +110,18 @@ class HudOcrReader:
             indexed.sort(key=lambda item: (item[0], item[1], item[2]))
             retained = [item[3] for item in indexed]
             text = " ".join(line.text.strip() for line in retained)
+            if "/" in text and field in ("population_current", "population_cap"):
+                current, cap = text.split("/", 1)
+                text = current if field == "population_current" else cap
+                if not text:
+                    continue
             confidence = min(line.confidence for line in retained)
             evidence[field] = HudTextEvidence(
                 field=field,
                 text=text,
                 confidence=confidence,
-                frame_id=frame.frame_id,
-                observed_at=frame.captured_at,
+                frame_id=region_frame.frame_id,
+                observed_at=region_frame.captured_at,
                 line_count=len(retained),
             )
         return evidence

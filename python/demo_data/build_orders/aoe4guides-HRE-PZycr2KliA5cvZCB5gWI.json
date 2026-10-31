@@ -1,0 +1,166 @@
+{
+  "description": "",
+  "civilization": "Holy Roman Empire",
+  "name": "HRE Feudal Aggro Into Castle (2026)",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/PZycr2KliA5cvZCB5gWI",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 @unit_worker/villager.webp@ to @resource/resource_food.webp@ 3 @unit_worker/villager.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:10",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_economy/house.webp@ & @building_economy/mining-camp.webp@ with @resource/resource_gold.webp@@unit_worker/villager.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.webp@ until @age/age_2.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Inspire all  @resource/resource_gold.webp@@unit_worker/villager.webp@ ONCE and then go back to food with @unit_hre/prelate.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:11",
+      "villager_count": 3,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Take all 3 @resource/resource_gold.webp@@unit_worker/villager.webp@ and build @landmark_hre/meinwerk-palace.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 3,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Macro 3 @unit_worker/villager.webp@ on @resource/resource_food.webp@ and 7 @unit_worker/villager.webp@ on @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 7,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "If @resource/deer.webp@ is close and matchup permits, then @resource/rally.webp@ 5 @unit_worker/villager.webp@ to @resource/deer.webp@ and get @technology_economy/survival-techniques.webp@. (Otherwise just sheep)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:05",
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 7,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age-up @unit_worker/villager.webp@ go to @resource/resource_gold.webp@ again. Build @building_military/barracks.webp@ & @building_military/archery-range.webp@ and start making",
+        "1: @unit_infantry/spearman-1.webp@@unit_infantry/archer-2.webp@ if enemy is going FC.",
+        "2: If Horsemen, Spear, Archer then go @unit_infantry/man-at-arms-1.webp@@unit_infantry/archer-2.webp@.",
+        "3: If Knights + archer then go @unit_cavalry/horseman-1.webp@@unit_infantry/spearman-1.webp@ with @technology_hre/awl-pike.webp@ &amp; blacksmith upgrades"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Eventually get eco upgrades and expand boar. Then think about age 3 after opponent gets it and you have done damage. If feudal vs feudal, just continue massing spear maa archer"
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/M961c97ctU4",
+  "season": "Season 12",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "PZycr2KliA5cvZCB5gWI",
+    "civilization_code": "HRE",
+    "updated": "2026-03-03T19:57:01+00:00",
+    "views_at_snapshot": 6215,
+    "snapshot_date": "2026-10-31"
+  }
+}

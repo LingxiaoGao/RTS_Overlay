@@ -221,7 +221,7 @@ class SmartPipelineConfirmationTests(unittest.TestCase):
             ],
         )
 
-    def test_rollback_population_mismatch(self) -> None:
+    def test_population_mismatch_is_skipped(self) -> None:
         reader = FakeReader()
         pipeline = SmartHudPipeline(reader=reader, profile_validated=True)
         fields = {"population_current": "200", "population_cap": "100"}
@@ -236,21 +236,26 @@ class SmartPipelineConfirmationTests(unittest.TestCase):
 
         bad_frame = make_frame(8, 2.0)
         reader.set_frame(bad_frame, fields)
-        with self.assertRaises(ValueError) as ctx:
-            pipeline.process(bad_frame)
-        self.assertIn("population_current exceeds population_cap", str(ctx.exception))
-        self.assertEqual(pipeline.scheduler.last_sample, 1.5)
-        self.assertEqual(pipeline.confirmer.last_sample_index, 3)
+        result = pipeline.process(bad_frame)
+        self.assertTrue(result.sampled)
+        self.assertFalse(
+            any(
+                item.field in ("population_current", "population_cap")
+                for item in result.verified_observations
+            )
+        )
+        self.assertEqual(pipeline.scheduler.last_sample, 2.0)
+        self.assertEqual(pipeline.confirmer.last_sample_index, 4)
 
-        good_frame = make_frame(8, 2.0)
+        good_frame = make_frame(10, 2.5)
         reader.set_frame(
             good_frame,
             {"population_current": "200", "population_cap": "300"},
         )
         result = pipeline.process(good_frame)
         self.assertTrue(result.sampled)
-        self.assertEqual(pipeline.scheduler.last_sample, 2.0)
-        self.assertEqual(pipeline.confirmer.last_sample_index, 4)
+        self.assertEqual(pipeline.scheduler.last_sample, 2.5)
+        self.assertEqual(pipeline.confirmer.last_sample_index, 5)
 
         current = [
             o for o in result.verified_observations
@@ -259,14 +264,34 @@ class SmartPipelineConfirmationTests(unittest.TestCase):
         cap = [
             o for o in result.verified_observations if o.field == "population_cap"
         ][0]
-        self.assertIs(current.status, RecognitionStatus.CONFIRMED)
+        self.assertIs(current.status, RecognitionStatus.INFERRED)
         self.assertIs(cap.status, RecognitionStatus.INFERRED)
         self.assertIs(
-            result.state.population_current.status, RecognitionStatus.CONFIRMED
+            result.state.population_current.status, RecognitionStatus.INFERRED
         )
         self.assertEqual(result.state.population_current.value, 200)
         self.assertIs(
             result.state.population_cap.status, RecognitionStatus.INFERRED
+        )
+
+        for frame_id, captured_at in ((12, 3.0), (14, 3.5)):
+            frame = make_frame(frame_id, captured_at)
+            reader.set_frame(
+                frame,
+                {"population_current": "200", "population_cap": "300"},
+            )
+            result = pipeline.process(frame)
+        population = {
+            item.field: item for item in result.verified_observations
+            if item.field in ("population_current", "population_cap")
+        }
+        self.assertIs(
+            population["population_current"].status,
+            RecognitionStatus.CONFIRMED,
+        )
+        self.assertIs(
+            population["population_cap"].status,
+            RecognitionStatus.CONFIRMED,
         )
 
     def test_reset_clears_state_and_preserves_validation(self) -> None:

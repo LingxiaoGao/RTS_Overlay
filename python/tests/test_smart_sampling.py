@@ -18,6 +18,11 @@ class SamplingTests(unittest.TestCase):
         self.assertFalse(scheduler.due(100.4))
         self.assertTrue(scheduler.due(100.5))
 
+    def test_boundary_tolerates_video_timestamp_rounding(self):
+        scheduler = ObservationScheduler()
+        scheduler.mark_sample(0.5)
+        self.assertTrue(scheduler.due(0.99999999))
+
     def test_backward_and_reset(self):
         scheduler = ObservationScheduler()
         scheduler.mark_sample(100.0)

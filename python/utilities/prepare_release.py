@@ -62,8 +62,7 @@ def compile_clean(name_game: str, disable_console: bool = True, finalize_folder:
         f'--include-data-file={include_game}/*.py={name_game}/',
         f'--include-data-dir={include_docs_common}=docs/assets/common',
         f'--include-data-dir={include_docs_game}=docs/assets/{name_game}',
-        '--include-package=rapidocr',
-        '--include-package-data=rapidocr',
+        '--include-package=omegaconf',
     ]
 
     if disable_console:  # disable the console
@@ -110,6 +109,10 @@ def compile_clean(name_game: str, disable_console: bool = True, finalize_folder:
         if name_game == 'aoe4':
             demo_data = PYTHON_DIR / 'demo_data'
             shutil.copy(demo_data / 'smart_hud_config.json', overlay_folder)
+            shutil.copytree(
+                demo_data / 'hud_templates_1280x720',
+                overlay_folder / 'hud_templates_1280x720',
+            )
             build_orders_out = overlay_folder / 'local_config' / 'aoe4' / 'build_orders'
             build_orders_out.mkdir(parents=True, exist_ok=True)
             for build_order_file in (demo_data / 'build_orders').glob('*.json'):

@@ -127,6 +127,27 @@ class FactoryTests(unittest.TestCase):
         with self.assertRaises(TypeError):
             RapidOcrRecognizer(image_factory="x")
 
+    def test_default_engine_factory_limits_threads(self):
+        import sys
+        from unittest import mock
+
+        from aoe4.smart_ocr import _default_engine_factory
+
+        fake_main = mock.MagicMock()
+        fake_main.RapidOCR = mock.MagicMock(return_value="engine")
+        with mock.patch.dict(
+            sys.modules,
+            {"rapidocr": mock.MagicMock(), "rapidocr.main": fake_main},
+        ):
+            self.assertEqual(_default_engine_factory(), "engine")
+
+        fake_main.RapidOCR.assert_called_once_with(
+            params={
+                "EngineConfig.onnxruntime.intra_op_num_threads": 1,
+                "EngineConfig.onnxruntime.inter_op_num_threads": 1,
+            }
+        )
+
     def test_lazy_creation_and_reuse(self):
         created = []
 

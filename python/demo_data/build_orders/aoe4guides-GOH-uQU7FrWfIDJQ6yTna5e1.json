@@ -1,0 +1,349 @@
+{
+  "description": "",
+  "civilization": "Golden Horde",
+  "name": "Golden Horde Team Match Fast Imperial",
+  "author": "特列-苏菲",
+  "source": "https://aoe4guides.com/builds/uQU7FrWfIDJQ6yTna5e1",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "3@unit_worker/villager.webp@ to @resource/sheep.webp@",
+        "1@unit_worker/villager-mongols.webp@@abilities/repair.webp@@building_mongols/ovoo.webp@ and @abilities/repair.webp@@building_mongols/ger.webp@ at @resource/resource_gold.webp@",
+        "1@unit_worker/villager-mongols.webp@@abilities/repair.webp@@landmark_golden_horde/golden_tent.webp@ and @abilities/repair.webp@@building_mongols/ger.webp@ at @resource/resource_gold.webp@",
+        "@building_economy/town-center.webp@@resource/rally.webp@@resource/sheep.webp@ until 23@unit_worker/villager-mongols.webp@ on @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:10",
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@ with @technology_golden_horde/golden_tent_khan_age2.webp@",
+        "8@resource/sheep.webp@@unit_worker/villager-mongols.webp@ to @resource/gaiatreeprototypetree.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 17,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6@resource/gaiatreeprototypetree.webp@@unit_worker/villager-mongols.webp@ to @resource/resource_wood.webp@",
+        "2@resource/gaiatreeprototypetree.webp@@unit_worker/villager-mongols.webp@@abilities/repair.webp@@building_mongols/ger.webp@ at @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 19,
+      "resources": {
+        "food": 9,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2@resource/resource_gold.webp@@unit_worker/villager-mongols.webp@@abilities/repair.webp@@building_golden_horde/fortified_outpost.webp@ at @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 17,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4@resource/sheep.webp@@unit_worker/villager-mongols.webp@ to @resource/resource_gold.webp@",
+        "@landmark_golden_horde/golden_tent.webp@ trains @unit_golden_horde/khan.webp@@unit_golden_horde/torguud.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:10",
+      "villager_count": 21,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@unit_worker/villager-mongols.webp@@abilities/repair.webp@@building_mongols/ovoo.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:20",
+      "villager_count": 21,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_economy/wheelbarrow.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:20",
+      "villager_count": 25,
+      "resources": {
+        "food": 11,
+        "wood": 8,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4@unit_worker/villager-mongols.webp@@abilities/repair.webp@@building_golden_horde/stockyard.webp@ whenever there is 250@resource/resource_wood.webp@ until 4@building_golden_horde/stockyard.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:50",
+      "villager_count": 33,
+      "resources": {
+        "food": 19,
+        "wood": 8,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_3.webp@ with @technology_golden_horde/golden_tent_relic_ovoos_age3.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:00",
+      "villager_count": 37,
+      "resources": {
+        "food": 23,
+        "wood": 8,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@@resource/rally.webp@@resource/resource_gold.webp@ until 20@unit_worker/villager-mongols.webp@ on @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "10:50",
+      "villager_count": 39,
+      "resources": {
+        "food": 23,
+        "wood": 0,
+        "gold": 16,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "After 350 spare @resource/resource_wood.webp@, 8@resource/resource_wood.webp@@unit_worker/villager-mongols.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:00",
+      "villager_count": 39,
+      "resources": {
+        "food": 23,
+        "wood": 0,
+        "gold": 16,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@unit_worker/villager-mongols.webp@@abilities/repair.webp@@building_mongols/prayer-tent.webp@",
+        "1@unit_worker/villager-mongols.webp@@abilities/repair.webp@@building_mongols/ovoo.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:30",
+      "villager_count": 41,
+      "resources": {
+        "food": 23,
+        "wood": 0,
+        "gold": 18,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_mongols/prayer-tent.webp@ trains @unit_mongols/shaman.webp@ for @resource/relics.webp@ and @abilities/repair.webp@@building_mongols/ovoo.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:50",
+      "villager_count": 43,
+      "resources": {
+        "food": 23,
+        "wood": 0,
+        "gold": 20,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@@resource/rally.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "12:20",
+      "villager_count": 45,
+      "resources": {
+        "food": 23,
+        "wood": 2,
+        "gold": 20,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_4.webp@ with @technology_golden_horde/golden_tent_stone_armies_age4.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "13:50",
+      "villager_count": 49,
+      "resources": {
+        "food": 23,
+        "wood": 6,
+        "gold": 20,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@unit_worker/villager-mongols.webp@@abilities/repair.webp@@building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "14:20",
+      "villager_count": 51,
+      "resources": {
+        "food": 23,
+        "wood": 8,
+        "gold": 20,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_golden_horde/stables-reinforcements-3.webp@"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "time": "14:40",
+      "villager_count": 51,
+      "resources": {
+        "food": 23,
+        "wood": 8,
+        "gold": 20,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_golden_horde/ovoo-tithe-4.webp@",
+        "1@unit_worker/villager-mongols.webp@@abilities/repair.webp@@building_mongols/ovoo.webp@"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "time": "15:00",
+      "villager_count": 53,
+      "resources": {
+        "food": 23,
+        "wood": 10,
+        "gold": 20,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1@unit_worker/villager-mongols.webp@@abilities/repair.webp@@building_technology/blacksmith.webp@",
+        "@landmark_golden_horde/golden_tent.webp@ trains @unit_golden_horde/torguud.webp@ no stop"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "time": "15:20",
+      "villager_count": 53,
+      "resources": {
+        "food": 23,
+        "wood": 10,
+        "gold": 20,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_military/biology.webp@@technology_military/bloomery.webp@@technology_military/fitted-leatherwork.webp@@technology_military/iron-undermesh.webp@@technology_military/decarbonization.webp@@technology_military/insulated-helm.webp@@technology_military/wedge-rivets.webp@@technology_military/damascus-steel.webp@@technology_military/master-smiths.webp@@technology_military/angled-surfaces.webp@@technology_golden_horde/padded_armor.webp@"
+      ]
+    }
+  ],
+  "video": "",
+  "season": "Season 12",
+  "map": null,
+  "strategy": "Fast Imperial",
+  "_aoe4_guides": {
+    "id": "uQU7FrWfIDJQ6yTna5e1",
+    "civilization_code": "GOH",
+    "updated": "2025-11-07T23:59:17+00:00",
+    "views_at_snapshot": 7732,
+    "snapshot_date": "2026-10-31"
+  }
+}

@@ -1,0 +1,220 @@
+{
+  "description": "Fast mongol rax into trush.\n\nVideo linked",
+  "civilization": "Mongols",
+  "name": "Mongol Tower Rush FULL GUIDE",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/QgV22tpkUXlJoqTHqgw6",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Pop \"\"Maneuver Arrow\",",
+        "5 @unit_worker/villager-mongols.webp@ on @resource/gaiatreeprototypetree.png@ and place @building_mongols/ger.png@ beside @resource/gaiatreeprototypetree.png@ for drop-off",
+        "1 @unit_worker/villager-mongols.png@ to build @building_mongols/ovoo.png@ on @resource/resource_stone.png@",
+        "@building_economy/town-center.png@ unpacked at @resource/resource_wood.png@ (@resource/rally.png@starting @resource/sheep.png@to @building_economy/town-center.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:18",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@resource/rally.webp@ @unit_worker/villager-mongols.png@ to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:58",
+      "villager_count": 6,
+      "resources": {
+        "food": 2,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1 @unit_worker/villager-mongols.webp@ builds @building_military/barracks.png@",
+        "3 @resource/gaiatreeprototypetree.png@@unit_worker/villager-mongols.png@ go to @resource/resource_wood.png@",
+        "2 @resource/gaiatreeprototypetree.png@@unit_worker/villager-mongols.png@ go to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:37",
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Queue @unit_infantry/spearman-1.webp@x2"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "~2:15‑2:30",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Pull the 3 @resource/resource_wood.webp@@unit_worker/villager-mongols.png@ (enough for 2nd @unit_infantry/spearman-1.png@x2 + @building_defensive/outpost.png@) & send them to @resource/resource_gold.png@ with starting @building_mongols/ger.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 13,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue @unit_infantry/spearman-1.webp@x2 & send 1 @unit_worker/villager-mongols.png@ to build @building_defensive/outpost.png@ on @resource/resource_gold.png@/@resource/resource_wood.png@ (dependent on matchup)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "~3:50",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When @resource/resource_gold.webp@ is 3900/4000 pull 3@resource/resource_gold.png@ @unit_worker/villager-mongols.png@ & 2 @resource/sheep.png@@unit_worker/villager-mongols.png@ and build @landmark_mongols/deer-stones.png@/@landmark_mongols/the-silver-tree.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:03",
+      "villager_count": 17,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Remacro and @resource/rally.webp@@resource/sheep.png@ until 11 (Your desired macro is 11f / 7w / 5g then rest to wood)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~5:20",
+      "villager_count": 21,
+      "resources": {
+        "food": 11,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@age/age_2.webp@: Build @building_military/archery-range.png@ + @building_military/stable.png@ with age-up @unit_worker/villager-mongols.png@ then to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start full-producing @unit_mongols/keshik-2.webp@@unit_infantry/archer-2.png@ and raid/look for good fights.",
+        "If opponent is very defensive (i.e. defensive landmark or other...) then build 1-2 @building_economy/market.png@ if on @landmark_mongols/deer-stones.png@",
+        "If you got your @building_economy/town-center.png@ on @building_mongols/ovoo.png@ then x2 produce @unit_worker/villager-mongols.png@",
+        "Remember @building_technology/blacksmith.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:00‑10:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remember @building_technology/blacksmith.webp@ for @technology_military/iron-undermesh.png@@technology_military/steeled-arrow.png@",
+        "If up against @civilization_flag/mal.png@ or other raidable civs: go for mass feudal and get improved @technology_mongols/raid-bounty.png@ + @technology_mongols/stone-bounty.png@for 150res per house.",
+        "If against @civilization_flag/rus.png@@civilization_flag/eng.png@ focus on your trade boom instead of raiding. Try to contain your opponent and read into what strat is used from them (boom = outboom them, Aggro = play aggro too and take a good fight, FC = FC yourself with a few traders)",
+        "If against @civilization_flag/ott.png@ focus on making spears in dark age to deal with them early and prevent feudal age-up.",
+        "Your victory condition in the long run is to setup trade and outscale."
+      ]
+    }
+  ],
+  "video": "",
+  "season": "Season 6",
+  "map": "Open",
+  "strategy": "Rush",
+  "_aoe4_guides": {
+    "id": "QgV22tpkUXlJoqTHqgw6",
+    "civilization_code": "MON",
+    "updated": "2024-03-24T14:02:30+00:00",
+    "views_at_snapshot": 14071,
+    "snapshot_date": "2026-10-31"
+  }
+}

@@ -1,0 +1,229 @@
+{
+  "description": "Standard Opener for the Delhi civilization with either Castle age or Feudal direction. \n\nTechnologies are not provided here, as they should always be queued up. This is explained in the video.\n\nSee Video Provided for Reference",
+  "civilization": "Delhi Sultanate",
+  "name": "Standard ToV Delhi Opener for Castle / Feudal Rush",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/cuoaFU7jsHTcEfw46e27",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 7,
+      "resources": {
+        "food": 1,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "1 @unit_worker/villager-delhi.webp@&nbsp;starts@building_economy/mill.png@&nbsp;and goes to build&nbsp;@building_religious/mosque.png@&nbsp;/ 5&nbsp;@unit_worker/villager-delhi.png@&nbsp;to straggler&nbsp;@resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 new @unit_worker/villager-delhi.webp@&nbsp;builds&nbsp;@building_economy/house.png@&nbsp;/&nbsp;@resource/resource_wood.png@@unit_worker/villager-delhi.png@&nbsp;go to&nbsp;@resource/resource_food.png@&nbsp;(Do drop off on unbuilt&nbsp;@building_economy/mill.png@&nbsp;if less travel distance)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:40",
+      "villager_count": 8,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 new @unit_worker/villager-delhi.webp@&nbsp;to&nbsp;@resource/resource_food.png@&nbsp;(8)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 new @unit_worker/villager-delhi.webp@&nbsp;to&nbsp;@building_economy/mining-camp.png@@resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 new @unit_worker/villager-delhi.webp@&nbsp;to chopped straggler&nbsp;@resource/resource_wood.png@, then 1 new&nbsp;@unit_worker/villager-delhi.png@&nbsp;to build&nbsp;@building_economy/lumber-camp.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "4@resource/resource_food.webp@@unit_worker/villager-delhi.png@ build&nbsp;@landmark_delhi/tower-of-victory.png@. Keep&nbsp;@resource/rally.png@onto&nbsp;@resource/resource_wood.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:40",
+      "villager_count": 9,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Pull @resource/resource_gold.webp@@unit_worker/villager-delhi.png@&nbsp;at 3770G in Gold Vein -> Queue&nbsp;@unit_delhi/scholar.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 9,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Keep @resource/rally.webp@onto&nbsp;@resource/resource_wood.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:40",
+      "villager_count": 9,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Pull @resource/resource_gold.webp@@unit_worker/villager-delhi.png@&nbsp;at 3770G in Gold Vein onto @resource/resource_wood.png@&nbsp;&nbsp;-> Queue&nbsp;@unit_delhi/scholar.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:09",
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_technology/blacksmith.webp@&nbsp;(2 if opponent is not immediatly aggressive)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Balance economy approx 50/50 to build @resource/resource_food.webp@+@resource/resource_wood.png@heavy units and&nbsp;@building_defensive/palisade-wall.png@around&nbsp;@resource/sacred_sites.png@. Make&nbsp;@unit_delhi/scholar.png@&nbsp;from&nbsp;@resource/sacred_sites.png@&nbsp;@resource/resource_gold.png@&nbsp;.&nbsp;"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Now head into units.",
+        "Open @building_military/stable.webp@+@building_military/archery-range.png@&nbsp;for standard opener vs&nbsp;@civilization_flag/eng.png@@civilization_flag/mal.png@@civilization_flag/hre.png@@civilization_flag/chi.png@.",
+        "Open&nbsp;@building_military/barracks.png@+@building_military/archery-range.png@&nbsp;if against&nbsp;@civilization_flag/abb.png@@civilization_flag/del.png@@civilization_flag/ott.png@",
+        "Open&nbsp;@building_military/barracks.png@+@building_military/stable.png@&nbsp;vs&nbsp;@civilization_flag/fre.png@@civilization_flag/rus.png@@civilization_flag/mon.png@",
+        "Of course, scout opponent and build units that counter his. This is just a guide.&nbsp;"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "For Castle TIMING use @landmark_delhi/compound-of-the-defender.webp@&nbsp;(not if opponent is in castle): build 3-4&nbsp;@building_military/barracks.png@&nbsp;(total with scholars) and mass@unit_infantry/man-at-arms-1.png@. Send Age up vills to&nbsp;@resource/resource_stone.png@and&nbsp;@building_defensive/keep.png@-drop opponents base when pushing. Go siege, if necessary, and if you can't push, build economy with&nbsp;@building_defensive/keep.png@"
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/amSVlXvc0d0",
+  "season": "Season 5",
+  "map": "Open",
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "cuoaFU7jsHTcEfw46e27",
+    "civilization_code": "DEL",
+    "updated": "2024-03-24T14:11:43+00:00",
+    "views_at_snapshot": 11444,
+    "snapshot_date": "2026-10-31"
+  }
+}

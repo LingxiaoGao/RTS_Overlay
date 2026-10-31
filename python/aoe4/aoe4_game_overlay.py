@@ -4,14 +4,16 @@ from __future__ import annotations
 import os
 
 from PyQt5.QtWidgets import (
+    QAbstractItemView,
     QApplication,
     QComboBox,
     QDialog,
     QHBoxLayout,
-    QListWidget,
-    QListWidgetItem,
+    QHeaderView,
     QMessageBox,
     QPushButton,
+    QTableWidget,
+    QTableWidgetItem,
     QVBoxLayout,
 )
 from PyQt5.QtGui import QIcon, QFont
@@ -24,7 +26,11 @@ from common.rts_overlay_images import RTSOverlayImages
 from aoe4.aoe4_settings import AoE4OverlaySettings
 from aoe4.aoe4_build_order import check_valid_aoe4_build_order
 from aoe4.aoe4_civ_icon import aoe4_civilization_icon, get_aoe4_faction_selection
-from aoe4.online_build_orders import Aoe4GuidesClient, OnlineBuildOrderError
+from aoe4.online_build_orders import (
+    Aoe4GuidesClient,
+    CIVILIZATION_NAMES_ZH,
+    OnlineBuildOrderError,
+)
 from aoe4.smart_build_order_session import SmartBuildOrderSession, apply_schedule_times
 from aoe4.smart_advisor import AdvisorEngine, EconomyTarget
 from aoe4.smart_notifications import Notification, NotificationManager
@@ -80,6 +86,9 @@ class AoE4GameOverlay(RTSGameOverlay):
         # smart economy advice
         self.advisor = AdvisorEngine()
         self.notifications = NotificationManager()
+        self.online_build_client = Aoe4GuidesClient(
+            bundled_directory=self.directory_build_orders
+        )
 
         # civilization selection
         layout = self.settings.layout
@@ -201,9 +210,9 @@ class AoE4GameOverlay(RTSGameOverlay):
 
     def download_online_build_orders(self, dialog):
         """Fetch, select, and download an AoE4 Guides build order."""
-        client = Aoe4GuidesClient()
+        client = self.online_build_client
         try:
-            summaries = client.list_latest()
+            summaries = client.list_popular_recent()
         except OnlineBuildOrderError as err:
             self._show_online_message(dialog, QMessageBox.Critical, "错误", f"获取在线建造顺序失败：{err}")
             return
@@ -215,7 +224,15 @@ class AoE4GameOverlay(RTSGameOverlay):
         select_dialog = QDialog(dialog)
         select_dialog.setWindowTitle("选择在线建造顺序")
         select_dialog.setModal(True)
-        select_dialog.resize(600, 400)
+        select_dialog.setMinimumSize(640, 400)
+        select_dialog.resize(900, 600)
+        select_dialog.setSizeGripEnabled(True)
+        select_dialog.setWindowFlags(
+            select_dialog.windowFlags()
+            | Qt.WindowMinimizeButtonHint
+            | Qt.WindowMaximizeButtonHint
+            | Qt.WindowCloseButtonHint
+        )
 
         font = QFont(self.settings.layout.font_police, self.settings.layout.font_size)
         button_style = """
@@ -229,28 +246,46 @@ class AoE4GameOverlay(RTSGameOverlay):
             }
         """
 
-        list_widget = QListWidget(select_dialog)
-        list_widget.setFont(font)
-        list_widget.setStyleSheet(
+        table_widget = QTableWidget(len(summaries), 3, select_dialog)
+        table_widget.setHorizontalHeaderLabels(["文明", "更新日期", "攻略名称"])
+        table_widget.setFont(font)
+        table_widget.setSelectionBehavior(QAbstractItemView.SelectRows)
+        table_widget.setSelectionMode(QAbstractItemView.SingleSelection)
+        table_widget.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        table_widget.verticalHeader().setVisible(False)
+        header = table_widget.horizontalHeader()
+        header.setSectionResizeMode(0, QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(1, QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(2, QHeaderView.Stretch)
+        table_widget.setStyleSheet(
             """
-            QListWidget {
+            QTableWidget {
+                background-color: black;
+                color: white;
+                border: 1px solid white;
+            }
+            QHeaderView::section {
                 background-color: black;
                 color: white;
                 border: 1px solid white;
             }
             """
         )
-        for index, summary in enumerate(summaries):
-            item = QListWidgetItem(f"{summary.title} | {summary.civilization} | {summary.author}")
-            item.setData(Qt.UserRole, index)
-            list_widget.addItem(item)
-        list_widget.setCurrentRow(0)
+        for row, summary in enumerate(summaries):
+            values = (
+                CIVILIZATION_NAMES_ZH.get(summary.civilization, summary.civilization),
+                summary.updated.strftime('%Y-%m-%d'),
+                summary.title,
+            )
+            for column, value in enumerate(values):
+                table_widget.setItem(row, column, QTableWidgetItem(value))
+        table_widget.selectRow(0)
 
         def on_download():
-            item = list_widget.currentItem()
-            if item is None:
+            row = table_widget.currentRow()
+            if row < 0 or row >= len(summaries):
                 return
-            summary = summaries[item.data(Qt.UserRole)]
+            summary = summaries[row]
             try:
                 saved_path = client.save_overlay(summary.build_id, self.directory_build_orders)
             except OnlineBuildOrderError as err:
@@ -278,7 +313,7 @@ class AoE4GameOverlay(RTSGameOverlay):
         cancel_button.clicked.connect(select_dialog.reject)
 
         layout = QVBoxLayout(select_dialog)
-        layout.addWidget(list_widget)
+        layout.addWidget(table_widget)
         button_layout = QHBoxLayout()
         button_layout.addWidget(download_button)
         button_layout.addWidget(cancel_button)

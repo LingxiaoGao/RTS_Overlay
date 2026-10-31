@@ -61,7 +61,7 @@ class EnvironmentValidatorTests(unittest.TestCase):
         path = self._write_config(_valid_config_data())
 
         def finder(name):
-            if name == "rapidocr":
+            if name == "cv2":
                 raise RuntimeError("boom")
             return object()
 
@@ -69,7 +69,7 @@ class EnvironmentValidatorTests(unittest.TestCase):
 
         self.assertFalse(report.ready)
         by_name = {d.module: d.available for d in report.dependencies}
-        self.assertFalse(by_name["rapidocr"])
+        self.assertFalse(by_name["cv2"])
         self.assertTrue(by_name["PyQt5"])
 
     def test_missing_config(self):
@@ -110,7 +110,7 @@ class EnvironmentValidatorTests(unittest.TestCase):
         )
         self.assertEqual(
             list(REQUIRED_MODULES),
-            ["PyQt5", "mss", "rapidocr", "onnxruntime"],
+            ["PyQt5", "mss", "cv2", "numpy"],
         )
 
     def test_report_is_immutable(self):
@@ -137,7 +137,7 @@ class EnvironmentValidatorTests(unittest.TestCase):
         self.addCleanup(tmpdir.cleanup)
 
         def finder(name):
-            if name == "onnxruntime":
+            if name == "cv2":
                 return None
             return object()
 
@@ -148,7 +148,7 @@ class EnvironmentValidatorTests(unittest.TestCase):
 
         self.assertIsInstance(messages, tuple)
         joined = "\n".join(messages)
-        self.assertIn("onnxruntime", joined)
+        self.assertIn("cv2", joined)
         self.assertIn("配置文件", joined)
 
 

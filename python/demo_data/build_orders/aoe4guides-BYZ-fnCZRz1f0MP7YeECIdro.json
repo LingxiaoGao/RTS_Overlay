@@ -1,0 +1,230 @@
+{
+  "description": "See video link for video guide",
+  "civilization": "Byzantines",
+  "name": "Grand Winery Timing Attack (2026)",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/fnCZRz1f0MP7YeECIdro",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 1,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "3 @unit_worker/villager.webp@ to @resource/sheep.png@.",
+        "1 @unit_worker/villager.png@ to build @building_economy/mining-camp.png@@resource/resource_gold.png@,",
+        "1 to @building_economy/mining-camp.png@@resource/resource_stone.png@,",
+        "1 to build @building_economy/house.png@+@building_byzantines/cistern-1.png@ then @resource/resource_stone.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 1,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "New @unit_worker/villager.webp@ to @resource/sheep.png@ until 7 @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:40",
+      "villager_count": 11,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager.webp@ to @resource/resource_gold.png@ & @resource/rally.png@ @resource/resource_food.png@ again."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 2,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "2nd @building_byzantines/cistern-1.webp@ (build with stone vill)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": 13,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 2,
+        "stone": 2,
+        "builder": 4
+      },
+      "notes": [
+        "@landmark_byzantines/grand-winery-1.webp@ with 4 @resource/sheep.png@@unit_worker/villager.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 2,
+        "stone": 2,
+        "builder": 4
+      },
+      "notes": [
+        "@resource/rally.webp@ @resource/resource_wood.png@ until 8"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 16,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 2,
+        "stone": 2,
+        "builder": 4
+      },
+      "notes": [
+        "@building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 18,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 2,
+        "stone": 2,
+        "builder": 4
+      },
+      "notes": [
+        "@resource/resource_gold.webp@@unit_worker/villager.png@ build 3rd@building_byzantines/cistern-1.png@ & @building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:14",
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 6,
+        "gold": 2,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/horticulture.webp@ / @technology_economy/wheelbarrow.webp@ & pull @resource/sheep.webp@ to @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 21,
+      "resources": {
+        "food": 9,
+        "wood": 8,
+        "gold": 2,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/barracks.webp@ and 4th @building_byzantines/cistern-1.webp@ (after 4th cistern stop gathering stone)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 22,
+      "resources": {
+        "food": 10,
+        "wood": 8,
+        "gold": 2,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "@building_byzantines/mercenary-house-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:30",
+      "villager_count": 25,
+      "resources": {
+        "food": 13,
+        "wood": 8,
+        "gold": 2,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "5th @building_byzantines/cistern-1.webp@ & @building_technology/blacksmith.webp@ for @technology_military/steeled-arrow.webp@@technology_military/iron-undermesh.webp@ &amp; @technology_military/siege-engineering.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Non stop units and ram around min 8-10 for a big push. Alternatively go for a semi fast castle into golden horn tower"
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/xNyOKJOb-qE",
+  "season": "Season 12",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "fnCZRz1f0MP7YeECIdro",
+    "civilization_code": "BYZ",
+    "updated": "2026-01-06T22:59:02+00:00",
+    "views_at_snapshot": 5678,
+    "snapshot_date": "2026-10-31"
+  }
+}

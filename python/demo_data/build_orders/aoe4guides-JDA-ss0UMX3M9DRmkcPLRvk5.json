@@ -1,0 +1,210 @@
+{
+  "description": "JD Deer Opener Into Double Stable Aggro",
+  "civilization": "Jeanne d'Arc",
+  "name": "(2026) JD Aggression",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/ss0UMX3M9DRmkcPLRvk5",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start 6 on @resource/sheep.webp@ and look for the 1st @resource/deer.webp@pack around your base (there are two, one will be immediately outside tc vision range)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:35",
+      "villager_count": 7,
+      "resources": {
+        "food": 2,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once @resource/deer.webp@is found, take 5 @unit_worker/villager.webp@ and gather 50 wood and @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:50",
+      "villager_count": 8,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "build a @building_economy/mill.webp@ on @resource/deer.webp@. Research @technology_economy/survival-techniques.webp@->@technology_economy/wheelbarrow.webp@ immediately"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:20",
+      "villager_count": 10,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Pull 4 @unit_worker/villager.webp@ from @resource/sheep.webp@ to @resource/resource_gold.webp@ when @building_economy/mill.webp@ is finished"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.webp@ until @age/age_2.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:13",
+      "villager_count": 15,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@unit_jeanne/jeanne-darc-peasant-1.webp@ + 3 @resource/sheep.webp@@unit_worker/villager.webp@ build @landmark_french/school-of-cavalry.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:13",
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Take rest of @resource/sheep.webp@@unit_worker/villager.webp@ and go to wood."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 16,
+      "resources": {
+        "food": 5,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_wood.webp@ until 8"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:37",
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 6,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue @technology_economy/specialized-pick.webp@ and @unit_french/royal-knight-2.webp@ upon reaching feudal"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once 8 on @resource/resource_wood.webp@ rally then to @resource/resource_gold.webp@ until 8 and then back to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:36",
+      "villager_count": 21,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2nd @building_military/stable.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:30",
+      "villager_count": 25,
+      "resources": {
+        "food": 9,
+        "wood": 8,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/archery-range.webp@ & @building_defensive/outpost.webp@ if needed on @resource/resource_gold.webp@ and @resource/deer.webp@"
+      ]
+    }
+  ],
+  "video": "",
+  "season": "Season 12",
+  "map": null,
+  "strategy": "Rush",
+  "_aoe4_guides": {
+    "id": "ss0UMX3M9DRmkcPLRvk5",
+    "civilization_code": "JDA",
+    "updated": "2026-04-04T21:50:33+00:00",
+    "views_at_snapshot": 3815,
+    "snapshot_date": "2026-10-31"
+  }
+}

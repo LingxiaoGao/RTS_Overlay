@@ -1,0 +1,20 @@
+{
+  "capture_region": {
+    "left": 0,
+    "top": 0,
+    "width": 1280,
+    "height": 720
+  },
+  "hud_regions": {
+    "game_time": {"left": 622, "top": 65, "width": 37, "height": 22},
+    "age": {"left": 632, "top": 13, "width": 22, "height": 28},
+    "food": {"left": 24, "top": 597, "width": 50, "height": 28},
+    "wood": {"left": 24, "top": 624, "width": 50, "height": 28},
+    "gold": {"left": 24, "top": 651, "width": 50, "height": 28},
+    "stone": {"left": 24, "top": 678, "width": 50, "height": 28},
+    "population_current": {"left": 26, "top": 562, "width": 47, "height": 30},
+    "population_cap": {"left": 26, "top": 562, "width": 47, "height": 30}
+  },
+  "profile_validated": true,
+  "age_signal_validated": true
+}

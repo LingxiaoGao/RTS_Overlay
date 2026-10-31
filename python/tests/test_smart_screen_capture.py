@@ -81,6 +81,19 @@ class LazyFactoryTests(unittest.TestCase):
 
 
 class MonitorDictionaryTests(unittest.TestCase):
+    def test_primary_screen_region_uses_first_real_monitor(self) -> None:
+        backend = FakeBackend([])
+        backend.monitors = [
+            {"left": 0, "top": 0, "width": 3840, "height": 1080},
+            {"left": 100, "top": 20, "width": 2560, "height": 1440},
+        ]
+        capture = MssScreenCapture(FakeFactory([backend]))
+
+        self.assertEqual(
+            capture.screen_region(),
+            CaptureRegion(left=100, top=20, width=2560, height=1440),
+        )
+
     def test_exact_monitor_dictionary_passed_to_grab(self) -> None:
         backend = FakeBackend([make_shot()])
         capture = MssScreenCapture(FakeFactory([backend]))

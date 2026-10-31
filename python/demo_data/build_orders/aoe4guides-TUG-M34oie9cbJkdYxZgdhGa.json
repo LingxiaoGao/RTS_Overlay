@@ -1,0 +1,187 @@
+{
+  "description": "Feudal Aggro with Raider Elephants supported by a Healer Elephant. Super fast aggro that bullies the opponent into idling vills lest you trample them. Follow with Archers to deal with Spearmen.",
+  "civilization": "Tughlaq Dynasty",
+  "name": "Feudal Aggro with Raider and Healer Elephants",
+  "author": "Eldritch",
+  "source": "https://aoe4guides.com/builds/M34oie9cbJkdYxZgdhGa",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue @unit_worker/villager-delhi.webp@an send all @unit_worker/villager-delhi.webp@ and the @unit_tughluq/worker_elephant.webp@ on @resource/berrybush.webp@",
+        "Send the first new @unit_worker/villager-delhi.webp@ on @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ the second new @unit_worker/villager-delhi.webp@ to @resource/resource_gold.webp@ and build @building_economy/house.webp@ first",
+        "Create @unit_tughluq/worker_elephant.webp@ and send to @resource/resource_gold.webp@",
+        "@resource/rally.webp@ until 3 on @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:20",
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 1 more @unit_worker/villager-delhi.webp@ to @resource/berrybush.webp@ then @resource/rally.webp@ to @resource/sheep.webp@ until age-up"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:15",
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Age-up with @landmark_delhi/dome-of-the-faith.webp@ with 4 @resource/berrybush.webp@@unit_worker/villager-delhi.webp@",
+        "Move @resource/sheep.webp@@unit_worker/villager-delhi.webp@ and 1 @resource/resource_gold.webp@@unit_worker/villager-delhi.webp@ to @resource/gaiatreeprototypetree.webp@ and @resource/rally.webp@ there until 4"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 16,
+      "resources": {
+        "food": 6,
+        "wood": 4,
+        "gold": 1,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Build @building_economy/house.webp@ with 1 @resource/resource_gold.webp@@unit_worker/villager-delhi.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:55",
+      "villager_count": 17,
+      "resources": {
+        "food": 7,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Build @building_military/stable.webp@ with the 4 age-up @unit_worker/villager-delhi.webp@ then go back to @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:20",
+      "villager_count": 19,
+      "resources": {
+        "food": 13,
+        "wood": 4,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Produce 2 @unit_tughluq/elephant_raider_age2.webp@ and @resource/rally.webp@ to enemy base to deny resources"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:15",
+      "villager_count": 20,
+      "resources": {
+        "food": 15,
+        "wood": 3,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Produce 1 @unit_tughluq/healer_elephant.webp@ and send to assist your 2 @unit_tughluq/elephant_raider_age2.webp@",
+        "Build @building_economy/house.webp@ with a @resource/resource_wood.webp@@unit_worker/villager-delhi.webp@",
+        "Once at 16 @unit_worker/villager-delhi.webp@ on @resource/resource_food.webp@ @resource/rally.webp@ to @resource/resource_wood.webp@ and produce a @unit_tughluq/worker_elephant.webp@ if necessary",
+        "Once you have 2 @unit_tughluq/elephant_raider_age2.webp@ and 1 @unit_tughluq/healer_elephant.webp@ produce 2 more @unit_tughluq/elephant_raider_age2.webp@ an 1 more @unit_tughluq/healer_elephant.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:10",
+      "villager_count": 27,
+      "resources": {
+        "food": 16,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build @building_military/archery-range.webp@ if opponent goes @unit_infantry/spearman-1.webp@ and produce @unit_infantry/archer-2.webp@"
+      ]
+    }
+  ],
+  "video": "",
+  "season": "Season 12",
+  "map": null,
+  "strategy": "Rush",
+  "_aoe4_guides": {
+    "id": "M34oie9cbJkdYxZgdhGa",
+    "civilization_code": "TUG",
+    "updated": "2025-11-05T13:44:10+00:00",
+    "views_at_snapshot": 3000,
+    "snapshot_date": "2026-10-31"
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "description": "Feudal All In",
+  "civilization": "Golden Horde",
+  "name": "Golden Horde Feudal All In",
+  "author": "FireGoose",
+  "source": "https://aoe4guides.com/builds/sQnvoPv5pbOs2HMRKhBB",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Start 5 @unit_worker/villager-mongols.webp@ on sheep and 1 @unit_worker/villager-mongols.webp@ to build @building_mongols/ovoo.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Next @unit_worker/villager-mongols.webp@ build @building_mongols/ger.webp@ on @resource/resource_gold.webp@ and @landmark_golden_horde/golden_tent.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally 3 @unit_worker/villager-mongols.webp@ to @resource/resource_gold.webp@ then back to @resource/resource_food.webp@ until age up"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age up to @age/age_2.webp@ with @technology_golden_horde/golden_tent_building_carts_age2.webp@ in @landmark_golden_horde/golden_tent.webp@ and leave 7 @unit_worker/villager-mongols.webp@ on @resource/resource_food.webp@ and rally @unit_worker/villager-mongols.webp@ to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 7,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Produce @unit_golden_horde/khan.webp@ and harass enemy and use @technology_golden_horde/golden_tent_building_carts_age2.webp@ to make @building_military/archery-range.webp@ and @building_military/stable.webp@ or @building_military/barracks.webp@ (As needed)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 23,
+      "resources": {
+        "food": 10,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_mongols/ger.webp@ on @resource/resource_wood.webp@ and rally until 8-10 @unit_worker/villager-mongols.webp@ then back to @resource/resource_food.webp@ (Remacro as needed)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 11,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build 2nd @building_mongols/ovoo.webp@ and produce  @unit_golden_horde/torguud.webp@ and @unit_infantry/archer-2.webp@ continuously"
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/FyQpW1huVQ0",
+  "season": "Season 11",
+  "map": null,
+  "strategy": "Rush",
+  "_aoe4_guides": {
+    "id": "sQnvoPv5pbOs2HMRKhBB",
+    "civilization_code": "GOH",
+    "updated": "2025-11-08T20:08:59+00:00",
+    "views_at_snapshot": 8997,
+    "snapshot_date": "2026-10-31"
+  }
+}

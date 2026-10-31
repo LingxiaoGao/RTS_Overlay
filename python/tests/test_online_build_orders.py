@@ -4,8 +4,10 @@ import pathlib
 import tempfile
 import unittest
 import urllib.parse
+from datetime import datetime, timedelta, timezone
 
 from aoe4.online_build_orders import (
+    CIVILIZATION_LABELS,
     LIST_ENDPOINT,
     OVERLAY_ENDPOINT,
     SOURCE_URL,
@@ -95,6 +97,53 @@ class ListLatestTests(unittest.TestCase):
         expected = LIST_ENDPOINT + '?civ=' + urllib.parse.quote('jeanne d\'arc & co', safe='')
         self.assertEqual(opener.urls, [expected])
 
+    def test_popularity_order_query(self):
+        opener = _RecordingOpener([_FakeResponse('[]')])
+        client = Aoe4GuidesClient(opener=opener)
+
+        client.list_latest(civilization_code='ENG', order_by='views')
+
+        self.assertEqual(opener.urls, [LIST_ENDPOINT + '?civ=ENG&orderBy=views'])
+
+    def test_timestamp_and_views_mapping(self):
+        updated = datetime(2026, 8, 1, 12, 0, tzinfo=timezone.utc)
+        payload = [{
+            'id': 'a1', 'title': 'First', 'civ': 'ENG', 'author': 'Ann',
+            'timeUpdated': {'_seconds': int(updated.timestamp())}, 'views': 42,
+        }]
+        client = Aoe4GuidesClient(
+            opener=_RecordingOpener([_FakeResponse(json.dumps(payload))])
+        )
+
+        summary = client.list_latest()[0]
+
+        self.assertEqual(summary.updated, updated)
+        self.assertEqual(summary.views, 42)
+
+    def test_missing_author_uses_creator_name_or_empty_string(self):
+        payload = [
+            {'id': 'a1', 'title': 'First', 'civ': 'ENG', 'creatorName': 'Creator'},
+            {'id': 'a2', 'title': 'Second', 'civ': 'ENG'},
+        ]
+        client = Aoe4GuidesClient(
+            opener=_RecordingOpener([_FakeResponse(json.dumps(payload))])
+        )
+
+        summaries = client.list_latest()
+
+        self.assertEqual([item.author for item in summaries], ['Creator', ''])
+
+    def test_malformed_timestamp_raises(self):
+        payload = [{
+            'id': 'a1', 'title': 'First', 'civ': 'ENG', 'author': 'Ann',
+            'timeUpdated': {'_seconds': 'bad'},
+        }]
+        client = Aoe4GuidesClient(
+            opener=_RecordingOpener([_FakeResponse(json.dumps(payload))])
+        )
+        with self.assertRaises(OnlineBuildOrderError):
+            client.list_latest()
+
     def test_network_error_raises(self):
         opener = _RecordingOpener([ConnectionError('boom')])
         client = Aoe4GuidesClient(opener=opener)
@@ -118,6 +167,112 @@ class ListLatestTests(unittest.TestCase):
         client = Aoe4GuidesClient(opener=opener)
         with self.assertRaises(OnlineBuildOrderError):
             client.list_latest()
+
+
+class _CivilizationClient(Aoe4GuidesClient):
+    def __init__(self, values=None, failures=None):
+        self.values = values or {}
+        self.failures = failures or {}
+
+    def list_latest(self, civilization_code=None, order_by=None):
+        self.order_by = order_by
+        if civilization_code in self.failures:
+            raise self.failures[civilization_code]
+        return tuple(self.values.get(civilization_code, ()))
+
+
+def _summary(build_id, civilization, updated, views=0, title=None):
+    return OnlineBuildSummary(
+        build_id=build_id,
+        title=title or build_id,
+        civilization=civilization,
+        author='author',
+        updated=updated,
+        views=views,
+    )
+
+
+class ListPopularRecentTests(unittest.TestCase):
+    NOW = datetime(2026, 10, 31, tzinfo=timezone.utc)
+
+    def test_prefers_last_year_then_uses_older_fallback(self):
+        code = CIVILIZATION_LABELS[0][0]
+        values = {
+            code: (
+                _summary('boundary', code, self.NOW - timedelta(days=365)),
+                _summary('recent', code, self.NOW - timedelta(days=10)),
+                _summary('older-high', code, self.NOW - timedelta(days=500), views=100),
+                _summary('older-low', code, self.NOW - timedelta(days=600), views=1),
+                _summary('future', code, self.NOW + timedelta(seconds=1)),
+            )
+        }
+
+        client = _CivilizationClient(values)
+        result = client.list_popular_recent(now=self.NOW)
+
+        self.assertEqual(
+            [item.build_id for item in result],
+            ['future', 'recent', 'boundary'],
+        )
+        self.assertEqual(client.order_by, 'views')
+
+    def test_sorts_by_views_and_caps_three(self):
+        code = CIVILIZATION_LABELS[0][0]
+        values = {code: tuple(
+            _summary(f'item-{views}', code, self.NOW, views=views)
+            for views in (1, 50, 3, 100, 20)
+        )}
+
+        result = _CivilizationClient(values).list_popular_recent(now=self.NOW)
+
+        self.assertEqual(
+            [item.build_id for item in result],
+            ['item-100', 'item-50', 'item-20'],
+        )
+
+    def test_preserves_civilization_mapping_order(self):
+        first, second = CIVILIZATION_LABELS[:2]
+        values = {
+            second[0]: (_summary('second', second[0], self.NOW),),
+            first[0]: (_summary('first', first[0], self.NOW),),
+        }
+
+        result = _CivilizationClient(values).list_popular_recent(now=self.NOW)
+
+        self.assertEqual([item.build_id for item in result], ['first', 'second'])
+
+    def test_failure_names_civilization(self):
+        code = CIVILIZATION_LABELS[0][0]
+        client = _CivilizationClient(failures={code: ConnectionError('offline')})
+
+        with self.assertRaisesRegex(OnlineBuildOrderError, code):
+            client.list_popular_recent(now=self.NOW)
+
+    def test_complete_bundled_snapshot_works_offline(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            directory = pathlib.Path(tmp)
+            for code, _ in CIVILIZATION_LABELS:
+                for index in range(3):
+                    build_id = f'{code}-{index}'
+                    data = _valid_overlay(name=build_id)
+                    data['_aoe4_guides'] = {
+                        'id': build_id,
+                        'civilization_code': code,
+                        'updated': self.NOW.isoformat(),
+                        'views_at_snapshot': index,
+                    }
+                    (directory / f'aoe4guides-{build_id}.json').write_text(
+                        json.dumps(data), encoding='utf-8'
+                    )
+
+            client = Aoe4GuidesClient(
+                opener=lambda _url: (_ for _ in ()).throw(AssertionError('network used')),
+                bundled_directory=directory,
+            )
+            result = client.list_popular_recent(now=self.NOW)
+
+            self.assertEqual(len(result), len(CIVILIZATION_LABELS) * 3)
+            self.assertEqual(client.fetch_overlay('ABB-0')['name'], 'ABB-0')
 
 
 class FetchOverlayTests(unittest.TestCase):

@@ -1,0 +1,180 @@
+{
+  "description": "See video guide for more tips and examples",
+  "civilization": "Rus",
+  "name": "Rus Pro Scouts (2026)",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/NluiYTiK1typi45K1Jzh",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Start 4 @unit_worker/villager.webp@ on @resource/resource_wood.webp@ and 2 @unit_worker/villager.webp@ to build 2 @building_rus/hunting-cabin.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 0,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 3
+      },
+      "notes": [
+        "Send 1st @unit_worker/villager.webp@ out of @building_economy/town-center.webp@ to build 3rd @building_rus/hunting-cabin.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:45",
+      "villager_count": 8,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Straggler @unit_worker/villager.webp@ to @resource/sheep.webp@ and build 1 @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:06",
+      "villager_count": 10,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "@unit_cavalry/scout.webp@ from @building_rus/hunting-cabin.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:45",
+      "villager_count": 13,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Age up to feudal with @landmark_rus/the-golden-gate.webp@ with 5 @unit_worker/villager.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:50",
+      "villager_count": 14,
+      "resources": {
+        "food": 3,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Send 6 @unit_worker/villager.webp@ to chop ALL 3@resource/gaiatreeprototypetree.webp@ & @resource/rally.webp@ @resource/sheep.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": 16,
+      "resources": {
+        "food": 5,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Build a @building_economy/house.webp@ with a @resource/gaiatreeprototypetree.webp@ @unit_worker/villager.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:07",
+      "villager_count": 18,
+      "resources": {
+        "food": 12,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Gather @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:16",
+      "villager_count": 17,
+      "resources": {
+        "food": 11,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/professional-scouts.webp@ and queue @unit_cavalry/scout.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Macro @resource/resource_wood.webp@ and make units until u take 2 @resource/deer.webp@Packs and then go castle at 11-12 mins."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/TvAOLixs7ik",
+  "season": "Season 12",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "NluiYTiK1typi45K1Jzh",
+    "civilization_code": "RUS",
+    "updated": "2026-01-20T22:18:30+00:00",
+    "views_at_snapshot": 5502,
+    "snapshot_date": "2026-10-31"
+  }
+}

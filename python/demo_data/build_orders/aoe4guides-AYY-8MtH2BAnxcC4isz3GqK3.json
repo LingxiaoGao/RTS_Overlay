@@ -1,0 +1,262 @@
+{
+  "description": "See video link for guide",
+  "civilization": "Ayyubids",
+  "name": "Fast Castle Industry Tempo (2026)",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/8MtH2BAnxcC4isz3GqK3",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @unit_worker/villager-abbasid.webp@ to @resource/berrybush.webp@, 2@unit_worker/villager-abbasid.webp@ build @building_economy/mill.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "New @unit_worker/villager-abbasid.webp@ builds @building_economy/house.webp@ to connect @building_economy/mill.webp@ with @building_economy/town-center.webp@ then goes to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:40",
+      "villager_count": 8,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Add 4 New @unit_worker/villager-abbasid.webp@ to @resource/resource_gold.webp@. 1st @unit_worker/villager-abbasid.webp@ builds @building_economy/mining-camp.webp@, 2nd @landmark_abbasid/house-of-wisdom.webp@ close to the @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 New @unit_worker/villager-abbasid.webp@ to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:15",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@@technology_ayyubids/culture-wing-logistics-1.webp@ (dervish wing)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 4,
+        "wood": 5,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Take 4 @resource/resource_food.webp@ @unit_worker/villager-abbasid.png@ + 1@unit_worker/villager-abbasid.png@ from@building_economy/town-center.png@ & send to @resource/gaiatreeprototypetree.png@. Gather 150 @resource/resource_wood.png@ then go gather 50 @resource/resource_stone.png@ (no mining camp)",
+        "Keep @resource/rally.png@@building_economy/town-center.png@ on @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager-abbasid.webp@@resource/resource_gold.png@ build @building_defensive/outpost.png@ (upgrade when 50 @resource/resource_stone.png@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 15,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 4,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:50",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 @unit_worker/villager-abbasid.webp@@resource/resource_stone.png@ go to @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 18,
+      "resources": {
+        "food": 13,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "&lt;--- Remacro and @resource/rally.webp@to @resource/resource_food.webp@ until age 3"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:12",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Drop off res and go @age/age_3.webp@ @technology_ayyubids/economic-wing-industry-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:25",
+      "villager_count": 26,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "&lt;--- Remacro. @building_economy/town-center.webp@@resource/rally.webp@ new @unit_worker/villager-abbasid.webp@ to @resource/resource_gold.webp@ until 12"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:30",
+      "villager_count": 29,
+      "resources": {
+        "food": 11,
+        "wood": 8,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_economy/wheelbarrow.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "8:25",
+      "villager_count": 30,
+      "resources": {
+        "food": 12,
+        "wood": 8,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Construct 2-3 @building_military/stable.webp@ & 3 @unit_infantry/archer-2.webp@ &amp; @building_religious/mosque.webp@",
+        "@technology_economy/horticulture.webp@ (when possible)"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:00",
+      "villager_count": 33,
+      "resources": {
+        "food": 15,
+        "wood": 8,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_technology/blacksmith.webp@ (get @technology_military/iron-undermesh.webp@@technology_military/wedge-rivets.webp@->@technology_military/steeled-arrow.webp@@technology_military/balanced-projectiles.webp@ -&gt; (sultans mamluks)"
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/t2u-62wAKWU",
+  "season": "Season 12",
+  "map": null,
+  "strategy": "Fast Castle",
+  "_aoe4_guides": {
+    "id": "8MtH2BAnxcC4isz3GqK3",
+    "civilization_code": "AYY",
+    "updated": "2025-12-26T12:16:22+00:00",
+    "views_at_snapshot": 6855,
+    "snapshot_date": "2026-10-31"
+  }
+}
