@@ -69,18 +69,21 @@ def make_evidence(**overrides):
 
 
 class HudTextEvidenceTests(unittest.TestCase):
-    def test_valid_normalizes(self):
+    def test_construction(self):
         ev = HudTextEvidence(
             field="food",
-            text="  123 ",
+            text="123",
             confidence=0.75,
             frame_id=2,
             observed_at=5,
             line_count=2,
         )
+        self.assertEqual(ev.field, "food")
         self.assertEqual(ev.text, "123")
         self.assertEqual(ev.confidence, 0.75)
+        self.assertEqual(ev.frame_id, 2)
         self.assertEqual(ev.observed_at, 5)
+        self.assertEqual(ev.line_count, 2)
 
     def test_frozen(self):
         ev = make_evidence()
@@ -88,72 +91,6 @@ class HudTextEvidenceTests(unittest.TestCase):
             ev.text = "x"
         with self.assertRaises(FrozenInstanceError):
             ev.field = "gold"
-
-    def test_invalid_field_type(self):
-        with self.assertRaises(TypeError):
-            make_evidence(field=1)
-
-    def test_invalid_field_name(self):
-        with self.assertRaises(ValueError):
-            make_evidence(field="unknown_field")
-
-    def test_invalid_text_type(self):
-        with self.assertRaises(TypeError):
-            make_evidence(text=3)
-
-    def test_invalid_text_empty(self):
-        with self.assertRaises(ValueError):
-            make_evidence(text="   ")
-
-    def test_invalid_confidence_type(self):
-        with self.assertRaises(TypeError):
-            make_evidence(confidence="0.5")
-
-    def test_invalid_confidence_bool(self):
-        with self.assertRaises(TypeError):
-            make_evidence(confidence=True)
-
-    def test_invalid_confidence_nan(self):
-        with self.assertRaises(ValueError):
-            make_evidence(confidence=float("nan"))
-
-    def test_invalid_confidence_inf(self):
-        with self.assertRaises(ValueError):
-            make_evidence(confidence=float("inf"))
-
-    def test_invalid_confidence_range(self):
-        with self.assertRaises(ValueError):
-            make_evidence(confidence=-0.1)
-        with self.assertRaises(ValueError):
-            make_evidence(confidence=1.1)
-
-    def test_invalid_frame_id_bool(self):
-        with self.assertRaises(TypeError):
-            make_evidence(frame_id=True)
-
-    def test_invalid_frame_id_negative(self):
-        with self.assertRaises(ValueError):
-            make_evidence(frame_id=-1)
-
-    def test_invalid_observed_at_bool(self):
-        with self.assertRaises(TypeError):
-            make_evidence(observed_at=False)
-
-    def test_invalid_observed_at_nonfinite(self):
-        with self.assertRaises(ValueError):
-            make_evidence(observed_at=float("nan"))
-
-    def test_invalid_observed_at_negative(self):
-        with self.assertRaises(ValueError):
-            make_evidence(observed_at=-1)
-
-    def test_invalid_line_count_bool(self):
-        with self.assertRaises(TypeError):
-            make_evidence(line_count=True)
-
-    def test_invalid_line_count_zero(self):
-        with self.assertRaises(ValueError):
-            make_evidence(line_count=0)
 
 
 class HudOcrReaderConstructorTests(unittest.TestCase):

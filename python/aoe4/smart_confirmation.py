@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import math
 from dataclasses import dataclass
-from typing import Iterable, Mapping
+from typing import Dict, Iterable, Mapping, Optional, Tuple
 
 from aoe4.smart_hud_reader import HudTextEvidence
 from aoe4.smart_runtime import Observation, RecognitionStatus
@@ -39,7 +39,7 @@ def _check_float(
 
 
 def _check_bool(value: object, name: str) -> bool:
-    if type(value) is not bool:
+    if not isinstance(value, bool):
         raise TypeError(f"{name} must be a bool, got {type(value).__name__}")
     return value
 
@@ -80,14 +80,11 @@ class _Streak:
     last_sample_index: int
 
 
-@dataclass(frozen=True)
-class _Checkpoint:
-    last_sample_index: int | None
-    streaks: tuple[tuple[str, _Streak], ...]
+_Checkpoint = Tuple[Optional[int], Dict[str, _Streak]]
 
 
 def _same_value(left: object, right: object) -> bool:
-    return type(left) is type(right) and left == right
+    return left == right
 
 
 class HudEvidenceConfirmer:
@@ -113,14 +110,12 @@ class HudEvidenceConfirmer:
         self._last_sample_index = None
 
     def checkpoint(self) -> _Checkpoint:
-        return _Checkpoint(
-            last_sample_index=self._last_sample_index,
-            streaks=tuple(self._streaks.items()),
-        )
+        return (self._last_sample_index, dict(self._streaks))
 
     def restore(self, checkpoint: _Checkpoint) -> None:
-        self._streaks = dict(checkpoint.streaks)
-        self._last_sample_index = checkpoint.last_sample_index
+        last_sample_index, streaks = checkpoint
+        self._streaks = streaks
+        self._last_sample_index = last_sample_index
 
     def accept(
         self,

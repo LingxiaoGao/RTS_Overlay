@@ -34,23 +34,6 @@ class RecognitionStatus(str, Enum):
     STALE = "stale"
 
 
-def _freeze(value: Any) -> Any:
-    if isinstance(value, Mapping):
-        out = {}
-        for key, item in value.items():
-            if not isinstance(key, str) or not key:
-                raise ValueError("payload keys must be nonempty strings")
-            out[key] = _freeze(item)
-        return MappingProxyType(out)
-    if isinstance(value, (list, tuple)):
-        return tuple(_freeze(item) for item in value)
-    if isinstance(value, (set, frozenset)):
-        raise TypeError("set payload values are not supported")
-    if isinstance(value, (str, int, float, bool)) or value is None:
-        return value
-    raise TypeError(f"unsupported payload value: {type(value).__name__}")
-
-
 @dataclass(frozen=True)
 class Observation:
     observation_id: str
@@ -73,7 +56,9 @@ class GameEvent:
     emitted_at: float
 
     def __post_init__(self) -> None:
-        object.__setattr__(self, "payload", _freeze(self.payload))
+        object.__setattr__(
+            self, "payload", MappingProxyType(dict(self.payload))
+        )
 
 
 @dataclass(frozen=True)
@@ -204,7 +189,7 @@ def _validate_observation(obs: Observation) -> None:
 
 
 def _same_value(left: Any, right: Any) -> bool:
-    return type(left) is type(right) and left == right
+    return left == right
 
 
 class StateEstimator:

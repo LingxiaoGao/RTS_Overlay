@@ -1,8 +1,12 @@
+from __future__ import annotations
+
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QLabel, QWidget
 
 from aoe4.smart_controller import SafePollResult
 
+from aoe4.smart_advisor import AdvicePriority
+from aoe4.smart_notifications import Notification
 
 FIELDS = (
     "game_time",
@@ -33,6 +37,12 @@ STATUS_LABELS = {
     "stale": "已过期",
 }
 
+PRIORITY_LABELS = {
+    AdvicePriority.HIGH: "高",
+    AdvicePriority.MEDIUM: "中",
+    AdvicePriority.LOW: "低",
+}
+
 
 class SmartStatusWindow(QWidget):
     def __init__(self) -> None:
@@ -44,7 +54,9 @@ class SmartStatusWindow(QWidget):
         self.label.setText(f"智能 OCR 已停用\n{message}")
         self._fit()
 
-    def show_poll(self, value: SafePollResult) -> None:
+    def show_poll(
+        self, value: SafePollResult, notifications: tuple[Notification, ...] = ()
+    ) -> None:
         if value.error:
             self.label.setText(f"错误：{value.error}\n连续失败：{value.consecutive_failures}")
         else:
@@ -56,6 +68,10 @@ class SmartStatusWindow(QWidget):
                 text = "?" if field.value is None else str(field.value)
                 status = STATUS_LABELS.get(field.status.value, field.status.value)
                 lines.append(f"{FIELD_LABELS[name]}：{text} [{status}]")
+            if notifications:
+                lines.append("经济提醒：")
+                for item in notifications:
+                    lines.append(f"{PRIORITY_LABELS[item.priority]}：{item.message}")
             self.label.setText("\n".join(lines))
         self._fit()
 

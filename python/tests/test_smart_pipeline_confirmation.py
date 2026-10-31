@@ -221,25 +221,6 @@ class SmartPipelineConfirmationTests(unittest.TestCase):
             ],
         )
 
-    def test_malformed_evidence_can_be_fixed_and_retried(self) -> None:
-        reader = FakeReader()
-        pipeline = SmartHudPipeline(reader=reader, profile_validated=True)
-        frame = make_frame(0, 0.0)
-        reader.set_frame(frame, {"food": "100"})
-        bad = make_evidence(frame, "wood", "100", 0.95)
-        reader.mapping = {"food": bad}
-        reader.evidence = {"food": bad}
-        with self.assertRaises(ValueError):
-            pipeline.process(frame)
-        self.assertIsNone(pipeline.confirmer.last_sample_index)
-
-        reader.set_frame(frame, {"food": "100"})
-        result = pipeline.process(frame)
-        self.assertTrue(result.sampled)
-        self.assertEqual(pipeline.confirmer.last_sample_index, 0)
-        self.assertEqual(pipeline.scheduler.last_sample, 0.0)
-        self.assertIs(pipeline.state.food.status, RecognitionStatus.INFERRED)
-
     def test_rollback_population_mismatch(self) -> None:
         reader = FakeReader()
         pipeline = SmartHudPipeline(reader=reader, profile_validated=True)

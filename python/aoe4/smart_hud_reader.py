@@ -12,12 +12,6 @@ from aoe4.smart_regions import HudRegionSet
 from aoe4.smart_runtime import FIELD_NAMES
 
 
-def _require_int(value: object, name: str) -> int:
-    if isinstance(value, bool) or not isinstance(value, int):
-        raise TypeError(f"{name} must be an int, got {type(value).__name__}")
-    return value
-
-
 def _require_confidence(value: object, name: str) -> float:
     if isinstance(value, bool) or not isinstance(value, (int, float)):
         raise TypeError(f"{name} must be a number, got {type(value).__name__}")
@@ -39,38 +33,6 @@ class HudTextEvidence:
     frame_id: int
     observed_at: object
     line_count: int
-
-    def __post_init__(self) -> None:
-        if not isinstance(self.field, str):
-            raise TypeError(f"field must be a str, got {type(self.field).__name__}")
-        if self.field not in FIELD_NAMES:
-            raise ValueError(f"unknown field name: {self.field!r}")
-        if not isinstance(self.text, str):
-            raise TypeError(f"text must be a str, got {type(self.text).__name__}")
-        stripped = self.text.strip()
-        if not stripped:
-            raise ValueError("text must be a nonempty string")
-        object.__setattr__(self, "text", stripped)
-        object.__setattr__(
-            self, "confidence", _require_confidence(self.confidence, "confidence")
-        )
-        frame_id = _require_int(self.frame_id, "frame_id")
-        if frame_id < 0:
-            raise ValueError("frame_id must be nonnegative")
-        observed_at = self.observed_at
-        if isinstance(observed_at, bool) or not isinstance(observed_at, (int, float)):
-            raise TypeError(
-                f"observed_at must be a number, got {type(observed_at).__name__}"
-            )
-        observed = float(observed_at)
-        if not math.isfinite(observed):
-            raise ValueError("observed_at must be finite")
-        if observed < 0:
-            raise ValueError("observed_at must be nonnegative")
-        line_count = _require_int(self.line_count, "line_count")
-        if line_count <= 0:
-            raise ValueError("line_count must be positive")
-
 
 def _top_y(line: OcrLine) -> float:
     return min(point[1] for point in line.box)

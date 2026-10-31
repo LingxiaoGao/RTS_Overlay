@@ -1,6 +1,11 @@
 {
   "name": "Demo Example (Any Civilization)",
   "civilization": "any",
+  "smart_calibration": {
+    "version": 1,
+    "reference_age_times": {"2": 300},
+    "step_age_dependencies": [null, null, 2]
+  },
   "build_order": [
     {
       "population_count": 6,

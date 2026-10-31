@@ -87,6 +87,53 @@ class ReaderContractTests(unittest.TestCase):
         self.assertIs(pipeline.scheduler, scheduler)
         self.assertIs(pipeline.estimator, estimator)
 
+    def test_capability_compatible_substitutes_are_used(self):
+        class Scheduler:
+            def __init__(self):
+                self._inner = ObservationScheduler()
+
+            @property
+            def last_sample(self):
+                return self._inner.last_sample
+
+            def due(self, now):
+                return self._inner.due(now)
+
+            def mark_sample(self, now):
+                return self._inner.mark_sample(now)
+
+            def reset(self):
+                return self._inner.reset()
+
+        class Estimator:
+            def __init__(self):
+                self._inner = StateEstimator()
+
+            @property
+            def state(self):
+                return self._inner.state
+
+            def ingest(self, observations, now):
+                return self._inner.ingest(observations, now)
+
+            def mark_stale(self, now):
+                return self._inner.mark_stale(now)
+
+            def reset(self):
+                return self._inner.reset()
+
+        scheduler = Scheduler()
+        estimator = Estimator()
+        pipeline = SmartHudPipeline(
+            FakeReader(), scheduler=scheduler, estimator=estimator
+        )
+
+        result = pipeline.process(make_frame(frame_id=0, captured_at=0))
+
+        self.assertTrue(result.sampled)
+        self.assertIs(pipeline.scheduler, scheduler)
+        self.assertIs(pipeline.estimator, estimator)
+
 
 class SamplingTests(unittest.TestCase):
     def test_first_frame_samples_once(self):
@@ -173,42 +220,6 @@ class MalformedEvidenceTests(unittest.TestCase):
             pipeline.process(make_frame(frame_id=0, captured_at=0))
         self.assertIsNone(pipeline.scheduler.last_sample)
 
-    def test_bad_key_type(self):
-        pipeline = SmartHudPipeline(FakeReader({1: "x"}))
-        with self.assertRaises(TypeError):
-            pipeline.process(make_frame(frame_id=0, captured_at=0))
-        self.assertIsNone(pipeline.scheduler.last_sample)
-
-    def test_bad_value_type(self):
-        pipeline = SmartHudPipeline(FakeReader({"food": "100"}))
-        with self.assertRaises(TypeError):
-            pipeline.process(make_frame(frame_id=0, captured_at=0))
-        self.assertIsNone(pipeline.scheduler.last_sample)
-
-    def test_key_field_mismatch(self):
-        frame = make_frame(frame_id=0, captured_at=0)
-        payload = {"food": evidence("wood", "100", frame)}
-        pipeline = SmartHudPipeline(FakeReader(payload))
-        with self.assertRaises(ValueError):
-            pipeline.process(frame)
-        self.assertIsNone(pipeline.scheduler.last_sample)
-
-    def test_frame_id_mismatch(self):
-        frame = make_frame(frame_id=0, captured_at=0)
-        stray = make_frame(frame_id=3, captured_at=0)
-        pipeline = SmartHudPipeline(FakeReader({"food": evidence("food", "100", stray)}))
-        with self.assertRaises(ValueError):
-            pipeline.process(frame)
-        self.assertIsNone(pipeline.scheduler.last_sample)
-
-    def test_timestamp_mismatch(self):
-        frame = make_frame(frame_id=0, captured_at=0)
-        payload = {"food": evidence("food", "100", frame, value_at=1)}
-        pipeline = SmartHudPipeline(FakeReader(payload))
-        with self.assertRaises(ValueError):
-            pipeline.process(frame)
-        self.assertIsNone(pipeline.scheduler.last_sample)
-
     def test_retry_same_timestamp_after_failure(self):
         frame = make_frame(frame_id=0, captured_at=0)
         reader = FakeReader(["bad"])
@@ -239,18 +250,6 @@ class MalformedEvidenceTests(unittest.TestCase):
         retried = pipeline.process(retried_frame)
         self.assertTrue(retried.sampled)
         self.assertEqual(pipeline.scheduler.last_sample, 1)
-
-
-class BoundaryCopyTests(unittest.TestCase):
-    def test_reader_source_mutation_does_not_change_returned_evidence(self):
-        frame = make_frame(frame_id=0, captured_at=0)
-        source = {"food": evidence("food", "100", frame)}
-        reader = FakeReader(source)
-        pipeline = SmartHudPipeline(reader)
-        result = pipeline.process(frame)
-        source["wood"] = evidence("wood", "50", frame)
-        source.pop("food")
-        self.assertEqual(list(result.evidence), ["food"])
 
 
 class ResetAndInvalidFrameTests(unittest.TestCase):

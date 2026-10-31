@@ -7,6 +7,7 @@ from PyQt5.QtCore import QTimer
 from aoe4.aoe4_game_overlay import AoE4GameOverlay
 from aoe4.smart_controller import SmartHudController
 from aoe4.smart_controller_config import SmartControllerConfig
+from aoe4.smart_environment import EnvironmentValidator
 from aoe4.smart_status_window import SmartStatusWindow
 
 if __name__ == '__main__':
@@ -29,8 +30,9 @@ if __name__ == '__main__':
 
     config_path = directory_main / "smart_hud_config.json"
 
-    if not config_path.exists():
-        status_window.show_disabled(f"未找到配置文件：{config_path}")
+    report = EnvironmentValidator().validate(config_path)
+    if not report.ready:
+        status_window.show_disabled("\n".join(report.messages_zh))
     else:
         try:
             config = SmartControllerConfig.from_file(config_path)
@@ -38,7 +40,10 @@ if __name__ == '__main__':
 
             def poll_smart():
                 result = controller.poll_safe()
-                status_window.show_poll(result)
+                notifications = ()
+                if result.result is not None:
+                    notifications = window.apply_smart_pipeline_result(result.result)
+                status_window.show_poll(result, notifications)
 
             smart_timer = QTimer()
             smart_timer.timeout.connect(poll_smart)

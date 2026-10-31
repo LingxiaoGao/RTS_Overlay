@@ -1,4 +1,6 @@
 # AoE4 game overlay
+from __future__ import annotations
+
 import os
 
 from PyQt5.QtWidgets import (
@@ -23,6 +25,9 @@ from aoe4.aoe4_settings import AoE4OverlaySettings
 from aoe4.aoe4_build_order import check_valid_aoe4_build_order
 from aoe4.aoe4_civ_icon import aoe4_civilization_icon, get_aoe4_faction_selection
 from aoe4.online_build_orders import Aoe4GuidesClient, OnlineBuildOrderError
+from aoe4.smart_build_order_session import SmartBuildOrderSession, apply_schedule_times
+from aoe4.smart_advisor import AdvisorEngine, EconomyTarget
+from aoe4.smart_notifications import Notification, NotificationManager
 
 
 class AoE4Images(RTSOverlayImages):
@@ -70,6 +75,12 @@ class AoE4GameOverlay(RTSGameOverlay):
             build_order_timer_step_starting_flag=False,
         )
 
+        # smart calibration session (age-anchor driven)
+        self.smart_session = None
+        # smart economy advice
+        self.advisor = AdvisorEngine()
+        self.notifications = NotificationManager()
+
         # civilization selection
         layout = self.settings.layout
         color_default = layout.color_default
@@ -92,6 +103,70 @@ class AoE4GameOverlay(RTSGameOverlay):
         self.civilization_select.adjustSize()
 
         self.update_panel_elements()  # update the current panel elements
+
+    def select_build_order(self, key_condition: dict = None):
+        """Select a build order and (re)create the smart calibration session."""
+        super().select_build_order(key_condition=key_condition)
+
+        self.smart_session = None
+        self.notifications.reset()
+        if self.selected_build_order is None:
+            return
+
+        try:
+            self.smart_session = SmartBuildOrderSession.from_build_order(self.selected_build_order)
+        except ValueError as exc:
+            self.smart_session = None
+            print(f"智能校准元数据无效：{exc}")
+
+    def apply_smart_pipeline_result(self, result) -> tuple[Notification, ...]:
+        """Apply a pipeline result to the calibration session and produce advice.
+
+        Parameters
+        ----------
+        result    Pipeline result to consume.
+
+        Returns
+        -------
+        Notifications emitted for the active target step.
+        """
+        session = self.smart_session
+        if (session is not None) and session.enabled:
+            steps = self.build_order_timer['steps']
+            if steps:
+                update = session.consume(result)
+                if update.changed:
+                    self.build_order_timer['steps'] = apply_schedule_times(steps, update.times)
+                    self.build_order_timer['last_steps_ids'] = []
+                    if self.selected_panel == PanelID.BUILD_ORDER:
+                        self.update_build_order()
+
+        if self.selected_build_order is None:
+            return ()
+
+        steps = self.build_order_timer['steps']
+        if not steps:
+            return ()
+
+        steps_ids = self.build_order_timer['steps_ids']
+        valid_ids = [
+            step_id for step_id in steps_ids
+            if isinstance(step_id, int) and not isinstance(step_id, bool)
+            and 0 <= step_id < len(steps)
+        ]
+        target_id = max(valid_ids) if valid_ids else 0
+        if target_id >= len(steps):
+            return ()
+        step = steps[target_id]
+
+        try:
+            target = EconomyTarget.from_build_order_step(step)
+        except (TypeError, ValueError) as exc:
+            print(f"智能经济目标无效：{exc}")
+            return ()
+
+        advice = self.advisor.evaluate(result.state, target)
+        return self.notifications.publish(advice, result.state.updated_at)
 
     def get_online_build_order_handler(self):
         """Return the AoE4 online build-order handler."""

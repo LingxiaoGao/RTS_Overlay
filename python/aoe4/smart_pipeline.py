@@ -30,6 +30,12 @@ def _require_bool(value: object, name: str) -> bool:
     return value
 
 
+def _require_methods(component: object, name: str, methods: tuple[str, ...]) -> None:
+    for method in methods:
+        if not callable(getattr(component, method, None)):
+            raise TypeError(f"{name} must expose a callable {method} method")
+
+
 class SmartHudPipeline:
     """Orchestrate scheduler, reader, parser, confirmer, and estimator."""
 
@@ -48,16 +54,17 @@ class SmartHudPipeline:
         self._reader = reader
         if scheduler is None:
             scheduler = ObservationScheduler()
-        if not isinstance(scheduler, ObservationScheduler):
-            raise TypeError("scheduler must be an ObservationScheduler")
+        _require_methods(scheduler, "scheduler", ("due", "mark_sample", "reset"))
         if estimator is None:
             estimator = StateEstimator()
-        if not isinstance(estimator, StateEstimator):
-            raise TypeError("estimator must be a StateEstimator")
+        _require_methods(estimator, "estimator", ("ingest", "mark_stale", "reset"))
+        if not hasattr(estimator, "state"):
+            raise TypeError("estimator must expose state")
         if confirmer is None:
             confirmer = HudEvidenceConfirmer()
-        if not isinstance(confirmer, HudEvidenceConfirmer):
-            raise TypeError("confirmer must be a HudEvidenceConfirmer")
+        _require_methods(
+            confirmer, "confirmer", ("checkpoint", "accept", "restore", "reset")
+        )
         self._scheduler = scheduler
         self._estimator = estimator
         self._confirmer = confirmer
@@ -128,29 +135,7 @@ class SmartHudPipeline:
             raise TypeError(
                 f"reader.read must return a Mapping, got {type(raw).__name__}"
             )
-        evidence: dict[str, HudTextEvidence] = {}
-        for key, item in raw.items():
-            if not isinstance(key, str):
-                raise TypeError(f"evidence keys must be str, got {type(key).__name__}")
-            if not isinstance(item, HudTextEvidence):
-                raise TypeError(
-                    f"evidence entry {key!r} must be a HudTextEvidence, "
-                    f"got {type(item).__name__}"
-                )
-            if key != item.field:
-                raise ValueError(
-                    f"evidence key {key!r} does not match field {item.field!r}"
-                )
-            if item.frame_id != frame.frame_id:
-                raise ValueError(
-                    f"evidence {key!r} frame_id {item.frame_id} "
-                    f"does not match frame {frame.frame_id}"
-                )
-            if float(item.observed_at) != float(now):
-                raise ValueError(
-                    f"evidence {key!r} observed_at does not match frame captured_at"
-                )
-            evidence[key] = item
+        evidence = raw
 
         texts = text_mapping(evidence)
         observations = parse_hud_text(texts, frame.frame_id, now)
