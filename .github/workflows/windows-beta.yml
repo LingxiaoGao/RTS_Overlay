@@ -151,17 +151,34 @@ jobs:
           @'
           import json
           import os
+          from collections import Counter
           from pathlib import Path
 
           from aoe4.aoe4_build_order import check_valid_aoe4_build_order
           from aoe4.smart_controller_config import SmartControllerConfig
 
           SmartControllerConfig.from_file(os.environ["SMART_CONFIG_PATH"])
+          bundled_counts = Counter()
           for path in sorted(Path(os.environ["BUILD_ORDERS_DIR"]).glob("*.json")):
               data = json.loads(path.read_text(encoding="utf-8"))
               valid, message = check_valid_aoe4_build_order(data, bo_name_msg=True)
               if not valid:
                   raise ValueError(f"{path.name}: {message}")
+              metadata = data.get("_aoe4_guides")
+              if isinstance(metadata, dict):
+                  bundled_counts[metadata.get("civilization_code")] += 1
+          expected_codes = {
+              "ABB", "AYY", "BYZ", "CHI", "DEL", "ENG", "FRE", "GOH", "HOL",
+              "HRE", "JAP", "JDA", "JIN", "KTE", "MAC", "MAL", "MON", "DRA",
+              "OTT", "RUS", "SCO", "SEN", "TUG", "VIK", "ZXL",
+          }
+          missing = {
+              code: bundled_counts[code]
+              for code in expected_codes
+              if bundled_counts[code] < 3
+          }
+          if missing:
+              raise ValueError(f"Each civilization needs 3 bundled guides; missing: {missing}")
           '@ | python -
           if ($LASTEXITCODE -ne 0) {
             throw "Packaged aoe4 demo data validation failed."
