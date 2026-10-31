@@ -4,6 +4,7 @@ from typing import Mapping
 
 from aoe4.smart_capture import CapturedFrame, CaptureRegion
 from aoe4.smart_regions import HudRegionSet, crop_frame
+from aoe4.smart_regions import scale_regions
 from aoe4.smart_runtime import FIELD_NAMES
 
 
@@ -241,6 +242,58 @@ class HudRegionSetCropTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             hud.crop(frame)
 
+
+class ScaleRegionsTests(unittest.TestCase):
+    def _hud(self, regions):
+        return HudRegionSet(regions)
+
+    def test_identity_scaling(self):
+        ref = CaptureRegion(0, 0, 1920, 1080)
+        target = CaptureRegion(0, 0, 1920, 1080)
+        regions = {
+            FIELD_NAMES[0]: CaptureRegion(10, 10, 100, 50),
+            FIELD_NAMES[1]: CaptureRegion(500, 200, 200, 100),
+        }
+        scaled = scale_regions(self._hud(regions), ref, target)
+        for name, region in regions.items():
+            self.assertEqual(scaled.regions[name], region)
+
+    def test_double_scale_1920_to_3840(self):
+        ref = CaptureRegion(0, 0, 1920, 1080)
+        target = CaptureRegion(0, 0, 3840, 2160)
+        regions = {FIELD_NAMES[0]: CaptureRegion(10, 20, 100, 50)}
+        scaled = scale_regions(self._hud(regions), ref, target)
+        self.assertEqual(scaled.regions[FIELD_NAMES[0]], CaptureRegion(20, 40, 200, 100))
+
+    def test_nonzero_reference_and_target_origins(self):
+        ref = CaptureRegion(100, 200, 800, 600)
+        target = CaptureRegion(50, 60, 1600, 1200)
+        regions = {FIELD_NAMES[0]: CaptureRegion(300, 500, 100, 50)}
+        scaled = scale_regions(self._hud(regions), ref, target)
+        # Relative to ref origin: (200, 300) size (100, 50).
+        # Doubled to (400, 600) size (200, 100), offset by target origin.
+        self.assertEqual(
+            scaled.regions[FIELD_NAMES[0]],
+            CaptureRegion(450, 660, 200, 100),
+        )
+
+    def test_scaled_regions_crop_target_frame(self):
+        ref = CaptureRegion(0, 0, 4, 4)
+        target = CaptureRegion(0, 0, 8, 8)
+        regions = {
+            FIELD_NAMES[0]: CaptureRegion(0, 0, 2, 2),
+            FIELD_NAMES[1]: CaptureRegion(2, 2, 2, 2),
+        }
+        hud = self._hud(regions)
+        scaled = scale_regions(hud, ref, target)
+        frame = _frame(region=CaptureRegion(0, 0, 8, 8))
+        cropped = scaled.crop(frame)
+        self.assertEqual(
+            cropped[FIELD_NAMES[0]].region, CaptureRegion(0, 0, 4, 4)
+        )
+        self.assertEqual(
+            cropped[FIELD_NAMES[1]].region, CaptureRegion(4, 4, 4, 4)
+        )
 
 if __name__ == "__main__":
     unittest.main()

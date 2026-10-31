@@ -12,6 +12,67 @@ from aoe4.smart_runtime import FIELD_NAMES
 _BYTES_PER_PIXEL = 4
 
 
+def _scale_edge(start: int, size: int, source_total: int, target_start: int,
+                target_total: int) -> tuple[int, int]:
+    """Scale ``start``/``size`` from source into target coordinates.
+
+    Uses independent x/y handled by the caller; here the work is purely on a
+    single axis. Rounding is deterministic: scaled edges are computed as
+    ``round(v * target_total / source_total)`` via integer arithmetic. A
+    positive source region remains at least one pixel after downscaling.
+    """
+    # Round-half-up integer scaling of both edges, then derive size from the
+    # scaled edges so adjacent tiles stay contiguous where possible.
+    numerator_start = start * target_total
+    numerator_end = (start + size) * target_total
+    scaled_start = (numerator_start + source_total // 2) // source_total
+    scaled_end = (numerator_end + source_total // 2) // source_total
+
+    scaled_size = scaled_end - scaled_start
+    if scaled_size < 1:
+        scaled_size = 1
+
+    return target_start + scaled_start, scaled_size
+
+
+def scale_regions(
+    regions: HudRegionSet,
+    reference: CaptureRegion,
+    target: CaptureRegion,
+) -> HudRegionSet:
+    """Scale ``regions`` from ``reference`` into ``target`` capture space.
+
+    Global frame origins are preserved: output regions are expressed in the
+    global coordinate space of ``target`` (i.e. offset by ``target.left/top``).
+    """
+    if not isinstance(regions, HudRegionSet):
+        raise TypeError(
+            f"regions must be a HudRegionSet, got {type(regions).__name__}"
+        )
+    if not isinstance(reference, CaptureRegion):
+        raise TypeError(
+            f"reference must be a CaptureRegion, got {type(reference).__name__}"
+        )
+    if not isinstance(target, CaptureRegion):
+        raise TypeError(
+            f"target must be a CaptureRegion, got {type(target).__name__}"
+        )
+
+    scaled: dict[str, CaptureRegion] = {}
+    for name, region in regions.regions.items():
+        rel_left = region.left - reference.left
+        rel_top = region.top - reference.top
+        left, width = _scale_edge(
+            rel_left, region.width, reference.width, target.left, target.width
+        )
+        top, height = _scale_edge(
+            rel_top, region.height, reference.height, target.top, target.height
+        )
+        scaled[name] = CaptureRegion(left, top, width, height)
+
+    return HudRegionSet(scaled)
+
+
 def crop_frame(frame: CapturedFrame, region: CaptureRegion) -> CapturedFrame:
     """Return a copy of ``frame`` restricted to global ``region``."""
     if not isinstance(frame, CapturedFrame):
