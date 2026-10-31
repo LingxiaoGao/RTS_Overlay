@@ -1,0 +1,30 @@
+{
+  "name": "Demo Example (Any Civilization)",
+  "civilization": "any",
+  "build_order": [
+    {
+      "population_count": 6,
+      "villager_count": 6,
+      "age": 1,
+      "resources": {"food": 6, "wood": 0, "gold": 0, "stone": 0},
+      "notes": ["Queue villagers continuously.", "Keep the starting villagers on food."],
+      "time": "0:30"
+    },
+    {
+      "population_count": 12,
+      "villager_count": 11,
+      "age": 1,
+      "resources": {"food": 7, "wood": 2, "gold": 2, "stone": 0},
+      "notes": ["Build a house before reaching the population cap.", "Gather gold for the age-up."],
+      "time": "2:30"
+    },
+    {
+      "population_count": 18,
+      "villager_count": 16,
+      "age": 2,
+      "resources": {"food": 8, "wood": 4, "gold": 4, "stone": 0},
+      "notes": ["Complete the Feudal Age landmark.", "Choose military production for the matchup."],
+      "time": "5:00"
+    }
+  ]
+}

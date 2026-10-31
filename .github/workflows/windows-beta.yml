@@ -110,6 +110,49 @@ jobs:
           "source_dir=$SourceDir" >> $env:GITHUB_OUTPUT
           "stage=$Stage" >> $env:GITHUB_OUTPUT
 
+      - name: Verify packaged aoe4 demo data
+        shell: pwsh
+        env:
+          PYTHONPATH: ${{ github.workspace }}/python
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $SourceDir = '${{ steps.stage.outputs.source_dir }}'
+          $ExePath = Join-Path $SourceDir 'overlay\aoe4_overlay.exe'
+          $ConfigPath = Join-Path $SourceDir 'overlay\smart_hud_config.json'
+          $BuildOrdersDir = Join-Path $SourceDir 'overlay\local_config\aoe4\build_orders'
+
+          if (-not (Test-Path $ExePath -PathType Leaf)) {
+            throw "Missing packaged executable: $ExePath"
+          }
+          if (-not (Test-Path $ConfigPath -PathType Leaf)) {
+            throw "Missing packaged smart HUD config: $ConfigPath"
+          }
+          $BuildOrderFiles = @(Get-ChildItem -Path $BuildOrdersDir -Filter '*.json' -File -ErrorAction SilentlyContinue)
+          if ($BuildOrderFiles.Count -eq 0) {
+            throw "No packaged aoe4 build order JSON files under: $BuildOrdersDir"
+          }
+
+          $env:SMART_CONFIG_PATH = $ConfigPath
+          $env:BUILD_ORDERS_DIR = $BuildOrdersDir
+          @'
+          import json
+          import os
+          from pathlib import Path
+
+          from aoe4.aoe4_build_order import check_valid_aoe4_build_order
+          from aoe4.smart_controller_config import SmartControllerConfig
+
+          SmartControllerConfig.from_file(os.environ["SMART_CONFIG_PATH"])
+          for path in sorted(Path(os.environ["BUILD_ORDERS_DIR"]).glob("*.json")):
+              data = json.loads(path.read_text(encoding="utf-8"))
+              valid, message = check_valid_aoe4_build_order(data, bo_name_msg=True)
+              if not valid:
+                  raise ValueError(f"{path.name}: {message}")
+          '@ | python -
+          if ($LASTEXITCODE -ne 0) {
+            throw "Packaged aoe4 demo data validation failed."
+          }
+
       - name: Locate Inno Setup compiler (ISCC)
         id: iscc
         shell: pwsh

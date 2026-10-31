@@ -105,6 +105,14 @@ def compile_clean(name_game: str, disable_console: bool = True, finalize_folder:
         shutil.copy(main_file, overlay_folder)
         shutil.copy(ROOT / 'prepare_release.py', utilities_folder)
 
+        if name_game == 'aoe4':
+            demo_data = PYTHON_DIR / 'demo_data'
+            shutil.copy(demo_data / 'smart_hud_config.json', overlay_folder)
+            build_orders_out = overlay_folder / 'local_config' / 'aoe4' / 'build_orders'
+            build_orders_out.mkdir(parents=True, exist_ok=True)
+            for build_order_file in (demo_data / 'build_orders').glob('*.json'):
+                shutil.copy(build_order_file, build_orders_out)
+
         # zip output folder
         shutil.make_archive(str(name_out_lib_path), 'zip', str(name_out_lib_path))
         shutil.rmtree(name_out_lib_path)  # clean non-zipped files
