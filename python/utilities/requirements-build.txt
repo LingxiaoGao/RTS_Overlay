@@ -1,6 +1,5 @@
 # Build-time dependencies for producing the Nuitka standalone release.
-# Pins follow the upstream documented Nuitka baseline.
+# Pins for the standalone Nuitka Windows build; external orderedset omitted.
 Nuitka==1.0.6
-orderedset==2.0.3
 zstandard>=0.15.2
 
