@@ -56,7 +56,6 @@ def compile_clean(name_game: str, disable_console: bool = True, finalize_folder:
         '-m', 'nuitka',
         '--standalone',
         '--plugin-enable=pyqt5',
-        '--plugin-enable=numpy',
         '--assume-yes-for-downloads',
         f'--windows-icon-from-ico={icon}',
         f'--include-data-file={include_common}/*.py=common/',
