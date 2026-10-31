@@ -64,6 +64,8 @@ def compile_clean(name_game: str, disable_console: bool = True, finalize_folder:
         f'--include-data-dir={include_docs_game}=docs/assets/{name_game}',
         '--include-package=rapidocr',
         '--include-package-data=rapidocr',
+        '--include-module=rapidocr.main',
+        '--include-package=omegaconf',
     ]
 
     if disable_console:  # disable the console

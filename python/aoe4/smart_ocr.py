@@ -74,9 +74,13 @@ def _default_image_factory(frame: CapturedFrame) -> object:
 
 def _default_engine_factory() -> object:
     try:
-        from rapidocr import RapidOCR
+        # RapidOCR exposes this through a module-level lazy import. Import the
+        # implementation directly so standalone compilers can see the module.
+        from rapidocr.main import RapidOCR
     except ImportError as exc:
-        raise RuntimeError("rapidocr is required for OCR recognition") from exc
+        raise RuntimeError(
+            f"rapidocr import failed: {type(exc).__name__}: {exc}"
+        ) from exc
     return RapidOCR()
 
 

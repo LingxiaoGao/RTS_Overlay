@@ -33,6 +33,31 @@ if __name__ == '__main__':
     sys.excepthook = log_uncaught
     logger.info("AOE4 Overlay starting; log=%s", log_path)
 
+    if "--runtime-smoke-test" in sys.argv:
+        import cv2  # noqa: F401
+        import keyboard  # noqa: F401
+        import mss
+        import numpy  # noqa: F401
+        import onnxruntime  # noqa: F401
+        import pynput  # noqa: F401
+        from omegaconf import OmegaConf  # noqa: F401
+        from PIL import Image
+
+        from aoe4.smart_ocr import _default_engine_factory
+
+        capture_backend = mss.mss()
+        capture_backend.close()
+
+        engine = _default_engine_factory()
+        try:
+            engine(Image.new("RGB", (64, 64), "white"))
+        finally:
+            close_engine = getattr(engine, "close", None)
+            if callable(close_engine):
+                close_engine()
+        logger.info("Packaged runtime smoke test passed")
+        sys.exit(0)
+
     app = QApplication(sys.argv)
     window = AoE4GameOverlay(app=app, directory_main=str(directory_main))
 
