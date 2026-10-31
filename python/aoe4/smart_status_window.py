@@ -49,30 +49,37 @@ class SmartStatusWindow(QWidget):
         super().__init__(flags=Qt.Tool | Qt.WindowStaysOnTopHint)
         self.setWindowTitle("智能识别状态")
         self.label = QLabel(self)
+        self._last_text = None
 
     def show_disabled(self, message: str) -> None:
-        self.label.setText(f"智能 OCR 已停用\n{message}")
-        self._fit()
+        self._set_text(f"智能 OCR 已停用\n{message}")
 
     def show_poll(
         self, value: SafePollResult, notifications: tuple[Notification, ...] = ()
     ) -> None:
         if value.error:
-            self.label.setText(f"错误：{value.error}\n连续失败：{value.consecutive_failures}")
+            text = f"错误：{value.error}\n连续失败：{value.consecutive_failures}"
         else:
             state = value.result.state
             sampled = "已识别" if value.result.sampled else "等待下一次识别"
             lines = [sampled]
             for name in FIELDS:
                 field = getattr(state, name)
-                text = "?" if field.value is None else str(field.value)
+                field_text = "?" if field.value is None else str(field.value)
                 status = STATUS_LABELS.get(field.status.value, field.status.value)
-                lines.append(f"{FIELD_LABELS[name]}：{text} [{status}]")
+                lines.append(f"{FIELD_LABELS[name]}：{field_text} [{status}]")
             if notifications:
                 lines.append("经济提醒：")
                 for item in notifications:
                     lines.append(f"{PRIORITY_LABELS[item.priority]}：{item.message}")
-            self.label.setText("\n".join(lines))
+            text = "\n".join(lines)
+        self._set_text(text)
+
+    def _set_text(self, text: str) -> None:
+        if text == self._last_text:
+            return
+        self._last_text = text
+        self.label.setText(text)
         self._fit()
 
     def _fit(self) -> None:

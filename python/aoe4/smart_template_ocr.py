@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Union
 
@@ -33,6 +34,9 @@ _LABEL_KIND: Dict[str, str] = {
 
 _GLYPH_W = 20
 _GLYPH_H = 28
+_AGE_REUSE_SECONDS = 1.0
+
+TemplateImage = Tuple[np.ndarray, int]
 
 
 def _bgra_to_bgr(pixels: bytes, width: int, height: int) -> np.ndarray:
@@ -146,20 +150,21 @@ def _iou(a: np.ndarray, b: np.ndarray) -> float:
     return float(inter) / float(union)
 
 
-def _load_kind(directory: Path) -> Dict[str, List[np.ndarray]]:
-    templates: Dict[str, List[np.ndarray]] = {}
+def _load_kind(directory: Path) -> Dict[str, List[TemplateImage]]:
+    templates: Dict[str, List[TemplateImage]] = {}
     if not directory.is_dir():
         return templates
     for sub in sorted(directory.iterdir()):
         if not sub.is_dir():
             continue
         label = {"slash": "/", "colon": ":"}.get(sub.name, sub.name)
-        images: List[np.ndarray] = []
+        images: List[TemplateImage] = []
         for path in sorted(sub.glob("*.png")):
             raw = cv2.imread(str(path), cv2.IMREAD_GRAYSCALE)
             if raw is None:
                 continue
-            images.append(_normalize_glyph(raw))
+            normalized = _normalize_glyph(raw)
+            images.append((normalized, int(np.count_nonzero(normalized))))
         if images:
             templates[label] = images
     return templates
@@ -181,15 +186,16 @@ class TemplateHudRecognizer:
         if not root.is_dir():
             raise ValueError(f"template_dir does not exist: {root}")
         self._field_regions = dict(regions.regions.items())
-        self._templates: Dict[str, Dict[str, List[np.ndarray]]] = {}
+        self._templates: Dict[str, Dict[str, List[TemplateImage]]] = {}
         for kind in ("digits", "punctuation", "roman"):
             self._templates[kind] = _load_kind(root / kind)
+        self._cache: Dict[str, Tuple[bytes, float, Tuple[OcrLine, ...]]] = {}
 
-    def _templates_for(self, field: str) -> Dict[str, List[np.ndarray]]:
+    def _templates_for(self, field: str) -> Dict[str, List[TemplateImage]]:
         alphabet = _ALPHABET.get(field)
         if alphabet is None:
             return {}
-        selected: Dict[str, List[np.ndarray]] = {}
+        selected: Dict[str, List[TemplateImage]] = {}
         for label in alphabet:
             kind = _LABEL_KIND.get(label)
             if kind is None:
@@ -199,11 +205,16 @@ class TemplateHudRecognizer:
                 selected[label] = entries
         return selected
 
-    def _match(self, glyph: np.ndarray, templates: Dict[str, List[np.ndarray]]) -> Tuple[Optional[str], float]:
+    def _match(self, glyph: np.ndarray, templates: Dict[str, List[TemplateImage]]) -> Tuple[Optional[str], float]:
         best_label: Optional[str] = None
         best_score = -1.0
+        glyph_count = int(np.count_nonzero(glyph))
         for label, images in templates.items():
-            for image in images:
+            for image, template_count in images:
+                if template_count and glyph_count:
+                    ratio = glyph_count / template_count
+                    if ratio < 0.2 or ratio > 5.0:
+                        continue
                 score = _iou(glyph, image)
                 if score > best_score:
                     best_score = score
@@ -227,11 +238,25 @@ class TemplateHudRecognizer:
         templates = self._templates_for(field)
         if not templates:
             return ()
+        fingerprint = hashlib.blake2b(frame.pixels, digest_size=8).digest()
+        cached = self._cache.get(field)
+        if cached is not None:
+            cached_fingerprint, cached_at, cached_result = cached
+            if cached_fingerprint == fingerprint:
+                return cached_result
+            if (
+                field == "age"
+                and cached_result
+                and frame.captured_at - cached_at < _AGE_REUSE_SECONDS
+            ):
+                return cached_result
         bgr = _bgra_to_bgr(frame.pixels, frame.width, frame.height)
         mask = _foreground_mask(bgr, field)
         glyphs = _extract_glyphs(mask, field)
         if not glyphs:
-            return ()
+            result: Tuple[OcrLine, ...] = ()
+            self._cache[field] = (fingerprint, frame.captured_at, result)
+            return result
         labels: List[str] = []
         scores: List[float] = []
         for glyph in glyphs:
@@ -242,14 +267,18 @@ class TemplateHudRecognizer:
             labels.append(label)
             scores.append(score)
         if not labels:
-            return ()
+            result = ()
+            self._cache[field] = (fingerprint, frame.captured_at, result)
+            return result
         text = "".join(labels)
         if field == "game_time" and len(text) == 4 and text.isdigit():
             text = text[:2] + ":" + text[2:]
         elif field == "age":
             text = "IV" if "V" in text else "I" * min(3, text.count("I"))
             if not text:
-                return ()
+                result = ()
+                self._cache[field] = (fingerprint, frame.captured_at, result)
+                return result
         confidence = float(sum(scores) / len(scores))
         confidence = max(0.0, min(1.0, confidence))
         box = (
@@ -258,7 +287,10 @@ class TemplateHudRecognizer:
             (float(frame.width), float(frame.height)),
             (0.0, float(frame.height)),
         )
-        return (OcrLine(text=text, confidence=confidence, box=box),)
+        result = (OcrLine(text=text, confidence=confidence, box=box),)
+        self._cache[field] = (fingerprint, frame.captured_at, result)
+        return result
 
     def close(self) -> None:
+        self._cache.clear()
         return None

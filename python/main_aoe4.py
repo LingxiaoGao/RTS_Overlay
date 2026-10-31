@@ -62,7 +62,7 @@ if __name__ == '__main__':
     timer = QTimer()
     timer.timeout.connect(window.timer_build_order_call)
     timer.timeout.connect(window.timer_mouse_keyboard_call)
-    timer.setInterval(window.settings.call_ms)
+    timer.setInterval(max(window.settings.call_ms, 50))
     timer.start()
 
     status_window = SmartStatusWindow()
