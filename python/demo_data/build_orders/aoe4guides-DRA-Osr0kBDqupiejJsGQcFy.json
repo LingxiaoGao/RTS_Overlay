@@ -1,0 +1,221 @@
+{
+  "description": "See linked video for the guide",
+  "civilization": "Order of the Dragon",
+  "name": "Fast Castle (2026)",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/Osr0kBDqupiejJsGQcFy",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 @unit_worker/villager.webp@ to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:23",
+      "villager_count": 6,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 2 @unit_worker/villager.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When deer is found, take 4-5 vills to the deer pack and get @technology_economy/survival-techniques.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:09",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@unit_worker/villager.webp@ to @resource/sheep.webp@ until 8 on @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 11,
+      "resources": {
+        "food": 8,
+        "wood": 1,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:55",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 2,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start aging up with 3 @unit_worker/villager.webp@ on @landmark_hre/aachen-chapel.webp@ on woodline"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.webp@ again"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:25",
+      "villager_count": 16,
+      "resources": {
+        "food": 8,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Make a @building_military/stable.webp@ and a @unit_dragon/gilded-horseman-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Now start macroing for additional towers or units if needed. Otherwise 2:1 split between @resource/resource_food.webp@&@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "See guide for additional steps"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:55",
+      "villager_count": 22,
+      "resources": {
+        "food": 14,
+        "wood": 0,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_hre/regnitz-cathedral.webp@ with 6 @resource/resource_food.webp@@unit_worker/villager.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "macro @resource/resource_wood.webp@ for more production (@building_military/archery-range.webp@ + @building_military/stable.webp@)"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When in castle spam monks for @resource/relics.webp@ and healing. Make @unit_dragon/gilded-knight-3.webp@ & @unit_dragon/gilded-archer-2.webp@ and play heavy castle age. Start farming around chapel and secure gold on map."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/YPRL2C_pSoM",
+  "season": "Season 12",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "Osr0kBDqupiejJsGQcFy",
+    "civilization_code": "DRA",
+    "updated": "2025-12-21T16:17:17+00:00",
+    "views_at_snapshot": 4881,
+    "snapshot_date": "2026-10-31"
+  }
+}

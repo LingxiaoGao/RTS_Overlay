@@ -1,0 +1,232 @@
+{
+  "description": "Delhi Fast Imperial build into Elephants inspired by Corvinus1 - video starts at 01:17\n\nhttps://www.twitch.tv/videos/2293374213?t=4624s",
+  "civilization": "Delhi Sultanate",
+  "name": "Delhi Fast Imperial build into Elephants - copy",
+  "author": "Javert",
+  "source": "https://aoe4guides.com/builds/lOmhDMotQhVspbtsynG6",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 @unit_worker/villager-delhi.webp@ to @resource/gaiatreeprototypetree.webp@ for one trip",
+        "1 @unit_worker/villager-delhi.webp@ to @abilities/repair.webp@@building_religious/mosque.webp@ + @building_economy/house.webp@ near @resource/berrybush.webp@ (stays on berrys)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:25\n‑\n01:20",
+      "villager_count": 11,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 2 new @unit_worker/villager-delhi.webp@ to @resource/resource_gold.webp@ and first @unit_worker/villager-delhi.webp@@abilities/repair.webp@@building_economy/mining-camp.webp@",
+        "5 @resource/resource_wood.webp@   @unit_worker/villager-delhi.webp@ to @abilities/repair.webp@@building_economy/mill.webp@ near @resource/berrybush.webp@ (stays on berrys)",
+        "@resource/rally.webp@ 3 new@unit_worker/villager-delhi.webp@ to @resource/berrybush.webp@",
+        "after",
+        "@resource/rally.webp@ 7 to@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "02:45",
+      "villager_count": 11,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "@landmark_delhi/dome-of-the-faith.webp@ with 5 @resource/berrybush.png@@unit_worker/villager-delhi.png@ then back to @resource/berrybush.png@",
+        "@resource/rally.png@ 7 new @unit_worker/villager-delhi.png@ to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "04:00\n‑ \n06:30",
+      "villager_count": 18,
+      "resources": {
+        "food": 9,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 3 new @unit_worker/villager.png@ to @resource/resource_food.png@ (12 total) and 4 new @unit_worker/villager.png@ to @resource/resource_gold.png@",
+        "@resource/rally.png@@unit_delhi/scholar.png@ from @landmark_delhi/dome-of-the-faith.png@ to @building_religious/mosque.png@ and research all upgrades",
+        "@abilities/repair.png@@building_military/stable.png@ to harass/pressure the enemy then@building_technology/blacksmith.png@",
+        "@abilities/repair.png@ second @building_economy/mill.png@ on @resource/berrybush.png@ and research   @technology_economy/professional-scouts.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "06:30\n‑\n08:00",
+      "villager_count": 29,
+      "resources": {
+        "food": 16,
+        "wood": 7,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 4 new @unit_worker/villager.png@ to @resource/resource_food.png@",
+        "@abilities/repair.png@ second @building_technology/blacksmith.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "08:20",
+      "villager_count": 29,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 13,
+        "builder": 11
+      },
+      "notes": [
+        "@resource/rally.webp@ all @resource/resource_wood.png@ and @resource/resource_gold.png@@unit_worker/villager.png@ to @resource/resource_stone.png@ (for 750 stone)",
+        "@landmark_delhi/compound-of-the-defender.png@ with 11 @resource/resource_food.png@@unit_worker/villager.png@ then to @resource/resource_gold.png@",
+        "@resource/rally.png@ new    @unit_worker/villager.png@to@resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "09:20",
+      "villager_count": 32,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 11,
+        "stone": 13,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_delhi/village-fortresses.webp@ and @technology_defensive/boiling-oil.png@ from @landmark_delhi/compound-of-the-defender.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:00",
+      "villager_count": 32,
+      "resources": {
+        "food": 21,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 11
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_stone.png@@unit_worker/villager.png@ to @resource/sheep.png@",
+        "@abilities/repair.png@@building_defensive/keep.png@ with @resource/resource_gold.png@@unit_worker/villager.png@ near @resource/resource_gold.png@ then to @resource/resource_food.png@",
+        "@resource/rally.png@ new    @unit_worker/villager.png@to@resource/resource_food.png@ (40 + in total)",
+        "@resource/rally.png@ 3/4 @unit_cavalry/scout.png@ and bring @resource/deer.png@ under your TC"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "12:00",
+      "villager_count": 42,
+      "resources": {
+        "food": 7,
+        "wood": 17,
+        "gold": 0,
+        "stone": 0,
+        "builder": 18
+      },
+      "notes": [
+        "7  @unit_worker/villager.webp@ on @resource/resource_food.png@",
+        "17 @unit_worker/villager.png@ on @resource/resource_wood.png@",
+        "@landmark_delhi/palace-of-the-sultan.png@with remaining@unit_worker/villager.png@then send 13@unit_worker/villager.png@on@resource/resource_wood.png@and rest on@resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "time": "13:00",
+      "villager_count": 47,
+      "resources": {
+        "food": 12,
+        "wood": 30,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 4 @unit_delhi/scholar.png@ into @landmark_delhi/palace-of-the-sultan.png@",
+        "@resource/rally.png@ new @unit_worker/villager.png@to@resource/resource_food.png@ (30 total) then to @resource/resource_gold.png@",
+        "@abilities/repair.png@ 3x @building_technology/university.png@ + 1x @building_military/archery-range.png@ + 3x @building_military/stable.png@ + 3rd @building_technology/blacksmith.png@"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "time": "15:00",
+      "villager_count": 50,
+      "resources": {
+        "food": 30,
+        "wood": 15,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Keep 15 @unit_worker/villager.webp@ on @resource/resource_wood.png@ and sent remaining @unit_worker/villager.png@ to @resource/resource_food.png@",
+        "Start producing ONLY @unit_byzantines/war-elephant.png@ form your stables.@technology_delhi/armored-beasts.png@"
+      ]
+    },
+    {
+      "age": 4,
+      "population_count": -1,
+      "time": "18 +",
+      "villager_count": 65,
+      "resources": {
+        "food": 30,
+        "wood": 15,
+        "gold": 20,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "At this point you can start @building_economy/mining-camp.webp@@resource/resource_stone.png@ and add more keeps on the map or kill your enemy with mass elephants + keeps insider their base."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/xtwOCXzM7OQ",
+  "season": "Season 9",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "lOmhDMotQhVspbtsynG6",
+    "civilization_code": "DEL",
+    "updated": "2025-12-08T17:35:20+00:00",
+    "views_at_snapshot": 2960,
+    "snapshot_date": "2026-10-31"
+  }
+}

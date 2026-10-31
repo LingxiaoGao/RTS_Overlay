@@ -1,0 +1,146 @@
+{
+  "description": "",
+  "civilization": "Knights Templar",
+  "name": "(2026) 1TC Fast 2x Pilgrim Into Aggro",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/lZ5EiqDVzQmIQDLkrfSr",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @unit_worker/villager.webp@ to @resource/resource_food.webp@ and build 1 @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 2 @unit_worker/villager.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @resource/resource_food.webp@ until 2:20 and age up"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Click up to feudal. I like to default to @civilization_flag/hos.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 3,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Remacro 3 to @resource/resource_food.webp@ and 10 to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 3,
+        "wood": 10,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue @technology_templar/safepassage.webp@ -> 2 @unit_worker/villager.webp@ -&gt; @technology_templar/sanctuary.webp@ and then start making units. See guide for more."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "I like to go @building_military/barracks.webp@ & @building_military/archery-range.webp@ into @building_technology/blacksmith.webp@ and add @building_military/stable.webp@ if necessary. Take map resources like @resource/deer.webp@ &amp; @resource/boar.webp@ and tower up."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Eventually hit castle around 12-14 mins and make @unit_templar/templar_brother_age_3.webp@ and archer spam. Put 5 On stone for @landmark_templar/fortress.webp@"
+      ]
+    }
+  ],
+  "video": "",
+  "season": "Season 12",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "lZ5EiqDVzQmIQDLkrfSr",
+    "civilization_code": "KTE",
+    "updated": "2026-03-19T13:28:55+00:00",
+    "views_at_snapshot": 7330,
+    "snapshot_date": "2026-10-31"
+  }
+}

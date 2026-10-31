@@ -1,0 +1,301 @@
+{
+  "description": "- Focus on getting horses out early to harass, then quickly switching to Cataphracts\n- Use Triumph when needed turning attacks\n\nShoutout to Beasty for his first Season 6 build order!",
+  "civilization": "Byzantines",
+  "name": "Byzantines Fast Aggression [Beasty]",
+  "author": "Sazed",
+  "source": "https://aoe4guides.com/builds/mNUBY06LqDhKHNZpT8Qo",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 @unit_worker/villager.webp@ builds @building_economy/mill.png@ at berries (for oil)",
+        "1 @unit_worker/villager.png@ build @building_byzantines/cistern-1.png@ (near @resource/resource_gold.png@@resource/berrybush.png@) then @resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@-> 1@unit_worker/villager.png@ to @resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@-> 1 @unit_worker/villager.png@ builds @building_economy/house.png@ and @building_economy/mining-camp.png@ then @resource/resource_gold.png@",
+        "@building_economy/town-center.png@-&gt; 2@unit_worker/villager.png@ -&gt; @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 10,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@@resource/rally.png@ -> @resource/resource_food.png@ (until 10)",
+        "Once 200@resource/resource_gold.png@ -&gt; 3@unit_worker/villager.png@ straggler @resource/resource_wood.png@",
+        "@building_economy/town-center.png@@resource/rally.png@ -&gt; @resource/resource_wood.png@ (until 5)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 @unit_worker/villager.webp@ from @resource/berrybush.png@ builds @landmark_byzantines/imperial-hippodrome-1.png@ (in zone of @building_byzantines/cistern-1.png@ while boosting research)",
+        "@building_economy/town-center.png@ -> 1@unit_worker/villager.png@ to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 8,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager.webp@ from @resource/resource_wood.png@ builds @building_economy/lumber-camp.png@",
+        "@building_economy/town-center.png@ -> 1 @unit_worker/villager.png@ to @resource/resource_wood.png@",
+        "@building_economy/town-center.png@ -&gt; 1 @unit_worker/villager.png@ to @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 8,
+        "wood": 6,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@@resource/rally.png@ -> @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 8,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once 200 @resource/resource_wood.webp@ -> 3 @unit_worker/villager.png@ to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 12,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_byzantines/imperial-hippodrome-1.webp@ villagers -> @resource/berrybush.png@",
+        "Produce @unit_cavalry/horseman-1.png@ from @landmark_byzantines/imperial-hippodrome-1.png@ (until 5-6 to harass)",
+        "3 @unit_worker/villager.png@ from @resource/resource_wood.png@ builds @building_byzantines/mercenary-house-2.png@",
+        "Research \"Western Mercenary Contract\" and Produce Longbows from @building_byzantines/mercenary-house-2.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 27,
+      "resources": {
+        "food": 18,
+        "wood": 3,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@@resource/rally.png@ -> @resource/resource_food.png@ (until 14)",
+        "@building_economy/town-center.png@ -&gt; 2 @unit_worker/villager.png@ to @resource/resource_gold.png@ (for 6 total)",
+        "Build @building_economy/house.png@ with @resource/resource_wood.png@@unit_worker/villager.png@",
+        "Research @technology_byzantines/expilatores-2.png@ from @landmark_byzantines/imperial-hippodrome-1.png@",
+        "@building_economy/town-center.png@@resource/rally.png@ -&gt; @resource/resource_food.png@",
+        "Research @technology_economy/wheelbarrow.png@ when possible"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 29,
+      "resources": {
+        "food": 15,
+        "wood": 3,
+        "gold": 11,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 20@unit_worker/villager.webp@ on @resource/resource_food.png@ move 5@unit_worker/villager.png@ to @resource/resource_gold.png@",
+        "Continue @building_economy/town-center.png@@resource/rally.png@ -> @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 9,
+        "wood": 3,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "9 @unit_worker/villager.webp@ from @resource/resource_food.png@ builds @landmark_byzantines/cistern-of-the-first-hill-2.png@ on @resource/deer.png@ (extend influence)",
+        "2 @unit_worker/villager.png@ from @resource/resource_gold.png@ to help build @landmark_byzantines/cistern-of-the-first-hill-2.png@",
+        "1 @unit_worker/villager.png@ from @resource/resource_wood.png@ builds @building_technology/blacksmith.png@",
+        "4 @unit_worker/villager.png@ from @resource/resource_food.png@ to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 7,
+        "wood": 7,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager.webp@ from @resource/resource_gold.png@ build @building_byzantines/aqueduct-1.png@ to connect @landmark_byzantines/cistern-of-the-first-hill-2.png@ to @building_byzantines/cistern-1.png@ then back to @resource/resource_gold.png@",
+        "@building_economy/town-center.png@ -> 1 @unit_worker/villager.png@ to @resource/resource_food.png@",
+        "@building_economy/town-center.png@ -&gt; 1 @unit_worker/villager.png@ to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 21,
+      "resources": {
+        "food": 7,
+        "wood": 7,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_economy/town-center.webp@@resource/rally.png@ -> @resource/resource_food.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 36,
+      "resources": {
+        "food": 19,
+        "wood": 7,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_byzantines/cistern-of-the-first-hill-2.webp@ villagers to @resource/resource_food.png@ and @resource/resource_gold.png@",
+        "Start producing @unit_byzantines/cataphract-3.png@",
+        "1 @unit_worker/villager.png@ build @building_economy/mill.png@ on @resource/deer.png@ then @building_military/stable.png@  (boost production in the cistern near the blacksmith)",
+        "<i>- optional if enemy spears -</i>",
+        "1 @unit_worker/villager.png@ build @building_economy/mill.png@ on @resource/berrybush.png@ and gather from that"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build next @landmark_byzantines/cistern-of-the-first-hill-2.webp@ near @resource/resource_wood.png@@resource/berrybush.png@ or@resource/deer.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_economy/horticulture.webp@ @technology_economy/specialized-pick.png@@technology_military/iron-undermesh.png@",
+        "Go 2nd TCs or make more production - many options!!"
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/UNHtobinPTQ",
+  "season": "Season 6",
+  "map": null,
+  "strategy": "Rush",
+  "_aoe4_guides": {
+    "id": "mNUBY06LqDhKHNZpT8Qo",
+    "civilization_code": "BYZ",
+    "updated": "2024-03-24T14:11:12+00:00",
+    "views_at_snapshot": 15300,
+    "snapshot_date": "2026-10-31"
+  }
+}

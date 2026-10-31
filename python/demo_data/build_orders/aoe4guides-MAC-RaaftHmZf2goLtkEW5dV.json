@@ -1,0 +1,120 @@
+{
+  "description": "Simple Macedonian Dynasty Build Order by Beasty",
+  "civilization": "Macedonian Dynasty",
+  "name": "Simple Macedonian Dynasty - Beasty",
+  "author": "Niki45nk",
+  "source": "https://aoe4guides.com/builds/RaaftHmZf2goLtkEW5dV",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 1,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "1 @unit_worker/villager.webp@ to @resource/sheep.webp@",
+        "3 @unit_worker/villager.webp@ collect 60 @resource/resource_wood.webp@ from @resource/gaiatreeprototypetree.webp@, then go to @resource/sheep.webp@",
+        "2@unit_worker/villager.webp@ make 2 @building_economy/farm.webp@ on the side of @building_economy/town-center.webp@ near the @resource/berrybush.webp@",
+        "Rally 1 @unit_worker/villager.webp@ to @resource/sheep.webp@, 2 @unit_worker/villager.webp@ to @building_economy/mining-camp.webp@@resource/resource_gold.webp@, then back to @resource/sheep.webp@",
+        "1 @resource/sheep.webp@@unit_worker/villager.webp@ builds @building_macedonian/varangian_warcamp.webp@",
+        "Put all @resource/sheep.webp@ on side of @building_economy/town-center.webp@ nearest to the @resource/berrybush.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:35",
+      "villager_count": 13,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "4 @resource/sheep.webp@@unit_worker/villager.webp@ build @landmark_byzantines/grand-winery-1.webp@ on @resource/berrybush.webp@",
+        "[Make sure its eco bonus radius extends to the 2 @building_economy/farm.webp@]",
+        "Send 2 @resource/sheep.webp@@unit_worker/villager.webp@ to @resource/gaiatreeprototypetree.webp@",
+        "@resource/rally.webp@@unit_worker/villager.webp@ to @resource/gaiatreeprototypetree.webp@",
+        "When 1st @resource/gaiatreeprototypetree.webp@ is depleted, make @building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 17,
+      "resources": {
+        "food": 5,
+        "wood": 6,
+        "gold": 2,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "4 @landmark_byzantines/grand-winery-1.webp@@unit_worker/villager.webp@ go to @resource/berrybush.webp@",
+        "[If against Knight or Horse Civ, build @building_macedonian/varangian_stronghold.webp@ into @unit_macedonian/atgeir-1.webp@ and @unit_macedonian/bogmadr-2.webp@]",
+        "[Otherwise, build @building_military/stable.webp@ and @building_military/archery-range.webp@ into @unit_cavalry/horseman-1.webp@ and @unit_macedonian/bogmadr-2.webp@]",
+        "Harass with @unit_cavalry/horseman-1.webp@ if possible",
+        "When 8 @resource/resource_wood.webp@@unit_worker/villager.webp@, Rally @unit_worker/villager.webp@ to @resource/resource_food.webp@ until 11 @resource/resource_food.webp@@unit_worker/villager.webp@, then back to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:20",
+      "villager_count": 22,
+      "resources": {
+        "food": 11,
+        "wood": 9,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get @technology_economy/horticulture.webp@ -> @technology_economy/wheelbarrow.webp@at @landmark_byzantines/grand-winery-1.webp@ and @technology_economy/double-broadaxe.webp@ at @building_economy/lumber-camp.webp@",
+        "1 @resource/resource_gold.webp@@unit_worker/villager.webp@ builds @building_macedonian/varangian_arsenal.webp@ near @building_economy/mining-camp.webp@",
+        "Get @technology_macedonian/scale-barding-2.webp@ -&gt; @technology_macedonian/sharpening-stones-2.webp@ at @building_macedonian/varangian_arsenal.webp@",
+        "When 16 @resource/resource_wood.webp@@unit_worker/villager.webp@, Rally @unit_worker/villager.webp@ to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "9:30",
+      "villager_count": 33,
+      "resources": {
+        "food": 15,
+        "wood": 16,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "[Now you can either go into Feudal Rush to Age-Up to Castle Age]",
+        "[For Age-Up]",
+        "Send 5 @resource/resource_wood.webp@@unit_worker/villager.webp@ to @resource/resource_gold.webp@ and Rally to @resource/resource_gold.webp@ until 10 @resource/resource_gold.webp@@unit_worker/villager.webp@",
+        "6 @resource/resource_wood.webp@@unit_worker/villager.webp@ build @landmark_byzantines/golden-horn-tower-2.webp@ in a forward position near @resource/deer.webp@/@resource/resource_gold.webp@ (if possible)",
+        "Upgrade your units and start making @unit_macedonian/riddari-3.webp@"
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/PeZYWFhGr3w",
+  "season": "Season 12",
+  "map": null,
+  "strategy": "Timing Attack",
+  "_aoe4_guides": {
+    "id": "RaaftHmZf2goLtkEW5dV",
+    "civilization_code": "MAC",
+    "updated": "2025-11-05T23:44:06+00:00",
+    "views_at_snapshot": 7075,
+    "snapshot_date": "2026-10-31"
+  }
+}

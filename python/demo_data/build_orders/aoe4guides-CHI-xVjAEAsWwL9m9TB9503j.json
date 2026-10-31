@@ -1,0 +1,179 @@
+{
+  "description": "Mastering Chinese",
+  "civilization": "Chinese",
+  "name": "China Numba #1",
+  "author": "UnkemptKing",
+  "source": "https://aoe4guides.com/builds/xVjAEAsWwL9m9TB9503j",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_economy/mill.webp@ and queue 3 @unit_worker/villager-china.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:35",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_economy/house.webp@ and push all @unit_worker/villager-china.webp@  to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:20",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send 3 @unit_worker/villager-china.webp@ to @resource/resource_gold.webp@ and build @building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_cavalry/scout.webp@ the map for @resource/sheep.webp@ and keep queing @unit_worker/villager-china.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:30",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Place @landmark_chinese/imperial-academy.webp@ and try to cover @building_economy/mill.webp@ and @resource/gaiatreeprototypetree.webp@ ready for @building_economy/lumber-camp.webp@ to be built"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:22",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Keep queing @unit_worker/villager-china.webp@ and scouting @unit_cavalry/scout.webp@ the map for @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:30",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue @unit_chinese/imperial-official.webp@ at the @landmark_chinese/imperial-academy.webp@ and @ability_chinese/supervise.webp@ the @building_economy/mill.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:40",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send around 5-6 @unit_worker/villager-china.webp@ to collect @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Create a @building_economy/lumber-camp.webp@ when you have enough @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:10",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue 2nd @unit_chinese/imperial-official.webp@ at the @landmark_chinese/imperial-academy.webp@ and @ability_chinese/supervise.webp@ the @building_economy/lumber-camp.webp@"
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/NZUZHDkJC8Y",
+  "season": "Season 12",
+  "map": "Open",
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "xVjAEAsWwL9m9TB9503j",
+    "civilization_code": "CHI",
+    "updated": "2025-11-21T18:01:42+00:00",
+    "views_at_snapshot": 3201,
+    "snapshot_date": "2026-10-31"
+  }
+}

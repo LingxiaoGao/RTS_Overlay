@@ -1,0 +1,270 @@
+{
+  "description": "",
+  "civilization": "Byzantines",
+  "name": "1TC Winery + Longbows ->Fast Castle Varangian",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/iegYIfzkVQES7SXrMycH",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 @unit_worker/villager.webp@ on @resource/sheep.png@ (@resource/rally.png@@unit_worker/villager.png@ until 7 on @resource/sheep.png@)",
+        "1 @unit_worker/villager.png@ build @building_byzantines/cistern-1.png@ then@building_economy/house.png@ on side of tc opposite @resource/berrybush.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:40",
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@unit_worker/villager.png@ until 3 on @resource/resource_gold.png@ then @resource/rally.png@ @resource/sheep.png@ until @age/age_2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:08",
+      "villager_count": 8,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Drop off resources and build @landmark_byzantines/grand-winery-1.webp@ with 4 @resource/sheep.png@@unit_worker/villager.png@ on the @resource/berrybush.png@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 4,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "&lt;- Remacro."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~3:48~",
+      "villager_count": 16,
+      "resources": {
+        "food": 8,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Age II Macro: : Put all 8 @unit_worker/villager.webp@@resource/resource_food.png@ on @resource/berrybush.png@ next to @landmark_byzantines/grand-winery-1.png@. Rally 8 total @unit_worker/villager.png@ on @resource/resource_wood.png@.",
+        "Research @technology_economy/wheelbarrow.png@ from @landmark_byzantines/grand-winery-1.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~3:48~",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @unit_worker/villager.webp@ builds @building_economy/house.png@+@building_byzantines/cistern-1.png@ (connect)+@building_byzantines/mercenary-house-2.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Get following upgrades when possible @technology_economy/double-broadaxe.webp@@technology_economy/specialized-pick.png@@technology_byzantines/border-settlements-2.png@@technology_economy/forestry.png@@technology_economy/horticulture.png@",
+        "Contract: @technology_byzantines/western-mercenary-contract-1.png@ -> Make @unit_byzantines/longbowman-2.png@ always when you have 500 Oil."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:30",
+      "villager_count": 22,
+      "resources": {
+        "food": 11,
+        "wood": 8,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Start making @building_byzantines/olive-grove-1.webp@ around @landmark_byzantines/grand-winery-1.png@ towards @building_economy/town-center.png@ for safety."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7‑8:00",
+      "villager_count": 24,
+      "resources": {
+        "food": 10,
+        "wood": 8,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Go heavy on gold when over 600 @resource/resource_food.webp@ to get @age/age_3.png@",
+        "At around 8 mins you should have about 10 @building_byzantines/olive-grove-1.png@. Keep making them as you gather more @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "~9:00~",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When you have a good @building_byzantines/olive-grove-1.webp@ setup, you go age 3. You should have enough @unit_byzantines/longbowman-2.png@ and/or @unit_byzantines/limitanei-1.png@ to defend aggression.",
+        "Go up with @landmark_byzantines/golden-horn-tower-2.png@",
+        "Gather with 10+ @unit_worker/villager.png@  on @resource/resource_gold.png@ when aging. You need a ton of gold for upgrades and units.",
+        "Prep @building_technology/blacksmith.png@ for upgrades on ageup."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "~10:00~",
+      "villager_count": 35,
+      "resources": {
+        "food": 15,
+        "wood": 10,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Make @building_military/barracks.webp@ before age 3 to spam@unit_byzantines/varangian-guard-3.png@.",
+        "Gold use:: @technology_byzantines/veteran-mercenaries-3.png@@technology_military/balanced-projectiles.png@@technology_military/wedge-rivets.png@",
+        "@unit_religious/monk-3.png@ for @resource/relics.png@ (Produce @unit_religious/monk-3.png@ from @landmark_byzantines/grand-winery-1.png@)",
+        "Add another @building_byzantines/cistern-1.png@ for Level 3."
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Keep adding @building_byzantines/olive-grove-1.webp@ and build more @building_military/barracks.png@ so you can spam @unit_byzantines/varangian-guard-3.png@@unit_byzantines/longbowman-2.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Additional Tips:",
+        "Use longbows around resources to get vision if you dont have @technology_byzantines/border-settlements-2.webp@ or @building_defensive/outpost.png@ up. You want to make @building_defensive/outpost.png@ on @resource/berrybush.png@ if they are facing your enemy. Make @building_defensive/outpost.png@ on the @resource/resource_gold.png@if no forward @resource/berrybush.png@.",
+        "------------",
+        "Be smart about your walling. Dont wall too much to conserve resources. Just wall where necessary to make it easier to defend with only longbows.",
+        "------------",
+        "In the feudal age, start with a @building_military/barracks.png@ to make @unit_byzantines/limitanei-1.png@ vs knight rush civs (@civilization_flag/jda.png@@civilization_flag/fre.png@@civilization_flag/rus.png@@civilization_flag/mon.png@) then after go into @building_byzantines/mercenary-house-2.png@.",
+        "------------",
+        "+1 and +2 ranged upgrades are insanely important, Your longbows are basically crossbows for dealing with anything living and mechanical (yes, with good splits during fights, you can whittle down mangonels too very quickly)",
+        "-----------",
+        "Consider your timings. You can make a lot of units in castle and push, but when you approach 200/200 it is time for imperial. Another timing is your age 4 @unit_byzantines/longbowman-2.png@ upgrade that makes them do serious damage again vs age 3 opponent. Varangian age 4 upgrade is also insane (depending on your numbers)"
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/edrthv6RgMo",
+  "season": "Season 7",
+  "map": null,
+  "strategy": "Fast Castle",
+  "_aoe4_guides": {
+    "id": "iegYIfzkVQES7SXrMycH",
+    "civilization_code": "BYZ",
+    "updated": "2024-03-26T21:44:48+00:00",
+    "views_at_snapshot": 22293,
+    "snapshot_date": "2026-10-31"
+  }
+}

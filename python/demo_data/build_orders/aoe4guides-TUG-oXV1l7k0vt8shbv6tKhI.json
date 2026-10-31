@@ -1,0 +1,237 @@
+{
+  "description": "",
+  "civilization": "Tughlaq Dynasty",
+  "name": "2 tc fort build feudal into raider elephants etc season 12",
+  "author": "PeNDraGoN",
+  "source": "https://aoe4guides.com/builds/oXV1l7k0vt8shbv6tKhI",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 @unit_worker/villager-delhi.webp@ to @resource/sheep.webp@ , build 1 @unit_tughluq/worker_elephant.webp@ instantly and use them to scout for sheep left and right"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:05",
+      "villager_count": 8,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@2 @unit_worker/villager-delhi.webp@ to  @resource/resource_gold.webp@ build @building_economy/house.webp@ with 1st civ (make sure this is a good place for fort later, you surround the fort with farms and houses  then change @resource/rally.webp@ to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:40",
+      "villager_count": 10,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Bring @unit_tughluq/worker_elephant.webp@ back to @resource/resource_gold.webp@ for 50 ish seconds"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:05",
+      "villager_count": 4,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "On 200 @resource/resource_gold.webp@  move 2  @unit_worker/villager-delhi.webp@ from @resource/resource_gold.webp@  and 2 @unit_worker/villager-delhi.webp@ from @resource/sheep.webp@  to @resource/resource_stone.webp@and also move the @unit_tughluq/worker_elephant.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:15",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "move other @unit_tughluq/worker_elephant.webp@ to @resource/resource_wood.webp@ line and drop of its @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:19",
+      "villager_count": 12,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "on age up use 2 @unit_worker/villager-delhi.webp@   from  @resource/sheep.webp@ and 1 @unit_worker/villager-delhi.webp@   @resource/rally.webp@from  @building_economy/town-center.webp@to age up with @landmark_delhi/tower-of-victory.webp@ 2nd @resource/rally.webp@ to @resource/resource_stone.webp@ (TOTAL OF 5)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:25",
+      "villager_count": 9,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "rally @building_economy/town-center.webp@ to @resource/resource_wood.webp@ till 8  move 2 @unit_worker/villager-delhi.webp@  from @resource/sheep.webp@ to @resource/resource_wood.webp@ ( you want 4 on food)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 18,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "when age up is complete take 2 @unit_worker/villager-delhi.webp@ from @landmark_delhi/tower-of-victory.webp@   and move to @resource/sheep.webp@  then take 1 other @unit_worker/villager-delhi.webp@ and move to build @building_economy/house.webp@  at 1st @building_economy/house.webp@ rally 2nd house @unit_worker/villager-delhi.webp@ to build  @building_tughluq/tughluqabad_fort.webp@ with @resource/resource_wood.webp@ @unit_worker/villager-delhi.webp@(step below)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 14,
+      "resources": {
+        "food": 5,
+        "wood": 4,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "take 4 @unit_worker/villager-delhi.webp@ from @resource/resource_wood.webp@ and build @building_tughluq/tughluqabad_fort.webp@ near @building_economy/house.webp@ and @resource/resource_gold.webp@ total of 5 @unit_worker/villager-delhi.webp@ building it"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 5,
+        "wood": 4,
+        "gold": 0,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "after building @building_tughluq/tughluqabad_fort.webp@ move 5 @unit_worker/villager-delhi.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "5:15",
+      "villager_count": 19,
+      "resources": {
+        "food": 5,
+        "wood": 4,
+        "gold": 5,
+        "stone": 5,
+        "builder": -1
+      },
+      "notes": [
+        "research @ability_tughluq/bhakkar.webp@ governor in the @building_tughluq/tughluqabad_fort.webp@ for @building_economy/farm.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "when 350 @resource/resource_stone.webp@  and 400 @resource/resource_wood.webp@ build 2nd @building_economy/town-center.webp@ on line @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "at around 7 mins to 7-30 build @building_military/barracks.webp@@building_military/archery-range.webp@@building_military/stable.webp@  depending on whats best, @building_military/barracks.webp@ into  @building_military/stable.webp@    vs @unit_cavalry/lancer-3.webp@ civs"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "video": "https://www.youtube.com/embed/WgXJGGudj9Q",
+  "season": "Season 12",
+  "map": null,
+  "strategy": "Boom",
+  "_aoe4_guides": {
+    "id": "oXV1l7k0vt8shbv6tKhI",
+    "civilization_code": "TUG",
+    "updated": "2025-11-05T04:38:24+00:00",
+    "views_at_snapshot": 5631,
+    "snapshot_date": "2026-10-31"
+  }
+}

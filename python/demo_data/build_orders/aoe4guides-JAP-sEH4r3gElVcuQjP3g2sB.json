@@ -1,0 +1,372 @@
+{
+  "description": "Aussie Drongo walkthrough of Vortix's Japanese Fast Castle build",
+  "civilization": "Japanese",
+  "name": "Japanese Fast Castle (Vortix)",
+  "author": "dinotreehouse",
+  "source": "https://aoe4guides.com/builds/sEH4r3gElVcuQjP3g2sB",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Rally on berries, 2 build @building_japanese/farmhouse-1.webp@, 4 on @resource/berrybush.png@, research @technology_japanese/towara-1.png@ when house is built"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:40",
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally to gold, first Villager builds Forge"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:25",
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "After 3 on gold, rally TC to sheep"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:45",
+      "villager_count": 14,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Ready for age up with 4 villagers on sheep"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:55",
+      "villager_count": 14,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Take Sheep Villagers and build Kura Storehouse on Wood line, Rally TC to wood"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:55",
+      "villager_count": 17,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "1 Berry Villager builds second@building_japanese/farmhouse-1.webp@ near @resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 19,
+      "resources": {
+        "food": 9,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Move 2 Villagers from Storehouse to Gold, Move other 2 on Sheep, Rally TC on sheep, Move Sheep villagers to farms as they become available"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:45",
+      "villager_count": 20,
+      "resources": {
+        "food": 10,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "5 Gold Villagers build Outpost to guard Gold"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:20",
+      "villager_count": 20,
+      "resources": {
+        "food": 10,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Outpost done, research @technology_defensive/arrow-slits.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:20",
+      "villager_count": 28,
+      "resources": {
+        "food": 13,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Take 5 Villagers off food, build 2nd outpost near gold and move to gold"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:45",
+      "villager_count": 29,
+      "resources": {
+        "food": 14,
+        "wood": 4,
+        "gold": 5,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "Build another house with Wood or Food villager"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:05",
+      "villager_count": 29,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 10,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "Take 9-10 Villagers off food, build floating gate near TC"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:15",
+      "villager_count": 30,
+      "resources": {
+        "food": 6,
+        "wood": 4,
+        "gold": 10,
+        "stone": 0,
+        "builder": 10
+      },
+      "notes": [
+        "Take 1 Wood Villager and build Stable near Floating Gate"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "9:00",
+      "villager_count": 32,
+      "resources": {
+        "food": 17,
+        "wood": 5,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "First Yorishiro into Stable, train Mounted Samurai, get @technology_japanese/takezaiku-2.webp@, Second Yorishiro into TC"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "9:10",
+      "villager_count": 33,
+      "resources": {
+        "food": 17,
+        "wood": 6,
+        "gold": 6,
+        "stone": 0,
+        "builder": 4
+      },
+      "notes": [
+        "Use priests to get Relics, Build Shrine with 4 Villagers off Gold. Use Mounted Samurai to protect priests"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "9:30",
+      "villager_count": 34,
+      "resources": {
+        "food": 17,
+        "wood": 7,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_japanese/tatara-1.webp@, @technology_economy/double-broadaxe.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:00",
+      "villager_count": 36,
+      "resources": {
+        "food": 17,
+        "wood": 9,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_military/fitted-leatherwork.webp@ or @technology_military/iron-undermesh.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:30",
+      "villager_count": 37,
+      "resources": {
+        "food": 17,
+        "wood": 10,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Check Villager mix"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "10:50",
+      "villager_count": 37,
+      "resources": {
+        "food": 17,
+        "wood": 5,
+        "gold": 10,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Build 2-3 Archery Range or Barracks to counter"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "11:35",
+      "villager_count": 38,
+      "resources": {
+        "food": 16,
+        "wood": 12,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research Archer or Infantry upgrade, Research @technology_military/steeled-arrow.webp@ if going Archers"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "13:10",
+      "villager_count": 45,
+      "resources": {
+        "food": 27,
+        "wood": 8,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_military/balanced-projectiles.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "14:30",
+      "villager_count": 46,
+      "resources": {
+        "food": 26,
+        "wood": 10,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Check Villager mix"
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/clEC3e-CgnI",
+  "season": "Season 6",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "sEH4r3gElVcuQjP3g2sB",
+    "civilization_code": "JAP",
+    "updated": "2024-03-24T14:02:48+00:00",
+    "views_at_snapshot": 31373,
+    "snapshot_date": "2026-10-31"
+  }
+}

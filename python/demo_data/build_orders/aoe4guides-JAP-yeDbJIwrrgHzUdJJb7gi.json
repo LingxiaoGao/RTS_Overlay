@@ -1,0 +1,211 @@
+{
+  "description": "See video link for guide",
+  "civilization": "Japanese",
+  "name": "Fast Castle (2026)",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/yeDbJIwrrgHzUdJJb7gi",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 to @resource/sheep.webp@ and 1 @unit_worker/villager-japanese.webp@ to build @building_japanese/farmhouse-1.webp@ (get @technology_japanese/towara-1.webp@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ 3 @unit_worker/villager-japanese.webp@ to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:02",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Pull @resource/sheep.webp@@unit_worker/villager-japanese.webp@ to @resource/berrybush.webp@ when @technology_japanese/towara-1.webp@ completes"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:20",
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@@unit_worker/villager-japanese.webp@ to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@landmark_japanese/kura-storehouse-1.webp@ with 1 @unit_worker/villager-japanese.webp@ from @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:34",
+      "villager_count": 14,
+      "resources": {
+        "food": 6,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Macro 3 @unit_worker/villager-japanese.webp@ to @resource/resource_wood.webp@ for @building_defensive/outpost.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:55",
+      "villager_count": 17,
+      "resources": {
+        "food": 9,
+        "wood": 3,
+        "gold": 4,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Build @building_defensive/outpost.webp@ on gold and upgrade this with @technology_defensive/arrow-slits.webp@@technology_defensive/fortify-outpost.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Keep macroing @resource/resource_food.webp@ and 1 more to @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:41",
+      "villager_count": 23,
+      "resources": {
+        "food": 18,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Aged up"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:34",
+      "villager_count": 25,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 5,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "Age up to @age/age_3.webp@ with @landmark_japanese/floating-gate-2.webp@ with 8 @unit_worker/villager-japanese.webp@ from @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:40",
+      "villager_count": 28,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 8,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "Macro 5-8 on @resource/resource_wood.webp@ depending on if u need @building_military/barracks.webp@ or @building_military/stable.webp@ (rax if getting all inned by wood units, stable if enemy knights or no enemy pressure)"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "7:40",
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_military/stable.webp@ and make @unit_japanese/mounted-samurai-3.webp@ nonstop & take relics. Your go to comp is @unit_japanese/yumi-ashigaru-2.webp@ &amp; @unit_japanese/mounted-samurai-3.webp@"
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/MOhYn-gXPjE",
+  "season": "Season 12",
+  "map": null,
+  "strategy": "Fast Castle",
+  "_aoe4_guides": {
+    "id": "yeDbJIwrrgHzUdJJb7gi",
+    "civilization_code": "JAP",
+    "updated": "2025-12-28T22:12:16+00:00",
+    "views_at_snapshot": 18864,
+    "snapshot_date": "2026-10-31"
+  }
+}

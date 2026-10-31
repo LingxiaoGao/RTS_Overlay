@@ -1,6 +1,8 @@
 # Game overlay application for Age of Empires IV (AoE4)
 import sys
 import pathlib
+import logging
+from logging.handlers import RotatingFileHandler
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtCore import QTimer
 
@@ -11,8 +13,27 @@ from aoe4.smart_environment import EnvironmentValidator
 from aoe4.smart_status_window import SmartStatusWindow
 
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
     directory_main = pathlib.Path(__file__).parent.resolve()
+    log_directory = directory_main / "local_config" / "logs"
+    log_directory.mkdir(parents=True, exist_ok=True)
+    log_path = log_directory / "aoe4_overlay.log"
+    handler = RotatingFileHandler(
+        log_path, maxBytes=2 * 1024 * 1024, backupCount=3, encoding="utf-8"
+    )
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s %(levelname)s %(message)s",
+        handlers=[handler],
+    )
+    logger = logging.getLogger("aoe4_overlay")
+
+    def log_uncaught(exc_type, exc_value, exc_traceback):
+        logger.critical("Uncaught exception", exc_info=(exc_type, exc_value, exc_traceback))
+
+    sys.excepthook = log_uncaught
+    logger.info("AOE4 Overlay starting; log=%s", log_path)
+
+    app = QApplication(sys.argv)
     window = AoE4GameOverlay(app=app, directory_main=str(directory_main))
 
     # timer to call the functions related to mouse and keyboard inputs
@@ -32,14 +53,23 @@ if __name__ == '__main__':
 
     report = EnvironmentValidator().validate(config_path)
     if not report.ready:
+        logger.error("Smart OCR disabled: %s", " | ".join(report.messages_zh))
         status_window.show_disabled("\n".join(report.messages_zh))
     else:
         try:
             config = SmartControllerConfig.from_file(config_path)
             controller = SmartHudController(config)
+            last_poll_error = None
 
             def poll_smart():
+                global last_poll_error
                 result = controller.poll_safe()
+                if result.error != last_poll_error:
+                    if result.error:
+                        logger.error("Smart OCR poll failed: %s", result.error)
+                    elif last_poll_error:
+                        logger.info("Smart OCR poll recovered")
+                    last_poll_error = result.error
                 notifications = ()
                 if result.result is not None:
                     notifications = window.apply_smart_pipeline_result(result.result)
@@ -52,6 +82,7 @@ if __name__ == '__main__':
 
             app.aboutToQuit.connect(controller.close)
         except Exception as exc:
+            logger.exception("Smart OCR initialization failed")
             status_window.show_disabled(f"{type(exc).__name__}: {exc}")
 
     exit_event = app.exec()

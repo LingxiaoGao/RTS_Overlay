@@ -1,0 +1,180 @@
+{
+  "description": "The fastest possible 2nd TC without villager delay",
+  "civilization": "Abbasid Dynasty",
+  "name": "4:25 2TC Eco Wing ",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/rhHYIVjtoEV5PapR07Hf",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "6 @unit_worker/villager-abbasid.webp@ to @resource/sheep.png@ (build a @landmark_abbasid/house-of-wisdom.png@ + @building_economy/house.png@ )"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:20",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally 2 @unit_worker/villager-abbasid.webp@ to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "01:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @resource/sheep.png@ until @age/age_2.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:12",
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_abbasid/economic-wing.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 2,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "Remacro. Send 4 @unit_worker/villager-abbasid.webp@ to @resource/resource_stone.png@ and @resource/rally.png@ @resource/gaiatreeprototypetree.png@ until @building_economy/town-center.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:10",
+      "villager_count": 13,
+      "resources": {
+        "food": 5,
+        "wood": 4,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "Move @resource/resource_gold.webp@@unit_worker/villager-abbasid.png@ to @resource/gaiatreeprototypetree.png@. Build a @building_economy/house.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "03:58",
+      "villager_count": 17,
+      "resources": {
+        "food": 4,
+        "wood": 9,
+        "gold": 0,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_abbasid/fertile-crescent-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 18,
+      "resources": {
+        "food": 4,
+        "wood": 14,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Pull @resource/resource_stone.webp@ @unit_worker/villager-abbasid.png@ away when @resource/resource_stone.png@mine is 955/1200"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:28",
+      "villager_count": 19,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 15
+      },
+      "notes": [
+        "Build 2nd @building_economy/town-center.webp@ on @resource/resource_wood.png@ and @resource/rally.png@ main @building_economy/town-center.png@ to @resource/sheep.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 20,
+      "resources": {
+        "food": 7,
+        "wood": 13,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Add @building_economy/mill.webp@ for @technology_abbasid/fresh-foodstuffs.png@. Now add @building_military/archery-range.png@ and @building_military/barracks.png@ for defensive units."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/NxUpmN3Fqdk",
+  "season": "Season 9",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "rhHYIVjtoEV5PapR07Hf",
+    "civilization_code": "ABB",
+    "updated": "2024-12-30T17:05:11+00:00",
+    "views_at_snapshot": 10578,
+    "snapshot_date": "2026-10-31"
+  }
+}

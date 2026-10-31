@@ -1,0 +1,179 @@
+{
+  "description": "See video link for guide",
+  "civilization": "Abbasid Dynasty",
+  "name": "Eco Wing 2TC (2026)",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/q7ShhrWaVgMCyDjPQX9F",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 @unit_worker/villager-abbasid.webp@ to @resource/berrybush.webp@ (build a @landmark_abbasid/house-of-wisdom.webp@ + @building_economy/house.webp@ )",
+        "1 @unit_worker/villager-abbasid.webp@ builds @landmark_abbasid/house-of-wisdom.webp@ and goes to @resource/sheep.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 @unit_worker/villager-abbasid.webp@ to @building_economy/mining-camp.webp@@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:00",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/sheep.webp@ until @landmark_abbasid/economic-wing.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": 12,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_abbasid/economic-wing.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:12",
+      "villager_count": 12,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Take @resource/sheep.webp@ to @resource/gaiatreeprototypetree.webp@ (dont chop woodline until 2tc has been built, that means also dont delete any of the 3 straggler trees under the TC)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:20",
+      "villager_count": 13,
+      "resources": {
+        "food": 5,
+        "wood": 5,
+        "gold": 2,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @resource/resource_stone.webp@ until 4 @unit_worker/villager-abbasid.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/resource_stone.webp@ @unit_worker/villager-abbasid.webp@builds @building_economy/mining-camp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 18,
+      "resources": {
+        "food": 5,
+        "wood": 7,
+        "gold": 2,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "Queue @technology_abbasid/fertile-crescent-2.webp@ & @technology_abbasid/fresh-foodstuffs.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 2,
+        "stone": 4,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ to @resource/gaiatreeprototypetree.webp@ & pull gold vills to wood when gold mine is 3750/4000 @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:50",
+      "villager_count": 5,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build 2nd @building_economy/town-center.webp@ on @resource/resource_wood.webp@ to protect and then you decide if you wanna stay feudal or go FC."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/zlFwOhCfX3M",
+  "season": "Season 12",
+  "map": null,
+  "strategy": "Boom",
+  "_aoe4_guides": {
+    "id": "q7ShhrWaVgMCyDjPQX9F",
+    "civilization_code": "ABB",
+    "updated": "2025-12-30T11:40:58+00:00",
+    "views_at_snapshot": 5823,
+    "snapshot_date": "2026-10-31"
+  }
+}

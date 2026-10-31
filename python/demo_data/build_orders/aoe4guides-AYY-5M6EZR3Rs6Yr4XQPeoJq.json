@@ -1,0 +1,263 @@
+{
+  "description": "",
+  "civilization": "Ayyubids",
+  "name": "Ayyubids desert raider opening into FC ",
+  "author": "Venlow",
+  "source": "https://aoe4guides.com/builds/5M6EZR3Rs6Yr4XQPeoJq",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "all 6 @unit_worker/villager-abbasid.webp@ to @resource/berrybush.png@ (2 @unit_worker/villager-abbasid.png@ build @building_economy/mill.png@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@unit_worker/villager-abbasid.webp@ do @building_economy/house.png@ and go to @resource/berrybush.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "next 3 @unit_worker/villager-abbasid.webp@ go to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "next @unit_worker/villager-abbasid.webp@ do @landmark_abbasid/house-of-wisdom.png@ and then go to @resource/gaiatreeprototypetree.png@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "+‑2,20",
+      "villager_count": 13,
+      "resources": {
+        "food": 7,
+        "wood": 3,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_2.webp@ with @technology_ayyubids/military-wing-reinforcement-1.png@ REINFORCEMENT"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 15,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Go to a total of 5 @unit_worker/villager-abbasid.webp@ to the @resource/gaiatreeprototypetree.png@   (when @resource/gaiatreeprototypetree.png@ done -> @building_economy/house.png@ and @building_economy/lumber-camp.png@ )"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "2 more @unit_worker/villager-abbasid.webp@ on @resource/resource_gold.png@/////@building_defensive/outpost.png@ on @resource/resource_gold.png@ If needed,"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Next @unit_worker/villager-abbasid.webp@ to @resource/resource_food.png@ until 15"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "+‑4,25",
+      "villager_count": 18,
+      "resources": {
+        "food": 8,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "pressure with @unit_ayyubids/desert-raider-2.webp@    (@building_defensive/palisade-wall.png@ if needed and ez)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 17,
+      "resources": {
+        "food": 7,
+        "wood": 5,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "with all 5 @unit_worker/villager-abbasid.webp@ of @resource/resource_wood.png@ Do one trip to @resource/resource_stone.png@ to @technology_defensive/arrow-slits.png@ on @building_defensive/outpost.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 28,
+      "resources": {
+        "food": 15,
+        "wood": 5,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "3 new @unit_worker/villager-abbasid.webp@ to @resource/resource_gold.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 28,
+      "resources": {
+        "food": 15,
+        "wood": 5,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@age/age_3.webp@ with @technology_ayyubids/culture-wing-logistics-1.png@ LOGISTIC,  @technology_economy/wheelbarrow.png@ and @technology_economy/double-broadaxe.png@, also drop @building_military/stable.png@@building_military/stable.png@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 28,
+      "resources": {
+        "food": 15,
+        "wood": 5,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "ALL next @unit_worker/villager-abbasid.webp@ to @resource/resource_wood.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "+‑9,30",
+      "villager_count": 34,
+      "resources": {
+        "food": 15,
+        "wood": 11,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@building_religious/mosque.webp@ and get @resource/relics.png@, pressure with @unit_ayyubids/camel-lancer-3.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 35,
+      "resources": {
+        "food": 15,
+        "wood": 12,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Drop a @building_economy/market.webp@ to trade excess @resource/resource_gold.png@ if needed and @building_technology/blacksmith.png@ --------> @technology_military/iron-undermesh.png@@technology_military/bloomery.png@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "villager_count": 40,
+      "resources": {
+        "food": 15,
+        "wood": 17,
+        "gold": 8,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Do @building_military/archery-range.webp@@building_military/archery-range.png@@building_military/archery-range.png@ To go full pressure with @unit_ayyubids/camel-lancer-3.png@ And @unit_infantry/archer-2.png@ (@technology_military/steeled-arrow.png@)"
+      ]
+    }
+  ],
+  "video": "",
+  "season": "Season 7",
+  "map": null,
+  "strategy": "Fast Castle",
+  "_aoe4_guides": {
+    "id": "5M6EZR3Rs6Yr4XQPeoJq",
+    "civilization_code": "AYY",
+    "updated": "2026-05-11T11:26:39+00:00",
+    "views_at_snapshot": 4960,
+    "snapshot_date": "2026-10-31"
+  }
+}

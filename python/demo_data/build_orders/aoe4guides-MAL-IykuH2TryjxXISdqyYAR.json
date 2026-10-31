@@ -1,0 +1,316 @@
+{
+  "description": "Copied and modified from Valdemar's video for me to understand\nValdemar's original BO: https://aoe4guides.com/builds/gWpMen9bkD336MtQWFJg",
+  "civilization": "Malians",
+  "name": "Cow Boom + Sofa/Archer - Copy for me to understand series",
+  "author": "murtuk",
+  "source": "https://aoe4guides.com/builds/IykuH2TryjxXISdqyYAR",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "5 to one @resource/gaiatreeprototypetree.webp@ then back to @resource/resource_food.webp@",
+        "1@abilities/repair.webp@@building_malians/pit-mine-1.webp@ and 7@building_economy/house.webp@, then back to @resource/resource_food.webp@",
+        "1 more @resource/rally.webp@to 2nd@resource/gaiatreeprototypetree.webp@to chop 25 then to @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "00:20",
+      "villager_count": 7,
+      "resources": {
+        "food": 0,
+        "wood": 6,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "@resource/rally.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:40",
+      "villager_count": 11,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "7th house finishing, villager may take one load of @resource/resource_gold.webp@back to TC"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:00",
+      "villager_count": 12,
+      "resources": {
+        "food": 12,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:40",
+      "villager_count": 14,
+      "resources": {
+        "food": 8,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "Start@age/age_2.webp@@landmark_malians/mansa-quarry-2.webp@with 6 from @resource/resource_food.webp@ back to 5@resource/resource_wood.webp@+1@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:50",
+      "villager_count": 14,
+      "resources": {
+        "food": 4,
+        "wood": 4,
+        "gold": 0,
+        "stone": 0,
+        "builder": 6
+      },
+      "notes": [
+        "4@resource/resource_food.webp@ to @resource/resource_wood.webp@",
+        "@resource/rally.webp@@resource/resource_wood.webp@ until 12. @abilities/repair.webp@@building_economy/lumber-camp.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "3:55",
+      "villager_count": 17,
+      "resources": {
+        "food": 5,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_malians/mansa-quarry-2.webp@ finishes at 3:55. (back to 5@resource/resource_wood.webp@+1@resource/resource_food.webp@)",
+        "@resource/rally.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 18,
+      "resources": {
+        "food": 6,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_economy/mill.webp@and make 12-18@resource/cattle.webp@*"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:15",
+      "villager_count": 18,
+      "resources": {
+        "food": 6,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research @technology_economy/double-broadaxe.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 19,
+      "resources": {
+        "food": 7,
+        "wood": 12,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "5 from @resource/resource_wood.webp@will@abilities/repair.webp@@building_military/stable.webp@back to@resource/resource_wood.webp@",
+        "@resource/rally.webp@@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:45",
+      "villager_count": 20,
+      "resources": {
+        "food": 7,
+        "wood": 12,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research the unit upgrade of @unit_malians/warrior-scout-2.webp@.  @abilities/repair.webp@1st@building_malians/cattle-ranch-2.webp@",
+        "Go for 2nd @building_malians/pit-mine-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:20",
+      "villager_count": 22,
+      "resources": {
+        "food": 9,
+        "wood": 12,
+        "gold": 1,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Make 3 more gradually @unit_malians/warrior-scout-2.webp@ to harass & self-heal"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:40",
+      "villager_count": 23,
+      "resources": {
+        "food": 10,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_economy/mining-camp.webp@, make@resource/cattle.webp@+@unit_malians/sofa-2.webp@ both",
+        "2@resource/resource_food.webp@to@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:00",
+      "villager_count": 27,
+      "resources": {
+        "food": 12,
+        "wood": 12,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Research@technology_economy/wheelbarrow.webp@,@technology_economy/horticulture.webp@. Move on @resource/deer.webp@ if map control present."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "7:30",
+      "villager_count": 28,
+      "resources": {
+        "food": 11,
+        "wood": 12,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_military/archery-range.webp@ and make 10@unit_infantry/archer-2.webp@ to protect @unit_malians/sofa-2.webp@from spears.",
+        "3 @resource/resource_food.webp@to@resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "8:00",
+      "villager_count": 29,
+      "resources": {
+        "food": 12,
+        "wood": 12,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@building_technology/blacksmith.webp@ for @technology_military/steeled-arrow.webp@@technology_military/iron-undermesh.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "11:30",
+      "villager_count": 39,
+      "resources": {
+        "food": 1,
+        "wood": 13,
+        "gold": 10,
+        "stone": 0,
+        "builder": 15
+      },
+      "notes": [
+        "Start @age/age_3.webp@@landmark_malians/grand-fulani-corral-2.webp@ with 15 from @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 3,
+      "population_count": -1,
+      "time": "12:15",
+      "villager_count": 41,
+      "resources": {
+        "food": 17,
+        "wood": 14,
+        "gold": 10,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@landmark_malians/grand-fulani-corral-2.webp@ finishes 12:15. Get unit upgrades ASAP!",
+        "Make constant @unit_infantry/archer-2.webp@+@unit_malians/sofa-2.webp@. Take @resource/relics.webp@s + heavy raids+expansion",
+        "Macro heavy @resource/resource_wood.webp@ for production and @building_religious/mosque.webp@"
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/60KgzjtsJjE",
+  "season": "Season 11",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "IykuH2TryjxXISdqyYAR",
+    "civilization_code": "MAL",
+    "updated": "2026-01-04T19:03:19+00:00",
+    "views_at_snapshot": 3242,
+    "snapshot_date": "2026-10-31"
+  }
+}

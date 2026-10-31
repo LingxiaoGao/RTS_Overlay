@@ -1,0 +1,211 @@
+{
+  "description": "",
+  "civilization": "Golden Horde",
+  "name": "(2026) Fast Keshik + Torguuds Into Aggro/FC",
+  "author": "Valdemar1902",
+  "source": "https://aoe4guides.com/builds/InVCf1SztRCvgzi1gEFf",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 5,
+      "resources": {
+        "food": 4,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "4 @unit_worker/villager-mongols.webp@ to @resource/sheep.webp@ & 1 @unit_worker/villager-mongols.webp@ to build @building_mongols/ovoo.webp@-> @landmark_golden_horde/golden_tent.webp@ -&gt; @building_mongols/ger.webp@ on @resource/resource_gold.webp@ and gather with that vill"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:37",
+      "villager_count": 7,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": 1
+      },
+      "notes": [
+        "Go up to 7 @unit_worker/villager-mongols.webp@ on @resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:16",
+      "villager_count": 9,
+      "resources": {
+        "food": 7,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "then 2 on @resource/resource_gold.webp@ (including @building_mongols/ger.webp@villager)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:52",
+      "villager_count": 11,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ back to @resource/sheep.webp@ until @age/age_2.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:51",
+      "villager_count": 13,
+      "resources": {
+        "food": 11,
+        "wood": 0,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@technology_golden_horde/golden_tent_khan_age2.webp@ age up"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:00",
+      "villager_count": 15,
+      "resources": {
+        "food": 5,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Split @unit_worker/villager-mongols.webp@& @resource/rally.webp@@resource/resource_food.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "4:25",
+      "villager_count": 19,
+      "resources": {
+        "food": 9,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Premove @resource/resource_wood.webp@@unit_worker/villager-mongols.webp@ to 2nd stone for @building_mongols/ovoo.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:37",
+      "villager_count": 18,
+      "resources": {
+        "food": 9,
+        "wood": 7,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_mongols/ovoo.webp@ & @building_military/stable.webp@ immediately and queue up @unit_golden_horde/khan.webp@ &amp; @unit_golden_horde/torguud.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:16",
+      "villager_count": 21,
+      "resources": {
+        "food": 11,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Queue up @unit_mongols/keshik-2.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When 2 keshiks 2 torguuds and khan start harassing"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:35",
+      "villager_count": 23,
+      "resources": {
+        "food": 8,
+        "wood": 8,
+        "gold": 2,
+        "stone": 0,
+        "builder": 5
+      },
+      "notes": [
+        "Take @resource/deer.webp@ with 5 @unit_worker/villager-mongols.webp@ and build @building_golden_horde/fortified_outpost.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Play game out your way. If opp makes units in feudal and u can fight, then play feudal. If they go castle go units, deny res, then castle after them.",
+        "Always go @technology_golden_horde/golden_tent_lumber_shields_age3.webp@ for 200w/pm and+2 armor. In age 4 both landmarks are good"
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/hxxmbmr9a3M",
+  "season": "Season 12",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "InVCf1SztRCvgzi1gEFf",
+    "civilization_code": "GOH",
+    "updated": "2026-03-04T14:32:14+00:00",
+    "views_at_snapshot": 5991,
+    "snapshot_date": "2026-10-31"
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "description": "",
+  "civilization": "House of Lancaster",
+  "name": "Abbey + 3 Manors - Season 12",
+  "author": "Ubercorndog",
+  "source": "https://aoe4guides.com/builds/Cnm0ejHlO6bHrx2RQZpq",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 starting vills on @resource/resource_food.webp@, @resource/rally.webp@@resource/resource_gold.webp@ until 3, then @resource/rally.webp@@resource/resource_food.webp@, 1st @unit_worker/villager.webp@@resource/resource_gold.webp@ builds @building_economy/mining-camp.webp@, 2nd@unit_worker/villager.webp@@resource/resource_gold.webp@ builds @building_economy/house.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 3,
+        "wood": 8,
+        "gold": 0,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "3@unit_worker/villager.webp@@resource/resource_gold.webp@on @landmark_english/abbey-of-kings.webp@, 5@unit_worker/villager.webp@@resource/resource_food.webp@to @resource/resource_wood.webp@, @resource/rally.webp@@resource/resource_stone.webp@until 3, then @resource/rally.webp@@resource/resource_wood.webp@until 12"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 19,
+      "resources": {
+        "food": 3,
+        "wood": 10,
+        "gold": 3,
+        "stone": 3,
+        "builder": -1
+      },
+      "notes": [
+        "3@unit_worker/villager.webp@@landmark_english/abbey-of-kings.webp@to@resource/resource_gold.webp@, @resource/rally.webp@@resource/resource_wood.webp@until 12 then @resource/rally.webp@@resource/resource_food.webp@ until 10, make 2-3 @unit_lancaster/lord_lancaster.webp@ asap"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 25,
+      "resources": {
+        "food": 10,
+        "wood": 12,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build 3 x @building_lancaster/manor.webp@, 1st wood, 2nd berries/deer, 3rd gold using @unit_worker/villager.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 33,
+      "resources": {
+        "food": 15,
+        "wood": 12,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@resource/rally.webp@ @resource/resource_gold.webp@until 6,@resource/rally.webp@@resource/resource_food.webp@. @building_military/stable.webp@@building_military/archery-range.webp@@building_technology/blacksmith.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 36,
+      "resources": {
+        "food": 18,
+        "wood": 12,
+        "gold": 6,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Harass with hobelars +yeoman (modify army comp as needed)"
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/lu3cwR6Xxmc",
+  "season": "Season 12",
+  "map": "Open",
+  "strategy": "Rush",
+  "_aoe4_guides": {
+    "id": "Cnm0ejHlO6bHrx2RQZpq",
+    "civilization_code": "HOL",
+    "updated": "2025-11-04T17:25:02+00:00",
+    "views_at_snapshot": 5284,
+    "snapshot_date": "2026-10-31"
+  }
+}

@@ -1,0 +1,244 @@
+{
+  "description": "The first Viking build from Swaggy Professor with 2 TC",
+  "civilization": "Vikings",
+  "name": "Swaggy's 2TC Viking Starter - Copy for me to understand series",
+  "author": "murtuk",
+  "source": "https://aoe4guides.com/builds/eDD62wG5UJ5InP5OygNR",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "6 to @resource/resource_food.webp@, @resource/rally.webp@ 3 to @resource/resource_gold.webp@",
+        "@abilities/repair.webp@@building_vikings/longhouse.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:28",
+      "villager_count": 10,
+      "resources": {
+        "food": 6,
+        "wood": 1,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Now @resource/rally.webp@@resource/resource_wood.webp@ (no @building_economy/lumber-camp.webp@, only @resource/gaiatreeprototypetree.webp@)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:53",
+      "villager_count": 11,
+      "resources": {
+        "food": 6,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "At 200 @resource/resource_gold.webp@ (3900 left on deposit), those 3 go to @resource/resource_wood.webp@",
+        "Force drop @resource/resource_food.webp@(will have 400) on TC ALL to @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "1:55",
+      "villager_count": 11,
+      "resources": {
+        "food": 0,
+        "wood": 9,
+        "gold": 0,
+        "stone": 0,
+        "builder": 2
+      },
+      "notes": [
+        "Start @age/age_2.webp@@landmark_vikings/konungr-hall.webp@ with 2 from@resource/resource_food.webp@and back to"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:12",
+      "villager_count": 12,
+      "resources": {
+        "food": 0,
+        "wood": 9,
+        "gold": 0,
+        "stone": 1,
+        "builder": 2
+      },
+      "notes": [
+        "Now @resource/rally.webp@@resource/resource_stone.webp@ until 5"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:22",
+      "villager_count": 12,
+      "resources": {
+        "food": 0,
+        "wood": 6,
+        "gold": 0,
+        "stone": 4,
+        "builder": 2
+      },
+      "notes": [
+        "3@resource/resource_wood.webp@to@resource/resource_stone.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "2:56",
+      "villager_count": 14,
+      "resources": {
+        "food": 0,
+        "wood": 7,
+        "gold": 0,
+        "stone": 5,
+        "builder": 2
+      },
+      "notes": [
+        "Now @resource/rally.webp@@resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "time": "3:56",
+      "villager_count": 16,
+      "resources": {
+        "food": 0,
+        "wood": 7,
+        "gold": 0,
+        "stone": 5,
+        "builder": 4
+      },
+      "notes": [
+        "2 more from @resource/resource_wood.webp@to @landmark_vikings/konungr-hall.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:17",
+      "villager_count": 17,
+      "resources": {
+        "food": 0,
+        "wood": 9,
+        "gold": 0,
+        "stone": 0,
+        "builder": 8
+      },
+      "notes": [
+        "@landmark_vikings/konungr-hall.webp@finishes at 4:17",
+        "At 300  @resource/resource_stone.webp@ (900 left on deposit), @abilities/repair.webp@ 2nd @building_economy/town-center.webp@ with 8"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "4:40",
+      "villager_count": 18,
+      "resources": {
+        "food": 0,
+        "wood": 2,
+        "gold": 0,
+        "stone": 0,
+        "builder": 16
+      },
+      "notes": [
+        "When the wood villagers on return trip, they go to @abilities/repair.webp@ 2nd @building_economy/town-center.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "5:00",
+      "villager_count": 20,
+      "resources": {
+        "food": 0,
+        "wood": 11,
+        "gold": 0,
+        "stone": 0,
+        "builder": 9
+      },
+      "notes": [
+        "2nd @building_economy/town-center.webp@ finishes. 9 @abilities/repair.webp@@building_vikings/longhouse.webp@, others go to @resource/resource_wood.webp@",
+        "make 2x @technology_vikings/bee-skeps.webp@ to get @resource/resource_gold.webp@ when have enough @resource/resource_wood.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "time": "6:15",
+      "villager_count": 26,
+      "resources": {
+        "food": 0,
+        "wood": 26,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@3rd @building_vikings/longhouse.webp@  and make @technology_vikings/smithy.webp@ on it"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "ENJOY!"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": -1,
+      "resources": {
+        "food": 0,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": []
+    }
+  ],
+  "video": "https://www.youtube.com/embed/3AqIiuRbd_w",
+  "season": "Season 13",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "eDD62wG5UJ5InP5OygNR",
+    "civilization_code": "VIK",
+    "updated": "2026-10-29T16:21:32+00:00",
+    "views_at_snapshot": 1443,
+    "snapshot_date": "2026-10-31"
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "description": "Very basic, no-frills HRE build order for new players. Video below!\n\nThe goal is to build a balanced army (1-1-1) in the Feudal Age and attack. This can be played on any land map against any civilisation allowing you to get a foothold in any game and then diverge from there. Also works in team games!\n\nThere are 2 recommended choices once you complete the below build:\n1. Go all-in with aggression! Add more production, make MAA, and get siege engineering from the Meinwerk so you can make rams with your infantry, and keep your food villagers working by adding farms or putting them on deer or berries.\n2. Go Castle Age! Put a few more villagers to gold and age up with the Burgrave Palace. Once up, upgrade your existing units and overwhelm your opponent with super-upgraded MAA (+2 ranged armour, Two-Handed Weapons, Heavy Maces and +50% charge damage from the Burgrave itself!)\n\nOnce you're feeling comfortable with this build, look for more advanced and optimal build orders. HRE are very versatile and can be played pretty much every way, particularly having a very strong Fast Castle. Try Aachen Chapel and/or Regnitz Cathedral landmarks - they're a bit harder to use but very strong and a lot of fun. I recommend checking out a recent build order guide video from a pro player. Two good options are Beastyqt and Valdemar.",
+  "civilization": "Holy Roman Empire",
+  "name": "New Player Guide to HRE",
+  "author": "Shaada",
+  "source": "https://aoe4guides.com/builds/SXYa2NWgnLmjIgx42Q2J",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 6,
+      "resources": {
+        "food": 3,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally @resource/sheep.webp@ until age up"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "@abilities/repair.webp@@landmark_hre/meinwerk-palace.webp@ with 3 @resource/resource_food.webp@@unit_worker/villager.webp@ (they'll go back to @resource/resource_food.webp@ once done)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 10,
+      "resources": {
+        "food": 5,
+        "wood": 2,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally on @resource/resource_wood.webp@ until 10 @unit_worker/villager.webp@, mixing in a @unit_hre/prelate.webp@ when you get 100 @resource/resource_gold.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 7,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "1 @landmark_hre/meinwerk-palace.webp@@unit_worker/villager.webp@ makes @building_military/stable.webp@ > @building_military/archery-range.webp@ &gt; @building_military/barracks.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 7,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Train @unit_cavalry/horseman-1.webp@, @unit_infantry/archer-2.webp@, @unit_infantry/spearman-1.webp@ as you can. Get @technology_hre/awl-pike.webp@, @technology_military/iron-undermesh.webp@, @technology_military/steeled-arrow.webp@ as you can."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 20,
+      "resources": {
+        "food": 7,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "When @resource/sheep.webp@ run out, move up to 10 @unit_worker/villager.webp@ to @resource/deer.webp@ or @resource/berrybush.webp@. Rally on to @resource/resource_wood.webp@."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 13,
+      "resources": {
+        "food": 0,
+        "wood": 10,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Spend excess @resource/resource_wood.webp@ on @building_economy/farm.webp@ and excess @resource/resource_gold.webp@ on 1-2 @unit_hre/prelate.webp@, @unit_infantry/man-at-arms-1.webp@, and upgrade e.g. @technology_economy/wheelbarrow.webp@, @technology_economy/double-broadaxe.webp@"
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/PSEmwIGYdOg",
+  "season": "Season 12",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "SXYa2NWgnLmjIgx42Q2J",
+    "civilization_code": "HRE",
+    "updated": "2025-11-24T22:16:44+00:00",
+    "views_at_snapshot": 5999,
+    "snapshot_date": "2026-10-31"
+  }
+}

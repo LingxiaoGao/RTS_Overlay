@@ -1,0 +1,263 @@
+{
+  "description": "Flexible Abbey of Kings Fast Castle into White Tower with adaptive Feudal defense. Early stone for Manor influence, optional pressure with Lords, and strong eco transition with Manors and Relics.",
+  "civilization": "House of Lancaster",
+  "name": "Abbey of Kings Fast Castle → White Tower Timing by Swaggy Professor",
+  "author": "Swaggy Professor",
+  "source": "https://aoe4guides.com/builds/M8kq5gbI2a7sx3hwRMAg",
+  "build_order": [
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:00",
+      "villager_count": 6,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send **all villagers** to @resource/sheep.webp@.",
+        "Use @unit_cavalry/scout.webp@ to circle base and find more sheep."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "0:30",
+      "villager_count": 9,
+      "resources": {
+        "food": 6,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "First **3 new villagers** build @building_economy/mining-camp.webp@ on @resource/resource_gold.webp@ and a @building_economy/house.webp@ near TC."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "1:20",
+      "villager_count": 12,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 3,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Next **3 villagers → @resource/sheep.webp@** (final 9 food / 3 gold).",
+        "When resources allow, age up with @landmark_templar/abbey-of-kings.webp@ using the **3 gold villagers**."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:10",
+      "villager_count": 11,
+      "resources": {
+        "food": 9,
+        "wood": 0,
+        "gold": 0,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "Send **2 food villagers → @resource/resource_stone.webp@** and **4 → straggler trees**.",
+        "Set TC @resource/rally.webp@ to @resource/resource_gold.webp@ until 4 villagers there, then back to sheep."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "2:45",
+      "villager_count": 17,
+      "resources": {
+        "food": 7,
+        "wood": 4,
+        "gold": 4,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "After mining 100@resource/resource_stone.webp@, send both stone vils → @resource/resource_wood.webp@.",
+        "Once 175@resource/resource_wood.webp@ gathered, send the 4 straggler wood vils → @resource/sheep.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:00",
+      "villager_count": 17,
+      "resources": {
+        "food": 11,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "After Feudal age-up: use 4 gold villagers to build @building_lancaster/manor.webp@ to influence @resource/resource_gold.webp@ + @resource/sheep.webp@ (include @resource/resource_wood.webp@ if close).",
+        "Scout opponent’s base — if they’re passive, send @unit_lancaster/lord_lancaster.webp@ to harass exposed vils."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "4:30",
+      "villager_count": 17,
+      "resources": {
+        "food": 11,
+        "wood": 2,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "If facing early aggression, you can:",
+        "- Place Manor beside @resource/resource_wood.webp@ instead for Feudal defense.",
+        "- Transition into military production buildings around it.",
+        "- Defend with Lords or tower gold if needed."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "5:45",
+      "villager_count": 18,
+      "resources": {
+        "food": 9,
+        "wood": 2,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Continue normal build if safe: maintain **7 gold / 2 wood / rest on food**.",
+        "At ~6:20, start @landmark_english/the-white-tower.webp@ with **8 food villagers** (send more if pressured).",
+        "Place landmark near @resource/resource_gold.webp@ or between gold + woodline."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "6:30",
+      "villager_count": 18,
+      "resources": {
+        "food": 9,
+        "wood": 2,
+        "gold": 7,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "While landmark builds, set TC @resource/rally.webp@ to @resource/resource_wood.webp@ for remainder of game.",
+        "Use 2–3 gold villagers to build 2@building_military/stable.webp@ nearby.",
+        "Train 1 extra @unit_lancaster/lord_lancaster.webp@ from @landmark_english/abbey-of-kings.webp@."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "7:20",
+      "villager_count": 29,
+      "resources": {
+        "food": 10,
+        "wood": 6,
+        "gold": 12,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "After aging up, eco layout: 10 food / 12 gold / 1 stone / rest wood.",
+        "Start constant @unit_cavalry/knight-2.webp@ production from stables."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "8:00",
+      "villager_count": 31,
+      "resources": {
+        "food": 10,
+        "wood": 8,
+        "gold": 12,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "If pressured: use spawned Men-at-Arms + Lords defensively.",
+        "Otherwise, pressure with Knights + Lords to gain map control and relics."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "8:40",
+      "villager_count": 33,
+      "resources": {
+        "food": 10,
+        "wood": 10,
+        "gold": 12,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "Add @building_technology/blacksmith.webp@ + @building_religious/monastery.webp@ for relics and upgrades.",
+        "Optional tech path: add @building_military/archery-range.webp@ if enemy makes spears/crossbows."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "10:00",
+      "villager_count": 35,
+      "resources": {
+        "food": 12,
+        "wood": 10,
+        "gold": 12,
+        "stone": 1,
+        "builder": -1
+      },
+      "notes": [
+        "If sheep run out → move to @resource/berrybush.webp@ or external food.",
+        "Your 1 stone villager will have enough for another @building_lancaster/manor.webp@ → place near new food source to maintain influence on ≥10 vils.",
+        "Always aim for 10+ vils under each manor for best passive bonus."
+      ]
+    },
+    {
+      "age": -1,
+      "population_count": -1,
+      "time": "12:00",
+      "villager_count": 38,
+      "resources": {
+        "food": 12,
+        "wood": 12,
+        "gold": 12,
+        "stone": 2,
+        "builder": -1
+      },
+      "notes": [
+        "Keep producing units, complete eco upgrades, and build @building_economy/farm.webp@ clusters around manors.",
+        "At this stage, your eco should be extremely strong with relics + manor passive income.",
+        "You can close games with Knight/Lord pushes or safely go Imperial depending on map control."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/YUOo8KE3tRY",
+  "season": "Season 12",
+  "map": "Open",
+  "strategy": "Abbey of Kings Fast Castle → White Tower Knight Pressure",
+  "_aoe4_guides": {
+    "id": "M8kq5gbI2a7sx3hwRMAg",
+    "civilization_code": "HOL",
+    "updated": "2025-11-18T12:55:40+00:00",
+    "views_at_snapshot": 5175,
+    "snapshot_date": "2026-10-31"
+  }
+}

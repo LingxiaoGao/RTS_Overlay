@@ -1,0 +1,170 @@
+{
+  "description": "As basic as possible Mongol build order for new players. Video below!\n\nThe goal is to be aggressive right from the Dark Age with a tower rush into mass Keshik and Archer. Alternatively, you can start with a fast pasture rather than tower rushing - check out the below video for more detail on the variations.\n\nOn the whole the Mongols have less of a refined build order as the game is a bit more chaotic with the impact of different spawns + dark age aggression. Think of this as more of a guideline for what you're trying to achieve than a strict build! Again, see the video for details.\n\nGood luck!",
+  "civilization": "Mongols",
+  "name": "New Player Guide to Mongols",
+  "author": "Shaada",
+  "source": "https://aoe4guides.com/builds/YOcdrRav7QTIlwa6QGrJ",
+  "build_order": [
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 5,
+      "resources": {
+        "food": 0,
+        "wood": 5,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Place @building_economy/town-center.webp@ by @resource/resource_wood.webp@, 5 @unit_worker/villager-mongols.webp@ on nearest @resource/gaiatreeprototypetree.webp@ with the @building_mongols/ger.webp@, 1 @unit_worker/villager-mongols.webp@ makes @building_mongols/ovoo.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "After @resource/gaiatreeprototypetree.webp@ is finished, 3 @unit_worker/villager-mongols.webp@ go to tree by @building_economy/town-center.webp@, other 2 @unit_worker/villager-mongols.webp@ to @resource/resource_food.webp@. @abilities/repair.webp@@building_military/barracks.webp@ @ @building_mongols/ovoo.webp@."
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Double produce @unit_infantry/spearman-1.webp@ and go across the map with a @unit_worker/villager-mongols.webp@ to @building_defensive/outpost.webp@ opponent's @resource/resource_gold.webp@ (see video for variants)"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 7,
+      "resources": {
+        "food": 4,
+        "wood": 3,
+        "gold": 0,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Train 3 more @unit_infantry/spearman-1.webp@ (single + double production) and rally them across the map as well"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 14,
+      "resources": {
+        "food": 10,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Once enough @resource/resource_wood.webp@ for the 5 @unit_infantry/spearman-1.webp@ + @building_defensive/outpost.webp@, re-macro to @resource/resource_food.webp@/@resource/resource_gold.webp@ and age up with 6 @unit_worker/villager-mongols.webp@ on @landmark_mongols/deer-stones.webp@"
+      ]
+    },
+    {
+      "age": 1,
+      "population_count": -1,
+      "villager_count": 9,
+      "resources": {
+        "food": 5,
+        "wood": 0,
+        "gold": 4,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Rally to @resource/resource_wood.webp@ until 7 total, then back to @resource/resource_food.webp@ to 12. Get @technology_economy/wheelbarrow.webp@ when you can."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 12,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Build @building_military/stable.webp@, upgrade @technology_defensive/arrow-slits.webp@ on @building_defensive/outpost.webp@, and upgrade @unit_infantry/spearman-1.webp@"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 12,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Train @unit_mongols/keshik-2.webp@ (1x double production) non-stop. Add @building_military/archery-range.webp@ and train @unit_infantry/archer-2.webp@ non-stop (double production when possible)."
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 12,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Send 5 @unit_worker/villager-mongols.webp@ to @resource/deer.webp@ and research @technology_economy/survival-techniques.webp@ (add an @building_defensive/outpost.webp@ when able)"
+      ]
+    },
+    {
+      "age": 2,
+      "population_count": -1,
+      "villager_count": 24,
+      "resources": {
+        "food": 12,
+        "wood": 7,
+        "gold": 5,
+        "stone": 0,
+        "builder": -1
+      },
+      "notes": [
+        "Add @building_technology/blacksmith.webp@ when able and research @technology_military/steeled-arrow.webp@+@technology_military/iron-undermesh.webp@. Slowly add @building_mongols/pasture.webp@ while being aggressive."
+      ]
+    }
+  ],
+  "video": "https://www.youtube.com/embed/x0dfx-KBU1Q",
+  "season": "Season 12",
+  "map": null,
+  "strategy": null,
+  "_aoe4_guides": {
+    "id": "YOcdrRav7QTIlwa6QGrJ",
+    "civilization_code": "MON",
+    "updated": "2026-02-20T17:15:54+00:00",
+    "views_at_snapshot": 3199,
+    "snapshot_date": "2026-10-31"
+  }
+}
