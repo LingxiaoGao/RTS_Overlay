@@ -146,6 +146,16 @@ jobs:
             throw "Missing RapidOCR ONNX model data in packaged archive under: $OverlayDir"
           }
 
+          & $ExePath --runtime-smoke-test
+          if ($LASTEXITCODE -ne 0) {
+            $SmokeLog = Join-Path $OverlayDir 'local_config\logs\aoe4_overlay.log'
+            if (Test-Path $SmokeLog -PathType Leaf) {
+              Get-Content $SmokeLog
+            }
+            throw "Packaged runtime smoke test failed with exit code $LASTEXITCODE"
+          }
+          Remove-Item (Join-Path $OverlayDir 'local_config\logs\aoe4_overlay.log') -Force -ErrorAction SilentlyContinue
+
           $env:SMART_CONFIG_PATH = $ConfigPath
           $env:BUILD_ORDERS_DIR = $BuildOrdersDir
           @'
