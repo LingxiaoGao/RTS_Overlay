@@ -401,7 +401,9 @@ def main(argv: list[str] | None = None) -> int:
         height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
         target = CaptureRegion(0, 0, width, height)
         scaled = scale_regions(config.hud_regions, config.capture_region, target)
-        recognizer = TemplateHudRecognizer(scaled, templates_path)
+        recognizer = TemplateHudRecognizer(
+            scaled, templates_path, reference_regions=config.hud_regions
+        )
 
         samples = _nearest_frame_indices(total_frames, fps, args.interval_seconds)
         rows: List[_Row] = []

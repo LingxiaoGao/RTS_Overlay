@@ -62,6 +62,77 @@ class TemplateHudRecognizerCacheTests(unittest.TestCase):
             self.assertEqual(first, second)
             self.assertEqual(extract.call_count, 2)
 
+    def test_scaled_crop_matches_reference_and_reuses_result(self):
+        import aoe4.smart_template_ocr as ocr_module
+
+        with tempfile.TemporaryDirectory() as root:
+            directory = Path(root) / "digits" / "1"
+            directory.mkdir(parents=True)
+            cv2.imwrite(
+                str(directory / "sample.png"),
+                np.full((20, 4), 255, dtype=np.uint8),
+            )
+
+            reference_region = CaptureRegion(0, 0, 50, 28)
+            active_region = CaptureRegion(0, 0, 150, 84)
+            reference_bgr = np.zeros((28, 50, 3), dtype=np.uint8)
+            reference_bgr[4:24, 15:19] = 255
+            reference_bgra = np.dstack(
+                (reference_bgr, np.full((28, 50), 255, dtype=np.uint8))
+            )
+            active_bgr = cv2.resize(
+                reference_bgr, (150, 84), interpolation=cv2.INTER_NEAREST
+            )
+            active_bgra = np.dstack(
+                (active_bgr, np.full((84, 150), 255, dtype=np.uint8))
+            )
+
+            reference = TemplateHudRecognizer(
+                HudRegionSet({"food": reference_region}), root
+            )
+            active = TemplateHudRecognizer(
+                HudRegionSet({"food": active_region}),
+                root,
+                reference_regions=HudRegionSet({"food": reference_region}),
+            )
+            reference_frame = CapturedFrame(
+                frame_id=1,
+                captured_at=0.0,
+                width=50,
+                height=28,
+                pixels=reference_bgra.tobytes(),
+                region=reference_region,
+            )
+            first_active_frame = CapturedFrame(
+                frame_id=2,
+                captured_at=0.0,
+                width=150,
+                height=84,
+                pixels=active_bgra.tobytes(),
+                region=active_region,
+            )
+            second_active_frame = CapturedFrame(
+                frame_id=3,
+                captured_at=0.5,
+                width=150,
+                height=84,
+                pixels=active_bgra.tobytes(),
+                region=active_region,
+            )
+
+            reference_result = reference.recognize(reference_frame)
+            with mock.patch(
+                "aoe4.smart_template_ocr._extract_glyphs",
+                wraps=ocr_module._extract_glyphs,
+            ) as extract:
+                first = active.recognize(first_active_frame)
+                second = active.recognize(second_active_frame)
+
+            self.assertEqual(reference_result[0].text, "1")
+            self.assertEqual(first[0].text, "1")
+            self.assertEqual(second[0].text, "1")
+            self.assertEqual(extract.call_count, 1)
+
 
 if __name__ == "__main__":
     unittest.main()
