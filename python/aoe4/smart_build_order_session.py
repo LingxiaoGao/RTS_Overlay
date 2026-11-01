@@ -1,9 +1,8 @@
 """Age-anchor calibration driven by confirmed pipeline results.
 
-Thin session wrapper around :class:`CalibrationEngine` that consumes
-:class:`PipelineResult` samples, pairing confirmed ``age_completed`` events with
-fresh confirmed game time from the same sample. Only the adjusted ``times``
-tuple is exposed; source build-order and step dictionaries are never mutated.
+Consumes :class:`PipelineResult` samples, pairing confirmed ``age_completed``
+events with fresh confirmed game time. Only the adjusted ``times`` tuple is
+exposed; source build-order and step dictionaries are never mutated.
 """
 
 from __future__ import annotations
@@ -11,18 +10,26 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any, Dict, Mapping, Optional, Tuple
 
-from aoe4.smart_calibration import (
-    CalibrationAnchor,
-    CalibrationEngine,
-    BuildOrderStep,
-    CONFIRMED,
-)
 from aoe4.smart_pipeline import PipelineResult
 from aoe4.smart_runtime import RecognitionStatus
 from common.build_order_tools import get_build_order_timer_steps
 
 
 _REFERENCE_KEYS = ("2", "3", "4")
+_SPECIFIC_MARKERS = (
+    (2, ("age_2", "age 2", "feudal", "封建")),
+    (3, ("age_3", "age 3", "castle", "城堡")),
+    (4, ("age_4", "age 4", "imperial", "帝王")),
+)
+_AGE_UP_MARKERS = (
+    "age up",
+    "age-up",
+    "aging up",
+    "advance to",
+    "advancing to",
+    "升本",
+    "升级时代",
+)
 
 
 @dataclass(frozen=True)
@@ -59,7 +66,9 @@ def apply_schedule_times(steps: Any, times: Any) -> list:
     return result
 
 
-def _parse_metadata(data: Mapping[str, Any]) -> Optional[Tuple[Dict[int, int], Tuple[Optional[int], ...]]]:
+def _parse_metadata(
+    data: Mapping[str, Any]
+) -> Optional[Tuple[Dict[int, int], Tuple[Optional[int], ...]]]:
     """Validate present ``smart_calibration`` metadata.
 
     Returns ``None`` when metadata is absent, otherwise a ``(references,
@@ -113,27 +122,83 @@ def _parse_metadata(data: Mapping[str, Any]) -> Optional[Tuple[Dict[int, int], T
     return references, tuple(dependencies)
 
 
+def _flatten_notes(value: Any) -> str:
+    if isinstance(value, str):
+        return value.lower()
+    if isinstance(value, list):
+        return " ".join(item for item in value if isinstance(item, str)).lower()
+    return ""
+
+
+def _detect_markers(steps: Tuple[Mapping[str, Any], ...]):
+    """Detect metadata-free anchors from step notes.
+
+    Returns ``(anchors, references)`` where ``anchors`` maps age to
+    ``(step_index, reference_time)`` and ``references`` is by age.
+    """
+    anchors: Dict[int, Tuple[int, int]] = {}
+    references: Dict[int, int] = {}
+    used_ages: set = set()
+    next_age = 2
+    for index, step in enumerate(steps):
+        text = _flatten_notes(step.get("notes"))
+        specific = None
+        for age, markers in _SPECIFIC_MARKERS:
+            if any(marker in text for marker in markers):
+                specific = age
+                break
+        if specific is not None:
+            if specific in anchors:
+                continue
+            anchors[specific] = (index, int(step["time_sec"]))
+            references[specific] = int(step["time_sec"])
+            used_ages.add(specific)
+            continue
+        if any(marker in text for marker in _AGE_UP_MARKERS):
+            while next_age in used_ages or next_age in anchors:
+                next_age += 1
+            if next_age > 4:
+                continue
+            anchors[next_age] = (index, int(step["time_sec"]))
+            references[next_age] = int(step["time_sec"])
+            used_ages.add(next_age)
+    return anchors, references
+
+
 class SmartBuildOrderSession:
     """Consume pipeline results and adjust build-order times via age anchors."""
 
     def __init__(
         self,
-        engine: Optional[CalibrationEngine],
+        enabled: bool,
         original_times: Tuple[int, ...],
         references: Dict[int, int],
+        anchors: Dict[int, Tuple[int, int]],
+        completion_anchors: Optional[Dict[int, int]] = None,
     ) -> None:
-        self._engine = engine
+        self._enabled = enabled
         self._original_times = original_times
         self._references = references
+        self._anchor_by_age = anchors
+        self._completion_anchor_by_age = completion_anchors or {
+            age: anchor[0] for age, anchor in anchors.items()
+        }
+        self._current_times = original_times
+        self._started: set = set()
+        self._completed: set = set()
 
     @classmethod
     def from_build_order(cls, data: Mapping[str, Any]) -> "SmartBuildOrderSession":
         steps = get_build_order_timer_steps(data)
+        if not steps:
+            return cls(False, (), {}, {})
         original_times = tuple(int(step["time_sec"]) for step in steps)
 
         parsed = _parse_metadata(data)
         if parsed is None:
-            return cls(None, original_times, {})
+            anchors, references = _detect_markers(steps)
+            completions = cls._completion_anchors(steps, anchors)
+            return cls(True, original_times, references, anchors, completions)
 
         references, dependencies = parsed
         if len(dependencies) != len(steps):
@@ -142,90 +207,137 @@ class SmartBuildOrderSession:
                 "timer step count (%d)" % (len(dependencies), len(steps))
             )
 
-        build_steps = []
+        anchors: Dict[int, Tuple[int, int]] = {}
         for index, step in enumerate(steps):
-            build_steps.append(
-                BuildOrderStep(
-                    id=str(index),
-                    original_time=int(step["time_sec"]),
-                    age_dependency=dependencies[index],
-                )
-            )
-        engine = CalibrationEngine(build_steps)
-        return cls(engine, original_times, references)
+            age = dependencies[index]
+            if age is None:
+                continue
+            if age in anchors:
+                continue
+            if age not in references:
+                continue
+            anchors[age] = (index, int(step["time_sec"]))
+        completions = cls._completion_anchors(steps, anchors)
+        return cls(True, original_times, references, anchors, completions)
+
+    @staticmethod
+    def _completion_anchors(
+        steps: Tuple[Mapping[str, Any], ...],
+        starts: Dict[int, Tuple[int, int]],
+    ) -> Dict[int, int]:
+        completions: Dict[int, int] = {}
+        for age, (start_index, _reference) in starts.items():
+            completion = start_index
+            for index in range(start_index + 1, len(steps)):
+                value = steps[index].get("age")
+                if _is_int(value) and value == age:
+                    completion = index
+                    break
+            completions[age] = completion
+        return completions
 
     @property
     def enabled(self) -> bool:
-        return self._engine is not None
+        return self._enabled
 
     @property
     def times(self) -> Tuple[int, ...]:
-        if self._engine is None:
-            return self._original_times
-        adjusted = self._engine.adjusted_times
-        return tuple(adjusted[step.id] for step in self._engine.steps)
+        return self._current_times
 
-    def _preview(self, anchors: Dict[int, CalibrationAnchor]) -> Tuple[int, ...]:
-        assert self._engine is not None
-        preview_engine = CalibrationEngine(self._engine.steps)
-        for anchor in anchors.values():
-            preview_engine.apply_anchor(anchor, CONFIRMED)
-        adjusted = preview_engine.adjusted_times
-        return tuple(adjusted[step.id] for step in self._engine.steps)
+    def _shift(self, index: int, delta: int) -> Optional[Tuple[int, ...]]:
+        proposed = (
+            self._current_times[:index]
+            + tuple(t + delta for t in self._current_times[index:])
+        )
+        for left, right in zip(proposed, proposed[1:]):
+            if right < left:
+                return None
+        return proposed
 
-    def consume(self, result: PipelineResult) -> ScheduleUpdate:
-        if self._engine is None:
-            return ScheduleUpdate(enabled=False, changed=False, times=self._original_times)
-
-        for event in result.events:
-            anchor = self._match_anchor(result, event)
-            if anchor is None:
-                continue
-
-            anchors = dict(self._engine.anchors)
-            if anchor.age in anchors:
-                continue
-            anchors[anchor.age] = anchor
-
-            preview = self._preview(anchors)
-            if any(right < left for left, right in zip(preview, preview[1:])):
-                continue
-
-            self._engine.apply_anchor(anchor, CONFIRMED)
-            return ScheduleUpdate(enabled=True, changed=True, times=self.times)
-
-        return ScheduleUpdate(enabled=True, changed=False, times=self.times)
-
-    def _match_anchor(self, result: PipelineResult, event: Any) -> Optional[CalibrationAnchor]:
-        if event.event_type != "age_completed":
-            return None
-        if event.status is not RecognitionStatus.CONFIRMED:
-            return None
-
-        age = event.payload.get("age")
-        if not _is_int(age):
-            return None
-        if age not in self._references:
-            return None
-
+    @staticmethod
+    def _coherent_time(result: PipelineResult, event: Any) -> Optional[int]:
         game_time = result.state.game_time
         if game_time.status is not RecognitionStatus.CONFIRMED:
             return None
-        if not _is_int(game_time.value) or game_time.value < 0:
+        value = game_time.value
+        if not isinstance(value, (int, float)) or isinstance(value, bool):
             return None
+        if value != value or value < 0:
+            return None
+        if value != int(value):
+            return None
+        seconds = int(value)
         if not (
             game_time.observed_at == result.state.updated_at == event.emitted_at
         ):
             return None
+        return seconds
 
-        return CalibrationAnchor(
-            age=age,
-            actual_time=game_time.value,
-            reference_time=self._references[age],
+    def consume(self, result: PipelineResult) -> ScheduleUpdate:
+        if not self._enabled:
+            return ScheduleUpdate(enabled=False, changed=False, times=self._original_times)
+
+        entry_times = self._current_times
+        committed = True
+        new_times = entry_times
+        new_started = set(self._started)
+        new_completed = set(self._completed)
+
+        for event in result.events:
+            if event.event_type not in ("age_started", "age_completed"):
+                continue
+            if event.status is not RecognitionStatus.CONFIRMED:
+                continue
+            age = event.payload.get("age")
+            if not _is_int(age) or age not in self._anchor_by_age:
+                continue
+            seen = new_started if event.event_type == "age_started" else new_completed
+            if age in seen:
+                continue
+            seconds = self._coherent_time(result, event)
+            if seconds is None:
+                continue
+            index = (
+                self._anchor_by_age[age][0]
+                if event.event_type == "age_started"
+                else self._completion_anchor_by_age.get(
+                    age, self._anchor_by_age[age][0]
+                )
+            )
+            delta = seconds - new_times[index]
+            proposed = self._shift_with(new_times, index, delta)
+            if proposed is None:
+                committed = False
+                new_times = entry_times
+                new_started = set(self._started)
+                new_completed = set(self._completed)
+                continue
+            new_times = proposed
+            seen.add(age)
+
+        if not committed:
+            return ScheduleUpdate(enabled=True, changed=False, times=self._current_times)
+
+        self._current_times = new_times
+        self._started = new_started
+        self._completed = new_completed
+        return ScheduleUpdate(
+            enabled=True,
+            changed=new_times != entry_times,
+            times=self._current_times,
         )
 
+    @staticmethod
+    def _shift_with(
+        times: Tuple[int, ...], index: int, delta: int
+    ) -> Optional[Tuple[int, ...]]:
+        proposed = times[:index] + tuple(t + delta for t in times[index:])
+        for left, right in zip(proposed, proposed[1:]):
+            if right < left:
+                return None
+        return proposed
+
     def reset(self) -> None:
-        if self._engine is None:
-            return
-        steps = self._engine.steps
-        self._engine = CalibrationEngine(steps)
+        self._current_times = self._original_times
+        self._started = set()
+        self._completed = set()

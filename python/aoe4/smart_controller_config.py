@@ -12,7 +12,9 @@ from aoe4.smart_regions import HudRegionSet
 
 
 _REQUIRED_KEYS = frozenset({"capture_region", "hud_regions"})
-_OPTIONAL_KEYS = frozenset({"profile_validated", "age_signal_validated"})
+_OPTIONAL_KEYS = frozenset({
+    "profile_validated", "age_signal_validated", "civilization_detection"
+})
 _ALLOWED_KEYS = _REQUIRED_KEYS | _OPTIONAL_KEYS
 _REGION_KEYS = frozenset({"left", "top", "width", "height"})
 
@@ -81,11 +83,47 @@ def _check_hud_contained(
 
 
 @dataclass(frozen=True)
+class CivilizationDetectionConfig:
+    flag: CaptureRegion
+    production_buttons: CaptureRegion
+
+
+def _parse_civilization_detection(
+    value: Any, capture_region: CaptureRegion
+) -> CivilizationDetectionConfig:
+    if not isinstance(value, dict) or set(value) != {"flag", "production_buttons"}:
+        raise ValueError(
+            "civilization_detection must have exactly keys ['flag', 'production_buttons']"
+        )
+    config = CivilizationDetectionConfig(
+        flag=_parse_region(value["flag"], "civilization_detection.flag"),
+        production_buttons=_parse_region(
+            value["production_buttons"], "civilization_detection.production_buttons"
+        ),
+    )
+    for name, region in (
+        ("flag", config.flag),
+        ("production_buttons", config.production_buttons),
+    ):
+        if (
+            region.left < capture_region.left
+            or region.top < capture_region.top
+            or region.right > capture_region.right
+            or region.bottom > capture_region.bottom
+        ):
+            raise ValueError(
+                f"civilization_detection.{name} must be contained in capture_region"
+            )
+    return config
+
+
+@dataclass(frozen=True)
 class SmartControllerConfig:
     capture_region: CaptureRegion
     hud_regions: HudRegionSet
     profile_validated: bool = False
     age_signal_validated: bool = False
+    civilization_detection: CivilizationDetectionConfig | None = None
 
     @classmethod
     def from_file(cls, path: str | Path) -> "SmartControllerConfig":
@@ -100,6 +138,11 @@ class SmartControllerConfig:
         capture_region = _parse_region(data["capture_region"], "capture_region")
         hud_regions = _parse_hud_regions(data["hud_regions"], "hud_regions")
         _check_hud_contained(capture_region, hud_regions)
+        civilization_detection = None
+        if "civilization_detection" in data:
+            civilization_detection = _parse_civilization_detection(
+                data["civilization_detection"], capture_region
+            )
 
         profile_validated = data.get("profile_validated", False)
         age_signal_validated = data.get("age_signal_validated", False)
@@ -115,4 +158,5 @@ class SmartControllerConfig:
             hud_regions=hud_regions,
             profile_validated=profile_validated,
             age_signal_validated=age_signal_validated,
+            civilization_detection=civilization_detection,
         )

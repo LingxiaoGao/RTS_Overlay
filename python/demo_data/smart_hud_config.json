@@ -15,6 +15,10 @@
     "population_current": {"left": 26, "top": 562, "width": 47, "height": 30},
     "population_cap": {"left": 26, "top": 562, "width": 47, "height": 30}
   },
+  "civilization_detection": {
+    "flag": {"left": 195, "top": 560, "width": 40, "height": 35},
+    "production_buttons": {"left": 416, "top": 585, "width": 78, "height": 55}
+  },
   "profile_validated": true,
   "age_signal_validated": true
 }

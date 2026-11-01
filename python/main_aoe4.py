@@ -83,11 +83,13 @@ if __name__ == '__main__':
             controller = SmartHudController(
                 config,
                 template_dir=directory_main / "hud_templates_1280x720",
+                game_assets_dir=window.directory_game_pictures,
             )
             last_poll_error = None
+            last_civilization = None
 
             def poll_smart():
-                global last_poll_error
+                global last_poll_error, last_civilization
                 result = controller.poll_safe()
                 if result.error != last_poll_error:
                     if result.error:
@@ -98,6 +100,16 @@ if __name__ == '__main__':
                 notifications = ()
                 if result.result is not None:
                     notifications = window.apply_smart_pipeline_result(result.result)
+                    decision = controller.detected_civilization
+                    if decision is not None and decision.civilization != last_civilization:
+                        window.handle_detected_civilization(decision.civilization)
+                        logger.info(
+                            "Civilization locked: %s confidence=%.3f source=%s",
+                            decision.civilization,
+                            decision.confidence,
+                            decision.source,
+                        )
+                        last_civilization = decision.civilization
                 status_window.show_poll(result, notifications)
 
             smart_timer = QTimer()

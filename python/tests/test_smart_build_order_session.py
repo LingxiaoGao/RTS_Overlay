@@ -30,9 +30,23 @@ def _build_order(dependencies=(None, 2, 2, 3), include_meta=True):
     return data
 
 
+def _meta_free(dependencies):
+    data = {"build_order": [
+        {"time": "0:00", "notes": "start"},
+        {"time": "5:00", "notes": "feudal"},
+        {"time": "6:00", "notes": "more"},
+        {"time": "10:00", "notes": "castle"},
+    ]}
+    for step, notes in zip(data["build_order"], dependencies):
+        if notes is not None:
+            step["notes"] = notes
+    return data
+
+
 def _result(age, game_time=300, status=RecognitionStatus.CONFIRMED,
-            emitted_at=12.0, timer_status=RecognitionStatus.CONFIRMED):
-    event = GameEvent(1, "age_completed", {"age": age}, (), 1.0, status,
+            emitted_at=12.0, timer_status=RecognitionStatus.CONFIRMED,
+            event_type="age_completed"):
+    event = GameEvent(1, event_type, {"age": age}, (), 1.0, status,
                       emitted_at)
     state = GameState(
         game_time=FieldState(game_time, 1.0, timer_status, emitted_at, ()),
@@ -41,21 +55,32 @@ def _result(age, game_time=300, status=RecognitionStatus.CONFIRMED,
     return PipelineResult(True, {}, (), (), state, (event,))
 
 
+def _result_no_event(game_time=300, emitted_at=12.0):
+    state = GameState(
+        game_time=FieldState(game_time, 1.0, RecognitionStatus.CONFIRMED,
+                             emitted_at, ()),
+        updated_at=emitted_at,
+    )
+    return PipelineResult(True, {}, (), (), state, ())
+
+
 class SmartBuildOrderSessionTests(unittest.TestCase):
-    def test_missing_metadata_disabled(self):
+    def test_disabled_when_no_timer_steps(self):
+        data = {"build_order": [{"time": "0:00", "notes": "start"}]}
+        data["build_order"] = []
         session = SmartBuildOrderSession.from_build_order(
-            _build_order(include_meta=False)
+            data
         )
         self.assertFalse(session.enabled)
-        self.assertEqual(session.times, (0, 300, 360, 600))
+        self.assertEqual(session.times, ())
         self.assertEqual(session.consume(_result(2)),
-                         ScheduleUpdate(False, False, (0, 300, 360, 600)))
+                         ScheduleUpdate(False, False, ()))
 
     def test_valid_age_two_and_three_shifts(self):
         session = SmartBuildOrderSession.from_build_order(_build_order())
         first = session.consume(_result(2, game_time=310))
         self.assertTrue(first.changed)
-        self.assertEqual(first.times, (0, 310, 370, 600))
+        self.assertEqual(first.times, (0, 310, 370, 610))
         second = session.consume(_result(3, game_time=615, emitted_at=13.0))
         self.assertTrue(second.changed)
         self.assertEqual(second.times, (0, 310, 370, 615))
@@ -85,11 +110,13 @@ class SmartBuildOrderSessionTests(unittest.TestCase):
         self.assertFalse(second.changed)
         self.assertEqual(second.times, first.times)
 
-    def test_ordering_rejection_is_atomic(self):
+    def test_negative_shift_rejected_atomically(self):
         session = SmartBuildOrderSession.from_build_order(_build_order())
-        first = session.consume(_result(2, game_time=500))
-        self.assertEqual(first.times, (0, 500, 560, 600))
-        second = session.consume(_result(3, game_time=550, emitted_at=13.0))
+        first = session.consume(_result(2, game_time=100))
+        self.assertEqual(first.times, (0, 100, 160, 400))
+        second = session.consume(_result(3, game_time=150, emitted_at=13.0))
+        # age 3 is at index 3 currently 400; shift to 150 pushes index 3
+        # to 150, prior index 2 is 160, so 150 < 160 is a rejection.
         self.assertFalse(second.changed)
         self.assertEqual(session.times, first.times)
 
@@ -153,6 +180,98 @@ class SmartBuildOrderSessionTests(unittest.TestCase):
         self.assertTrue(update.changed)
         self.assertEqual(update.times, (30, 150, 330))
 
+    def test_metadata_free_detection(self):
+        data = _meta_free(["start", "feudal", "more", "castle"])
+        session = SmartBuildOrderSession.from_build_order(data)
+        self.assertTrue(session.enabled)
+        self.assertEqual(session.times, (0, 300, 360, 600))
+        update = session.consume(_result(2, game_time=310))
+        self.assertTrue(update.changed)
+        self.assertEqual(update.times, (0, 310, 370, 610))
+
+    def test_metadata_free_age_up_next_age(self):
+        data = _meta_free(["start", "age up", "age 3", None])
+        session = SmartBuildOrderSession.from_build_order(data)
+        self.assertEqual(session.times, (0, 300, 360, 600))
+        update = session.consume(_result(2, game_time=310))
+        self.assertEqual(update.times, (0, 310, 370, 610))
+
+    def test_metadata_free_aoe4_guides_aging_up_phrase(self):
+        data = _meta_free(["start", "Start aging up with 4 villagers", "more", "castle"])
+        session = SmartBuildOrderSession.from_build_order(data)
+        update = session.consume(_result(
+            2, game_time=330, event_type="age_started"
+        ))
+        self.assertTrue(update.changed)
+        self.assertEqual(update.times, (0, 330, 390, 630))
+
+    def test_float_game_time_accepted(self):
+        session = SmartBuildOrderSession.from_build_order(_build_order())
+        update = session.consume(_result(2, game_time=310.0))
+        self.assertTrue(update.changed)
+        self.assertEqual(update.times, (0, 310, 370, 610))
+
+    def test_no_event_after_anchor_does_not_move_schedule(self):
+        session = SmartBuildOrderSession.from_build_order(_build_order())
+        first = session.consume(_result_no_event(game_time=305, emitted_at=13.0))
+        self.assertFalse(first.changed)
+        self.assertEqual(first.times, (0, 300, 360, 600))
+        second = session.consume(_result_no_event(game_time=310, emitted_at=14.0))
+        self.assertFalse(second.changed)
+        self.assertEqual(second.times, (0, 300, 360, 600))
+
+    def test_start_anchor_shifts_advancing_rows_and_completion_shifts_suffix(self):
+        data = {"build_order": [
+            {"time": "0:00", "age": 1, "notes": ["start"]},
+            {"time": "2:10", "age": 1, "notes": ["age 2"]},
+            {"time": "3:05", "age": 1, "notes": ["keep producing"]},
+            {"time": "3:25", "age": 1, "notes": ["move villagers"]},
+            {"time": "3:50", "age": 2, "notes": ["feudal complete"]},
+            {"time": "4:30", "age": 2, "notes": ["attack"]},
+        ]}
+        session = SmartBuildOrderSession.from_build_order(data)
+        started = session.consume(_result(
+            2, game_time=180, event_type="age_started"
+        ))
+        self.assertEqual(started.times, (0, 180, 235, 255, 280, 320))
+        self.assertEqual(started.times[2] - started.times[1], 55)
+        self.assertEqual(started.times[3] - started.times[2], 20)
+
+        completed = session.consume(_result(2, game_time=300, emitted_at=13.0))
+        self.assertEqual(completed.times, (0, 180, 235, 255, 300, 340))
+
+    def test_early_start_shifts_suffix_earlier_and_duplicate_is_idempotent(self):
+        data = _meta_free(["start", "age 2", "more", "castle"])
+        session = SmartBuildOrderSession.from_build_order(data)
+        first = session.consume(_result(
+            2, game_time=120, event_type="age_started"
+        ))
+        self.assertEqual(first.times, (0, 120, 180, 420))
+        duplicate = session.consume(_result(
+            2, game_time=130, emitted_at=13.0, event_type="age_started"
+        ))
+        self.assertFalse(duplicate.changed)
+        self.assertEqual(duplicate.times, first.times)
+
+    def test_unchanged_prefix_preserved_gaps(self):
+        session = SmartBuildOrderSession.from_build_order(_build_order())
+        update = session.consume(_result(2, game_time=310))
+        self.assertEqual(update.times[0], 0)
+        self.assertEqual(update.times[2] - update.times[1], 60)
+        self.assertEqual(update.times[3] - update.times[2], 240)
+
+    def test_duplicate_confirmed_event_does_nothing(self):
+        session = SmartBuildOrderSession.from_build_order(_build_order())
+        first = session.consume(_result(2, game_time=310))
+        second = session.consume(_result(2, game_time=400, emitted_at=13.0))
+        self.assertFalse(second.changed)
+        self.assertEqual(second.times, first.times)
+
+    def test_sample_before_anchor_leaves_schedule_unchanged(self):
+        session = SmartBuildOrderSession.from_build_order(_build_order())
+        update = session.consume(_result_no_event(game_time=50))
+        self.assertFalse(update.changed)
+        self.assertEqual(update.times, (0, 300, 360, 600))
 
 if __name__ == "__main__":
     unittest.main()

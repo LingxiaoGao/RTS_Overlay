@@ -323,6 +323,64 @@ class SmartPipelineConfirmationTests(unittest.TestCase):
         self.assertIs(food.status, RecognitionStatus.INFERRED)
         self.assertIs(pipeline.state.food.status, RecognitionStatus.INFERRED)
 
+    def test_distributed_age_spend_then_roman_ii_confirms(self) -> None:
+        reader = FakeReader()
+        pipeline = SmartHudPipeline(
+            reader=reader, profile_validated=True, age_signal_validated=True
+        )
+
+        # Baseline: five samples at age 1 with resources well above the
+        # age-2 cost.
+        fields = {"age": "1", "food": "2000", "gold": "1000"}
+        frames = []
+        for index in range(5):
+            frame = make_frame(index, index * 0.5)
+            reader.set_frame(frame, fields)
+            result = pipeline.process(frame)
+            frames.append(result)
+        self.assertIs(pipeline.state.age.status, RecognitionStatus.CONFIRMED)
+        self.assertEqual(pipeline.state.age.value, 1)
+
+        # Age-up spend (400 food, 200 gold) spread across several samples,
+        # so no adjacent-sample drop reaches the configured cost.
+        spends = [
+            {"age": "1", "food": "1850", "gold": "950"},
+            {"age": "1", "food": "1750", "gold": "900"},
+            {"age": "1", "food": "1650", "gold": "850"},
+            {"age": "1", "food": "1600", "gold": "800"},
+        ]
+        start = 5
+        spend_events = []
+        for offset, spend in enumerate(spends):
+            frame = make_frame(start + offset, (start + offset) * 0.5)
+            reader.set_frame(frame, spend)
+            spend_events.extend(pipeline.process(frame).events)
+        self.assertEqual(pipeline.state.age.value, 1)
+        started = [
+            event for event in spend_events
+            if event.event_type == "age_started"
+        ]
+        self.assertEqual(len(started), 1)
+        self.assertEqual(started[0].payload["age"], 2)
+        self.assertIs(started[0].status, RecognitionStatus.CONFIRMED)
+
+        # After construction delay, Roman II appears repeatedly.
+        completion_events = []
+        for offset in range(12):
+            frame = make_frame(20 + offset, (20 + offset) * 0.5)
+            reader.set_frame(
+                frame, {"age": "II", "food": "1600", "gold": "800"}
+            )
+            result = pipeline.process(frame)
+            completion_events.extend(result.events)
+        self.assertEqual(pipeline.state.age.value, 2)
+        completed = [
+            event for event in completion_events
+            if event.event_type == "age_completed"
+        ]
+        self.assertEqual(len(completed), 1)
+        self.assertEqual(completed[0].payload["age"], 2)
+
 
 if __name__ == "__main__":
     unittest.main()

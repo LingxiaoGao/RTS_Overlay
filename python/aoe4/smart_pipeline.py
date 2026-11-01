@@ -10,7 +10,13 @@ from aoe4.smart_capture import CapturedFrame
 from aoe4.smart_confirmation import HudEvidenceConfirmer
 from aoe4.smart_hud import parse_hud_text
 from aoe4.smart_hud_reader import HudTextEvidence, text_mapping
-from aoe4.smart_runtime import GameEvent, GameState, Observation, StateEstimator
+from aoe4.smart_runtime import (
+    GameEvent,
+    GameState,
+    Observation,
+    RecognitionStatus,
+    StateEstimator,
+)
 from aoe4.smart_sampling import ObservationScheduler
 
 
@@ -39,6 +45,7 @@ class _AgeSignal:
         self.candidate_at = 0.0
         self.previous: tuple[int, int] | None = None
         self.previous_at = 0.0
+        self.recent: deque[tuple[int, int]] = deque(maxlen=10)
         self.visual = deque(maxlen=10)
 
     @staticmethod
@@ -53,25 +60,38 @@ class _AgeSignal:
             return 4
         return min(3, text.count("I"))
 
-    def observe(self, texts: Mapping[str, str], now: float) -> str:
+    def observe(
+        self, texts: Mapping[str, str], now: float
+    ) -> tuple[str, int | None]:
+        started_age: int | None = None
         food = self._number(texts.get("food"))
         gold = self._number(texts.get("gold"))
         if food is not None and gold is not None:
-            if self.previous is not None and now - self.previous_at <= 2.0:
-                next_age = self.current + 1
-                if next_age in self._COSTS:
-                    expected_food, expected_gold = self._COSTS[next_age]
-                    food_drop = self.previous[0] - food
-                    gold_drop = self.previous[1] - gold
-                    if (
-                        0.7 * expected_food <= food_drop <= 1.3 * expected_food
-                        and 0.7 * expected_gold <= gold_drop <= 1.3 * expected_gold
-                    ):
-                        self.candidate = next_age
-                        self.candidate_at = now
+            # Compare against the recent high-water food/gold pair so a spend
+            # spread over several 500ms samples is still detected, while
+            # ordinary income between samples is tolerated.
+            sample = (food, gold)
+            if self.previous is not None and now - self.previous_at > 2.0:
+                self.recent.clear()
+            peak_food = max((pair[0] for pair in self.recent), default=food)
+            peak_gold = max((pair[1] for pair in self.recent), default=gold)
+            next_age = self.current + 1
+            if next_age in self._COSTS:
+                expected_food, expected_gold = self._COSTS[next_age]
+                food_drop = peak_food - food
+                gold_drop = peak_gold - gold
+                if (
+                    0.7 * expected_food <= food_drop <= 1.3 * expected_food
+                    and 0.7 * expected_gold <= gold_drop <= 1.3 * expected_gold
+                ):
+                    if self.candidate != next_age:
                         self.visual.clear()
-            self.previous = (food, gold)
+                        started_age = next_age
+                    self.candidate = next_age
+                    self.candidate_at = now
+            self.previous = sample
             self.previous_at = now
+            self.recent.append(sample)
 
         self.visual.append(self._visual_age(texts.get("age")))
         if self.candidate is not None:
@@ -82,7 +102,7 @@ class _AgeSignal:
                 self.current = self.candidate
                 self.candidate = None
                 self.visual.clear()
-        return self._ROMAN[self.current]
+        return self._ROMAN[self.current], started_age
 
 
 def _coherent_population(observations: tuple[Observation, ...]) -> tuple[Observation, ...]:
@@ -241,8 +261,9 @@ class SmartHudPipeline:
         evidence = raw
 
         texts = dict(text_mapping(evidence))
+        age_started = None
         if "age" in texts and "food" in texts and "gold" in texts:
-            texts["age"] = self._age_signal.observe(texts, now)
+            texts["age"], age_started = self._age_signal.observe(texts, now)
         observations = _coherent_population(parse_hud_text(texts, frame_id, now))
 
         checkpoint = self._confirmer.checkpoint()
@@ -256,6 +277,17 @@ class SmartHudPipeline:
             )
             verified = _coherent_population(verified)
             state, events = self._estimator.ingest(verified, now)
+            if age_started is not None:
+                started_event = GameEvent(
+                    sequence=0,
+                    event_type="age_started",
+                    payload={"age": age_started, "frame_id": frame_id},
+                    evidence_ids=(),
+                    confidence=1.0,
+                    status=RecognitionStatus.CONFIRMED,
+                    emitted_at=now,
+                )
+                events = (started_event,) + events
             state = self._estimator.mark_stale(now)
             self._scheduler.mark_sample(now)
         except Exception:

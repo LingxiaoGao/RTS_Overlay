@@ -37,6 +37,36 @@ class SmartControllerConfigFromFileTests(unittest.TestCase):
         self.assertEqual(config.hud_regions.regions["food"].height, 20)
         self.assertTrue(config.profile_validated)
         self.assertTrue(config.age_signal_validated)
+        self.assertIsNone(config.civilization_detection)
+
+    def test_civilization_regions_load_when_contained(self):
+        data = {
+            "capture_region": {"left": 0, "top": 0, "width": 100, "height": 100},
+            "hud_regions": {
+                "food": {"left": 10, "top": 10, "width": 20, "height": 20}
+            },
+            "civilization_detection": {
+                "flag": {"left": 30, "top": 30, "width": 20, "height": 10},
+                "production_buttons": {"left": 60, "top": 40, "width": 20, "height": 20},
+            },
+        }
+        config = SmartControllerConfig.from_file(self._write_config(data))
+        self.assertEqual(config.civilization_detection.flag.left, 30)
+        self.assertEqual(config.civilization_detection.production_buttons.width, 20)
+
+    def test_civilization_region_beyond_capture_bounds_is_rejected(self):
+        data = {
+            "capture_region": {"left": 0, "top": 0, "width": 100, "height": 100},
+            "hud_regions": {
+                "food": {"left": 10, "top": 10, "width": 20, "height": 20}
+            },
+            "civilization_detection": {
+                "flag": {"left": 90, "top": 30, "width": 20, "height": 10},
+                "production_buttons": {"left": 60, "top": 40, "width": 20, "height": 20},
+            },
+        }
+        with self.assertRaises(ValueError):
+            SmartControllerConfig.from_file(self._write_config(data))
 
     def test_malformed_json_raises_value_error(self):
         tmpdir = tempfile.TemporaryDirectory()
