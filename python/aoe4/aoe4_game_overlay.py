@@ -2,6 +2,9 @@
 from __future__ import annotations
 
 import os
+import json
+import html
+import re
 
 from PyQt5.QtWidgets import (
     QAbstractItemView,
@@ -16,7 +19,7 @@ from PyQt5.QtWidgets import (
     QTableWidgetItem,
     QVBoxLayout,
 )
-from PyQt5.QtGui import QIcon, QFont
+from PyQt5.QtGui import QBrush, QColor, QIcon, QFont
 from PyQt5.QtCore import QSize, Qt
 
 from common.useful_tools import widget_x_end, widget_y_end
@@ -90,6 +93,17 @@ class AoE4GameOverlay(RTSGameOverlay):
             bundled_directory=self.directory_build_orders
         )
 
+        self.build_order_table = QTableWidget(0, 2, self)
+        self.build_order_table.setHorizontalHeaderLabels(["时间", "建造顺序"])
+        self.build_order_table.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.build_order_table.setSelectionBehavior(QAbstractItemView.SelectRows)
+        self.build_order_table.setSelectionMode(QAbstractItemView.SingleSelection)
+        self.build_order_table.verticalHeader().setVisible(False)
+        self.build_order_table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeToContents)
+        self.build_order_table.horizontalHeader().setSectionResizeMode(1, QHeaderView.Stretch)
+        self.build_order_table.setWordWrap(True)
+        self._update_build_order_table_style()
+
         # civilization selection
         layout = self.settings.layout
         color_default = layout.color_default
@@ -111,6 +125,7 @@ class AoE4GameOverlay(RTSGameOverlay):
         self.civilization_select.setFont(QFont(layout.font_police, layout.font_size))
         self.civilization_select.adjustSize()
 
+        self._populate_civilization_build_orders()
         self.update_panel_elements()  # update the current panel elements
 
     def select_build_order(self, key_condition: dict = None):
@@ -293,16 +308,37 @@ class AoE4GameOverlay(RTSGameOverlay):
                     select_dialog, QMessageBox.Critical, "错误", f"下载建造顺序失败：{err}"
                 )
                 return
-            self._show_online_message(
-                select_dialog,
-                QMessageBox.Information,
-                "成功",
-                f"建造顺序已保存为：{os.path.basename(saved_path)}",
+            try:
+                with open(saved_path, 'r', encoding='utf-8') as handle:
+                    saved_build_order = json.load(handle)
+                saved_name = saved_build_order['name']
+                saved_civilization = saved_build_order['civilization']
+            except (OSError, KeyError, TypeError, ValueError) as err:
+                self._show_online_message(
+                    select_dialog, QMessageBox.Critical, "错误", f"读取已保存建造顺序失败：{err}"
+                )
+                return
+
+            self.reload(update_settings=False)
+            if saved_civilization in self.civilization_combo_ids:
+                self.civilization_select.setCurrentIndex(self.civilization_combo_ids.index(saved_civilization))
+            self._populate_civilization_build_orders()
+            if saved_name not in self.valid_build_orders:
+                self._show_online_message(
+                    select_dialog, QMessageBox.Critical, "错误", "已保存的建造顺序未出现在当前文明列表中。"
+                )
+                return
+
+            self.build_order_selection_id = self.valid_build_orders.index(saved_name)
+            self.select_build_order(
+                key_condition={'civilization': self.civilization_combo_ids[self.civilization_select.currentIndex()]}
             )
             select_dialog.accept()
-            self.reload(update_settings=False)
+            dialog.accept()
+            self.selected_panel = PanelID.BUILD_ORDER
+            self.update_panel_elements()
 
-        download_button = QPushButton("下载", select_dialog)
+        download_button = QPushButton("部署攻略", select_dialog)
         download_button.setStyleSheet(button_style)
         download_button.setFont(font)
         download_button.clicked.connect(on_download)
@@ -340,7 +376,9 @@ class AoE4GameOverlay(RTSGameOverlay):
         self.civilization_select.setStyleSheet(f'QWidget{{ {style_description} }};')
         self.civilization_select.setFont(QFont(layout.font_police, layout.font_size))
         self.civilization_select.adjustSize()
+        self._update_build_order_table_style()
 
+        self._populate_civilization_build_orders()
         self.update_panel_elements()  # update the current panel elements
 
     def settings_scaling(self):
@@ -351,6 +389,15 @@ class AoE4GameOverlay(RTSGameOverlay):
 
         self.settings.layout.configuration.flag_select_size = scale_list_int(
             scaling, self.unscaled_settings.layout.configuration.flag_select_size
+        )
+
+    def _update_build_order_table_style(self):
+        """Apply the current overlay font and colors to the step table."""
+        layout = self.settings.layout
+        self.build_order_table.setFont(QFont(layout.font_police, layout.font_size))
+        self.build_order_table.setStyleSheet(
+            "QTableWidget { background-color: black; color: white; border: 1px solid white; }"
+            "QHeaderView::section { background-color: black; color: white; border: 1px solid white; }"
         )
 
     def select_build_order_id(self, build_order_id: int = -1) -> bool:
@@ -386,6 +433,8 @@ class AoE4GameOverlay(RTSGameOverlay):
         super().hide_elements()
 
         self.civilization_select.hide()
+        if hasattr(self, 'build_order_table'):
+            self.build_order_table.hide()
 
     def get_age_image(self, age_id: int) -> str:
         """Get the image for a requested age.
@@ -411,18 +460,28 @@ class AoE4GameOverlay(RTSGameOverlay):
 
     def update_build_order_display(self):
         """Update the build order search matching display."""
+        self._populate_civilization_build_orders()
+        self.config_panel_layout()
+
+    def _populate_civilization_build_orders(self):
+        """Display all guides for the selected civilization without a search field."""
         civilization_id = self.civilization_select.currentIndex()
         assert 0 <= civilization_id < len(self.civilization_combo_ids)
-        self.obtain_build_order_search(key_condition={'civilization': self.civilization_combo_ids[civilization_id]})
-        self.config_panel_layout()
+        signals_blocked = self.build_order_search.blockSignals(True)
+        self.build_order_search.setText(' ')
+        self.obtain_build_order_search(
+            key_condition={'civilization': self.civilization_combo_ids[civilization_id]}
+        )
+        self.build_order_search.setText('')
+        self.build_order_search.blockSignals(signals_blocked)
+        self.build_order_search.hide()
 
     def enter_key_actions(self):
         """Actions performed when pressing the Enter key."""
         if self.selected_panel == PanelID.CONFIG:
-            if self.build_order_search.hasFocus():
-                self.select_build_order(
-                    key_condition={'civilization': self.civilization_combo_ids[self.civilization_select.currentIndex()]}
-                )
+            self.select_build_order(
+                key_condition={'civilization': self.civilization_combo_ids[self.civilization_select.currentIndex()]}
+            )
 
             self.config_panel_layout()  # update layout
 
@@ -461,70 +520,129 @@ class AoE4GameOverlay(RTSGameOverlay):
             )
         next_y += max(self.build_order_title.height(), self.civilization_select.height()) + vertical_spacing
 
-        # build order search
-        self.build_order_search.move(border_size, next_y)
-        next_y += self.build_order_search.height() + vertical_spacing
-
-        if widget_x_end(self.build_order_search) > widget_x_end(self.civilization_select):
-            self.civilization_select.move(
-                widget_x_end(self.build_order_search) - self.civilization_select.width(), self.civilization_select.y()
-            )
-        elif widget_x_end(self.build_order_search) < widget_x_end(self.civilization_select):
-            self.build_order_search.resize(
-                widget_x_end(self.civilization_select) - self.build_order_search.x(), self.build_order_search.height()
-            )
-
+        self.build_order_search.hide()
         self.build_order_selection.update_size_position(init_y=next_y)
 
-        self.config_panel_layout_resize_move()  # size and position
+        max_x = max(
+            self.next_panel_button.x_end(),
+            widget_x_end(self.civilization_select),
+            self.build_order_selection.x() + self.build_order_selection.row_max_width,
+        )
+        max_y = self.build_order_selection.y() + self.build_order_selection.row_total_height
+        self.resize(max_x + border_size, max_y + border_size)
+        self.next_panel_button.move(self.width() - border_size - self.next_panel_button.width(), border_size)
+        self.hide_panel_button.move(
+            self.next_panel_button.x() - horizontal_spacing - self.hide_panel_button.width(),
+            self.next_panel_button.y(),
+        )
+        self.update_position()
 
     def update_build_order(self):
         """Update the build order panel."""
         super().update_build_order()
+        self.build_order_resources.hide()
+        self.build_order_notes.hide()
+        self.build_order_table.clearContents()
 
-        # valid build order selected
-        if (self.selected_build_order is not None) and ('build_order' in self.selected_build_order):
+        if self.selected_build_order is None or 'build_order' not in self.selected_build_order:
+            self.build_order_table.setRowCount(1)
+            self.build_order_table.setItem(0, 0, QTableWidgetItem(''))
+            self.build_order_table.setItem(0, 1, QTableWidgetItem('未选择建造顺序。'))
+        else:
+            timer_mode = self.build_order_timer['use_timer'] and self.build_order_timer['steps']
+            steps = self.build_order_timer['steps'] if timer_mode else self.selected_build_order['build_order']
+            current_row = (
+                max(self.build_order_timer['steps_ids'], default=0)
+                if timer_mode
+                else self.selected_build_order_step_id
+            )
+            self.build_order_table.setRowCount(len(steps))
+            emphasis = QColor(*self.settings.layout.build_order.color_row_emphasis)
+            bright = QColor(*self.settings.layout.color_default)
+            muted = QColor(145, 145, 145)
 
-            layout = self.settings.layout
-            spacing = ' ' * layout.build_order.resource_spacing  # space between the elements
+            for row, step in enumerate(steps):
+                time_item = QTableWidgetItem(str(step.get('time', '')))
+                notes = '  |  '.join(self._readable_build_order_note(note) for note in step['notes'])
+                note_item = QTableWidgetItem(notes)
+                foreground = bright if row == current_row else muted
+                for item in (time_item, note_item):
+                    item.setForeground(QBrush(foreground))
+                    if row == current_row:
+                        item.setBackground(QBrush(emphasis))
+                self.build_order_table.setItem(row, 0, time_item)
+                self.build_order_table.setItem(row, 1, note_item)
 
-            # get selected steps and corresponding IDs
-            selected_steps, selected_steps_ids = self.get_build_order_selected_steps_and_ids()
+            self.build_order_table.resizeRowsToContents()
+            self.build_order_table.selectRow(current_row)
+            self.build_order_table.scrollToItem(
+                self.build_order_table.item(current_row, 0), QAbstractItemView.PositionAtCenter
+            )
 
-            # resource line
-            images = self.images
-            resource_step = selected_steps[selected_steps_ids[-1]]  # ID of the step to use to display the resources
+        self.build_order_panel_layout()
 
-            # target resources
-            target_resources = resource_step['resources']
-            target_food = target_resources['food']
-            target_wood = target_resources['wood']
-            target_gold = target_resources['gold']
-            target_stone = target_resources['stone']
-            target_builder = target_resources['builder'] if ('builder' in target_resources) else -1
-            target_villager = resource_step['villager_count']
-            target_population = resource_step['population_count']
+    @staticmethod
+    def _readable_build_order_note(note):
+        """Turn inline picture markers into compact readable labels."""
+        def replace_picture(match):
+            return os.path.splitext(os.path.basename(match.group(1)))[0].replace('-', ' ')
 
-            # line to display the target resources
-            resources_line = images.food + '@ ' + (str(target_food) if (target_food >= 0) else ' ')
-            resources_line += spacing + '@' + images.wood + '@ ' + (str(target_wood) if (target_wood >= 0) else ' ')
-            resources_line += spacing + '@' + images.gold + '@ ' + (str(target_gold) if (target_gold >= 0) else ' ')
-            resources_line += spacing + '@' + images.stone + '@ ' + (str(target_stone) if (target_stone >= 0) else ' ')
-            if target_builder > 0:  # add builders count if indicated
-                resources_line += spacing + '@' + images.builder + '@ ' + str(target_builder)
-            if target_villager >= 0:
-                resources_line += spacing + '@' + images.villager + '@ ' + str(target_villager)
-            if target_population >= 0:
-                resources_line += spacing + '@' + images.population + '@ ' + str(target_population)
-            if 1 <= resource_step['age'] <= 4:
-                resources_line += spacing + '@' + self.get_age_image(resource_step['age'])
-            # add time if indicated
-            if layout.show_time_resource and ('time' in resource_step) and (resource_step['time'] != ''):
-                resources_line += '@' + spacing + '@' + self.images.time + '@' + resource_step['time']
+        return html.unescape(re.sub(r'@([^@]+\.(?:webp|png|jpe?g))@', replace_picture, note))
 
-            self.build_order_resources.add_row_from_picture_line(parent=self, line=str(resources_line))
+    def build_order_panel_layout(self):
+        """Lay out the complete AoE4 build order table."""
+        if self.selected_panel != PanelID.BUILD_ORDER:
+            return
 
-            # update the notes of the build order
-            self.update_build_order_notes(selected_steps, selected_steps_ids)
+        layout = self.settings.layout
+        border_size = layout.border_size
+        vertical_spacing = layout.vertical_spacing
+        action_button_size = layout.action_button_size
+        action_button_spacing = layout.action_button_spacing
+        scale = max(1.0, layout.font_size / 11.0)
 
-        self.build_order_panel_layout()  # update layout
+        self.next_panel_button.show()
+        self.hide_panel_button.show()
+        self.build_order_previous_button.hide()
+        self.build_order_next_button.hide()
+        self.build_order_resources.hide()
+        self.build_order_notes.hide()
+        self.build_order_table.show()
+
+        timer_controls = []
+        if self.selected_build_order is not None:
+            self.build_order_step_time.show()
+            self.build_order_step_time.adjustSize()
+            if self.build_order_timer['available'] and self.build_order_timer['steps']:
+                self.build_order_switch_timer_manual.show()
+                timer_controls.append(self.build_order_switch_timer_manual)
+                if self.build_order_timer['use_timer']:
+                    self.build_order_start_stop_timer.show()
+                    self.build_order_reset_timer.show()
+                    timer_controls.extend([self.build_order_start_stop_timer, self.build_order_reset_timer])
+
+        table_width = int(720 * scale)
+        table_height = int(420 * scale)
+        next_y = border_size + action_button_size + vertical_spacing
+        self.build_order_table.setGeometry(border_size, next_y, table_width, table_height)
+        self.resize(table_width + 2 * border_size, next_y + table_height + border_size)
+
+        controls = []
+        if self.selected_build_order is not None:
+            controls.append(self.build_order_step_time)
+            controls.extend(timer_controls)
+        controls.extend([self.hide_panel_button, self.next_panel_button])
+
+        if layout.overlay_on_right_side:
+            next_x = self.width() - border_size
+            for control in reversed(controls):
+                next_x -= control.width()
+                control.move(next_x, border_size)
+                next_x -= action_button_spacing
+        else:
+            next_x = border_size
+            for control in controls:
+                control.move(next_x, border_size)
+                next_x += control.width() + action_button_spacing
+
+        self.update_position()
