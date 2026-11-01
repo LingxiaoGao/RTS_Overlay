@@ -68,7 +68,9 @@ class SmartHudController:
                     / "demo_data"
                     / "hud_templates_1280x720"
                 )
-            recognizer = TemplateHudRecognizer(self._regions, template_dir)
+            recognizer = TemplateHudRecognizer(
+                self._regions, template_dir, self._config.hud_regions
+            )
         self._recognizer = recognizer
         if not callable(getattr(self._recognizer, "recognize", None)):
             raise TypeError("recognizer must expose a callable recognize method")
