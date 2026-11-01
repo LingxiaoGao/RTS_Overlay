@@ -177,6 +177,7 @@ class TemplateHudRecognizer:
         self,
         regions: HudRegionSet,
         template_dir: Union[str, Path],
+        reference_regions: Optional[HudRegionSet] = None,
     ) -> None:
         if not isinstance(regions, HudRegionSet):
             raise TypeError(
@@ -186,6 +187,9 @@ class TemplateHudRecognizer:
         if not root.is_dir():
             raise ValueError(f"template_dir does not exist: {root}")
         self._field_regions = dict(regions.regions.items())
+        if reference_regions is None:
+            reference_regions = regions
+        self._reference_regions = dict(reference_regions.regions.items())
         self._templates: Dict[str, Dict[str, List[TemplateImage]]] = {}
         for kind in ("digits", "punctuation", "roman"):
             self._templates[kind] = _load_kind(root / kind)
@@ -251,6 +255,16 @@ class TemplateHudRecognizer:
             ):
                 return cached_result
         bgr = _bgra_to_bgr(frame.pixels, frame.width, frame.height)
+        reference = self._reference_regions.get(field)
+        if (
+            reference is not None
+            and (bgr.shape[1] != reference.width or bgr.shape[0] != reference.height)
+        ):
+            bgr = cv2.resize(
+                bgr,
+                (reference.width, reference.height),
+                interpolation=cv2.INTER_AREA,
+            )
         mask = _foreground_mask(bgr, field)
         glyphs = _extract_glyphs(mask, field)
         if not glyphs:
