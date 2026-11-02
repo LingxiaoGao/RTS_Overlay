@@ -322,6 +322,48 @@ jobs:
             throw "Expected installer not produced: $Installer"
           }
 
+      - name: Verify installed application
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $Installer = (Resolve-Path 'packaging/Output/aoe4-smart-overlay-setup.exe').Path
+          $InstallDir = Join-Path $env:RUNNER_TEMP 'aoe4_installed'
+          $InstallLog = Join-Path $env:RUNNER_TEMP 'aoe4-installer.log'
+          $InstallProcess = Start-Process -FilePath $Installer -ArgumentList @(
+            '/VERYSILENT',
+            '/SUPPRESSMSGBOXES',
+            '/NORESTART',
+            "/DIR=$InstallDir",
+            "/LOG=$InstallLog"
+          ) -PassThru
+          if (-not $InstallProcess.WaitForExit(90000)) {
+            $InstallProcess.Kill()
+            Get-Content $InstallLog -ErrorAction SilentlyContinue
+            throw 'Installer timed out after 90 seconds'
+          }
+          $InstallProcess.Refresh()
+          if ($InstallProcess.ExitCode -ne 0) {
+            Get-Content $InstallLog -ErrorAction SilentlyContinue
+            throw "Installer failed with exit code $($InstallProcess.ExitCode)"
+          }
+
+          $InstalledExe = Join-Path $InstallDir 'overlay\aoe4_overlay.exe'
+          if (-not (Test-Path $InstalledExe -PathType Leaf)) {
+            Get-Content $InstallLog -ErrorAction SilentlyContinue
+            throw "Installed executable is missing: $InstalledExe"
+          }
+          $InstalledSmoke = Start-Process -FilePath $InstalledExe -ArgumentList '--runtime-smoke-test' -PassThru
+          if (-not $InstalledSmoke.WaitForExit(90000)) {
+            $InstalledSmoke.Kill()
+            Get-Content (Join-Path $InstallDir 'overlay\local_config\logs\aoe4_overlay.log') -ErrorAction SilentlyContinue
+            throw 'Installed runtime smoke timed out after 90 seconds'
+          }
+          $InstalledSmoke.Refresh()
+          if ($InstalledSmoke.ExitCode -ne 0) {
+            Get-Content (Join-Path $InstallDir 'overlay\local_config\logs\aoe4_overlay.log') -ErrorAction SilentlyContinue
+            throw "Installed runtime smoke failed with exit code $($InstalledSmoke.ExitCode)"
+          }
+
       - name: Write build manifest and checksums
         id: manifest
         shell: pwsh
@@ -347,7 +389,7 @@ jobs:
             "python_arch: ${{ steps.env.outputs.py_arch }}"
             "installer_sha256: $InstallerHash"
             "portable_sha256: $PortableHash"
-            "notes: build/infra verification only; no gameplay or OS-version runtime validation claimed"
+            "notes: source, packaged, and installed UI smoke passed; no live gameplay or OS-version support claim"
           ) | Set-Content -Path $ManifestPath -Encoding utf8
 
           $ChecksumPath = Join-Path $ManifestDir 'checksums.sha256'
