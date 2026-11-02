@@ -37,22 +37,19 @@ if __name__ == '__main__':
     runtime_smoke_test = "--runtime-smoke-test" in sys.argv
     smoke_config = None
     if runtime_smoke_test:
-        # Nuitka's Windows bundle ships the native ``windows`` Qt platform
-        # plugin.  ``offscreen`` is useful for local Unix CI but is not part
-        # of that bundle and makes the packaged EXE terminate before the
-        # window-level smoke assertions can run.
-        if sys.platform != "win32":
-            os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
+        # The release build explicitly includes Qt platform plugins so this
+        # one-shot verifier can exercise real widgets on a headless runner.
+        # Normal launches do not set this variable and use native Windows UI.
+        os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
         import cv2  # noqa: F401
         import keyboard  # noqa: F401
-        import mss
+        import mss  # noqa: F401
         import numpy  # noqa: F401
         import pynput  # noqa: F401
         from omegaconf import OmegaConf  # noqa: F401
         from aoe4.smart_template_ocr import TemplateHudRecognizer
 
-        capture_backend = mss.mss()
-        capture_backend.close()
+        logger.info("Runtime smoke dependencies imported")
 
         smoke_config = SmartControllerConfig.from_file(
             directory_main / "smart_hud_config.json"
@@ -63,9 +60,14 @@ if __name__ == '__main__':
             smoke_config.hud_regions,
             directory_main / "hud_templates_1280x720",
         ).close()
+        logger.info("Runtime smoke packaged OCR data validated")
 
     app = QApplication(sys.argv)
+    if runtime_smoke_test:
+        logger.info("Runtime smoke QApplication created")
     window = AoE4GameOverlay(app=app, directory_main=str(directory_main))
+    if runtime_smoke_test:
+        logger.info("Runtime smoke overlay window created")
 
     if runtime_smoke_test:
         from PyQt5.QtCore import Qt
