@@ -162,7 +162,10 @@ class RTSGameOverlay(QMainWindow):
                 smoke_logger.info('Runtime smoke base screen safety completed')
 
             # save the settings
-            self.save_settings()
+            if smoke_trace:
+                smoke_logger.info('Runtime smoke base settings persistence skipped')
+            else:
+                self.save_settings()
         if smoke_trace:
             smoke_logger.info('Runtime smoke base settings loaded')
 
