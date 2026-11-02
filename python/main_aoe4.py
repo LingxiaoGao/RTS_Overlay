@@ -37,7 +37,12 @@ if __name__ == '__main__':
     runtime_smoke_test = "--runtime-smoke-test" in sys.argv
     smoke_config = None
     if runtime_smoke_test:
-        os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
+        # Nuitka's Windows bundle ships the native ``windows`` Qt platform
+        # plugin.  ``offscreen`` is useful for local Unix CI but is not part
+        # of that bundle and makes the packaged EXE terminate before the
+        # window-level smoke assertions can run.
+        if sys.platform != "win32":
+            os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
         import cv2  # noqa: F401
         import keyboard  # noqa: F401
         import mss
