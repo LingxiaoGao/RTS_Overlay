@@ -41,6 +41,10 @@ if __name__ == '__main__':
         # one-shot verifier can exercise real widgets on a headless runner.
         # Normal launches do not set this variable and use native Windows UI.
         os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
+        # A headless CI session has no user input desktop.  Keep the real Qt
+        # window and guide data path below, but do not start OS-wide keyboard
+        # and mouse hooks merely to exercise that UI path.
+        os.environ["RTS_OVERLAY_DISABLE_GLOBAL_INPUT"] = "1"
         import cv2  # noqa: F401
         import keyboard  # noqa: F401
         import mss  # noqa: F401
@@ -65,7 +69,14 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     if runtime_smoke_test:
         logger.info("Runtime smoke QApplication created")
-    window = AoE4GameOverlay(app=app, directory_main=str(directory_main))
+    try:
+        window = AoE4GameOverlay(app=app, directory_main=str(directory_main))
+    except BaseException:
+        logger.exception("Overlay window construction failed")
+        logging.shutdown()
+        if runtime_smoke_test:
+            os._exit(3)
+        raise
     if runtime_smoke_test:
         logger.info("Runtime smoke overlay window created")
 

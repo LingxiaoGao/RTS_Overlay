@@ -1,3 +1,4 @@
+import os
 import time
 from keyboard import add_hotkey, remove_hotkey, is_pressed
 from pynput import mouse
@@ -63,8 +64,13 @@ class KeyboardMouseManagement:
             assert mouse_button_name not in self.mouse_buttons
             self.mouse_buttons[mouse_button_name] = HotkeyFlagData(sequence=mouse_button_name)
 
-        self.mouse_listener = mouse.Listener(on_click=self.on_click)
-        self.mouse_listener.start()
+        self.mouse_listener = None
+        self.global_input_enabled = (
+            os.environ.get('RTS_OVERLAY_DISABLE_GLOBAL_INPUT') != '1'
+        )
+        if self.global_input_enabled:
+            self.mouse_listener = mouse.Listener(on_click=self.on_click)
+            self.mouse_listener.start()
 
     def on_click(self, x, y, button, pressed):
         if not pressed:  # only interested in the release event
@@ -107,6 +113,9 @@ class KeyboardMouseManagement:
                 return False
 
             self.keyboard_hotkeys[name] = HotkeyFlagData(sequence=sequence)  # add/update hotkey in dictionary
+
+            if not self.global_input_enabled:
+                return True
 
             # remove all hotkeys (start bindings from scratch)
             for hotkey_id in self.keyboard_hotkey_ids:
@@ -161,6 +170,8 @@ class KeyboardMouseManagement:
         -------
         True if hotkey currently pressed, False if non-existent hotkey.
         """
+        if not self.global_input_enabled:
+            return False
         if name in self.keyboard_hotkeys:
             return is_pressed(self.keyboard_hotkeys[name].sequence)
         else:
@@ -259,7 +270,7 @@ class KeyboardMouseManagement:
 
     def __del__(self):
         """Destructor to clean up mouse listener."""
-        if hasattr(self, 'mouse_listener'):
+        if getattr(self, 'mouse_listener', None) is not None:
             self.mouse_listener.stop()
 
 
