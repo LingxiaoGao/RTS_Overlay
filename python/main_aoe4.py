@@ -45,6 +45,7 @@ if __name__ == '__main__':
         # window and guide data path below, but do not start OS-wide keyboard
         # and mouse hooks merely to exercise that UI path.
         os.environ["RTS_OVERLAY_DISABLE_GLOBAL_INPUT"] = "1"
+        os.environ["RTS_OVERLAY_HEADLESS_SMOKE"] = "1"
         import cv2  # noqa: F401
         import keyboard  # noqa: F401
         import mss  # noqa: F401

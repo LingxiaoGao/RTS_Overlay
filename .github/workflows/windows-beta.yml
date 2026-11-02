@@ -86,6 +86,31 @@ jobs:
           $ErrorActionPreference = 'Stop'
           python -m unittest discover -s python/tests -v
 
+      - name: Run Windows source UI smoke
+        shell: pwsh
+        env:
+          PYTHONPATH: ${{ github.workspace }}/python
+          QT_QPA_PLATFORM: offscreen
+        run: |
+          $ErrorActionPreference = 'Stop'
+          Copy-Item python/demo_data/smart_hud_config_1280x720.json python/smart_hud_config.json
+          Copy-Item -Recurse python/demo_data/hud_templates_1280x720 python/hud_templates_1280x720
+          $BuildOrdersDir = 'python/local_config/aoe4/build_orders'
+          New-Item -ItemType Directory -Force -Path $BuildOrdersDir | Out-Null
+          Copy-Item python/demo_data/build_orders/*.json $BuildOrdersDir
+
+          $SmokeProcess = Start-Process -FilePath python -ArgumentList 'python/main_aoe4.py', '--runtime-smoke-test' -PassThru
+          if (-not $SmokeProcess.WaitForExit(30000)) {
+            $SmokeProcess.Kill()
+            Get-Content python/local_config/logs/aoe4_overlay.log -ErrorAction SilentlyContinue
+            throw 'Windows source UI smoke timed out after 30 seconds'
+          }
+          $SmokeProcess.Refresh()
+          if ($SmokeProcess.ExitCode -ne 0) {
+            Get-Content python/local_config/logs/aoe4_overlay.log -ErrorAction SilentlyContinue
+            throw "Windows source UI smoke failed with exit code $($SmokeProcess.ExitCode)"
+          }
+
   build:
     name: Build aoe4 beta candidate
     needs: test

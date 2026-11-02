@@ -164,8 +164,15 @@ class TwinHoverButton:
         self.button = QPushButton(self.parent)
 
         # twin hovering button
-        self.hovering_button = QPushButton()  # when hovering the mouse on mouse transparent window
-        self.hovering_button.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.CoverWindow)
+        if os.environ.get('RTS_OVERLAY_HEADLESS_SMOKE') == '1':
+            # CI still exercises the real controls, but has no composited
+            # desktop on which to create a second always-on-top native window.
+            self.hovering_button = QPushButton(self.parent)
+        else:
+            self.hovering_button = QPushButton()  # when hovering the mouse on mouse transparent window
+            self.hovering_button.setWindowFlags(
+                Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint | Qt.CoverWindow
+            )
 
         # update the icon and the size
         self.update_icon_size(icon=icon, button_qsize=button_qsize)
@@ -298,7 +305,8 @@ def set_background_opacity(window, color_background: list, opacity: float):
     """
     assert len(color_background) == 3
     window.setStyleSheet(f'background-color: rgb({color_background[0]}, {color_background[1]}, {color_background[2]})')
-    window.setWindowOpacity(opacity)
+    if os.environ.get('RTS_OVERLAY_HEADLESS_SMOKE') != '1':
+        window.setWindowOpacity(opacity)
 
 
 class OverlaySequenceEdit(QKeySequenceEdit):

@@ -1,6 +1,7 @@
 import os
 import json
 import time
+import logging
 import webbrowser
 import appdirs
 import re
@@ -81,7 +82,13 @@ class RTSGameOverlay(QMainWindow):
         build_order_timer_step_starting_flag    True if the timer steps starts at the requested time,
                                                 False if ending at this time.
         """
+        smoke_trace = os.environ.get('RTS_OVERLAY_HEADLESS_SMOKE') == '1'
+        smoke_logger = logging.getLogger('aoe4_overlay')
+        if smoke_trace:
+            smoke_logger.info('Runtime smoke base overlay constructor starting')
         super().__init__()
+        if smoke_trace:
+            smoke_logger.info('Runtime smoke base QMainWindow created')
 
         # application instance
         self.app = app
@@ -140,6 +147,8 @@ class RTSGameOverlay(QMainWindow):
 
             # save the settings
             self.save_settings()
+        if smoke_trace:
+            smoke_logger.info('Runtime smoke base settings loaded')
 
         # font size and scaling combo
         self.font_size_input = QComboBox(self)
@@ -214,6 +223,8 @@ class RTSGameOverlay(QMainWindow):
         # configuration elements initialization
         self.build_order_step_time = QLabel('步骤：0/0', self)
         self.configuration_initialization()
+        if smoke_trace:
+            smoke_logger.info('Runtime smoke base configuration controls created')
 
         self.build_order_resources = MultiQLabelDisplay(
             font_police=layout.font_police,
@@ -266,6 +277,8 @@ class RTSGameOverlay(QMainWindow):
         self.upper_left_position = [0, 0]
         self.upper_right_position = [0, 0]
         self.window_color_position_initialization()
+        if smoke_trace:
+            smoke_logger.info('Runtime smoke base background initialized')
 
         # next panel configuration button
         action_button_qsize = QSize(self.settings.layout.action_button_size, self.settings.layout.action_button_size)
@@ -399,6 +412,8 @@ class RTSGameOverlay(QMainWindow):
 
         self.mouse_buttons_dict = dict()  # dictionary as {keyboard_name: mouse_button_name}
         self.set_keyboard_mouse()
+        if smoke_trace:
+            smoke_logger.info('Runtime smoke base input facade initialized')
 
         # configure hotkeys
         self.panel_config_hotkeys = None
@@ -408,6 +423,8 @@ class RTSGameOverlay(QMainWindow):
 
         # initialization done
         self.init_done = True
+        if smoke_trace:
+            smoke_logger.info('Runtime smoke base overlay constructor completed')
 
     def reload(self, update_settings):
         """Reload the application settings, build orders...
@@ -841,8 +858,11 @@ class RTSGameOverlay(QMainWindow):
         # window is transparent to mouse events, except for the configuration when not hidden
         self.setAttribute(Qt.WA_TransparentForMouseEvents, self.hidden or (self.selected_panel != PanelID.CONFIG))
 
-        # remove the window title and stay always on top
-        self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
+        # Desktop overlay flags require a composited user desktop.  The
+        # packaged smoke verifier uses ordinary widget flags while exercising
+        # the same controls and data path on a headless runner.
+        if os.environ.get('RTS_OVERLAY_HEADLESS_SMOKE') != '1':
+            self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
 
         # hide the elements by default
         self.hide_elements()
