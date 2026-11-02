@@ -6,7 +6,7 @@
     "height": 720
   },
   "hud_regions": {
-    "game_time": {"left": 622, "top": 65, "width": 37, "height": 22},
+    "game_time": {"left": 622, "top": 65, "width": 37, "height": 51},
     "age": {"left": 632, "top": 13, "width": 22, "height": 28},
     "food": {"left": 24, "top": 597, "width": 50, "height": 28},
     "wood": {"left": 24, "top": 624, "width": 50, "height": 28},

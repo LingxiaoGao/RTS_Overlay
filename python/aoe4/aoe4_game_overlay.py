@@ -670,6 +670,23 @@ class AoE4GameOverlay(RTSGameOverlay):
             else:
                 self.config_panel_layout()
 
+    def next_panel(self):
+        """Open the highlighted guide or return to the complete civilization list."""
+        if self.selected_panel == PanelID.CONFIG:
+            self.save_upper_corner_positions()
+            if self.valid_build_orders:
+                self._open_selected_build_order()
+            else:
+                self.selected_panel = PanelID.BUILD_ORDER
+                self.update_panel_elements()
+            self.update_position()
+            return
+
+        self.selected_panel = PanelID.CONFIG
+        self._populate_civilization_build_orders()
+        self.update_panel_elements()
+        self.update_position()
+
     def update_panel_elements(self):
         """Update the panel and keep the build-order view interactive."""
         super().update_panel_elements()
@@ -677,6 +694,10 @@ class AoE4GameOverlay(RTSGameOverlay):
             return
         if self.selected_panel == PanelID.BUILD_ORDER:
             self.setAttribute(Qt.WA_TransparentForMouseEvents, False)
+            # Re-show after changing the mouse transparency.  On Windows the
+            # frameless native window otherwise keeps the click-through style
+            # that the common overlay applies to read-only build-order panels.
+            self.show()
             self.build_order_drag_handle.show()
             self.build_order_size_grip.show()
             self.build_order_size_grip.raise_()

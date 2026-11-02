@@ -65,6 +65,15 @@ def _result_no_event(game_time=300, emitted_at=12.0):
 
 
 class SmartBuildOrderSessionTests(unittest.TestCase):
+    @staticmethod
+    def _acceptance_guide(guide_id):
+        path = (
+            pathlib.Path(__file__).resolve().parent
+            / "fixtures" / "acceptance_build_orders" / (guide_id + ".json")
+        )
+        with path.open(encoding="utf-8") as handle:
+            return json.load(handle)
+
     def test_disabled_when_no_timer_steps(self):
         data = {"build_order": [{"time": "0:00", "notes": "start"}]}
         data["build_order"] = []
@@ -241,33 +250,26 @@ class SmartBuildOrderSessionTests(unittest.TestCase):
         self.assertEqual(completed.times, (0, 180, 246, 270, 300, 340))
 
     def test_english_9d7_dual_axis_matches_video_anchors(self):
-        data = {"build_order": [
-            {"time": "0:00", "age": 1, "notes": ["start"]},
-            {"time": "1:00", "age": 1, "notes": ["rally food"]},
-            {"time": "2:15", "age": 1, "notes": ["Start @age/age_2.webp@"]},
-            {"time": "2:20", "age": 1, "notes": ["rally wood"]},
-            {"time": "3:55", "age": 1, "notes": ["second house"]},
-            {"time": "4:15", "age": 2, "notes": ["Feudal finishes"]},
-            {"time": "4:35", "age": 2, "notes": ["barracks"]},
-            {"time": "4:55", "age": 2, "notes": ["horticulture"]},
-        ]}
+        data = self._acceptance_guide("9D7gNeDouh6amusnVQYb")
+        self.assertEqual(data["civilization"], "English")
         session = SmartBuildOrderSession.from_build_order(data)
         started = session.consume(_result(
-            2, game_time=149, event_type="age_started"
+            2, game_time=138, event_type="age_started"
         ))
-        self.assertEqual(started.times, (0, 60, 149, 154, 249, 269, 289, 309))
+        self.assertEqual(
+            started.times,
+            (0, 60, 138, 143, 238, 258, 278, 298, 318, 343, 393, 430),
+        )
 
-        completed = session.consume(_result(2, game_time=231, emitted_at=13.0))
-        self.assertEqual(completed.times, (0, 60, 149, 152, 217, 231, 251, 271))
+        completed = session.consume(_result(2, game_time=218, emitted_at=13.0))
+        self.assertEqual(
+            completed.times,
+            (0, 60, 138, 141, 205, 218, 238, 258, 278, 303, 353, 390),
+        )
 
     def test_dragon_5qpk_dual_axis_matches_video_anchors(self):
-        data = {"build_order": [
-            {"age": 1, "notes": ["untimed opening"]},
-            {"time": "2:50", "age": 1, "notes": ["@age/age_2.webp@ with 2"]},
-            {"time": "4:40", "age": 2, "notes": ["age up complete"]},
-            {"time": "6:00", "age": 2, "notes": ["take 3 villagers"]},
-            {"time": "7:00", "age": 3, "notes": ["castle complete"]},
-        ]}
+        data = self._acceptance_guide("5QpKdh80u3wSo7E7MzLQ")
+        self.assertEqual(data["civilization"], "Order of the Dragon")
         session = SmartBuildOrderSession.from_build_order(data)
         started = session.consume(_result(
             2, game_time=172, event_type="age_started"
@@ -278,21 +280,16 @@ class SmartBuildOrderSessionTests(unittest.TestCase):
         self.assertEqual(completed.times, (172, 257, 337, 397))
 
     def test_french_wtb_dual_axis_matches_video_anchors(self):
-        data = {"build_order": [
-            {"time": "0:00", "age": 1, "notes": ["Rally food until @age/age_2.webp@"]},
-            {"time": "2:15", "age": 1, "notes": ["go @age/age_2.webp@"]},
-            {"time": "3:40", "age": 2, "notes": ["two builders to gold"]},
-            {"time": "4:10", "age": 2, "notes": ["first royal knight"]},
-            {"time": "6:30", "age": 2, "notes": ["archery range"]},
-        ]}
+        data = self._acceptance_guide("WTb8ufQnXZH0jJTjGJ04")
+        self.assertEqual(data["civilization"], "French")
         session = SmartBuildOrderSession.from_build_order(data)
         started = session.consume(_result(
             2, game_time=155, event_type="age_started"
         ))
-        self.assertEqual(started.times, (0, 155, 240, 270, 410))
+        self.assertEqual(started.times, (0, 155, 240, 270, 410, 810, 850))
 
         completed = session.consume(_result(2, game_time=255, emitted_at=13.0))
-        self.assertEqual(completed.times, (0, 155, 255, 285, 425))
+        self.assertEqual(completed.times, (0, 155, 255, 285, 425, 825, 865))
 
     def test_early_start_shifts_suffix_earlier_and_duplicate_is_idempotent(self):
         data = _meta_free(["start", "age 2", "more", "castle"])

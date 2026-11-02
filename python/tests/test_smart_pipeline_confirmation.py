@@ -170,6 +170,49 @@ class SmartPipelineConfirmationTests(unittest.TestCase):
         self.assertIs(pipeline.state.age.status, RecognitionStatus.CONFIRMED)
         self.assertEqual(pipeline.state.age.value, 2)
 
+    def test_three_consecutive_visual_age_noise_does_not_complete_age(self) -> None:
+        reader = FakeReader()
+        pipeline = SmartHudPipeline(
+            reader=reader, profile_validated=True, age_signal_validated=True
+        )
+
+        # Establish the resource high-water mark, then spend the Feudal cost.
+        fields = [
+            {"age": "I", "food": "500", "gold": "300"},
+            {"age": "I", "food": "100", "gold": "100"},
+            {"age": "II", "food": "101", "gold": "101"},
+            {"age": "II", "food": "102", "gold": "102"},
+            {"age": "II", "food": "103", "gold": "103"},
+            {"age": "I", "food": "104", "gold": "104"},
+        ]
+        events = []
+        for index, values in enumerate(fields):
+            frame = make_frame(index, index * 0.5)
+            reader.set_frame(frame, values)
+            events.extend(pipeline.process(frame).events)
+
+        completed = [event for event in events if event.event_type == "age_completed"]
+        self.assertEqual(completed, [])
+
+    def test_resource_spend_starts_age_without_visual_age_on_same_frame(self) -> None:
+        reader = FakeReader()
+        pipeline = SmartHudPipeline(
+            reader=reader, profile_validated=True, age_signal_validated=True
+        )
+        baseline = make_frame(0, 0.0)
+        reader.set_frame(
+            baseline, {"age": "I", "food": "500", "gold": "300"}
+        )
+        pipeline.process(baseline)
+
+        spend = make_frame(1, 0.5)
+        reader.set_frame(spend, {"food": "100", "gold": "100"})
+        result = pipeline.process(spend)
+
+        started = [event for event in result.events if event.event_type == "age_started"]
+        self.assertEqual(len(started), 1)
+        self.assertEqual(started[0].payload["age"], 2)
+
     def test_age_signal_validation_false_keeps_inferred(self) -> None:
         reader = FakeReader()
         pipeline = SmartHudPipeline(
@@ -378,6 +421,47 @@ class SmartPipelineConfirmationTests(unittest.TestCase):
             event for event in completion_events
             if event.event_type == "age_completed"
         ]
+        self.assertEqual(len(completed), 1)
+        self.assertEqual(completed[0].payload["age"], 2)
+
+    def test_nonconsecutive_roman_ii_noise_does_not_complete_age(self) -> None:
+        reader = FakeReader()
+        pipeline = SmartHudPipeline(
+            reader=reader, profile_validated=True, age_signal_validated=True
+        )
+
+        for index in range(5):
+            frame = make_frame(index, index * 0.5)
+            reader.set_frame(
+                frame, {"age": "I", "food": "2000", "gold": "1000"}
+            )
+            pipeline.process(frame)
+
+        spend = make_frame(5, 2.5)
+        reader.set_frame(
+            spend, {"age": "I", "food": "1600", "gold": "800"}
+        )
+        started = pipeline.process(spend)
+        self.assertTrue(any(e.event_type == "age_started" for e in started.events))
+
+        noisy = ("II", "II", "I", "II", "II", "I", "II", "II", "I")
+        events = []
+        for offset, age in enumerate(noisy, start=6):
+            frame = make_frame(offset, offset * 0.5)
+            reader.set_frame(
+                frame, {"age": age, "food": "1600", "gold": "800"}
+            )
+            events.extend(pipeline.process(frame).events)
+        self.assertFalse(any(e.event_type == "age_completed" for e in events))
+        self.assertEqual(pipeline.state.age.value, 1)
+
+        for offset in range(15, 31):
+            frame = make_frame(offset, offset * 0.5)
+            reader.set_frame(
+                frame, {"age": "II", "food": "1600", "gold": "800"}
+            )
+            events.extend(pipeline.process(frame).events)
+        completed = [e for e in events if e.event_type == "age_completed"]
         self.assertEqual(len(completed), 1)
         self.assertEqual(completed[0].payload["age"], 2)
 

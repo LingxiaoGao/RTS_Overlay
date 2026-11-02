@@ -23,6 +23,7 @@ _RECALIBRATION_TOLERANCE = 2.0
 _RECOVERY_STEP_MAX_FORWARD = 2.0
 _RECOVERY_COHERENT_COUNT = 3
 _HIGH_CONFIDENCE = 0.8
+_RECOVERY_CONFIDENCE = 0.65
 
 
 def _validate_now(now: object, previous: float) -> float:
@@ -55,6 +56,7 @@ class GameTimerSynchronizer:
         self._pause_anchor = 0.0
         self._recovering = False
         self._recovery_value = 0.0
+        self._recovery_started_at = 0.0
         self._recovery_candidates: list[tuple[float, float]] = []
         self._last_read = self._last_now
 
@@ -94,11 +96,15 @@ class GameTimerSynchronizer:
         field = result.state.game_time
         confirmed_value: Optional[float] = None
         if (
-            field.status is RecognitionStatus.CONFIRMED
+            "game_time" in result.evidence
+            and field.status is RecognitionStatus.CONFIRMED
             and isinstance(field.value, (int, float))
             and not isinstance(field.value, bool)
+            and abs(float(field.observed_at) - now) <= 1e-6
         ):
             confirmed_value = float(field.value)
+
+        observed_value = self._fresh_observed_value(result, now)
 
         if not self._anchored:
             if confirmed_value is not None:
@@ -114,14 +120,14 @@ class GameTimerSynchronizer:
             return self._emit(now, projected=self._project(now))
 
         if self._paused:
-            if confirmed_value is not None and confirmed_value > self._anchor_value:
-                self._resume(confirmed_value, now)
+            if observed_value is not None and observed_value > self._anchor_value:
+                self._resume(observed_value, now)
                 return self._emit(now)
-            if confirmed_value is not None:
+            if observed_value is not None:
                 self._anchor_now = now
             return self._emit(now, projected=self._anchor_value)
 
-        if confirmed_value is None:
+        if observed_value is None:
             due_without_query = now - self._last_read >= _RUNNING_CADENCE
             if requested_read or due_without_query:
                 self._enter_recovery(now)
@@ -129,15 +135,46 @@ class GameTimerSynchronizer:
             return self._emit(now)
 
         predicted = self._project(now)
-        if abs(confirmed_value - predicted) <= _RECALIBRATION_TOLERANCE:
-            if confirmed_value <= self._anchor_value:
-                self._enter_pause(confirmed_value, now)
-                return self._emit(now, projected=self._anchor_value)
-            self._anchor(confirmed_value, now)
+        if abs(observed_value - predicted) <= _RECALIBRATION_TOLERANCE:
+            if observed_value <= self._anchor_value:
+                # A single repeated floating-HUD reading is ambiguous.  Enter
+                # 500ms recovery while the local clock keeps running; only
+                # three unchanged readings may confirm a real pause.
+                self._enter_recovery(now)
+                self._observe_recovery(result, now)
+                return self._emit(now, projected=self._project(now))
+            self._anchor(observed_value, now)
             return self._emit(now)
 
         self._enter_recovery(now)
         return self._emit(now, projected=self._project(now))
+
+    @staticmethod
+    def _fresh_observed_value(
+        result: PipelineResult, now: float
+    ) -> Optional[float]:
+        evidence = result.evidence.get("game_time")
+        if not isinstance(evidence, HudTextEvidence):
+            return None
+        if (
+            evidence.confidence < _HIGH_CONFIDENCE
+            or abs(float(evidence.observed_at) - now) > 1e-6
+        ):
+            return None
+        for observation in result.observations:
+            if not isinstance(observation, Observation):
+                continue
+            if observation.field != "game_time":
+                continue
+            if (
+                observation.confidence < _HIGH_CONFIDENCE
+                or abs(float(observation.observed_at) - now) > 1e-6
+                or not isinstance(observation.value, (int, float))
+                or isinstance(observation.value, bool)
+            ):
+                return None
+            return float(observation.value)
+        return None
 
     def _anchor(self, value: float, now: float) -> None:
         self._anchored = True
@@ -153,13 +190,16 @@ class GameTimerSynchronizer:
 
     def _enter_pause(self, value: float, now: float) -> None:
         self._paused = True
+        self._recovering = False
         self._pause_anchor = now
         self._anchor_value = value
         self._anchor_now = now
+        self._recovery_candidates = []
         self._last_read = now
 
     def _enter_recovery(self, now: float) -> None:
         self._recovery_value = self._project(now)
+        self._recovery_started_at = now
         self._recovering = True
         self._paused = False
         self._recovery_candidates = []
@@ -169,7 +209,9 @@ class GameTimerSynchronizer:
         if self._paused:
             return self._anchor_value
         if self._recovering:
-            return self._recovery_value
+            # An uncertain/missing OCR sample must not stop the local clock.
+            # Only a confirmed pause is allowed to freeze it.
+            return self._recovery_value + max(0.0, now - self._recovery_started_at)
         elapsed = max(0.0, now - self._anchor_now)
         return self._anchor_value + elapsed
 
@@ -180,17 +222,29 @@ class GameTimerSynchronizer:
                 observation = candidate
                 break
         if observation is None:
-            self._recovery_candidates = []
+            if (
+                self._recovery_candidates
+                and now - self._recovery_candidates[-1][1] > 2.0
+            ):
+                self._recovery_candidates = []
             return
         evidence = result.evidence.get("game_time")
         if not isinstance(evidence, HudTextEvidence):
-            self._recovery_candidates = []
+            if (
+                self._recovery_candidates
+                and now - self._recovery_candidates[-1][1] > 2.0
+            ):
+                self._recovery_candidates = []
             return
         if (
-            observation.confidence < _HIGH_CONFIDENCE
-            or evidence.confidence < _HIGH_CONFIDENCE
+            observation.confidence < _RECOVERY_CONFIDENCE
+            or evidence.confidence < _RECOVERY_CONFIDENCE
         ):
-            self._recovery_candidates = []
+            if (
+                self._recovery_candidates
+                and now - self._recovery_candidates[-1][1] > 2.0
+            ):
+                self._recovery_candidates = []
             return
         if not isinstance(observation.value, (int, float)) or isinstance(
             observation.value, bool
@@ -213,7 +267,11 @@ class GameTimerSynchronizer:
             candidates = candidates[-_RECOVERY_COHERENT_COUNT:]
         self._recovery_candidates = candidates
         if len(candidates) >= _RECOVERY_COHERENT_COUNT:
-            self._anchor(value, now)
+            values = [candidate_value for candidate_value, _ in candidates]
+            if max(values) == min(values):
+                self._enter_pause(value, now)
+            else:
+                self._anchor(value, now)
 
     def _emit(self, now: float, projected: Optional[float] = None, anchor_value: Optional[float] = None) -> PipelineResult:
         if anchor_value is not None:

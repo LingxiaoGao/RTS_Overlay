@@ -108,7 +108,12 @@ def compile_clean(name_game: str, disable_console: bool = True, finalize_folder:
 
         if name_game == 'aoe4':
             demo_data = PYTHON_DIR / 'demo_data'
-            shutil.copy(demo_data / 'smart_hud_config.json', overlay_folder)
+            # Ship the same dual-band timer ROI used by recording acceptance.
+            # The legacy 22px crop cannot see both floating timer bands.
+            shutil.copy(
+                demo_data / 'smart_hud_config_1280x720.json',
+                overlay_folder / 'smart_hud_config.json',
+            )
             shutil.copytree(
                 demo_data / 'hud_templates_1280x720',
                 overlay_folder / 'hud_templates_1280x720',

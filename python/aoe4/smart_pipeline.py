@@ -20,6 +20,9 @@ from aoe4.smart_runtime import (
 from aoe4.smart_sampling import ObservationScheduler
 
 
+_AGE_VISUAL_STREAK = 4
+
+
 @dataclass(frozen=True)
 class PipelineResult:
     sampled: bool
@@ -47,6 +50,7 @@ class _AgeSignal:
         self.previous_at = 0.0
         self.recent: deque[tuple[int, int]] = deque(maxlen=10)
         self.visual = deque(maxlen=10)
+        self.visual_streak = 0
 
     @staticmethod
     def _number(text: object) -> int | None:
@@ -62,8 +66,9 @@ class _AgeSignal:
 
     def observe(
         self, texts: Mapping[str, str], now: float
-    ) -> tuple[str, int | None]:
+    ) -> tuple[str, int | None, int | None]:
         started_age: int | None = None
+        completed_age: int | None = None
         food = self._number(texts.get("food"))
         gold = self._number(texts.get("gold"))
         if food is not None and gold is not None:
@@ -93,16 +98,27 @@ class _AgeSignal:
             self.previous_at = now
             self.recent.append(sample)
 
-        self.visual.append(self._visual_age(texts.get("age")))
+        visual_age = self._visual_age(texts.get("age"))
+        self.visual.append(visual_age)
         if self.candidate is not None:
             if now - self.candidate_at > 180.0:
                 self.candidate = None
                 self.visual.clear()
-            elif self.visual.count(self.candidate) >= 6:
+                self.visual_streak = 0
+            elif visual_age == self.candidate:
+                self.visual_streak += 1
+            else:
+                self.visual_streak = 0
+            if (
+                self.candidate is not None
+                and self.visual_streak >= _AGE_VISUAL_STREAK
+            ):
                 self.current = self.candidate
+                completed_age = self.current
                 self.candidate = None
                 self.visual.clear()
-        return self._ROMAN[self.current], started_age
+                self.visual_streak = 0
+        return self._ROMAN[self.current], started_age, completed_age
 
 
 def _coherent_population(observations: tuple[Observation, ...]) -> tuple[Observation, ...]:
@@ -181,6 +197,7 @@ class SmartHudPipeline:
             age_signal_validated, "age_signal_validated"
         )
         self._age_signal = _AgeSignal()
+        self._emitted_age_completions: set[int] = set()
         self._sample_index = 0
 
     @property
@@ -267,8 +284,13 @@ class SmartHudPipeline:
 
         texts = dict(text_mapping(evidence))
         age_started = None
-        if "age" in texts and "food" in texts and "gold" in texts:
-            texts["age"], age_started = self._age_signal.observe(texts, now)
+        age_completed = None
+        if "food" in texts and "gold" in texts:
+            normalized_age, age_started, age_completed = self._age_signal.observe(
+                texts, now
+            )
+            if "age" in texts:
+                texts["age"] = normalized_age
         observations = _coherent_population(parse_hud_text(texts, frame_id, now))
 
         checkpoint = self._confirmer.checkpoint()
@@ -283,6 +305,14 @@ class SmartHudPipeline:
             )
             verified = _coherent_population(verified)
             state, events = self._estimator.ingest(verified, now)
+            events = tuple(
+                event
+                for event in events
+                if not (
+                    event.event_type == "age_completed"
+                    and event.payload.get("age") in self._emitted_age_completions
+                )
+            )
             if age_started is not None:
                 started_event = GameEvent(
                     sequence=0,
@@ -294,6 +324,18 @@ class SmartHudPipeline:
                     emitted_at=now,
                 )
                 events = (started_event,) + events
+            if age_completed is not None:
+                self._emitted_age_completions.add(age_completed)
+                completed_event = GameEvent(
+                    sequence=0,
+                    event_type="age_completed",
+                    payload={"age": age_completed, "frame_id": frame_id},
+                    evidence_ids=(),
+                    confidence=1.0,
+                    status=RecognitionStatus.CONFIRMED,
+                    emitted_at=now,
+                )
+                events = events + (completed_event,)
             state = self._estimator.mark_stale(now)
             self._scheduler.mark_sample(now)
         except Exception:
@@ -314,5 +356,6 @@ class SmartHudPipeline:
         self._scheduler.reset()
         self._confirmer.reset()
         self._age_signal.reset()
+        self._emitted_age_completions.clear()
         self._sample_index = 0
         return self._estimator.reset()

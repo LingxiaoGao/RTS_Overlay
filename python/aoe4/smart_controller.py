@@ -28,6 +28,7 @@ _FLAG_CODE_OVERRIDES = {
 }
 _LOADING_RECHECK_SECONDS = 3.0
 _LOADING_CONFIRMATIONS = 2
+_RESOURCE_HUD_FIELDS = frozenset(("food", "wood", "gold", "stone"))
 
 
 @dataclass(frozen=True)
@@ -70,6 +71,7 @@ class SmartHudController:
         self._loading_probe_hits = 0
         self._game_end_detector = GameEndDetector()
         self._timer_sync = GameTimerSynchronizer()
+        self._gameplay_hud_started = False
         self._screen_region = None
 
         if not callable(getattr(self._capture, "capture", None)):
@@ -206,9 +208,10 @@ class SmartHudController:
                 if name in crops and (name != "game_time" or read_timer)
             }
             result = self._pipeline.process_crops(hud_crops)
+            self._begin_gameplay_timing(result)
             result = self._timer_sync.process(result, timestamp)
             full_bgr = self._frame_bgr(frame)
-            self._observe_session_frame(full_bgr, timestamp)
+            self._observe_session_frame(full_bgr, timestamp, result)
             self._observe_civilization(result, crops, timestamp)
             return result
         frame = self._capture.capture(
@@ -225,11 +228,31 @@ class SmartHudController:
         self._loading_observed = False
         self._pipeline.reset()
         self._timer_sync.reset()
+        self._gameplay_hud_started = False
         self._next_loading_probe_at = 0.0
         self._loading_probe_civilization = None
         self._loading_probe_hits = 0
 
-    def _observe_session_frame(self, frame_bgr, observed_at: float) -> None:
+    def _begin_gameplay_timing(self, result: PipelineResult) -> None:
+        """Start match-local timing when the resource HUD first appears.
+
+        The presence of multiple resource fields identifies the in-game HUD.
+        Their numeric values do not participate in civilization confirmation.
+        """
+        if self._gameplay_hud_started:
+            return
+        visible_resources = _RESOURCE_HUD_FIELDS.intersection(result.evidence)
+        if len(visible_resources) < 2:
+            return
+        self._timer_sync.reset()
+        self._gameplay_hud_started = True
+        if not self._civilization_started:
+            self._civilization_tracker.start_game(result.state.updated_at)
+            self._civilization_started = True
+
+    def _observe_session_frame(
+        self, frame_bgr, observed_at: float, result: PipelineResult | None = None
+    ) -> None:
         if self._game_end_detector.observe(frame_bgr):
             if not self._match_ended:
                 self._reset_match_state()
@@ -248,6 +271,14 @@ class SmartHudController:
             return
 
         if not (self._civilization_started or self._civilization_decision is not None):
+            return
+        # A visible HUD proves that this is still the active match.  Loading
+        # backgrounds can share the same colours as an in-game civilization
+        # banner, so never reset a locked match from image similarity while
+        # any current HUD field is being read successfully.
+        if result is not None and result.evidence:
+            self._loading_probe_civilization = None
+            self._loading_probe_hits = 0
             return
         if observed_at < self._next_loading_probe_at:
             return
@@ -277,17 +308,6 @@ class SmartHudController:
     ) -> None:
         if self._civilization_vision is None or self._civilization_decision is not None:
             return
-        game_time = result.state.game_time
-        seconds = game_time.value
-        if (
-            not self._civilization_started
-            and game_time.status is RecognitionStatus.CONFIRMED
-            and isinstance(seconds, (int, float))
-            and not isinstance(seconds, bool)
-            and 0 <= seconds <= 30
-        ):
-            self._civilization_tracker.start_game(observed_at - float(seconds))
-            self._civilization_started = True
         flag = crops.get("civilization_flag")
         production_buttons = crops.get("civilization_production_buttons")
         if flag is None or production_buttons is None:
@@ -300,6 +320,12 @@ class SmartHudController:
             buttons_bgr,
             provisional.civilization if provisional is not None else None,
         )
+        if cue is not None and not self._civilization_started:
+            # The selected-unit civilization banner is the independent proof
+            # that this is the in-game HUD.  Civilization confirmation never
+            # depends on timer/resource OCR values.
+            self._civilization_tracker.start_game(observed_at)
+            self._civilization_started = True
         decision = self._civilization_tracker.observe_in_game(
             cue, active, observed_at
         )
@@ -319,6 +345,11 @@ class SmartHudController:
     @property
     def detected_civilization(self) -> CivilizationDecision | None:
         return self._civilization_decision or self._civilization_tracker.candidate
+
+    @property
+    def civilization_locked(self) -> bool:
+        """Whether the HUD confirmation has finalized this match's civilization."""
+        return self._civilization_decision is not None
 
     def poll_safe(self) -> SafePollResult:
         try:
@@ -342,6 +373,7 @@ class SmartHudController:
         self._consecutive_failures = 0
         self._pipeline.reset()
         self._timer_sync.reset()
+        self._gameplay_hud_started = False
         self._game_end_detector.reset()
         self._civilization_tracker.reset()
         self._civilization_started = False
