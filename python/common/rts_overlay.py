@@ -92,6 +92,8 @@ class RTSGameOverlay(QMainWindow):
 
         # application instance
         self.app = app
+        if smoke_trace:
+            smoke_logger.info('Runtime smoke base application stored')
 
         # initialization not yet done
         self.init_done = False
@@ -102,6 +104,8 @@ class RTSGameOverlay(QMainWindow):
 
         # images
         self.images = images()
+        if smoke_trace:
+            smoke_logger.info('Runtime smoke base image manifest created')
 
         # directories
         self.name_game = name_game
@@ -120,14 +124,22 @@ class RTSGameOverlay(QMainWindow):
         self.directory_config_game = os.path.join(self.directory_config_rts_overlay, name_game)  # game configuration
         self.directory_settings = os.path.join(self.directory_config_game, 'settings')  # settings file
         self.directory_build_orders = os.path.join(self.directory_config_game, 'build_orders')  # build orders
+        if smoke_trace:
+            smoke_logger.info('Runtime smoke base paths resolved')
 
         # settings
         self.unscaled_settings = settings_class()
+        if smoke_trace:
+            smoke_logger.info('Runtime smoke base settings object created')
         self.default_settings = deepcopy(self.unscaled_settings)
+        if smoke_trace:
+            smoke_logger.info('Runtime smoke base settings copied')
         self.settings_file = os.path.join(self.directory_settings, settings_name)
 
         # check if settings can be loaded from existing file
         if os.path.exists(self.settings_file):  # settings file found
+            if smoke_trace:
+                smoke_logger.info('Runtime smoke base existing settings found')
             try:
                 with open(self.settings_file, 'rb') as f:
                     dict_data = json.load(f)
@@ -141,9 +153,13 @@ class RTSGameOverlay(QMainWindow):
             self.screen_position_safety()
 
         else:  # no settings file found
+            if smoke_trace:
+                smoke_logger.info('Runtime smoke base using default settings')
             print('Loading default parameters.')
 
             self.screen_position_safety()
+            if smoke_trace:
+                smoke_logger.info('Runtime smoke base screen safety completed')
 
             # save the settings
             self.save_settings()
