@@ -234,50 +234,73 @@ class GameTimeTests(unittest.TestCase):
     def test_game_time_same_frame_confirmation(self) -> None:
         est = StateEstimator(EstimatorConfig(confirmation_frames=3))
         state, _ = est.ingest([obs("game_time", 10.0, 1)], now=0.1)
-        self.assertIs(state.game_time.status, RecognitionStatus.UNKNOWN)
-        state, _ = est.ingest([obs("game_time", 10.0, 4)], now=0.2)
-        self.assertIs(state.game_time.status, RecognitionStatus.UNKNOWN)
-        state, _ = est.ingest([obs("game_time", 10.0, 9)], now=0.3)
         self.assertIs(state.game_time.status, RecognitionStatus.CONFIRMED)
         self.assertEqual(state.game_time.value, 10.0)
+        self.assertEqual(state.game_time.evidence_ids, ("game_time-1",))
 
     def test_game_time_plausible_progression_stays_confirmed(self) -> None:
         est = StateEstimator(EstimatorConfig(confirmation_frames=3))
-        est.ingest([obs("game_time", 10.0, 1)], now=0.1)
-        est.ingest([obs("game_time", 11.0, 4)], now=0.2)
-        state, _ = est.ingest([obs("game_time", 11.0, 9)], now=0.3)
+        est.ingest([obs("game_time", 10.0, 1, observed_at=0.1)], now=0.1)
+        state, _ = est.ingest(
+            [obs("game_time", 11.0, 4, observed_at=1.1)], now=1.1
+        )
         self.assertIs(state.game_time.status, RecognitionStatus.CONFIRMED)
         self.assertEqual(state.game_time.value, 11.0)
 
         # Later 12.0/13.0 progression remains confirmed (no freeze required).
-        state, _ = est.ingest([obs("game_time", 12.0, 12)], now=0.4)
+        state, _ = est.ingest(
+            [obs("game_time", 12.0, 12, observed_at=2.1)], now=2.1
+        )
         self.assertIs(state.game_time.status, RecognitionStatus.CONFIRMED)
         self.assertEqual(state.game_time.value, 12.0)
-        state, _ = est.ingest([obs("game_time", 13.0, 15)], now=0.5)
+        state, _ = est.ingest(
+            [obs("game_time", 13.0, 15, observed_at=3.1)], now=3.1
+        )
         self.assertIs(state.game_time.status, RecognitionStatus.CONFIRMED)
         self.assertEqual(state.game_time.value, 13.0)
 
     def test_game_time_backward_rejected_preserving_last(self) -> None:
         est = StateEstimator(EstimatorConfig(confirmation_frames=2))
         est.ingest([obs("game_time", 10.0, 1)], now=0.1)
-        est.ingest([obs("game_time", 10.0, 2)], now=0.2)
         state, _ = est.ingest([obs("game_time", 8.0, 3)], now=0.3)
-        est.ingest([obs("game_time", 8.0, 4)], now=0.4)
-        state = est.state
         self.assertEqual(state.game_time.value, 10.0)
         self.assertIs(state.game_time.status, RecognitionStatus.STALE)
-        self.assertEqual(state.game_time.evidence_ids, ("game_time-1", "game_time-2"))
+        self.assertEqual(state.game_time.evidence_ids, ("game_time-1",))
 
     def test_game_time_large_jump_rejected_preserving_last(self) -> None:
         est = StateEstimator(EstimatorConfig(confirmation_frames=2))
         est.ingest([obs("game_time", 10.0, 1)], now=0.1)
-        est.ingest([obs("game_time", 10.0, 2)], now=0.2)
         state, _ = est.ingest([obs("game_time", 50.0, 3)], now=0.3)
-        est.ingest([obs("game_time", 50.0, 4)], now=0.4)
-        state = est.state
         self.assertEqual(state.game_time.value, 10.0)
         self.assertIs(state.game_time.status, RecognitionStatus.STALE)
-        self.assertEqual(state.game_time.evidence_ids, ("game_time-1", "game_time-2"))
+        self.assertEqual(state.game_time.evidence_ids, ("game_time-1",))
+
+    def test_game_time_recovers_after_missing_evidence(self) -> None:
+        est = StateEstimator(
+            EstimatorConfig(timer_max_forward_jump_seconds=2.0)
+        )
+        est.ingest(
+            [obs("game_time", 6.0, 1, observed_at=16.0)], now=16.0
+        )
+        stale, _ = est.ingest(
+            [
+                obs(
+                    "game_time",
+                    6.0,
+                    2,
+                    confidence=0.5,
+                    observed_at=16.5,
+                )
+            ],
+            now=16.5,
+        )
+        self.assertIs(stale.game_time.status, RecognitionStatus.STALE)
+
+        recovered, _ = est.ingest(
+            [obs("game_time", 11.0, 3, observed_at=21.0)], now=21.0
+        )
+        self.assertIs(recovered.game_time.status, RecognitionStatus.CONFIRMED)
+        self.assertEqual(recovered.game_time.value, 11.0)
 
 
 class ValidationTests(unittest.TestCase):

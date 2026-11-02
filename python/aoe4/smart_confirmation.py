@@ -78,6 +78,7 @@ class _Streak:
     value: object
     count: int
     last_sample_index: int
+    last_observed_at: float
 
 
 _Checkpoint = Tuple[Optional[int], Dict[str, _Streak]]
@@ -124,6 +125,7 @@ class HudEvidenceConfirmer:
         sample_index: int,
         profile_validated: bool,
         age_signal_validated: bool = False,
+        attempted_fields: set[str] | frozenset[str] | None = None,
     ) -> tuple[Observation, ...]:
         materialized = tuple(observations)
         _check_int(sample_index, "sample_index", minimum=0)
@@ -136,11 +138,20 @@ class HudEvidenceConfirmer:
                 )
 
         current_fields = {obs.field for obs in materialized}
+        attempted = current_fields if attempted_fields is None else set(attempted_fields)
         working: dict[str, _Streak] = {
             field: streak
             for field, streak in self._streaks.items()
-            if field in current_fields
+            if field in current_fields or (field == "game_time" and field not in attempted)
         }
+        if "game_time" not in attempted and "game_time" in working:
+            prior_timer = working["game_time"]
+            working["game_time"] = _Streak(
+                value=prior_timer.value,
+                count=prior_timer.count,
+                last_sample_index=sample_index,
+                last_observed_at=prior_timer.last_observed_at,
+            )
 
         threshold = self._config.consecutive_samples
         jump_limit = self._config.timer_max_forward_jump_seconds
@@ -173,12 +184,10 @@ class HudEvidenceConfirmer:
             count = 1
             if prior is not None and prior.last_sample_index == sample_index - 1:
                 if obs.field == "game_time":
-                    if (
-                        isinstance(prior.value, float)
-                        and isinstance(obs.value, float)
-                    ):
+                    if isinstance(prior.value, float) and isinstance(obs.value, float):
                         delta = obs.value - prior.value
-                        if 0.0 <= delta <= jump_limit:
+                        elapsed = float(obs.observed_at) - prior.last_observed_at
+                        if 0.0 <= delta <= elapsed + jump_limit:
                             count = prior.count + 1
                 else:
                     if _same_value(prior.value, obs.value):
@@ -190,6 +199,7 @@ class HudEvidenceConfirmer:
                 value=obs.value,
                 count=count,
                 last_sample_index=sample_index,
+                last_observed_at=float(obs.observed_at),
             )
             status = (
                 RecognitionStatus.CONFIRMED

@@ -429,9 +429,6 @@ class StateEstimator:
                 )
             return None
 
-        if len(candidate.evidence_ids) < self._config.confirmation_frames:
-            return None
-
         if accepted is None:
             working["game_time"] = FieldState(
                 value=candidate.value,
@@ -443,7 +440,9 @@ class StateEstimator:
             return candidate
 
         delta = candidate.value - accepted.value
-        if delta < 0 or delta > self._config.timer_max_forward_jump_seconds:
+        elapsed = max(0.0, candidate.observed_at - accepted.observed_at)
+        max_forward = self._config.timer_max_forward_jump_seconds + elapsed
+        if delta < 0 or delta > max_forward:
             working["game_time"] = FieldState(
                 value=accepted.value,
                 confidence=float(accepted.confidences[-1]),

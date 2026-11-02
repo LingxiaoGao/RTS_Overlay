@@ -8,6 +8,8 @@ on:
   push:
     branches:
       - main
+    tags:
+      - 'beta-*'
     paths:
       - 'python/**'
       - 'docs/**'
@@ -22,13 +24,22 @@ on:
       - 'packaging/**'
       - '.github/workflows/windows-beta.yml'
   workflow_dispatch:
+    inputs:
+      upload_portable:
+        description: 'Also upload the portable ZIP'
+        required: false
+        default: false
+        type: boolean
+
+env:
+  NUITKA_CACHE_DIR: ${{ github.workspace }}\.cache\nuitka
 
 permissions:
   contents: read
 
 jobs:
-  build:
-    name: Build aoe4 beta
+  test:
+    name: Test aoe4 beta source
     runs-on: windows-2022
 
     steps:
@@ -40,6 +51,68 @@ jobs:
         with:
           python-version: '3.10'
           architecture: 'x64'
+          cache: 'pip'
+          cache-dependency-path: python/utilities/requirements.txt
+
+      - name: Record runner environment
+        id: env
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $os = [System.Environment]::OSVersion.VersionString
+          $PyVersion = (python -c "import sys; print(sys.version.split()[0])").Trim()
+          $PyArch = (python -c "import platform; print(platform.machine())").Trim()
+          $Runner = "$env:ImageOS / $env:RUNNER_OS / $env:RUNNER_ARCH"
+          Write-Host "Runner: $Runner"
+          Write-Host "OS: $os"
+          Write-Host "Python: $PyVersion ($PyArch)"
+          "os=$os" >> $env:GITHUB_OUTPUT
+          "py_version=$PyVersion" >> $env:GITHUB_OUTPUT
+          "py_arch=$PyArch" >> $env:GITHUB_OUTPUT
+          "runner=$Runner" >> $env:GITHUB_OUTPUT
+
+      - name: Install build dependencies
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          python -m pip install --upgrade pip
+          python -m pip install -r python/utilities/requirements.txt
+
+      - name: Run unit tests
+        shell: pwsh
+        env:
+          PYTHONPATH: ${{ github.workspace }}/python
+        run: |
+          $ErrorActionPreference = 'Stop'
+          python -m unittest discover -s python/tests -v
+
+  build:
+    name: Build aoe4 beta candidate
+    needs: test
+    if: github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/beta-')
+    runs-on: windows-2022
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.10 x64
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          architecture: 'x64'
+          cache: 'pip'
+          cache-dependency-path: |
+            python/utilities/requirements.txt
+            python/utilities/requirements-build.txt
+
+      - name: Restore Nuitka cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.NUITKA_CACHE_DIR }}
+          key: nuitka-${{ runner.os }}-py310-${{ hashFiles('python/utilities/requirements-build.txt') }}
+          restore-keys: |
+            nuitka-${{ runner.os }}-py310-
 
       - name: Record runner environment
         id: env
@@ -65,14 +138,6 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r python/utilities/requirements.txt
           python -m pip install -r python/utilities/requirements-build.txt
-
-      - name: Run unit tests
-        shell: pwsh
-        env:
-          PYTHONPATH: ${{ github.workspace }}/python
-        run: |
-          $ErrorActionPreference = 'Stop'
-          python -m unittest discover -s python/tests -v
 
       - name: Prepare release (aoe4)
         shell: pwsh
@@ -263,13 +328,16 @@ jobs:
           name: aoe4-smart-overlay-setup
           path: packaging/Output/aoe4-smart-overlay-setup.exe
           if-no-files-found: error
+          retention-days: 3
 
       - name: Upload portable ZIP
+        if: github.event_name == 'workflow_dispatch' && inputs.upload_portable
         uses: actions/upload-artifact@v4
         with:
           name: aoe4-overlay-portable
           path: python/utilities/aoe4_overlay.zip
           if-no-files-found: error
+          retention-days: 3
 
       - name: Upload build manifest
         uses: actions/upload-artifact@v4
@@ -277,6 +345,7 @@ jobs:
           name: aoe4-build-manifest
           path: ${{ steps.manifest.outputs.manifest_dir }}/build-manifest.txt
           if-no-files-found: error
+          retention-days: 3
 
       - name: Upload checksum
         uses: actions/upload-artifact@v4
@@ -284,4 +353,5 @@ jobs:
           name: aoe4-checksums
           path: ${{ steps.manifest.outputs.manifest_dir }}/checksums.sha256
           if-no-files-found: error
+          retention-days: 3
 

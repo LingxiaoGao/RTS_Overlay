@@ -7,12 +7,13 @@ exposed; source build-order and step dictionaries are never mutated.
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from typing import Any, Dict, Mapping, Optional, Tuple
 
 from aoe4.smart_pipeline import PipelineResult
 from aoe4.smart_runtime import RecognitionStatus
-from common.build_order_tools import get_build_order_timer_steps
+from common.build_order_tools import build_order_time_to_sec, get_build_order_timer_steps
 
 
 _REFERENCE_KEYS = ("2", "3", "4")
@@ -64,6 +65,41 @@ def apply_schedule_times(steps: Any, times: Any) -> list:
         copied["time"] = "%d:%02d" % (seconds // 60, seconds % 60)
         result.append(copied)
     return result
+
+
+def get_available_timer_steps(data: Mapping[str, Any]) -> list:
+    """Return complete or partial monotonic timed rows with source indices.
+
+    AoE4 Guides may mix timed and untimed instructions. Untimed rows remain in
+    the guide display, while the timed subset drives highlighting and age
+    calibration.
+    """
+    complete = get_build_order_timer_steps(data)
+    if complete:
+        return [dict(step, _source_index=index) for index, step in enumerate(complete)]
+
+    raw_steps = data.get("build_order") if isinstance(data, Mapping) else None
+    if not isinstance(raw_steps, list):
+        return []
+    timed = []
+    last_time = -1
+    for source_index, step in enumerate(raw_steps):
+        if not isinstance(step, Mapping) or not isinstance(step.get("notes"), list):
+            continue
+        value = step.get("time")
+        if not isinstance(value, str):
+            continue
+        seconds = build_order_time_to_sec(value.strip().lstrip("~").strip())
+        if seconds < 0:
+            continue
+        if seconds < last_time:
+            return []
+        copied = dict(step)
+        copied["time_sec"] = seconds
+        copied["_source_index"] = source_index
+        timed.append(copied)
+        last_time = seconds
+    return timed
 
 
 def _parse_metadata(
@@ -130,6 +166,26 @@ def _flatten_notes(value: Any) -> str:
     return ""
 
 
+def _anchor_score(text: str) -> int:
+    """Prefer an age-up action over passive mentions of the target age."""
+    actions = (
+        "start",
+        "advance",
+        "advancing",
+        "aging up",
+        "age up",
+        "升本",
+        "升级时代",
+    )
+    if any(action in text for action in actions):
+        return 3
+    if re.search(r"(?:go\s+)?@age/age_[234]\.webp@\s*(?:with|using)", text):
+        return 3
+    if "until" in text:
+        return 0
+    return 1
+
+
 def _detect_markers(steps: Tuple[Mapping[str, Any], ...]):
     """Detect metadata-free anchors from step notes.
 
@@ -138,6 +194,7 @@ def _detect_markers(steps: Tuple[Mapping[str, Any], ...]):
     """
     anchors: Dict[int, Tuple[int, int]] = {}
     references: Dict[int, int] = {}
+    scores: Dict[int, int] = {}
     used_ages: set = set()
     next_age = 2
     for index, step in enumerate(steps):
@@ -148,10 +205,12 @@ def _detect_markers(steps: Tuple[Mapping[str, Any], ...]):
                 specific = age
                 break
         if specific is not None:
-            if specific in anchors:
+            score = _anchor_score(text)
+            if specific in anchors and score <= scores.get(specific, -1):
                 continue
             anchors[specific] = (index, int(step["time_sec"]))
             references[specific] = int(step["time_sec"])
+            scores[specific] = score
             used_ages.add(specific)
             continue
         if any(marker in text for marker in _AGE_UP_MARKERS):
@@ -161,6 +220,7 @@ def _detect_markers(steps: Tuple[Mapping[str, Any], ...]):
                 continue
             anchors[next_age] = (index, int(step["time_sec"]))
             references[next_age] = int(step["time_sec"])
+            scores[next_age] = 0
             used_ages.add(next_age)
     return anchors, references
 
@@ -186,10 +246,13 @@ class SmartBuildOrderSession:
         self._current_times = original_times
         self._started: set = set()
         self._completed: set = set()
+        self._start_context_by_age: Dict[
+            int, Tuple[int, Tuple[int, ...]]
+        ] = {}
 
     @classmethod
     def from_build_order(cls, data: Mapping[str, Any]) -> "SmartBuildOrderSession":
-        steps = get_build_order_timer_steps(data)
+        steps = get_available_timer_steps(data)
         if not steps:
             return cls(False, (), {}, {})
         original_times = tuple(int(step["time_sec"]) for step in steps)
@@ -282,6 +345,7 @@ class SmartBuildOrderSession:
         new_times = entry_times
         new_started = set(self._started)
         new_completed = set(self._completed)
+        new_start_context = dict(self._start_context_by_age)
 
         for event in result.events:
             if event.event_type not in ("age_started", "age_completed"):
@@ -297,23 +361,43 @@ class SmartBuildOrderSession:
             seconds = self._coherent_time(result, event)
             if seconds is None:
                 continue
-            index = (
-                self._anchor_by_age[age][0]
-                if event.event_type == "age_started"
-                else self._completion_anchor_by_age.get(
-                    age, self._anchor_by_age[age][0]
-                )
+            start_index = self._anchor_by_age[age][0]
+            completion_index = self._completion_anchor_by_age.get(
+                age, start_index
             )
-            delta = seconds - new_times[index]
-            proposed = self._shift_with(new_times, index, delta)
+            if event.event_type == "age_started":
+                reference_times = new_times
+                delta = seconds - reference_times[start_index]
+                proposed = self._shift_with(
+                    reference_times, start_index, delta
+                )
+            else:
+                context = new_start_context.get(age)
+                if context is not None and completion_index > start_index:
+                    actual_start, reference_times = context
+                    proposed = self._fit_age_interval(
+                        reference_times,
+                        start_index,
+                        completion_index,
+                        actual_start,
+                        seconds,
+                    )
+                else:
+                    delta = seconds - new_times[completion_index]
+                    proposed = self._shift_with(
+                        new_times, completion_index, delta
+                    )
             if proposed is None:
                 committed = False
                 new_times = entry_times
                 new_started = set(self._started)
                 new_completed = set(self._completed)
+                new_start_context = dict(self._start_context_by_age)
                 continue
             new_times = proposed
             seen.add(age)
+            if event.event_type == "age_started":
+                new_start_context[age] = (seconds, reference_times)
 
         if not committed:
             return ScheduleUpdate(enabled=True, changed=False, times=self._current_times)
@@ -321,6 +405,7 @@ class SmartBuildOrderSession:
         self._current_times = new_times
         self._started = new_started
         self._completed = new_completed
+        self._start_context_by_age = new_start_context
         return ScheduleUpdate(
             enabled=True,
             changed=new_times != entry_times,
@@ -337,7 +422,47 @@ class SmartBuildOrderSession:
                 return None
         return proposed
 
+    @staticmethod
+    def _fit_age_interval(
+        reference_times: Tuple[int, ...],
+        start_index: int,
+        completion_index: int,
+        actual_start: int,
+        actual_completion: int,
+    ) -> Optional[Tuple[int, ...]]:
+        """Fit construction rows between two observed age-up anchors.
+
+        Rows from the age-up action through the completed-age separator keep
+        their relative position inside the construction interval. Rows after
+        completion retain their original gaps from the completion anchor.
+        """
+        if actual_completion < actual_start:
+            return None
+        reference_start = reference_times[start_index]
+        reference_completion = reference_times[completion_index]
+        reference_span = reference_completion - reference_start
+        if reference_span <= 0:
+            return None
+
+        actual_span = actual_completion - actual_start
+        proposed = list(reference_times[:start_index])
+        for index in range(start_index, completion_index + 1):
+            offset = reference_times[index] - reference_start
+            scaled = (offset * actual_span + reference_span // 2) // reference_span
+            proposed.append(actual_start + scaled)
+        completion_delta = actual_completion - reference_completion
+        proposed.extend(
+            value + completion_delta
+            for value in reference_times[completion_index + 1:]
+        )
+        result = tuple(proposed)
+        for left, right in zip(result, result[1:]):
+            if right < left:
+                return None
+        return result
+
     def reset(self) -> None:
         self._current_times = self._original_times
         self._started = set()
         self._completed = set()
+        self._start_context_by_age = {}

@@ -36,6 +36,11 @@ _GLYPH_W = 20
 _GLYPH_H = 28
 _AGE_REUSE_SECONDS = 1.0
 
+# Rows within a tall (>=51px) game_time crop that hold the two timer bands.
+_GAME_TIME_NORMAL_BAND = (0, 22)
+_GAME_TIME_SHIFTED_BAND = (29, 51)
+_GAME_TIME_NORMAL_PREFERENCE = 0.03
+
 TemplateImage = Tuple[np.ndarray, int]
 
 
@@ -140,6 +145,13 @@ def _normalize_glyph(glyph: np.ndarray) -> np.ndarray:
     return canvas
 
 
+def _is_valid_game_time(text: str) -> bool:
+    if len(text) != 5 or text[2] != ":":
+        return False
+    minutes, seconds = text[:2], text[3:]
+    return minutes.isdigit() and seconds.isdigit() and int(seconds) < 60
+
+
 def _iou(a: np.ndarray, b: np.ndarray) -> float:
     a_bin = a > 0
     b_bin = b > 0
@@ -227,6 +239,71 @@ class TemplateHudRecognizer:
             return None, 0.0
         return best_label, best_score
 
+    def _recognize_band(
+        self,
+        bgr: np.ndarray,
+        field: str,
+        templates: Dict[str, List[TemplateImage]],
+    ) -> Optional[Tuple[str, float]]:
+        """Recognize a single timer band.
+
+        Returns ``(text, confidence)`` when the band's final text is
+        structurally valid (``MM:SS`` with seconds below 60), otherwise
+        ``None``.
+        """
+        mask = _foreground_mask(bgr, field)
+        glyphs = _extract_glyphs(mask, field)
+        if not glyphs:
+            return None
+        labels: List[str] = []
+        scores: List[float] = []
+        for glyph in glyphs:
+            normalized = _normalize_glyph(glyph)
+            label, score = self._match(normalized, templates)
+            if label is None:
+                continue
+            labels.append(label)
+            scores.append(score)
+        if not labels:
+            return None
+        text = "".join(labels)
+        if len(text) == 4 and text.isdigit():
+            text = text[:2] + ":" + text[2:]
+        if not _is_valid_game_time(text):
+            return None
+        confidence = float(sum(scores) / len(scores))
+        confidence = max(0.0, min(1.0, confidence))
+        return text, confidence
+
+    def _recognize_game_time_dual(
+        self,
+        bgr: np.ndarray,
+        templates: Dict[str, List[TemplateImage]],
+    ) -> Optional[Tuple[str, float]]:
+        """Recognize the normal and shifted timer bands of a tall crop."""
+        height = bgr.shape[0]
+        normal: Optional[Tuple[str, float]] = None
+        shifted: Optional[Tuple[str, float]] = None
+        n_top, n_bottom = _GAME_TIME_NORMAL_BAND
+        s_top, s_bottom = _GAME_TIME_SHIFTED_BAND
+        if n_bottom <= height:
+            normal = self._recognize_band(
+                bgr[n_top:n_bottom], "game_time", templates
+            )
+        if s_bottom <= height:
+            shifted = self._recognize_band(
+                bgr[s_top:s_bottom], "game_time", templates
+            )
+        if normal is None and shifted is None:
+            return None
+        if normal is None:
+            return shifted
+        if shifted is None:
+            return normal
+        if shifted[1] - normal[1] > _GAME_TIME_NORMAL_PREFERENCE:
+            return shifted
+        return normal
+
     def recognize(self, frame: CapturedFrame) -> Tuple[OcrLine, ...]:
         if not isinstance(frame, CapturedFrame):
             raise TypeError(
@@ -265,6 +342,26 @@ class TemplateHudRecognizer:
                 (reference.width, reference.height),
                 interpolation=cv2.INTER_AREA,
             )
+        reference = self._reference_regions.get(field)
+        if (
+            field == "game_time"
+            and reference is not None
+            and reference.height >= 51
+        ):
+            band = self._recognize_game_time_dual(bgr, templates)
+            if band is None:
+                result: Tuple[OcrLine, ...] = ()
+            else:
+                text, confidence = band
+                box = (
+                    (0.0, 0.0),
+                    (float(frame.width), 0.0),
+                    (float(frame.width), float(frame.height)),
+                    (0.0, float(frame.height)),
+                )
+                result = (OcrLine(text=text, confidence=confidence, box=box),)
+            self._cache[field] = (fingerprint, frame.captured_at, result)
+            return result
         mask = _foreground_mask(bgr, field)
         glyphs = _extract_glyphs(mask, field)
         if not glyphs:

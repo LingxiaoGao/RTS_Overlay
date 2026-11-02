@@ -225,7 +225,9 @@ class SmartHudPipeline:
                 f"frame must be a CapturedFrame, got {type(frame).__name__}"
             )
         return self._process_sample(
-            frame.frame_id, frame.captured_at, lambda: self._reader.read(frame)
+            frame.frame_id,
+            frame.captured_at,
+            lambda: self._reader.read(frame),
         )
 
     def process_crops(
@@ -238,9 +240,12 @@ class SmartHudPipeline:
             first.frame_id,
             first.captured_at,
             lambda: self._reader.read_crops(crops),
+            attempted_fields=set(crops),
         )
 
-    def _process_sample(self, frame_id: int, now: float, read_evidence) -> PipelineResult:
+    def _process_sample(
+        self, frame_id: int, now: float, read_evidence, attempted_fields=None
+    ) -> PipelineResult:
 
         if not self._scheduler.due(now):
             state = self._estimator.mark_stale(now)
@@ -274,6 +279,7 @@ class SmartHudPipeline:
                 self._sample_index,
                 self._profile_validated,
                 self._age_signal_validated,
+                attempted_fields=attempted_fields,
             )
             verified = _coherent_population(verified)
             state, events = self._estimator.ingest(verified, now)

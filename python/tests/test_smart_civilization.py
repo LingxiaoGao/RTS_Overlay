@@ -10,29 +10,45 @@ def cue(name, confidence=0.7):
 class CivilizationTrackerTests(unittest.TestCase):
     def _lock(self, tracker, name="English", confidence=0.7):
         tracker.start_game(0.0)
-        self.assertIsNone(tracker.observe_in_game(cue(name, confidence), True, 1.0))
-        self.assertIsNone(tracker.observe_in_game(cue(name, confidence), True, 2.0))
-        return tracker.observe_in_game(cue(name, confidence), True, 3.0)
+        for at in (1.0, 4.0, 9.0, 20.0):
+            self.assertIsNone(tracker.observe_in_game(cue(name, confidence), True, at))
+        return tracker.finalize(30.0)
 
-    def test_three_matching_samples_lock(self):
+    def test_four_nonconsecutive_samples_lock_at_thirty_seconds(self):
         decision = self._lock(CivilizationTracker())
         self.assertEqual(decision.civilization, "English")
         self.assertEqual(decision.source, "in_game")
 
-    def test_missing_inactive_and_different_cue_reset_streak(self):
+    def test_missing_frames_preserve_streak_and_buttons_are_not_required(self):
+        tracker = CivilizationTracker()
+        tracker.start_game(0.0)
+        self.assertIsNone(tracker.observe_in_game(cue("English"), True, 1.0))
+        self.assertIsNone(tracker.observe_in_game(None, True, 2.0))
+        self.assertIsNone(tracker.observe_in_game(cue("English"), False, 3.0))
+        self.assertIsNone(tracker.observe_in_game(cue("English"), False, 4.0))
+        self.assertIsNone(tracker.observe_in_game(cue("English"), False, 5.0))
+        decision = tracker.finalize(30.0)
+        self.assertEqual(decision.civilization, "English")
+
+    def test_different_positive_cue_restarts_streak(self):
         tracker = CivilizationTracker()
         tracker.start_game(0.0)
         tracker.observe_in_game(cue("English"), True, 1.0)
-        tracker.observe_in_game(None, True, 2.0)
-        tracker.observe_in_game(cue("English"), True, 3.0)
-        tracker.observe_in_game(cue("English"), False, 4.0)
-        tracker.observe_in_game(cue("English"), True, 5.0)
-        tracker.observe_in_game(cue("French"), True, 6.0)
-        self.assertIsNone(tracker.observe_in_game(cue("French"), True, 7.0))
-        self.assertEqual(
-            tracker.observe_in_game(cue("French"), True, 8.0).civilization,
-            "French",
-        )
+        tracker.observe_in_game(cue("French"), True, 2.0)
+        tracker.observe_in_game(cue("French"), True, 3.0)
+        tracker.observe_in_game(cue("French"), True, 4.0)
+        tracker.observe_in_game(cue("French"), True, 5.0)
+        self.assertEqual(tracker.finalize(30.0).civilization, "French")
+
+    def test_first_positive_observation_starts_window_without_game_time(self):
+        tracker = CivilizationTracker()
+        self.assertIsNone(tracker.observe_in_game(cue("English"), True, 10.0))
+        self.assertIsNone(tracker.observe_in_game(None, True, 11.0))
+        self.assertIsNone(tracker.observe_in_game(cue("English"), True, 12.0))
+        tracker.observe_in_game(cue("English"), True, 13.0)
+        tracker.observe_in_game(cue("English"), True, 14.0)
+        decision = tracker.finalize(40.0)
+        self.assertEqual(decision.civilization, "English")
 
     def test_loading_agreement_and_conflict_arbitration(self):
         combined = CivilizationTracker()
@@ -53,9 +69,11 @@ class CivilizationTrackerTests(unittest.TestCase):
     def test_deadline_lock_immutability_and_new_loading_reset(self):
         late = CivilizationTracker()
         late.start_game(0.0)
+        late.observe_in_game(cue("English"), True, 1.0)
+        late.observe_in_game(cue("English"), True, 10.0)
         late.observe_in_game(cue("English"), True, 28.0)
         late.observe_in_game(cue("English"), True, 29.0)
-        self.assertIsNone(late.observe_in_game(cue("English"), True, 31.0))
+        self.assertEqual(late.finalize(31.0).civilization, "English")
 
         tracker = CivilizationTracker()
         locked = self._lock(tracker)

@@ -38,12 +38,17 @@ from aoe4.online_build_orders import (
     CIVILIZATION_NAMES_ZH,
     OnlineBuildOrderError,
 )
-from aoe4.smart_build_order_session import SmartBuildOrderSession, apply_schedule_times
+from aoe4.smart_build_order_session import (
+    SmartBuildOrderSession,
+    apply_schedule_times,
+    get_available_timer_steps,
+)
 from aoe4.smart_build_order_display import build_age_block_layout
 from aoe4.smart_build_order_note import render_note_html
 from aoe4.smart_advisor import AdvisorEngine, EconomyTarget
 from aoe4.smart_notifications import Notification, NotificationManager
 from aoe4.smart_runtime import RecognitionStatus
+from aoe4.smart_timer_anchor import anchor_build_order_timer
 
 
 class AoE4Images(RTSOverlayImages):
@@ -66,6 +71,32 @@ class AoE4Images(RTSOverlayImages):
         self.age_2: str = 'age/age_2.webp'  # second age image (Feudal Age)
         self.age_3: str = 'age/age_3.webp'  # third age image (Castle Age)
         self.age_4: str = 'age/age_4.webp'  # fourth age image (Imperial Age)
+
+
+class _BuildOrderDragHandle(QLabel):
+    """Visible handle that forwards drag gestures to the overlay window."""
+
+    def __init__(self, parent, move_callback):
+        super().__init__(parent)
+        self._move_callback = move_callback
+        self.setText('✥')
+        self.setAlignment(Qt.AlignCenter)
+        self.setCursor(Qt.OpenHandCursor)
+        self.setToolTip('拖动以移动建造顺序窗口')
+
+    def mousePressEvent(self, event):
+        if event.button() == Qt.LeftButton:
+            self.setCursor(Qt.ClosedHandCursor)
+        super().mousePressEvent(event)
+
+    def mouseMoveEvent(self, event):
+        if event.buttons() & Qt.LeftButton:
+            self._move_callback(event)
+        super().mouseMoveEvent(event)
+
+    def mouseReleaseEvent(self, event):
+        self.setCursor(Qt.OpenHandCursor)
+        super().mouseReleaseEvent(event)
 
 
 class AoE4GameOverlay(RTSGameOverlay):
@@ -124,7 +155,14 @@ class AoE4GameOverlay(RTSGameOverlay):
         self.build_order_table.setWordWrap(True)
         self._update_build_order_table_style()
         self.build_order_size_grip = QSizeGrip(self)
+        self.build_order_size_grip.setFixedSize(24, 24)
+        self.build_order_size_grip.setToolTip('拖动调整窗口大小')
         self.build_order_size_grip.hide()
+        self.build_order_drag_handle = _BuildOrderDragHandle(
+            self, self._drag_build_order_window
+        )
+        self.build_order_drag_handle.setFixedSize(24, 24)
+        self.build_order_drag_handle.hide()
         self._build_order_window_initialized = False
 
         # civilization selection
@@ -159,6 +197,18 @@ class AoE4GameOverlay(RTSGameOverlay):
         self.notifications.reset()
         if self.selected_build_order is None:
             return
+
+        if self.build_order_timer['available'] and not self.build_order_timer['steps']:
+            partial_steps = get_available_timer_steps(self.selected_build_order)
+            if partial_steps:
+                self.build_order_timer['steps'] = partial_steps
+                self.build_order_timer['steps_ids'] = [0]
+                self.build_order_timer['last_steps_ids'] = []
+                self.build_order_timer['use_timer'] = True
+                self.reset_build_order_timer()
+                self.start_stop_build_order_timer(
+                    invert_run=False, run_value=False
+                )
 
         try:
             self.smart_session = SmartBuildOrderSession.from_build_order(self.selected_build_order)
@@ -215,12 +265,7 @@ class AoE4GameOverlay(RTSGameOverlay):
                 )
                 or not self.build_order_timer['use_timer']
             )
-            self.build_order_timer['use_timer'] = True
-            self.build_order_timer['run_timer'] = False
-            self.build_order_timer['time_sec'] = float(seconds)
-            self.build_order_timer['time_int'] = seconds
-            self.build_order_timer['time_sec_init'] = float(seconds)
-            self.build_order_timer['last_time_int'] = seconds
+            anchor_build_order_timer(self.build_order_timer, seconds, time.time())
             current_ids = get_build_order_timer_step_ids(
                 steps, seconds, self.build_order_timer['step_starting_flag']
             )
@@ -500,6 +545,8 @@ class AoE4GameOverlay(RTSGameOverlay):
             self.build_order_table.hide()
         if hasattr(self, 'build_order_size_grip'):
             self.build_order_size_grip.hide()
+        if hasattr(self, 'build_order_drag_handle'):
+            self.build_order_drag_handle.hide()
 
     def get_age_image(self, age_id: int) -> str:
         """Get the image for a requested age.
@@ -630,11 +677,13 @@ class AoE4GameOverlay(RTSGameOverlay):
             return
         if self.selected_panel == PanelID.BUILD_ORDER:
             self.setAttribute(Qt.WA_TransparentForMouseEvents, False)
+            self.build_order_drag_handle.show()
             self.build_order_size_grip.show()
             self.build_order_size_grip.raise_()
             self._layout_build_order_table()
         else:
             self.build_order_size_grip.hide()
+            self.build_order_drag_handle.hide()
 
     def mouseMoveEvent(self, event):
         """Allow the frameless build-order window to be dragged."""
@@ -700,24 +749,34 @@ class AoE4GameOverlay(RTSGameOverlay):
         super().update_build_order()
         self.build_order_resources.hide()
         self.build_order_notes.hide()
+        for row in range(self.build_order_table.rowCount()):
+            self.build_order_table.removeCellWidget(row, 6)
         self.build_order_table.clearContents()
+        self.build_order_table.clearSpans()
+        self.build_order_table.clearSelection()
 
         if self.selected_build_order is None or 'build_order' not in self.selected_build_order:
             self.build_order_table.setRowCount(1)
             self.build_order_table.setItem(0, 6, QTableWidgetItem('未选择建造顺序。'))
         else:
             timer_steps = self.build_order_timer['steps']
-            timer_mode = (
-                self.build_order_timer['use_timer']
-                and timer_steps
-                and len(timer_steps) == len(self.selected_build_order['build_order'])
-            )
-            steps = timer_steps if timer_mode else self.selected_build_order['build_order']
-            current_row = (
-                max(self.build_order_timer['steps_ids'], default=0)
-                if timer_mode
-                else self.selected_build_order_step_id
-            )
+            timer_mode = self.build_order_timer['use_timer'] and bool(timer_steps)
+            if timer_mode:
+                steps = [dict(step) for step in self.selected_build_order['build_order']]
+                source_indices = []
+                for timed_index, timed_step in enumerate(timer_steps):
+                    source_index = int(timed_step.get('_source_index', timed_index))
+                    if 0 <= source_index < len(steps):
+                        steps[source_index] = dict(timed_step)
+                        source_indices.append(source_index)
+                active_timed = max(self.build_order_timer['steps_ids'], default=0)
+                current_row = (
+                    source_indices[min(active_timed, len(source_indices) - 1)]
+                    if source_indices else 0
+                )
+            else:
+                steps = self.selected_build_order['build_order']
+                current_row = self.selected_build_order_step_id
             separators, display_current_row = build_age_block_layout(steps, current_row)
             separator_count = sum(len(items) for items in separators.values())
             self.build_order_table.setRowCount(len(steps) + separator_count)
@@ -834,6 +893,8 @@ class AoE4GameOverlay(RTSGameOverlay):
         self.build_order_resources.hide()
         self.build_order_notes.hide()
         self.build_order_table.show()
+        self.build_order_drag_handle.show()
+        self.build_order_drag_handle.raise_()
         self.build_order_size_grip.show()
 
         timer_controls = []
@@ -863,7 +924,11 @@ class AoE4GameOverlay(RTSGameOverlay):
         if self.selected_build_order is not None:
             controls.append(self.build_order_step_time)
             controls.extend(timer_controls)
-        controls.extend([self.hide_panel_button, self.next_panel_button])
+        controls.extend([
+            self.build_order_drag_handle,
+            self.hide_panel_button,
+            self.next_panel_button,
+        ])
 
         if layout.overlay_on_right_side:
             next_x = self.width() - border_size
@@ -896,9 +961,15 @@ class AoE4GameOverlay(RTSGameOverlay):
             grip_size.width(),
             grip_size.height(),
         )
+        self.build_order_size_grip.raise_()
+        self.build_order_drag_handle.raise_()
 
     def resizeEvent(self, event):
         """Keep the build-order table fitted after user resizing."""
         super().resizeEvent(event)
         if hasattr(self, 'build_order_table'):
             self._layout_build_order_table()
+
+    def _drag_build_order_window(self, event):
+        """Move the frameless build-order window from its drag handle."""
+        self.move_window(event)

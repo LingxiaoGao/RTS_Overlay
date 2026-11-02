@@ -17,6 +17,8 @@ from aoe4.smart_regions import HudRegionSet, crop_frame, scale_regions
 from aoe4.smart_runtime import RecognitionStatus
 from aoe4.smart_screen_capture import MssScreenCapture
 from aoe4.smart_template_ocr import TemplateHudRecognizer
+from aoe4.smart_game_end import GameEndDetector
+from aoe4.smart_timer_sync import GameTimerSynchronizer
 
 
 _FLAG_CODE_OVERRIDES = {
@@ -24,6 +26,8 @@ _FLAG_CODE_OVERRIDES = {
     "Knights Templar": "kte",
     "Order of the Dragon": "dra",
 }
+_LOADING_RECHECK_SECONDS = 3.0
+_LOADING_CONFIRMATIONS = 2
 
 
 @dataclass(frozen=True)
@@ -59,6 +63,14 @@ class SmartHudController:
         self._civilization_started = False
         self._civilization_decision: CivilizationDecision | None = None
         self._civilization_tracker = civilization_tracker or CivilizationTracker()
+        self._loading_observed = False
+        self._match_ended = False
+        self._next_loading_probe_at = 0.0
+        self._loading_probe_civilization: str | None = None
+        self._loading_probe_hits = 0
+        self._game_end_detector = GameEndDetector()
+        self._timer_sync = GameTimerSynchronizer()
+        self._screen_region = None
 
         if not callable(getattr(self._capture, "capture", None)):
             raise TypeError("capture must expose a callable capture method")
@@ -73,6 +85,7 @@ class SmartHudController:
         screen_region = getattr(self._capture, "screen_region", None)
         if callable(screen_region):
             target = screen_region()
+            self._screen_region = target
             self._regions = scale_regions(
                 self._config.hud_regions, self._config.capture_region, target
             )
@@ -177,19 +190,25 @@ class SmartHudController:
 
     def poll(self) -> PipelineResult:
         timestamp = self._clock()
-        if self._capture_groups:
-            crops = {}
-            for group_region, names in self._capture_groups:
-                group = self._capture.capture(
-                    group_region, self._frame_id, timestamp
-                )
-                for name in names:
-                    crops[name] = crop_frame(group, self._capture_regions[name])
+        if self._screen_region is not None:
+            frame = self._capture.capture(
+                self._screen_region, self._frame_id, timestamp
+            )
+            crops = {
+                name: crop_frame(frame, region)
+                for name, region in self._capture_regions.items()
+            }
             self._frame_id += 1
+            read_timer = self._timer_sync.should_read(timestamp)
             hud_crops = {
-                name: crops[name] for name in self._regions.regions if name in crops
+                name: crops[name]
+                for name in self._regions.regions
+                if name in crops and (name != "game_time" or read_timer)
             }
             result = self._pipeline.process_crops(hud_crops)
+            result = self._timer_sync.process(result, timestamp)
+            full_bgr = self._frame_bgr(frame)
+            self._observe_session_frame(full_bgr, timestamp)
             self._observe_civilization(result, crops, timestamp)
             return result
         frame = self._capture.capture(
@@ -197,7 +216,58 @@ class SmartHudController:
         )
         self._frame_id += 1
         result = self._pipeline.process(frame)
-        return result
+        return self._timer_sync.process(result, timestamp)
+
+    def _reset_match_state(self) -> None:
+        self._civilization_tracker.reset()
+        self._civilization_started = False
+        self._civilization_decision = None
+        self._loading_observed = False
+        self._pipeline.reset()
+        self._timer_sync.reset()
+        self._next_loading_probe_at = 0.0
+        self._loading_probe_civilization = None
+        self._loading_probe_hits = 0
+
+    def _observe_session_frame(self, frame_bgr, observed_at: float) -> None:
+        if self._game_end_detector.observe(frame_bgr):
+            if not self._match_ended:
+                self._reset_match_state()
+                self._match_ended = True
+            return
+        if (
+            self._civilization_vision is not None
+            and not self._loading_observed
+            and not self._civilization_started
+        ):
+            cue = self._civilization_vision.recognize_loading(frame_bgr)
+            if cue is not None:
+                self._civilization_tracker.observe_loading(cue)
+                self._loading_observed = True
+                self._match_ended = False
+            return
+
+        if not (self._civilization_started or self._civilization_decision is not None):
+            return
+        if observed_at < self._next_loading_probe_at:
+            return
+        self._next_loading_probe_at = observed_at + _LOADING_RECHECK_SECONDS
+        cue = self._civilization_vision.recognize_loading(frame_bgr)
+        if cue is None:
+            self._loading_probe_civilization = None
+            self._loading_probe_hits = 0
+            return
+        if cue.civilization == self._loading_probe_civilization:
+            self._loading_probe_hits += 1
+        else:
+            self._loading_probe_civilization = cue.civilization
+            self._loading_probe_hits = 1
+        if self._loading_probe_hits >= _LOADING_CONFIRMATIONS:
+            self._reset_match_state()
+            self._civilization_tracker.observe_loading(cue)
+            self._loading_observed = True
+            self._match_ended = False
+            self._next_loading_probe_at = observed_at + _LOADING_RECHECK_SECONDS
 
     def _observe_civilization(
         self,
@@ -210,14 +280,12 @@ class SmartHudController:
         game_time = result.state.game_time
         seconds = game_time.value
         if (
-            game_time.status is not RecognitionStatus.CONFIRMED
-            or not isinstance(seconds, (int, float))
-            or isinstance(seconds, bool)
-            or seconds < 0
-            or seconds > 30
+            not self._civilization_started
+            and game_time.status is RecognitionStatus.CONFIRMED
+            and isinstance(seconds, (int, float))
+            and not isinstance(seconds, bool)
+            and 0 <= seconds <= 30
         ):
-            return
-        if not self._civilization_started:
             self._civilization_tracker.start_game(observed_at - float(seconds))
             self._civilization_started = True
         flag = crops.get("civilization_flag")
@@ -226,12 +294,17 @@ class SmartHudController:
             return
         flag_bgr = self._frame_bgr(flag)
         buttons_bgr = self._frame_bgr(production_buttons)
+        provisional = self._civilization_tracker.candidate
         cue, active = self._civilization_vision.recognize_in_game(
-            flag_bgr, buttons_bgr
+            flag_bgr,
+            buttons_bgr,
+            provisional.civilization if provisional is not None else None,
         )
         decision = self._civilization_tracker.observe_in_game(
             cue, active, observed_at
         )
+        if decision is None:
+            decision = self._civilization_tracker.finalize(observed_at)
         if decision is not None:
             self._civilization_decision = decision
 
@@ -245,7 +318,7 @@ class SmartHudController:
 
     @property
     def detected_civilization(self) -> CivilizationDecision | None:
-        return self._civilization_decision
+        return self._civilization_decision or self._civilization_tracker.candidate
 
     def poll_safe(self) -> SafePollResult:
         try:
@@ -268,9 +341,16 @@ class SmartHudController:
         self._frame_id = 0
         self._consecutive_failures = 0
         self._pipeline.reset()
+        self._timer_sync.reset()
+        self._game_end_detector.reset()
         self._civilization_tracker.reset()
         self._civilization_started = False
         self._civilization_decision = None
+        self._loading_observed = False
+        self._match_ended = False
+        self._next_loading_probe_at = 0.0
+        self._loading_probe_civilization = None
+        self._loading_probe_hits = 0
 
     def close(self) -> None:
         if self._closed:
