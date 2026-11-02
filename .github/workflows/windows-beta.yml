@@ -205,7 +205,16 @@ jobs:
             throw "Missing HUD glyph templates under: $TemplateDir"
           }
 
-          $SmokeProcess = Start-Process -FilePath $ExePath -ArgumentList '--runtime-smoke-test' -Wait -PassThru
+          $SmokeProcess = Start-Process -FilePath $ExePath -ArgumentList '--runtime-smoke-test' -PassThru
+          if (-not $SmokeProcess.WaitForExit(90000)) {
+            $SmokeProcess.Kill()
+            $SmokeLog = Join-Path $OverlayDir 'local_config\logs\aoe4_overlay.log'
+            if (Test-Path $SmokeLog -PathType Leaf) {
+              Get-Content $SmokeLog
+            }
+            throw "Packaged runtime smoke test timed out after 90 seconds"
+          }
+          $SmokeProcess.Refresh()
           if ($SmokeProcess.ExitCode -ne 0) {
             $SmokeLog = Join-Path $OverlayDir 'local_config\logs\aoe4_overlay.log'
             if (Test-Path $SmokeLog -PathType Leaf) {

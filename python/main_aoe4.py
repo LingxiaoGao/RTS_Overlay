@@ -117,7 +117,11 @@ if __name__ == '__main__':
 
         window.close()
         logger.info("Packaged runtime and guide-window smoke test passed")
-        sys.exit(0)
+        # Windows keyboard/mouse hook helpers may own non-daemon threads.
+        # This code path is a dedicated one-shot verifier, so flush its proof
+        # and terminate without waiting for runtime hooks used by normal play.
+        logging.shutdown()
+        os._exit(0)
 
     # timer to call the functions related to mouse and keyboard inputs
     timer = QTimer()
