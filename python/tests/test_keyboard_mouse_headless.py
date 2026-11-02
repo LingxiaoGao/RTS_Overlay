@@ -1,8 +1,10 @@
 import os
 import unittest
+from types import SimpleNamespace
 from unittest.mock import patch
 
 from common.keyboard_mouse import KeyboardMouseManagement
+from common.rts_overlay import RTSGameOverlay
 
 
 class KeyboardMouseHeadlessTest(unittest.TestCase):
@@ -19,6 +21,15 @@ class KeyboardMouseHeadlessTest(unittest.TestCase):
         listener.assert_not_called()
         add_hotkey.assert_not_called()
         self.assertIsNone(manager.mouse_listener)
+
+    def test_headless_screen_safety_never_queries_a_desktop(self):
+        class NoDesktop:
+            def primaryScreen(self):
+                raise AssertionError("headless smoke must not query primaryScreen")
+
+        overlay = SimpleNamespace(app=NoDesktop())
+        with patch.dict(os.environ, {"RTS_OVERLAY_HEADLESS_SMOKE": "1"}):
+            RTSGameOverlay.screen_position_safety(overlay)
 
 
 if __name__ == "__main__":

@@ -628,7 +628,12 @@ class RTSGameOverlay(QMainWindow):
 
     def screen_position_safety(self):
         """Check that the upper left/right corner is inside the screen."""
-        screen_size = self.app.primaryScreen().size()
+        if os.environ.get('RTS_OVERLAY_HEADLESS_SMOKE') == '1':
+            return
+        primary_screen = self.app.primaryScreen()
+        if primary_screen is None:
+            return
+        screen_size = primary_screen.size()
         screen_width = screen_size.width()
         screen_height = screen_size.height()
 
